@@ -2,13 +2,17 @@
 
 The aim of this experiment is to investigate how cyanobacteria affect the predator *Chaoborus* through changes in the quality of its prey, *Daphnia magna* (Figure 1). *Daphnia* are raised on one of four diets: (1) a low-quality toxic diet containing 50% *Microcystis aeruginosa* and 50% *Tetradesmus obliquus*, (2) a low-quality but non-toxic diet containing 50% *Synechococcus elongatus* and 50% *Tetradesmus obliquus*, (3) a high-quality diet consisting of 100% *Nannochloropsis limnetica*, and (4) a high-quality diet consisting of 100% *Nannochloropsis limnetica* with lysed *Microcystis aeruginosa* added directly to the experimental container to isolate the effects of dissolved cyanotoxins from those of food quality. Throughout the experiment, *Chaoborus* are fed exclusively with *Daphnia* from their assigned treatment. Food is always provided **ad libitum**, meaning that prey should never become limiting. **At every feeding, ensure that there is always an excess of *Daphnia* remaining after the larvae have fed. If prey availability appears low, immediately add more *Daphnia*.** All treatments receive the same amount of carbon, allowing differences among treatments to be attributed to food quality and toxicity rather than food quantity. The experiment is conducted in complete darkness to prevent phytoplankton growth during the experiment, and each treatment consists of four independent replicates. Throughout the experiment, measurements of *Chaoborus* survival, emergence, body size, stoichiometry, fatty acid and sterol composition, and cyanotoxin concentrations are collected to determine how prey quality influences the quantity, quality, and timing of resource transfer.
 
-![Figure 1: Experimental design](figures/figure1_experimental_design.png)
+<p align="center">
+  <img src="figures/figure1_experimental_design.png" alt="Figure 1: Experimental design">
+</p>
+
 **Figure 1.** Experimental design. We will give the same amount of carbon to all the treatments. We will have four replicates.
 
-
+<p align="center">
+  <img src="figures/figure2_experimental_timeline.png" alt="Figure 2: Timeline of the experiment">
+</p>
 
 **Figure 2.** Timeline of the experiment.
-(figures/figure2_experimental_timeline.png)
 
 ---
 
