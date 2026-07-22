@@ -1,7 +1,5 @@
 # The interactive effects of toxicity and poor food quality of Cyanobacteria via indirect effects on Chaoborus
 
-**Authors:** Emanuele Giacomuzzo, Tobias Hoffmann Jensen, Jana Isanta-Navarro
-
 For the background and motivation behind this project, see the [project README](../README.md).
 
 ## Contents
