@@ -8,6 +8,8 @@ The aim of this experiment is to investigate how cyanobacteria affect the predat
 
 **Figure 1.** Experimental design. We will give the same amount of carbon to all the treatments. We will have four replicates.
 
+Figure 2 illustrates the overall workflow, from rearing to sampling. *Daphnia* are first raised on their assigned diet in individual jars (1 *Daphnia* per jar, ~200 jars per diet) to build up the stock needed for the experiment. At assembly, replicates are set up by adding *Chaoborus* larvae together with *Daphnia* prey into individual containers; for the treatment isolating cyanotoxin effects, lysed *Microcystis aeruginosa* is added directly to the container at this stage rather than being part of the *Daphnia* diet. Throughout the experiment, *Daphnia* (and, where relevant, lysed *Microcystis*) are replenished to maintain ad libitum feeding, while samples are collected to track three types of end points over time: quantity (survival/death), quality (body size, cyanotoxin content, lipid composition, and elemental stoichiometry), and timing (time to emergence).
+
 <p align="center">
   <img src="figures/Design_2.png" alt="Figure 2: Timeline of the experiment">
 </p>
