@@ -1,31 +1,14 @@
 # Experimental Design
 
-Part of [The interactive effects of toxicity and poor food quality of Cyanobacteria via indirect effects on Chaoborus](README.md).
-
-**Figure 1.** Experimental design. The experiment will be in the dark. We will give the same amount of carbon to all the treatments. We will have four replicates.
+The aim of this experiment is to investigate how cyanobacteria affect the predator *Chaoborus* through changes in the quality of its prey, *Daphnia magna* (Figure 1). *Daphnia* are raised on one of four diets: (1) a low-quality toxic diet containing 50% *Microcystis aeruginosa* and 50% *Tetradesmus obliquus*, (2) a low-quality but non-toxic diet containing 50% *Synechococcus elongatus* and 50% *Tetradesmus obliquus*, (3) a high-quality diet consisting of 100% *Nannochloropsis limnetica*, and (4) a high-quality diet consisting of 100% *Nannochloropsis limnetica* with lysed *Microcystis aeruginosa* added directly to the experimental container to isolate the effects of dissolved cyanotoxins from those of food quality. Throughout the experiment, *Chaoborus* are fed exclusively with *Daphnia* from their assigned treatment. Food is always provided **ad libitum**, meaning that prey should never become limiting. **At every feeding, ensure that there is always an excess of *Daphnia* remaining after the larvae have fed. If prey availability appears low, immediately add more *Daphnia*.** All treatments receive the same amount of carbon, allowing differences among treatments to be attributed to food quality and toxicity rather than food quantity. The experiment is conducted in complete darkness to prevent phytoplankton growth during the experiment, and each treatment consists of four independent replicates. Throughout the experiment, measurements of *Chaoborus* survival, emergence, body size, stoichiometry, fatty acid and sterol composition, and cyanotoxin concentrations are collected to determine how prey quality influences the quantity, quality, and timing of resource transfer.
 
 ![Figure 1: Experimental design](figures/figure1_experimental_design.png)
+**Figure 1.** Experimental design. We will give the same amount of carbon to all the treatments. We will have four replicates.
+
+
 
 **Figure 2.** Timeline of the experiment.
-
-| Time | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday |
-|---|---|---|---|---|---|---|---|
-| 8–9 | Make Zoo-COMBO 🫙 | Change Zoo-COMBO 🫙🔁 | Make Zoo-COMBO 🫙 | Change Zoo-COMBO 🫙🔁 | Make Zoo-COMBO 🫙 | Change Zoo-COMBO 🫙🔁 | Make Zoo-COMBO 🫙 |
-| 9–10 | | | | | | | |
-| 10–11 | Feed Chaoborus 🥪🦟 | | Feed Chaoborus 🥪🦟 | | Feed Chaoborus 🥪🦟 | | Feed Chaoborus 🥪🦟 |
-| 11–12 | | | | | | | |
-| 12–1 | | | | | | | |
-| 1–2 | | | | | | | |
-| 2–3 | | | | | | | |
-| 3–4 | Prepare Daphnia food 🧪 | | Prepare Daphnia food 🧪 | | Prepare Daphnia food 🧪 | | Prepare Daphnia food 🧪 |
-| 4–5 | Feed Daphnia 🥪🦐 | | Feed Daphnia 🥪🦐 | | Feed Daphnia 🥪🦐 | | Feed Daphnia 🥪🦐 |
-| 5–6 | Cleaning 🧹 | Prepare Daphnia food 🧪 | Cleaning 🧹 | Prepare Daphnia food 🧪 | Cleaning 🧹 | Prepare Daphnia food 🧪 | Cleaning 🧹 |
-| 6–7 | | Feed Daphnia 🥪🦐 | | Feed Daphnia 🥪🦐 | | Feed Daphnia 🥪🦐 | |
-| 7–8 | | Cleaning 🧹 | | Cleaning 🧹 | | Cleaning 🧹 | |
-| 8–9 | | | | | | | |
-| 9–10 | | Make sure there's enough food that it's ad libitum | | Make sure there's enough food that it's ad libitum | | Make sure there's enough food that it's ad libitum | |
-
-*(read directly from the "Hours" tab of `timeline.xlsx`)*
+(figures/figure2_experimental_timeline.png)
 
 ---
 
