@@ -1,18 +1,18 @@
 # Weekly Laboratory Schedule
 
 | Time | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday |
-|------|---------|----------|-----------|----------|--------|----------|--------|
-| **08:00–09:00** | 🫙 Make Zoo-COMBO | 🔁 Change Zoo-COMBO | 🫙 Make Zoo-COMBO | 🔁 Change Zoo-COMBO | 🫙 Make Zoo-COMBO | 🔁 Change Zoo-COMBO | 🫙 Make Zoo-COMBO |
-| **09:00–10:00** |  |  |  |  |  |  |  |
-| **10:00–11:00** | 🥪 Feed Chaoborus |  | 🥪 Feed Chaoborus |  | 🥪 Feed Chaoborus |  | 🥪 Feed Chaoborus |
-| **11:00–12:00** |  |  |  |  |  |  |  |
-| **12:00–13:00** |  |  |  |  |  |  |  |
-| **13:00–14:00** |  |  |  |  |  |  |  |
-| **14:00–15:00** |  |  |  |  |  |  |  |
-| **15:00–16:00** | 🧪 Prepare Daphnia food |  | 🧪 Prepare Daphnia food |  | 🧪 Prepare Daphnia food |  | 🧪 Prepare Daphnia food |
-| **16:00–17:00** | 🦐 Feed Daphnia |  | 🦐 Feed Daphnia |  | 🦐 Feed Daphnia |  | 🦐 Feed Daphnia |
-| **17:00–18:00** | 🧹 Cleaning | 🧪 Prepare Daphnia food | 🧹 Cleaning | 🧪 Prepare Daphnia food | 🧹 Cleaning | 🧪 Prepare Daphnia food | 🧹 Cleaning |
-| **18:00–19:00** |  | 🦐 Feed Daphnia |  | 🦐 Feed Daphnia |  | 🦐 Feed Daphnia |  |
-| **19:00–20:00** |  | 🧹 Cleaning |  | 🧹 Cleaning |  | 🧹 Cleaning |  |
-| **20:00–21:00** |  |  |  |  |  |  |  |
-| **21:00–22:00** |  | 💡 Check that food remains *ad libitum* |  | 💡 Check that food remains *ad libitum* |  | 💡 Check that food remains *ad libitum* |  |
+|:-----|:-------|:--------|:----------|:---------|:-------|:---------|:--------|
+| **08–09** | 🫙 Make Zoo-COMBO | 🔁 Change Zoo-COMBO 🫙 | 🫙 Make Zoo-COMBO | 🔁 Change Zoo-COMBO 🫙 | 🫙 Make Zoo-COMBO | 🔁 Change Zoo-COMBO 🫙 | 🫙 Make Zoo-COMBO |
+| **09–10** | | | | | | | |
+| **10–11** | 🥪 Feed *Chaoborus* 🦟 | | 🥪 Feed *Chaoborus* 🦟 | | 🥪 Feed *Chaoborus* 🦟 | | 🥪 Feed *Chaoborus* 🦟 |
+| **11–12** | | | | | | | |
+| **12–13** | | | | | | | |
+| **13–14** | | | | | | | |
+| **14–15** | | | | | | | |
+| **15–16** | 🧪 Prepare *Daphnia* food | | 🧪 Prepare *Daphnia* food | | 🧪 Prepare *Daphnia* food | | 🧪 Prepare *Daphnia* food |
+| **16–17** | 🥪 Feed *Daphnia* 🦐 | | 🥪 Feed *Daphnia* 🦐 | | 🥪 Feed *Daphnia* 🦐 | | 🥪 Feed *Daphnia* 🦐 |
+| **17–18** | 🧹 Cleaning | 🧪 Prepare *Daphnia* food | 🧹 Cleaning | 🧪 Prepare *Daphnia* food | 🧹 Cleaning | 🧪 Prepare *Daphnia* food | 🧹 Cleaning |
+| **18–19** | | 🥪 Feed *Daphnia* 🦐 | | 🥪 Feed *Daphnia* 🦐 | | 🥪 Feed *Daphnia* 🦐 | |
+| **19–20** | | 🧹 Cleaning | | 🧹 Cleaning | | 🧹 Cleaning | |
+| **20–21** | | | | | | | |
+| **21–22** | | 💡 Check that food remains *ad libitum* | | 💡 Check that food remains *ad libitum* | | 💡 Check that food remains *ad libitum* | |
