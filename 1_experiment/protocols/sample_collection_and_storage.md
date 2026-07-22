@@ -1,6 +1,6 @@
 # Box 1: Measuring, Storing, and Freeze-Drying Samples Throughout the Experiment
 
-Referenced from [experimental_design.md](../experimental_design.md).
+Referenced from [design.md](../design.md).
 
 Every day we'll be looking at the following things:
 

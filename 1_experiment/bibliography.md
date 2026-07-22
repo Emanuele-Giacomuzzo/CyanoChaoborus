@@ -1,0 +1,39 @@
+# Bibliography
+
+References for [design.md](design.md), [culturing.md](culturing.md), and related protocols.
+
+Büns, M., & Ratte, H. T. (1991). The combined effects of temperature and food consumption on body weight, egg production and developmental time in Chaoborus crystallinus De Geer (Diptera: Chaoboridae): Some new evidence for the adaptive value of vertical migration. *Oecologia*, 88(4), 470–476. https://doi.org/10.1007/BF00317708
+
+Chen, W., Song, L., Ou, D., & Gan, N. (2005). Chronic toxicity and responses of several important enzymes in Daphnia magna on exposure to sublethal microcystin-LR. *Environmental Toxicology*, 20(3), 323–330. https://doi.org/10.1002/tox.20108
+
+DeMott, W. R. (1999). Foraging strategies and growth inhibition in five daphnids feeding on mixtures of a toxic cyanobacterium and a green alga. *Freshwater Biology*, 42(2), 263–274. https://doi.org/10.1046/j.1365-2427.1999.444494.x
+
+Kilham, S. S., Kreeger, D. A., Lynn, S. G., Goulden, C. E., & Herrera, L. (1998). COMBO: A defined freshwater culture medium for algae and zooplankton. *Hydrobiologia*, 377(1–3), 147–159. https://doi.org/10.1023/A:1003231628456
+
+Lampert, W. (1981). Inhibitory and Toxic Effects of Blue-green Algae on Daphnia. *Internationale Revue Der Gesamten Hydrobiologie Und Hydrographie*, 66(3), 285–298. https://doi.org/10.1002/iroh.19810660302
+
+Laurén-Määttä, C., Hietala, J., Reinikainen, M., & Walls, M. (1995). Do Microcystis aeruginosa toxins accumulate in the food web: A laboratory study. *Hydrobiologia*, 304(1), 23–27. https://doi.org/10.1007/BF02530700
+
+Long, B. M., Jones, G. J., & Orr, P. T. (2001). Cellular Microcystin Content in N-Limited Microcystis aeruginosa Can Be Predicted from Growth Rate. *Applied and Environmental Microbiology*, 67(1), 278–283. https://doi.org/10.1128/AEM.67.1.278-283.2001
+
+Lu, N., Sun, Y., Wei, J., Gu, L., Zhang, L., Yang, Z., & Huang, Y. (2021). Toxic Microcystis aeruginosa alters the resource allocation in Daphnia mitsukuri responding to fish predation cues. *Environmental Pollution*, 278, 116918. https://doi.org/10.1016/j.envpol.2021.116918
+
+Lürling, M. (2003). Daphnia growth on microcystin-producing and microcystin-free Microcystis aeruginosa in different mixtures with the green alga Scenedesmus obliquus. *Limnology and Oceanography*, 48(6), 2214–2220. https://doi.org/10.4319/lo.2003.48.6.2214
+
+Martin-Creuzburg, D., Wacker, A., & Von Elert, E. (2005). Life history consequences of sterol availability in the aquatic keystone species Daphnia. *Oecologia*, 144(3), 362–372. https://doi.org/10.1007/s00442-005-0090-8
+
+Molot, L. A., Watson, S. B., Creed, I. F., Trick, C. G., McCabe, S. K., Verschoor, M. J., Sorichetti, R. J., Powe, C., Venkiteswaran, J. J., & Schiff, S. L. (2014). A novel model for cyanobacteria bloom formation: The critical role of anoxia and ferrous iron. *Freshwater Biology*, 59(6), 1323–1340. https://doi.org/10.1111/fwb.12334
+
+Riehle, E., Beach, D. G., Multrus, S., Parmar, T. P., Martin-Creuzburg, D., & Dietrich, D. R. (2024). Fate of Planktothrix-derived toxins in aquatic food webs: A case study in Lake Mindelsee (Germany). *Ecotoxicology and Environmental Safety*, 273, 116154. https://doi.org/10.1016/j.ecoenv.2024.116154
+
+Sotton, B., Guillard, J., Anneville, O., Maréchal, M., Savichtcheva, O., & Domaizon, I. (2014). Trophic transfer of microcystins through the lake pelagic food web: Evidence for the role of zooplankton as a vector in fish contamination. *The Science of the Total Environment*, 466–467, 152–163. https://doi.org/10.1016/j.scitotenv.2013.07.020
+
+Thostrup, L., & Christoffersen, K. (1999). Accumulation of microcystin in Daphnia magna feeding on toxic Microcystis. *Fundamental and Applied Limnology*, 145(4), 447–467. https://doi.org/10.1127/archiv-hydrobiol/145/1999/447
+
+Von Elert, E., Zitt, A., & Schwarzenberger, A. (2012). Inducible tolerance to dietary protease inhibitors in Daphnia magna. *Journal of Experimental Biology*, 215(12), 2051–2059. https://doi.org/10.1242/jeb.068742
+
+Wacker, A., & Martin-Creuzburg, D. (2007). Allocation of essential lipids in Daphnia magna during exposure to poor food quality. *Functional Ecology*, 21(4), 738–747. https://doi.org/10.1111/j.1365-2435.2007.01274.x
+
+Wang, S., Liu, Z., Su, X., Jin, X., Jin, H., Su, Y., Wang, J., Jeppesen, E., Zhang, X., & Tang, Y. (2025). Differentiated fatty acid allocation of Daphnia magna helped to maintain their population under food quality deterioration. *Frontiers in Microbiology*, 16, 1544005.
+
+Xie, P., Iwakuma, T., & Fujii, K. (1998). Studies on the biology of Chaoborus flavicans (Meigen) (Diptera: Chaoboridae) in a fish-free eutrophic pond, Japan.
