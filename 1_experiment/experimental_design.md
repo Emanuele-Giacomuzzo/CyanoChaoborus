@@ -5,7 +5,8 @@
 ---
 
 **Figure 1.** Experimental design. The experiment will be in the dark. We will give the same amount of carbon to all the treatments. We will have four replicates.
-*(figure image to be added — see [figures/](figures/))*
+
+![Figure 1: Experimental design](figures/figure1_experimental_design.png)
 
 **Figure 2.** Timeline of the experiment.
 *(figure image to be added — see [figures/](figures/))*
