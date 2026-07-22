@@ -95,6 +95,63 @@ Stock populations. At the beginning of the experiment, Daphnia magna we will inc
 Creation single clutch jars. Daphnia will be monitored for when they give birth. Throughout the experiment, we will check every (add how often) if an adult has given babies. If it has, we will take it out and write when the clutches were given so that we can make sure we are giving two-day-old babies (add whether you think if maybe it would be better to have another age of the babies, say if it reduces the amount of work). If the adult is pregnant, it will probably hatch within the next 24 hours. On the day of the assembly, pregnant Daphnias are transferred in (add number of jars per food item) 100 ml jars with food, which was one of the three algal diet treatments: Microcystis aeruginosa, Synechococcus elongatus, Nannochloropsis limnetica). Starting from the day of the experiment, every day we feed Daphnia. This is realistic in nature compared to the percentage of biomass made out of cyanobacteria (ref) (bloom defined as > 50 % of biomass constituted by cyanobacteria, Molot et al., 2014). 
 Measurements. The quality of Daphnia will be monitored throughout the experiment. We will be collecting (add here how many total Daphnia are needed for analysing PUFAs, sterols, stoichiometry, and toxins) Daphnia each (add here how often you want to collect Daphnia to analyse their quality). We will be measuring their toxicity, PUFAs, sterols, stoichiometry, and body size, as in Chaoborus. 
 
+> [!IMPORTANT]
+> ## Measuring, storing, and freeze-drying samples
+>
+> Throughout the experiment, samples must be measured, labelled, and stored consistently to ensure that all downstream analyses can be performed correctly.
+>
+> ### 1. Emerged *Chaoborus* adults
+>
+> - Check every day for newly emerged adults.
+> - Remove adults as soon as they emerge.
+> - Photograph each individual under the microscope to measure body size.
+> - Place adults in the refrigerator to euthanise them before transferring them to the freezer.
+> - Once frozen, adults can no longer be identified individually, so measurements must be completed beforehand.
+>
+> ### 2. Dead *Chaoborus* larvae
+>
+> Throughout the experiment, preserve all dead larvae for later analyses.
+>
+> - Transfer each larva to a labelled Eppendorf tube.
+> - Keep a tally of the number of larvae stored in each tube.
+> - Approximately **50 larvae** fit in a **1.5 mL** Eppendorf tube.
+> - Using **2 mL** tubes increases the storage capacity.
+>
+> ### 3. Splitting samples for analyses
+>
+> Before storage, remove excess water from the samples using a Pasteur pipette.
+>
+> Each sample should then be divided according to the planned analyses.
+>
+> Example (for *Chaoborus* from one treatment):
+>
+> - CN analysis (sent to Dominik)
+> - Phosphorus (analysed in-house)
+> - Sterols
+> - Fatty acids
+> - Toxicity
+>
+> The same workflow will eventually be applied to:
+>
+> - *Chaoborus* adults
+> - *Chaoborus* larvae
+> - *Daphnia*
+> - Algae
+>
+> ### Number of tubes required
+>
+> Assuming:
+>
+> - 4 treatments
+> - 4 replicates
+> - 5 analyses
+> - 4 organism types
+>
+> a total of approximately **320 Eppendorf tubes** will be required.
+>
+> Label tubes clearly before starting the sampling to avoid mistakes.
+
+
 
 
 ---
