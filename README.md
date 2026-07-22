@@ -59,8 +59,9 @@ By feeding *Chaoborus* different cyanobacterial diets (toxic vs. non-toxic, nutr
 - `2_data/` — raw and processed data
 - `3_analysis/` — analysis scripts/code
 - `4_results/` — outputs, figures, tables
-- `5_AI_instructions/` — rules and guidelines for AI assistants working in this repository
-- `6_other/` — everything else
+- `5_other/` — everything else
+
+AI-assistant instructions live in [CLAUDE.md](CLAUDE.md) at the repo root.
 
 ---
 
