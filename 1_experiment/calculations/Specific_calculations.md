@@ -95,3 +95,35 @@
 > The number of Daphnia babies needed per day is about **80 moms -> 6 jars per day -> more like 10 per day.**
 >
 > We can then reuse the moms.
+
+
+
+
+> [!NOTE]
+> ## Biomass required for analyses
+>
+> The amount of biomass required for this experiment depends on the analyses to be performed and the expected biodilution of cyanotoxins along the food chain.
+>
+> ### Analyses requiring biomass
+>
+> 1. PUFA and sterol analysis
+> 2. Stoichiometry analysis
+> 3. Toxin analysis (ELISA)
+>
+> ### Expected biodilution
+>
+> - **Microcystis aeruginosa:** 0.7–7 mg g⁻¹ DW microcystins.
+> - **Daphnia magna:** approximately 80-fold biodilution.
+> - **Chaoborus spp.:** approximately 5-fold biodilution from *Daphnia*.
+>
+> ### ELISA detection limits
+>
+> - ✅ Abraxis Microcystins-ADDA ELISA Kit — **0.10 µg L⁻¹**
+> - ✅ Eurofins Microcystin Plate Kit — **0.05 µg L⁻¹**
+> - ✅ Beacon Microcystin ELISA Kit — **0.10 µg L⁻¹**
+> - ❌ Envirologix Microcystins Quantiplate Kit — **0.15 µg L⁻¹**
+>
+> ### Final calculation
+>
+> Use the biodilution values above together with the ELISA detection limits to estimate the minimum biomass required for each analysis.
+

@@ -1,8 +1,8 @@
-# CyanoChaoborus 🦟🌊
+# Overview of the project
 
-Greetings, and welcome — you made it to the project folder! 🎉
+Greetings, and welcome — you made it to the project folder / master file! 🎉
 
-This is **the** project folder, the one place where you can find all the information about the CyanoChaoborus project: the people behind it, the big questions we're asking, and (as the folders below fill up) the experiments, data, analyses, and results themselves.
+This is **the** project folder / master file, the one place where you can find all the information about the CyanoChaoborus project: the people behind it, the big questions we're asking, and (as the folders below fill up) the experiments, data, analyses, and results themselves.
 
 Whether you're a new lab member, a curious second-year BSc student, or just cyaonabcteria-curious, you're in the right place. Grab a coffee ☕ and read on.
 
@@ -15,13 +15,13 @@ This project is powered by a small but very dedicated crew:
 | Name | Role | Institution |
 |---|---|---|
 | Emanuele Giacomuzzo | Creator of this project, postdoc | University of Copenhagen, DK |
-| Jana Isanta-Navarro | PI (Principal Investigator) & Professor | University of Copenhagen, DK |
+| Jana Isanta-Navarro | Professor | University of Copenhagen, DK |
+| Kirsten Seestern | Professor | University of Copenhagen, DK |
+| Ali Ger | Professor | Federal University of Rio Grande do Norte, Brazil |
 | Irma Carvalho | Postdoc | Federal University of Rio Grande do Norte, Brazil |
-| Ali Ger | PI | Federal University of Rio Grande do Norte, Brazil |
 | Mikael Kosmou | MSc student, writing his MSc thesis on this project | University of Copenhagen, DK |
 | Tobias Hoffmann Jensen | BSc student, wrote his BSc thesis on this project | University of Copenhagen, DK |
-| Kirsten Seestern | Professor | University of Copenhagen, DK |
-| Tina Katherine Varis | BSc exchange student | Elon University, USA |
+| Tina Katherine Varis | BSc student, doing research assistanship within this project | Elon University, USA, exchange @ University of Copenhagen, DK |
 
 Basically, a small international team spanning Denmark, Brazil, and the US, at every career stage from BSc to PI — all digging into the same big question 🌍
 
@@ -60,8 +60,6 @@ By feeding *Chaoborus* different cyanobacterial diets (toxic vs. non-toxic, nutr
 - `3_analysis/` — analysis scripts/code
 - `4_results/` — outputs, figures, tables
 - `5_other/` — everything else
-
-AI-assistant instructions live in [CLAUDE.md](CLAUDE.md) at the repo root.
 
 ---
 

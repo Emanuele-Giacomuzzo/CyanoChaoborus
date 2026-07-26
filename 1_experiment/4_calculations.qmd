@@ -1,0 +1,143 @@
+# Calculations
+
+This chapter walks through the reasoning behind the experiment's scale — how many *Chaoborus*, *Daphnia*, and jars are needed, and how much phytoplankton has to be cultured to support them. Each section states the assumptions behind a number, then computes it, so that the derivation stays reproducible and any figure quoted elsewhere in this book can be traced back to its source instead of being retyped by hand. Assumptions carry a confidence rating (`High` / `Medium` / `Low`) reflecting how well they are supported by prior literature or in-house data. The underlying R code is folded by default — click "Show calculation code" under any section to inspect it.
+
+## How much *Chaoborus* biomass is needed?
+
+Every measurement (PUFAs, sterols, stoichiometry, and cyanotoxin content) requires a minimum amount of dry biomass:
+
+- Fatty acids: 1 mg (Tarn Preet Parmar's personal communication)
+
+- Sterols : 1 mg (Tarn Preet Parmar's personal communication)
+
+- C, N: 1.5 mg (Dominik Martin-Creuzburg's personal communication).
+
+- P: 1 mg (Jana Isanta-Navarro's personal communication). *(TODO: check the numbers of CN and P!!)*
+
+- Toxin analysis: 1 mg. However, this figure carries low confidence: actual detectability depends on the ELISA kit used and the Microcystin concentration in the tissue.
+
+```{r}
+#| label: biomass-per-analysis
+
+Biomass_needed_for_lipids_mg <- 2
+Biomass_needed_for_stoichiometry_mg <- 1.5
+Biomass_needed_for_toxins_mg <- 1
+
+Biomass_needed_total_mg <- Biomass_needed_for_lipids_mg +
+  Biomass_needed_for_stoichiometry_mg +
+  Biomass_needed_for_toxins_mg
+```
+
+So each measurement (a replicate of a treatment) requires **`r Biomass_needed_total_mg` mg** of dry *Chaoborus* biomass.
+
+
+
+### From biomass to number of larvae
+
+Converting that biomass target into a number of larvae starts from the dry weight of a single third-instar *Chaoborus*: 0.79 mg, the lowest weight reported for *Chaoborus flavicans* by Parma (1971), used here as a high-confidence, conservative figure. Because not every larva placed in a jar survives to the sampling point, the raw larvae-per-measurement figure is inflated by the worst-case mortality ratio observed across treatments — a 2-fold dead:alive ratio, held with medium confidence.
+
+```{r}
+#| label: chaoborus-individuals
+
+Chaoborus_third_instar_dry_weight_mg <- 0.79
+Dead_alive_ratio_Chaoborus_worst_treatment <- 2
+
+Treatments <- 4
+Replicates <- 4
+
+# Larvae needed for one measurement (one treatment x one replicate), inflated
+# by the worst-treatment mortality ratio so enough survive to the end point.
+Chaoborus_one_measurement <- ceiling(
+  (Biomass_needed_total_mg / Chaoborus_third_instar_dry_weight_mg) *
+    Dead_alive_ratio_Chaoborus_worst_treatment
+)
+Chaoborus_one_measurement
+
+Chaoborus_total <- Chaoborus_one_measurement * Treatments * Replicates
+Chaoborus_total
+
+Jars_Chaoborus <- Treatments * Replicates
+Jars_Chaoborus
+```
+
+With `r Treatments` treatments × `r Replicates` replicates, the experiment needs **`r Chaoborus_one_measurement` third-instar larvae per jar** and **`r Chaoborus_total` larvae in total**, housed in **`r Jars_Chaoborus` *Chaoborus* jars**.
+
+## Keeping *Chaoborus* fed: how many *Daphnia* neonates are needed?
+
+*Chaoborus* are fed *Daphnia* neonates ad libitum. *Daphnia* stock is built up in individual jars ahead of assembly, so the stock has to be sized to the neonate demand implied by the *Chaoborus* population above. Sizing that stock starts from two feeding-and-reproduction assumptions, both held with medium confidence: a fourth-instar *Chaoborus* larva eats about 20 neonates (1.25 mm *D. magna*) per feeding (Büns & Ratte, 1991), and an adult *Daphnia* produces about 20 neonates per 5-day clutch cycle. Those small stock jars, each housing a single *Daphnia*, are in turn fed from large (1000 mL) jars, each holding 15 adult *Daphnia* — a high-confidence figure, though the source for it still needs tracking down (see Open questions below).
+
+```{r}
+#| label: daphnia-jars
+
+Daphnia_neonates_per_feeding <- 20
+Daphnia_neonates_born_per_5_days <- 20
+
+# Small jars: 1 Daphnia per jar, used to build up the stock.
+Jars_small_Daphnia <- ceiling(
+  Chaoborus_total / (Daphnia_neonates_born_per_5_days / Daphnia_neonates_per_feeding)
+)
+Jars_small_Daphnia
+
+Daphnia_per_large_jar <- 15
+
+# Large jars: used to house adults producing the neonate stock.
+Jars_big_Daphnia <- ceiling(
+  Jars_small_Daphnia / (Daphnia_per_large_jar * Daphnia_neonates_born_per_5_days)
+)
+Jars_big_Daphnia
+```
+
+This works out to **`r Jars_small_Daphnia` small (100 mL) *Daphnia* jars** and **`r Jars_big_Daphnia` large (1000 mL) *Daphnia* jars**.
+
+## Feeding the *Daphnia*: how much phytoplankton medium is needed?
+
+Each 100 mL small *Daphnia* jar is treated as needing 0.08 L of medium replaced per change (high confidence), and *Daphnia* are fed 2 mg C L⁻¹ per day ad libitum (high confidence). Converting that carbon ration into a phytoplankton volume requires an assumed culture density, set conservatively at 50 mg C L⁻¹ (low confidence): *M. aeruginosa*, the slowest grower, tops out around 150 mg C L⁻¹ and *T. obliquus* grows at 28–150 mg C L⁻¹ (Thostrup & Christoffersen, 1999), so 50 mg C L⁻¹ is used as a conservative planning figure rather than either species' true density.
+
+```{r}
+#| label: phytoplankton
+
+Jars_small_Daphnia_l <- 0.08
+
+# Volume of medium replaced each time small jars are changed.
+Daphnia_total_medium_l <- Jars_small_Daphnia * Jars_small_Daphnia_l
+Daphnia_total_medium_l
+
+Phyto_C_to_Daphnia_mg_per_l <- 2
+Phytoplankton_concentration_mgC_l <- 50
+
+Daily_phytoplankton_volume_l <- (Daphnia_total_medium_l * Phyto_C_to_Daphnia_mg_per_l) /
+  Phytoplankton_concentration_mgC_l
+Daily_phytoplankton_volume_l
+```
+
+Changing the small *Daphnia* jars uses **`r Daphnia_total_medium_l` L** of medium each time, which requires culturing **`r round(Daily_phytoplankton_volume_l, 2)` L of phytoplankton per day** at the assumed culture density.
+
+## Infrastructure: shelves and total jar count
+
+Checking that jar weight stays within shelf limits uses high-confidence weight figures for each jar type, including its liquid: 1.5 kg for a *Chaoborus* jar, 0.2 kg for a small *Daphnia* jar, and 1.5 kg for a large *Daphnia* jar. Of the 18 shelves available in the lab, 2 are allocated to Claudia's work, leaving 16 for this experiment.
+
+```{r}
+#| label: infrastructure
+
+Jar_Chaoborus_weight_kg <- 1.5
+Jar_small_Daphnia_weight_kg <- 0.2
+Jar_large_Daphnia_weight_kg <- 1.5
+
+Shelves <- 16
+
+Weight_per_shelf_kg <- ceiling(
+  ((Jar_Chaoborus_weight_kg * Jars_Chaoborus) +
+    (Jar_small_Daphnia_weight_kg * Jars_small_Daphnia) +
+    (Jar_large_Daphnia_weight_kg * Jars_big_Daphnia)) / Shelves
+)
+Weight_per_shelf_kg
+
+Jars_total <- Jars_Chaoborus + Jars_small_Daphnia + Jars_big_Daphnia
+Jars_total
+```
+
+Across *Chaoborus*, small, and large *Daphnia* jars, the experiment needs **`r Jars_total` jars in total** (this excludes phytoplankton culture vessels), at roughly **`r Weight_per_shelf_kg` kg per shelf** across `r Shelves` shelves — within the 20 kg/shelf limit.
+
+## Open questions
+
+A few assumptions above are still unresolved and should be tightened before the numbers are treated as final. The toxin biomass target (`Biomass_needed_for_toxins_mg`) is currently a placeholder (1 mg, low confidence) pending the validation test recommended by Jing, rather than a figure derived from the biodilution and detection-limit context discussed above. The cyanotoxin concentration used for biodilution is also unsettled: Long et al. (2001) report a range of 0.7–7 mg g⁻¹ DW for *M. aeruginosa*, but the assumption sheet currently uses a single point value that hasn't been reconciled with that range. The *Synechococcus elongatus* growth time is set to 14 days, though the supporting note describes an 11-day lab trial (5 mL inoculum in 2 L) — worth double-checking which value is correct. Finally, no source is recorded for the assumed 15 *Daphnia* per large jar; a rationale or reference should be added if one exists.

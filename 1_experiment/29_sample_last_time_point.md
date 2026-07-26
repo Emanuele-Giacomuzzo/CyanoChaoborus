@@ -1,16 +1,16 @@
-# Sample the Last Time Point
+## Sample the Last Time Point
 
 **Date:** ... 
 
-## Aim
+### Aim
 
 To sample the final time point of the experiment.
 
 ---
 
-# Sample the algae
+## Sample the algae
 
-## 1. Prepare a mix of the two algae
+### 1. Prepare a mix of the two algae
 
 1. Bring up the large algal cultures.
 2. Transfer algae into two beakers.
@@ -43,7 +43,7 @@ To sample the final time point of the experiment.
 
 ---
 
-## 2. Set up the filtration system
+### 2. Set up the filtration system
 
 1. Assemble the vacuum filtration unit and connect it to the wall gas supply.
 2. Place a **GF/C filter** (pre-combusted at **550 °C for 2 hours**) onto the filtration unit using clean forceps.
@@ -54,7 +54,7 @@ To sample the final time point of the experiment.
 
 ---
 
-## 3. Filter the samples
+### 3. Filter the samples
 
 For each sample:
 
@@ -77,9 +77,9 @@ For each sample:
 
 ---
 
-# Sample *Chaoborus*
+## Sample *Chaoborus*
 
-## 1. Record larvae and pupae
+### 1. Record larvae and pupae
 
 | Replicate | Dead larvae | Live pupae | Dead pupae | Remaining larvae |
 |-----------|------------:|-----------:|-----------:|-----------------:|
@@ -88,13 +88,13 @@ For each sample:
 | 3 | | | | |
 | 4 | | | | |
 
-## 2. Freeze specimens
+### 2. Freeze specimens
 
 Freeze all remaining larvae and pupae.
 
 ---
 
-# Sample *Daphnia*
+## Sample *Daphnia*
 
 1. Collect the *Daphnia* remaining in each *Chaoborus* jar.
    - Filter each replicate separately.

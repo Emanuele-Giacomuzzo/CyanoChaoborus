@@ -1,6 +1,6 @@
 # Bibliography
 
-References for [design.md](design.md), [culturing.md](culturing.md), and related protocols.
+References for [Experimental design](3_experimental_design.qmd), [Culturing & sourcing organisms](5_experimental_organisms.qmd), and related protocols.
 
 Büns, M., & Ratte, H. T. (1991). The combined effects of temperature and food consumption on body weight, egg production and developmental time in Chaoborus crystallinus De Geer (Diptera: Chaoboridae): Some new evidence for the adaptive value of vertical migration. *Oecologia*, 88(4), 470–476. https://doi.org/10.1007/BF00317708
 

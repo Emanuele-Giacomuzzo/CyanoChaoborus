@@ -1,0 +1,5 @@
+{{< include ../README.md >}}
+
+## Background & hypotheses
+
+*(to be written — motivation and hypotheses for this experiment)*

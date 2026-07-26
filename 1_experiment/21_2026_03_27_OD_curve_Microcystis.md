@@ -127,7 +127,7 @@ Originaldensity
 Zoo-COMBO
 
 <figure>
-<img src="media/2026_03_27_OD_curve_Microcystis/image2.svg" style="width:6.5in;height:4.48611in" />
+<img src="media/21_2026_03_27_OD_curve_Microcystis/image2.svg" style="width:6.5in;height:4.48611in" />
 <figcaption><p>Zoo-COMBO</p></figcaption>
 </figure>
 

@@ -1,8 +1,8 @@
-# Culturing & Sourcing Organisms Before the Experiment
+# Culturing Organisms
 
-Part of [The interactive effects of toxicity and poor food quality of Cyanobacteria via indirect effects on Chaoborus](README.md). See [design.md](design.md) for the Chaoborus setup that these cultures feed into.
+See [Experimental design](3_experimental_design.qmd) for the Chaoborus setup that these cultures feed into.
 
-## Phytoplankton — 50% T. obliquus + 50% S. elongatus
+## Phytoplankton
 
 We will be growing 800 Daphnia babies per day in 10 jars per day (10 L). Therefore, we need to make sure to have enough food to feed 10 L with 2 g C/L/day.
 
@@ -20,4 +20,4 @@ We will be growing 800 Daphnia babies per day in 10 jars per day (10 L). Therefo
 
 ---
 
-See [Box 1: Sample Collection and Storage](protocols/sample_collection_and_storage.md) for the full protocol on measuring, storing, and freeze-drying samples throughout the experiment, and the [Bibliography](bibliography.md) for references.
+See [Box 1: Sample Collection and Storage](8_sample_collection_and_storage.md) for the full protocol on measuring, storing, and freeze-drying samples throughout the experiment, and the [Bibliography](7_bibliography.qmd) for references.

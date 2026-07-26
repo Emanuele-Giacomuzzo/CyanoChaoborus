@@ -36,7 +36,7 @@
 
     1.  Pipette culture on the filter (remember to mix well the sample, and make sure that the liquid goes through, otherwise adjust the tap until no liquid is left on top of the filter). <u>Write down how much volume you added to the filter in the below figure.</u>
 
-<img src="media/2026_04_15_sample_phyto/image1.png" style="width:4.88889in;height:4.375in" />
+<img src="media/26_2026_04_15_sample_phyto/image1.png" style="width:4.88889in;height:4.375in" />
 
 1.  Move the filters to a 24-well plate. To do so, turn off the suction, take off the cylinder weights, and move filters to the 24-well plate with <u>clean forceps</u> (cleaned with ethanol and fire)[^1]. Place each sample in the plate position noted in the below table.
 
@@ -57,7 +57,7 @@ Tetr
 Mix
 
 <figure>
-<img src="media/2026_04_15_sample_phyto/image3.svg" style="width:6.5in;height:4.48611in" />
+<img src="media/26_2026_04_15_sample_phyto/image3.svg" style="width:6.5in;height:4.48611in" />
 <figcaption><p>Mix</p></figcaption>
 </figure>
 
