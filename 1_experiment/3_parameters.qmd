@@ -1,0 +1,64 @@
+# Parameters
+
+::: {.callout-note}
+
+```{r}
+#| label: parameters
+
+# DW = dry weight
+
+# 🌐 General 
+
+Treatments <- 4
+Replicates <- 4
+
+# 🪜 Infrastructure
+
+Shelves <- 16
+Max_weight_per_shelf_kg <- 20
+Small_jar_liquid_litres <- 0.08
+Small_jar_with_liquid_kg <- 0.2
+Large_jar_liquid_litres <- 0.8
+Large_jar_with_liquid_kg <- 1.5
+
+# 🦟 Chaoborus
+
+Chaoborus_third_instar_DW_mg <- 0.79 # Lowest weight in the following paper: Parma, S. (1971). Chaoborus flavicans (Meigen)(Diptera, Chaoboridae): an autecological study.
+Chaoborus_jar_liquid_litres <- 0.8
+Chaoborus_jar_with_liquid_kg <- 1.5
+Chaoborus_dead_to_alive_ratio_worst_tratment <- 2
+Chaoborus_Daphnia_neonates_eaten_per_day <- 20 #Based on female fourth instar eating 1.25 mm D. magna babies (Büns & Ratte, 1991)
+Chaoborus_cyanotoxin_biodilutin_from_Daphnia <- 5 # Based on a field study where toxins were detected with HPLC/PDA: Sotton, B., Guillard, J., Anneville, O., Maréchal, M., Savichtcheva, O., & Domaizon, I. (2014). Trophic transfer of microcystins through the lake pelagic food web: Evidence for the role of zooplankton as a vector in fish contamination. Science of the Total Environment, 466, 152-163.
+
+# 🦐 Daphnia 
+
+Daphnia_adults_per_jar <- 15
+Daphnia_fed_C_mg_per_litre_per_day <- 2 
+Daphnia_neonates_per_mother_per_5_days <- 20 
+Daphnia_DW_adult_mg <- 0.18 # Average weight of an individual in the following paper: Simčič, T., & Brancelj, A. (1997). Electron transport system (ETS) activity and respiration rate in five Daphnia species at different temperatures. Hydrobiologia, 360(1), 117-125.
+Daphnia_cyanotoxin_biodilution_from_Microcystis <- 80 # Based on an experiment: Thostrup & Christoffersen, 1999
+
+# 🧪 Phytoplankton 
+
+Phytoplankton_growth_time_days <- 10
+Phytoplankton_highest_concentration_mg_C_per_litres <- 50 # Based on the fact that M. aeruginosa is the one that grows the worst and that in Thostrup & Christophersen, 1999 grew up to 150, we use 50 to be conservative. Also, Vana told me that her T. obliquus grows at 28-150 mg C / L
+Phytoplankton_low_quality_food_ratio <- 0.5 # I would go for 50% of both Microcystis and Synechococcus compared to Tetradesmus. Feeding Daphnia magna with 50% of Microcystis can keep cultures dense enough to perform experiment (Macke et al., 2017) but still have a negative effect (Schwarzenberger et al., 2012, 2013). Feeding Daphnia magna with 50% of Synechococcus can also keep cultures alive but still have a negative effect (Demott & Müller-Navarra, 1997). 
+
+# ☠️ Toxins 
+
+Microcystins_mg_per_g_DW <- 1 # Based on the following experiment, where toxins were 0-7-7 mg/g DW: Long, B. M., Jones, G. J., & Orr, P. T. (2001). Cellular microcystin content in N-limited Microcystis aeruginosa can be predicted from growth rate. Applied and Environmental Microbiology, 67(1), 278-283.
+
+# ⚖️ Biomass needed for analyses (dry biomass)
+
+Biomass_needed_for_PUFAs_mg <- 1 # Tarn Preet Parmar, personal communication
+Biomass_needed_for_sterols_mg <- 1 # Tarn Preet Parmar, personal communication
+Biomass_needed_for_stoichiometry_mg <- 1.5 # Dominik Martin-Creuzburg, personal communication
+Biomass_needed_for_toxins_mg <- 1 # ...
+```
+
+::: {.callout-warning title="To do"}
+- ⭐ Check the numbers of CN and P!!
+- Check how I came up with Biomass_needed_for_toxins_mg
+:::
+
+:::

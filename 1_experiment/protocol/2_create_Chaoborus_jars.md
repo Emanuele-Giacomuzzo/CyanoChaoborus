@@ -1,0 +1,38 @@
+**Title:** Create Chaoborus jars, sample *Chaoborus* & *Daphnia*
+
+**Date:**
+
+**Aim:** Start the Chaoborus cultures, feed them, and sample *Daphnia* and *Chaoborus*.
+
+**Material:**
+
+| Prepared | Amount | Material | Purpose |
+|---|---:|---|---|
+| ☐ | 7 | Falcon tubes (50 mL) | Sample and distribute *Daphnia* and *Chaoborus* |
+| ☐ |  | Eppendorf tubes | Store *Chaoborus* |
+| ☐ | 11 L | Zoo COMBO | Prepare new cultures |
+| ☐ |  | Pasteur pipette | Remove excess water |
+| ☐ |  | 3 L beaker | Mix *Chaoborus* larvae |
+
+**Steps:**
+
+1. **Prepare the Daphnia**
+   1. **Create jars.** Prepare seven 800 mL jars labelled "EG – Today's date – *Daphnia magna* – Mixed diet".
+   2. **Transfer adults.** Move adults from the oldest cohort (5-day-old offspring). If fewer than 10 adults remain, supplement from the stock cultures.
+   3. **Prepare falcon tubes.**
+      1. Place 15 babies from each oldest-cohort jar into six Falcon tubes (4 for feeding, 2 for quality analysis). Remove as much water as possible from the analysis tubes using a Pasteur pipette.
+      2. Transfer 20 individuals from one analysis tube into a separate tube for body size analysis.
+
+2. **Prepare the Chaoborus**
+   1. **Remove dead larvae.**
+   2. **Mix** all larvae in a 3 L beaker.
+   3. **Sample** (remove excess water with a Pasteur pipette).
+      1. Place four groups of 10 larvae into Eppendorf tubes labelled "CLi".
+      2. Place 10 larvae into one Falcon tube for body size analysis.
+   4. **Create jars.** Prepare four 800 mL Zoo COMBO jars.
+   5. **Transfer larvae.** Add 10 *Chaoborus* larvae to each jar.
+   6. **Feed.** Add *Daphnia* from the Falcon tubes prepared in Step 1.
+
+::: {.callout-warning title="To do"}
+... 
+:::

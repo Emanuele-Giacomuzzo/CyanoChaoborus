@@ -1,0 +1,211 @@
+# Experimental Procedure
+
+## Grow species
+
+Before starting the experiment, we need to grow the following species:
+
+- Phytoplankton
+  - *Microcystis aeruginosa* (enough for toxins)
+  - *Synechococcus elongatus*
+  - *Nannochloropsis limnetica*
+  - *Tetradesmus obliquus*
+- *Daphnia magna*
+
+### Phytoplankton
+
+There are three bottles. I assume that it takes 10 days for the phytoplankton to grow.
+
+::: {.callout-warning title="To do"}
+- ⭐ Finish writing this plan by looking into your notebook.
+:::
+
+::: {.callout-warning title="To do"}
+- ⭐ @Ali, Kirsten: how do I make sure that my *M. aeruginosa* has toxins?
+:::
+
+### Daphnia
+
+*Daphnia magna* is fed ad libitum with 2 g C/L/day. 
+
+::: {.callout-warning title="To do"}
+- Check the data of Microcystis aeruginosa for Carbon-OD relationship. 
+:::
+
+::: {.callout-warning title="To do"}
+- ⭐ Come up with a plan for how to grow Daphnia.
+:::
+
+### Chaoborus
+
+Chaoborus will be sourced in the form of third-instar larvae from IT-Ichthyo Trophic, Poland.
+
+::: {.callout-warning title="To do"}
+- ⭐ Add the size of the larvae.
+- ⭐ Find references that say how to determine it's a third instar.
+:::
+
+## Assemble experiment
+
+```{r}
+#| eval: false
+
+Chaoborus_one_measurement <- ceiling(
+  (Biomass_needed_total_mg / Chaoborus_third_instar_DW_mg) *
+    Chaoborus_dead_to_alive_ratio_worst_tratment
+)
+Chaoborus_one_measurement
+
+Chaoborus_total <- Chaoborus_one_measurement * Treatments * Replicates
+Chaoborus_total
+
+Jars_Chaoborus <- Treatments * Replicates
+Jars_Chaoborus
+```
+
+::: {.callout-warning title="To do"}
+- ⭐ Check here the code on how many Chaoborus are needed
+:::
+
+The number of Chaoborus will be ... per replicate per treatment. This will ensure that there will be enough biomass to be analysed. 
+
+::: {.callout-warning title="To do"}
+- Add how many jars.
+- Add how many Chaoborus per jar. 
+:::
+
+## Feed Chaoborus
+
+::: {.callout-tip title="Protocol 1"}
+:::
+
+*Chaoborus* is fed ad libitum with ... Daphnia babies / day. 
+
+*Chaoborus* are fed *Daphnia* neonates ad libitum. *Daphnia* stock is built up in individual jars ahead of assembly, so the stock has to be sized to the neonate demand implied by the *Chaoborus* population above. Sizing that stock starts from two feeding-and-reproduction assumptions, both held with medium confidence: a fourth-instar *Chaoborus* larva eats about 20 neonates (1.25 mm *D. magna*) per feeding (Büns & Ratte, 1991), and an adult *Daphnia* produces about 20 neonates per 5-day clutch cycle. Those small stock jars, each housing a single *Daphnia*, are in turn fed from large (1000 mL) jars, each holding 15 adult *Daphnia* — a high-confidence figure, though the source for it still needs tracking down (see Open questions below).
+
+```{r}
+#| label: daphnia-jars
+#| eval: false
+
+
+# Small jars: 1 Daphnia per jar, used to build up the stock.
+Jars_small_Daphnia <- ceiling(
+  Chaoborus_total / (Daphnia_neonates_born_per_5_days / Daphnia_neonates_per_feeding)
+)
+Jars_small_Daphnia
+
+Daphnia_per_large_jar <- 15
+
+# Large jars: used to house adults producing the neonate stock.
+Jars_big_Daphnia <- ceiling(
+  Jars_small_Daphnia / (Daphnia_per_large_jar * Daphnia_neonates_born_per_5_days)
+)
+Jars_big_Daphnia
+```
+
+::: {.callout-warning title="To do"}
+- Review this previous section.
+- Add what's the size of babies that Chaoborus eats.
+- Add how many Daphnia babies Chaoborus eats.
+:::
+
+## Collect data
+
+**Important not to use alchool for lipids as it can degrade the sample's lipids!**
+
+::: {.callout-warning title="To do"}
+- Check whether we should store samples together. 
+:::
+
+### Phytoplankton
+
+::: {.callout-warning title="To do"}
+- @Ali, Kirsten: would it be okay if I sample phytoplankton only once throughout the experiment?
+- @Ali, Kirsten: should I use alchool for subsamples to measure cell size? 
+:::
+
+### Daphnia
+
+Daphnia quality will be monitored on day .... by collecting ... number of Daphnia. For each sampling, I will keep a sample in ethanol for quality and one without it for body size measurment. 
+
+::: {.callout-warning title="To do"}
+- @Ali, Kirsten: would it be okay to measure the quality of Daphnia on the first and last day?
+- Calculate how many Daphnia I should keep for body size. 
+- Add how many total Daphnia are needed for analysing PUFAs, sterols, stoichiometry, and toxins.
+- Decide which container to use to store Daphnia.
+- Decide how to count the number of Daphnia.
+:::
+
+### Chaoborus (emerged)
+
+Chaoborus quality will be monitored thorughout the experiment and individuals will be collected whenever they emerge. 
+
+::: {.callout-warning title="To do"}
+- Add a plan on how to number the tubes. 
+- Add how many Chaoborus adults are going to fit in one tube. 
+:::
+
+## End experiment
+
+::: {.callout-warning title="To do"}
+- Add a plan on when to end the experiment.  
+:::
+
+::: {.callout-tip title="All checked until here"}
+:::
+
+## Store samples
+
+Samples are stored for up to 3 weeks at -20 °C, then dry frozen and put back into -20 °C. 
+
+::: {.callout-warning title="To do"}
+- @Jana: how should I package the samples for Germany? 
+- @Jana: is it true that lipid samples can be stored only for up to 3 weeks at -20 °C?
+- @Jana: can you show me how to dry freeze? 
+:::
+
+
+## Lab analyses
+
+The following analyses will be performed on *Chaoborus*, *Daphnia*, and phytoplankton.
+
+**Biomass.**
+
+::: {.callout-warning title="To do"}
+- @Jana: how could I measure the biomass of our samples?
+:::
+
+**PUFAs & sterols.**
+
+**C & N.** 
+
+::: {.callout-warning title="To do"}
+- Check your notes which machines I need for which analysis.
+- @Jana: is it okay to store samples for stoichiometry at -20?
+:::
+
+**P.** 
+
+::: {.callout-warning title="To do"}
+- Check whether this is done by Germany.
+:::
+
+**Body size.** Photograph individuals.
+
+::: {.callout-warning title="To do"}
+- @Ali, Kirsten: would it be easy to do this with phytoplankton? 
+- Think about whether this should be done at the time point 0 and at the last time point.
+:::
+
+**Toxicity.** Microcystin-LR concentration will be measured using an ELISA kit. 
+
+*Microcystis aeruginosa* (strain PCC 7806, grown in N-limited modified MLA medium) contains 0.7–7 mg microcystins g⁻¹ DW depending on growth phase (Long et al., 2001). Moving up the food chain, *Daphnia magna* shows roughly 80-fold biodilution relative to *M. aeruginosa* — about 2 mg g⁻¹ DW in the phytoplankton versus ~0.025 mg g⁻¹ DW in *D. magna* (Thostrup & Christoffersen, 1999). Evidence for *Chaoborus* spp. is more mixed: Laurén-Määttä et al. (1995) found no detectable microcystins in *Chaoborus* fed Microcystis-exposed *Daphnia*, though they used HPLC (a comparatively high detection limit) and did not measure toxins in the *Daphnia* themselves; Sotton et al. (2014), a field study using HPLC/PDA, found roughly 5-fold biodilution from zooplankton (863 ng g⁻¹ FW) to *Chaoborus* (168 ng g⁻¹ FW); and Riehle et al. (2024), using high-resolution LC–MS/MS, detected microcystins in zooplankton (2.5–4.5 µg g⁻¹ DW) but not in *Chaoborus*.
+
+Detection limits vary across commercial ELISA kits: the Eurofins Microcystin Plate Kit detects down to 0.05 µg L⁻¹, the Abraxis Microcystins-ADDA ELISA Kit and the Beacon Microcystin ELISA Kit both detect down to 0.10 µg L⁻¹, and the Envirologix Microcystins Quantiplate Kit detects down to 0.15 µg L⁻¹.
+
+::: {.callout-warning title="To do"}
+- Why looking only at Microcystin-LR. 
+- Write why using ELISA.
+- Decide which kit to order.
+- Test kit.
+- Check whether this  
+:::

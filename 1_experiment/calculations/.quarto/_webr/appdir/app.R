@@ -1,0 +1,82 @@
+library(shiny)
+
+ui <- fluidPage(
+  numericInput(
+    "n_cultures",
+    "Number of Daphnia culture jars",
+    value = 35,
+    min = 1
+  ),
+  numericInput(
+    "od_tetra",
+    "Optical density of Tetradesmus obliquus",
+    value = 0.65,
+    step = 0.01
+  ),
+  numericInput(
+    "od_syn",
+    "Optical density of Synechococcus elongatus",
+    value = 0.67,
+    step = 0.01
+  ),
+  tableOutput("result")
+)
+
+server <- function(input, output) {
+  output$result <- renderTable({
+
+    ## Fixed parameters
+    culture_volume_mL <- 800    # medium volume per Daphnia jar
+    target_C_mg_per_L <- 2      # carbon target per jar, matches Daphnia_fed_C_mg_per_litre_per_day in 3_parameters.qmd
+    extra <- 0.25                # buffer added to the total volume to cover pipetting loss
+
+    frac_tetra <- 0.5           # share of carbon from Tetradesmus, matches Phytoplankton_low_quality_food_ratio in 3_parameters.qmd
+    slope_tetra <- 158.32
+    intercept_tetra <- -10.991
+
+    frac_syn <- 0.5
+    slope_syn <- 89.419
+    intercept_syn <- -4.463
+
+    ## Tetradesmus obliquus
+    tetra_per_jar_mL <-
+      ((culture_volume_mL * target_C_mg_per_L) /
+         ((slope_tetra * input$od_tetra) - intercept_tetra)) *
+      frac_tetra
+
+    tetra_total_mL <- tetra_per_jar_mL * input$n_cultures
+    tetra_total_extra_mL <- tetra_total_mL * (1 + extra)
+
+    ## Synechococcus elongatus
+    syn_per_jar_mL <-
+      ((culture_volume_mL * target_C_mg_per_L) /
+         ((slope_syn * input$od_syn) - intercept_syn)) *
+      frac_syn
+
+    syn_total_mL <- syn_per_jar_mL * input$n_cultures
+    syn_total_extra_mL <- syn_total_mL * (1 + extra)
+
+    data.frame(
+      Quantity = c(
+        "Tetradesmus per jar (mL)",
+        "Tetradesmus total (mL)",
+        "Tetradesmus total +25% (mL)",
+        "Synechococcus per jar (mL)",
+        "Synechococcus total (mL)",
+        "Synechococcus total +25% (mL)",
+        "Total mix +25% (mL)"
+      ),
+      Value = round(c(
+        tetra_per_jar_mL,
+        tetra_total_mL,
+        tetra_total_extra_mL,
+        syn_per_jar_mL,
+        syn_total_mL,
+        syn_total_extra_mL,
+        tetra_total_extra_mL + syn_total_extra_mL
+      ), 1)
+    )
+  })
+}
+
+shinyApp(ui, server)

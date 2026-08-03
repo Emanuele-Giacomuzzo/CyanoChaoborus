@@ -1,32 +1,12 @@
 # Experimental Design
 
-## Aim
-
-The aim of this experiment is to investigate how cyanobacteria affect the predator *Chaoborus* through changes in the quality and toxicity of its prey, *Daphnia magna* (Figure 1). 
-
-## Treatments
-
-*Daphnia* are raised on one of four diets, fully crossing toxicity and food quality (Figure 1).
+The aim of this experiment is to investigate how toxic cyanobacteria affect the multidimensionality of the predator *Chaoborus* via changes in its prey (Figure 1-2). This is realistic in nature compared to the percentage of biomass made out of cyanobacteria (ref) (bloom defined as > 50% of biomass constituted by cyanobacteria, Molot et al., 2014).
 
 <p align="center">
   <img src="figures/Design_1.png" alt="Figure 1: Experimental design" width="700">
 </p>
 
-<p align="center"><strong>Figure 1.</strong> Experimental design. Each treatment will be replicated **4** times *(TODO: decide whether it should be a block design)*. </p>
-
-## Experiment overview
-
-::: {.callout-note collapse="true"}
-## Additional details
-
-This text is hidden by default.
-
-- Extra explanation
-- Notes
-- References
-:::
-
-*Daphnia* are first raised on their assigned diet in individual jars (1 *Daphnia* per jar, ~200 jars per diet) to build up the stock needed for the experiment. At assembly, replicates are set up by adding *Chaoborus* larvae together with *Daphnia* prey into individual containers; for the treatment isolating cyanotoxin effects, lysed *Microcystis aeruginosa* is added directly to the container at this stage rather than being part of the *Daphnia* diet. Throughout the experiment, *Daphnia* (and, where relevant, lysed *Microcystis*) are replenished to maintain ad libitum feeding. Food is always provided **ad libitum**, meaning that the predator (*Chaoborus*) is provided across treatments with the same amount of carbon and the difference between diets is due to the quality or toxicity of preys rather than from the amount of food provided. **We need to make sure that throghout the experiment Chaborus is never without prey.** Throughout the experiment, samples are collected to track three types of end points over time: quantity (survival/death), quality (body size, cyanotoxin content, lipid composition, and elemental stoichiometry), and timing (time to emergence).
+<p align="center"><strong>Figure 1.</strong> Experimental design. Each treatment will be replicated **4** times. </p>
 
 <p align="center">
   <img src="figures/Design_2.png" alt="Figure 2: Timeline of the experiment" width="700">
@@ -34,64 +14,10 @@ This text is hidden by default.
 
 <p align="center"><strong>Figure 2.</strong> Timeline of the experiment.</p>
 
-**Initial conditions.** *Chaoborus* will be sourced in the form of third-instar larvae *(add the size of the larvae and references that say that's a third instar)* from IT-Ichthyo Trophic, Poland. The initial population density of *Chaoborus* will be 10, which is above what needed for all the different analyses (4.5 mg, see [Box 1: Sample Collection and Storage](8_sample_collection_and_storage.md)). This larval density, which below 50 individuals per jar (9 cm diameter) corresponds to ~8,000 individuals m⁻², which falls within the upper range of peak natural *Chaoborus* densities reported from eutrophic, fish-free systems (Xie et al., 1998). *Chaoborus* will be fed ad libitum by providing them with 10 Daphnia of 1 to 5 days old (see [Box 1: Sample Collection and Storage](8_sample_collection_and_storage.md)).
+::: {.callout-warning title="To do"}
+- Finish adding Daphnia and Chaoborus icons.
+:::
 
-**Measurements.** At the beginning of the experiment and through the experiment we will be measuring end points telling us about the quantity, quality, and timing of resource flows (see Table 2). We will pull larvae, pupae, and adults together, recording the number of larvae, pupae, and adults. During this, we will also be taking out all the extra Daphnia in the jars *(add whether should we do this every day or every time we change the medium of Chaoborus)*. Also, we will need to measure the ones at the beginning as well. See Table 2 and [Box 1: Sample Collection and Storage](8_sample_collection_and_storage.md).
-
-## Measurement of resource flow dimensions (end points)
-
-The experiment measures three dimensions of the effects of cyanobacteria on the emergence of *Chaoborus*: **quantity**, **quality**, and **timing**. **The following measurements are performed only on emerged (winged adult) individuals.** 
-
-### Quantity
-- ❌ **Survival**
-  - Number of emerged individuals.
-  - Biomass of emerged inviduals *(TODO: discuss with Jana if it's possible to determine biomass before analysing samples)* 
-
-### Quality
-- 💊 **Essential lipids**
-  - PUFAs and sterols analysed using Gas Chromatography.
-- 🔲 **Stoichiometry**
-  - C, N, and P analysed using ... *(TODO: check your notes which machines you need for which analysis)*
-- 📏 **Body size**
-  - Photograph individuals for body size measurements *(method under development)*.
-- ☠️ **Toxicity**
-  - Microcystin-LR concentration measured using **ELISA** *(TODO: ELISA kits to be decided, ordered, and tested)*.
-
-### Timing
-
-- 🌳 Emergence
-  - Duration of emergence.
-  - Timing of emergence peak.
-
-## Analyses
-
-### Quantity - Biomass
-
-*(TODO: ask Jana what would be the best way of weighing Chaoborus adults)*
-
-### Quality - Essential lipids
-
-```{r}
-#| label: biomass-per-analysis-lipids
-
-Biomass_needed_for_lipids_mg <- 2
-```
-
-The samples of emerged individuals are stored in microcentrifuge tubes *(TODO: decide how many per microcentrifuge tube)*. These are then stored for up to 3 weeks at -20 °C *(TODO: ask Jana if he confirms this)* and then dry frozen and put back into -20 °C. Afterwards, ... (TODO: ask Jana what comes next). Fatty acids and sterols are analysed separately and each of them needs at least 1 mg of dry biomass (Tarn Preet Parmar's personal communication). **Important not to use alchool as it can degrade the sample's lipids!**
-
-### Quality – Stoichiometry
-
-```{r}
-#| label: biomass-per-analysis–stoichiometry
-
-Biomass_needed_for_stoichiometry_mg <- 1.5
-```
-
-The samples of emerged individuals are stored in microcentrifuge tubes *(TODO: check whether we stored everything together or not!)*. *(TODO: ask Jana whether it matters whether they are at -20.)*
-
-### Quality – Toxins
-
-*Microcystis aeruginosa* (strain PCC 7806, grown in N-limited modified MLA medium) contains 0.7–7 mg microcystins g⁻¹ DW depending on growth phase (Long et al., 2001). Moving up the food chain, *Daphnia magna* shows roughly 80-fold biodilution relative to *M. aeruginosa* — about 2 mg g⁻¹ DW in the algae versus ~0.025 mg g⁻¹ DW in *D. magna* (Thostrup & Christoffersen, 1999). Evidence for *Chaoborus* spp. is more mixed: Laurén-Määttä et al. (1995) found no detectable microcystins in *Chaoborus* fed Microcystis-exposed *Daphnia*, though they used HPLC (a comparatively high detection limit) and did not measure toxins in the *Daphnia* themselves; Sotton et al. (2014), a field study using HPLC/PDA, found roughly 5-fold biodilution from zooplankton (863 ng g⁻¹ FW) to *Chaoborus* (168 ng g⁻¹ FW); and Riehle et al. (2024), using high-resolution LC–MS/MS, detected microcystins in zooplankton (2.5–4.5 µg g⁻¹ DW) but not in *Chaoborus*.
-
-Detection limits vary across commercial ELISA kits: the Eurofins Microcystin Plate Kit detects down to 0.05 µg L⁻¹, the Abraxis Microcystins-ADDA ELISA Kit and the Beacon Microcystin ELISA Kit both detect down to 0.10 µg L⁻¹, and the Envirologix Microcystins Quantiplate Kit detects down to 0.15 µg L⁻¹.
-
+::: {.callout-warning title="To do"}
+- ⭐ Decide whether it should be a block design.
+:::

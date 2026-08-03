@@ -1,0 +1,25 @@
+# Protocols
+
+This section is generated automatically from every Markdown file in [`protocol/`](protocol/): each time this document is rendered, it picks up whatever protocols exist in that folder, in numerical order, without needing to be edited by hand.
+
+```{r}
+#| label: protocols-listing
+#| echo: false
+#| results: asis
+
+protocol_files <- list.files("protocol", pattern = "\\.md$")
+protocol_numbers <- suppressWarnings(as.numeric(sub("^([0-9]+)_.*", "\\1", protocol_files)))
+protocol_order <- order(protocol_numbers, protocol_files)
+protocol_files <- protocol_files[protocol_order]
+protocol_numbers <- protocol_numbers[protocol_order]
+
+for (i in seq_along(protocol_files)) {
+  f <- protocol_files[i]
+  title <- sub("^[0-9]+_", "", f)
+  title <- sub("\\.md$", "", title)
+  title <- gsub("_", " ", title)
+  substr(title, 1, 1) <- toupper(substr(title, 1, 1))
+  cat("\n\n## Protocol ", protocol_numbers[i], " \u2013 ", title, " {.unnumbered}\n\n", sep = "")
+  cat(readLines(file.path("protocol", f), warn = FALSE), sep = "\n")
+}
+```

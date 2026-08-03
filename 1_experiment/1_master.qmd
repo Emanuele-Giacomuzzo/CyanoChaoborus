@@ -1,5 +1,5 @@
 ---
-title: "The interactive effects of toxicity and poor food quality of Cyanobacteria via indirect effects on Chaoborus"
+title: "The effects of Cyanobacteria on quantity, quality, and timing of insect emergence."
 format:
   html:
     toc: true
@@ -34,116 +34,25 @@ Edit the chapters themselves, not this file — this file only decides
 the reading order:
     2_intro.qmd                 — project introduction (includes the repo README)
     3_experimental_design.qmd   — treatments, Chaoborus setup, end points
-    4_calculations.qmd          — biomass, organism, jar, and phytoplankton quantities
-    5_experimental_organisms.qmd — culturing & sourcing organisms
-    6_weekly_lab_work.qmd       — weekly laboratory schedule
-    7_bibliography.qmd          — references
-    Appendices                  — the numbered protocol files (8_ onward)
-Protocols (the numbered files from 8_ onward) are stand-alone bench
-SOPs: someone opens one of them at the bench, not this whole document.
-They are still included in full at the very end, under Appendices, so
-this document remains a single self-contained reference — but they
-are appended after the bibliography rather than woven into the main
-narrative, since none of them feed a number or a claim used earlier
-in the text (unlike, say, 4_calculations.qmd).
+    3_parameters.qmd            — shared biomass-per-analysis assumptions, must be
+                                    included before 4_experimental_procedure.qmd,
+                                    which sums them
+    4_experimental_procedure.qmd — pre-experiment culturing & assembly steps
+    5_calculations.qmd          — organism, jar, and infrastructure quantities
+    8_bibliography.qmd          — references
+    9_protocols.qmd             — auto-generated from protocol/, bench SOPs
 -->
 
 {{< include 2_intro.qmd >}}
 
+{{< include 3_parameters.qmd >}}
+
 {{< include 3_experimental_design.qmd >}}
 
-{{< include 4_calculations.qmd >}}
+{{< include 4_experimental_procedure.qmd >}}
 
-{{< include 5_experimental_organisms.qmd >}}
+{{< include 5_calculations.qmd >}}
 
-{{< include 6_weekly_lab_work.qmd >}}
+{{< include 8_bibliography.qmd >}}
 
-{{< include 7_bibliography.qmd >}}
-
-# Appendices
-
-Stand-alone bench SOPs, numbered 8 onward in the folder (e.g. `8_sample_collection_and_storage.md`) and included here in full so this document is self-contained. Each is a dated, independent record of what was done on that day at the bench, not a continuous narrative — open the section you need rather than reading start to finish.
-
-{{< include 8_sample_collection_and_storage.md >}}
-
-## 2026-01-14 — Phytoplankton COMBO medium for *Microcystis aeruginosa*
-
-{{< include 9_2026_01_14_Phyto-COMBO.md >}}
-
-## 2026-01-15 — Grow *Microcystis aeruginosa*
-
-{{< include 10_2026_01_15_grow_Microcystin.md >}}
-
-## 2026-01-26 — Create Zoo-COMBO
-
-{{< include 11_2026_01_26_Zoo-COMBO.md >}}
-
-## 2026-01-27 — Daphnia propagation
-
-{{< include 12_2026_01_27_Dap_transfer.md >}}
-
-## 2026-01-27 — *Daphnia magna* transfer
-
-{{< include 13_2026_01_27_Daphnia_transfer.md >}}
-
-## 2026-02-02 — Grow *Nannochloropsis limnetica*
-
-{{< include 14_2026_02_02_grow_Nannochloropsis.md >}}
-
-## 2026-02-03 — Phytoplankton COMBO medium for *Microcystis aeruginosa*
-
-{{< include 15_2026_02_03_Phyto-COMBO.md >}}
-
-## 2026-02-04 — Phytoplankton COMBO medium
-
-{{< include 16_2026_02_04_Phyto-COMBO.md >}}
-
-## 2026-02-04 — Phytoplankton propagation
-
-{{< include 17_2026_02_04_Phytoplankton_transfer.md >}}
-
-## 2026-02-05 — Create Zoo-COMBO
-
-{{< include 18_2026_02_05_Zoo-COMBO.md >}}
-
-## 2026-02-10 — Phytoplankton COMBO medium
-
-{{< include 19_2026_02_10_Phyto-COMBO.md >}}
-
-## 2026-02-10 — Grow *Microcystis aeruginosa* & *Synechococcus elongatus*
-
-{{< include 20_2026_02_10_grow_algae.md >}}
-
-## 2026-03-27 — Reconstruction of OD curve for *Microcystis aeruginosa* in Zoo-COMBO medium
-
-{{< include 21_2026_03_27_OD_curve_Microcystis.md >}}
-
-## 2026-03-27 — Checking whether *Daphnia* can be raised on 50% *M. aeruginosa* + 50% *T. obliquus*
-
-{{< include 22_2026_03_27_OD_feed_Daphnia_Microcystis_.md >}}
-
-## 2026-04-14 — Create a new cohort of *Daphnia* jars
-
-{{< include 23_2026_04_14_Daphnia.md >}}
-
-## 2026-04-15 — Create Chaoborus jars, sample *Chaoborus* & *Daphnia*
-
-{{< include 24_2026_04_15_create_Chaoborus_jars.md >}}
-
-## 2026-04-15 — Create food mix for Daphnia
-
-{{< include 25_2026_04_15_food.md >}}
-
-## 2026-04-15 — Phytoplankton sample of day 0
-
-{{< include 26_2026_04_15_sample_phyto.md >}}
-
-## 2026-04-28 — Create food mix for Daphnia
-
-{{< include 27_2026_04_28_food.md >}}
-
-## 2026-04-28 — Create Chaoborus jars
-
-{{< include 28_Create_Chaoborus_jars.md >}}
-
-{{< include 29_sample_last_time_point.md >}}
+{{< include 9_protocols.qmd >}}
