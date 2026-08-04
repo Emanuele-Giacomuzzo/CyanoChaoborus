@@ -4,21 +4,21 @@ For the background and motivation behind this project, see the [project README](
 
 ## Folder layout
 
-Everything lives flat in this folder with a sequential number prefix, so a plain `ls` shows the full reading/reference order at a glance. Numbers **1–7 are the book** (stitched into one document); numbers **8 and up are protocols** (stand-alone bench SOPs, numbered only so they sort alongside the book). The protocols are still included in the rendered document in full — as appendices at the very end, after the bibliography — so the book stays a single self-contained reference.
+Everything lives flat in this folder with a sequential number prefix, so a plain `ls` shows the full reading/reference order at a glance. The book chapters and the protocols appendix are stitched into one document; the protocols themselves live one level down, in [protocol/](protocol/).
 
-### 1–7: the book
+### The book
 
-**[Rendered_files/README.md](Rendered_files/README.md) and [Rendered_files/Rendered.html](Rendered_files/Rendered.html) are the whole introduction, design, calculations, organisms, schedule, and protocol write-up rendered as a single document** — read either if you just want the current state of the plan (the HTML version has a navigable sidebar).
+**[Rendered_files/README.md](Rendered_files/README.md) and [Rendered_files/Rendered.html](Rendered_files/Rendered.html) are the whole introduction, design, calculations, and protocol write-up rendered as a single document** — read either if you just want the current state of the plan (the HTML version has a navigable sidebar).
 
 They're generated from the Quarto master file [1_master.qmd](1_master.qmd), which stitches the chapters below together (via `{{< include >}}`) in reading order. Each chapter is its own small file so edits stay easy to review; only `1_master.qmd` needs to change if you want to reorder chapters.
 
 - [2_intro.qmd](2_intro.qmd) — project introduction (includes the repo's top-level [README](../README.md)), plus background and hypotheses
+- [3_parameters.qmd](3_parameters.qmd) — sourced numeric assumptions (biomass, weights, growth times, biodilution factors) shared by the chapters below
 - [3_experimental_design.qmd](3_experimental_design.qmd) — treatments, Chaoborus setup, and end points
-- [4_calculations.qmd](4_calculations.qmd) — biomass, organism, jar, and phytoplankton quantities, computed (not hand-typed) from a set of sourced assumptions
-- [5_experimental_organisms.qmd](5_experimental_organisms.qmd) — culturing phytoplankton and zooplankton before the experiment
-- [6_weekly_lab_work.qmd](6_weekly_lab_work.qmd) — weekly laboratory schedule
-- [7_bibliography.qmd](7_bibliography.qmd)
-- Appendices — the protocols below (8 onward), included in full at the very end of the book
+- [4_experimental_procedure.qmd](4_experimental_procedure.qmd) — pre-experiment culturing and assembly steps
+- [5_calculations.qmd](5_calculations.qmd) — organism, jar, and infrastructure quantities, computed (not hand-typed) from `3_parameters.qmd`
+- [8_bibliography.qmd](8_bibliography.qmd)
+- [9_protocols.qmd](9_protocols.qmd) — appendix, auto-generated from every Markdown file in [protocol/](protocol/), included in full at the very end of the book
 
 **To rebuild the rendered files after editing any chapter**, run from this folder:
 
@@ -35,12 +35,19 @@ If accented characters or emoji come out garbled (e.g. `<e2><80><94>` instead of
 LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 quarto render 1_master.qmd
 ```
 
-### 8 onward: protocols
+### Protocols
 
-Dated, stand-alone bench SOPs. They're included in full as appendices at the end of [Rendered_files/README.md](Rendered_files/README.md)/[Rendered_files/Rendered.html](Rendered_files/Rendered.html), but each one is still meant to be opened and read on its own at the bench, not as part of a start-to-finish read of the book. Several of these are near-duplicate copies of the same procedure logged on different days (e.g. the `Phyto-COMBO` and `Zoo-COMBO` entries); collapsing each family into one canonical protocol plus a short execution log is still an open task.
+Stand-alone bench SOPs, one canonical protocol per procedure (superseding the older dated-log versions logged on different days). They're included in full as an appendix at the end of [Rendered_files/README.md](Rendered_files/README.md)/[Rendered_files/Rendered.html](Rendered_files/Rendered.html), but each one is still meant to be opened and read on its own at the bench, not as part of a start-to-finish read of the book.
 
-- [8_sample_collection_and_storage.md](8_sample_collection_and_storage.md) — Box 1: measuring, storing, and freeze-drying samples
-- 9–29: dated protocols (COMBO media, algae/zooplankton transfers, Chaoborus jar creation, sampling), roughly in chronological order — see the folder listing for the full set
+- [1_create_COMBO.md](protocol/1_create_COMBO.md) — preparing COMBO growth medium
+- [2_create_Zoo-COMBO.md](protocol/2_create_Zoo-COMBO.md) — preparing Zoo-COMBO medium *(to be written)*
+- [3_create_Daphnia_jars.md](protocol/3_create_Daphnia_jars.md) — setting up *Daphnia* culture jars
+- [4_feed_Daphnia.md](protocol/4_feed_Daphnia.md) — feeding *Daphnia* cultures
+- [5_create_Chaoborus_jars.md](protocol/5_create_Chaoborus_jars.md) — setting up *Chaoborus* jars
+- [6_sample_phytoplankton.md](protocol/6_sample_phytoplankton.md) — sampling phytoplankton
+- [7_sample_Daphnia.md](protocol/7_sample_Daphnia.md) — sampling *Daphnia* *(to be written)*
+- [protocol/to_be_sorted/](protocol/to_be_sorted/) — protocols not yet folded into the canonical list above (sample collection/storage, end-of-experiment sampling)
+- [protocol/old_redundant/](protocol/old_redundant/) and [protocol/quarto/](protocol/quarto/) — superseded dated protocol versions (`.docx` originals and their Quarto conversions), kept for reference
 
 ## Everything else
 
@@ -48,4 +55,3 @@ Dated, stand-alone bench SOPs. They're included in full as appendices at the end
 - [calculations/](calculations/) — the original spreadsheet (`All_calculations.xlsx`) and its messy narrative draft (`Specific_calculations.md`) that `5_calculations.qmd` supersedes, kept for reference until fully retired; and [food_calculator.html](calculations/food_calculator.html), a self-contained Shinylive app (source: `food_calculator.qmd`) for computing daily *Daphnia* feeding volumes from OD readings — runs entirely in the browser, no R server needed. Re-render it after editing the source: `quarto render calculations/food_calculator.qmd`
 - [media/](media/) — embedded images extracted from protocol source documents
 - [Figures](figures/) — source image files for the figures used in the design chapter
-- [protocols/old_protocols/](protocols/old_protocols/) — original `.docx` versions of the protocols

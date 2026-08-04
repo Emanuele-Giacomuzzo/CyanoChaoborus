@@ -6,11 +6,13 @@
 
 **Material:**
 
-- Daphnia stock populations
-- Zoo-COMBO (7 L)
-- Glass pipette and pipette bulb
-- Daphnia light table
-- Colourful tape
+| *Prepared* | *Amount* | *Material* | *Purpose* |
+|----|----|----|----|
+| ☐ |  | Daphnia stock populations | Source of individuals to seed the new jars |
+| ☐ | 7 L | Zoo-COMBO | Culture medium for the jars |
+| ☐ | 1 | Glass pipette and pipette bulb | To transfer Daphnia individuals |
+| ☐ | 1 | Daphnia light table | To see individuals while pipetting |
+| ☐ |  | Colourful tape | To label the jars |
 
 **Steps:**
 

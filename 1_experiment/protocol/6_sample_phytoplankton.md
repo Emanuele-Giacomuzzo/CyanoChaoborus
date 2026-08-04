@@ -1,6 +1,6 @@
-**Title:** Phytoplankton sample of day 0
+**Title:** Phytoplankton sample
 
-**Date:** Wednesday 15th April 2026
+**Date:** 
 
 **Aim:** Sampling the phytoplankton we are providing the Daphnia with.
 
@@ -20,50 +20,35 @@
 | ☐ | 1 | Metal block | To wrap the aluminium foil around the filters |
 | ☐ |  | Aluminium cartridges | To wrap the filters so that they can be already analysed |
 
+::: {.callout-warning title="Material that needs to be prepared before"}
+- Requires precombusting GF/C filters (25mm) at least one day before
+:::
+
 **Steps:**
 
 1.  Set up material.
-
     1.  Set up the vacuum filtration pump and connect its tube to the wall gas supply (the tube sucks air in, allowing the liquids to come more easily through the filter).
-
     2.  Add GF/C filters (<u>they should have been burnt at 550 °C for 2 hours</u>) on the filtration unit using <u>clean</u> <u>forceps</u> (cleaned with ethanol and fire – hold forceps horizontally while burning).
-
     3.  Add cylinder weights on top of the filters.
-
     4.  Turn on suction slowly, checking on the filtration unit that the pressure doesn’t exceed 0.2 bar.
-
 2.  Add samples to the filters. For each of the samples:
-
     1.  Pipette culture on the filter (remember to mix well the sample, and make sure that the liquid goes through, otherwise adjust the tap until no liquid is left on top of the filter). <u>Write down how much volume you added to the filter in the below figure.</u>
 
 <img src="media/26_2026_04_15_sample_phyto/image1.png" style="width:4.88889in;height:4.375in" />
 
-1.  Move the filters to a 24-well plate. To do so, turn off the suction, take off the cylinder weights, and move filters to the 24-well plate with <u>clean forceps</u> (cleaned with ethanol and fire)[^1]. Place each sample in the plate position noted in the below table.
-
-Syn
-
-Syn
-
-Syn
-
-Tetr
-
-Mix
-
-Tetr
-
-Tetr
-
-Mix
+3.  Move the filters to a 24-well plate. To do so, turn off the suction, take off the cylinder weights, and move filters to the 24-well plate with <u>clean forceps</u> (cleaned with ethanol and fire)[^1]. Place each sample in the plate position noted in the below table.
 
 <figure>
 <img src="media/26_2026_04_15_sample_phyto/image3.svg" style="width:6.5in;height:4.48611in" />
 <figcaption><p>Mix</p></figcaption>
 </figure>
 
-2.  Clean. Put back cylinder weights and turn on suction. Then, clean meshes and cylinders by pouring ethanol and demineralised water on them.
+::: {.callout-warning title="To do"}
+- Add the labels directly on the image. 
+:::
 
-3.  Place 24-well plate with filters inside in an oven at 50 °C overnight to dry.
+4.  Clean. Put back cylinder weights and turn on suction. Then, clean meshes and cylinders by pouring ethanol and demineralised water on them.
+5.  Place 24-well plate with filters inside in an oven at 50 °C overnight to dry.
 
 *Pack filters (day after)*
 

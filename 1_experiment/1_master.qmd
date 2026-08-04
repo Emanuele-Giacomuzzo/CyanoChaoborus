@@ -13,6 +13,9 @@ format:
   gfm: default
 execute:
   echo: true
+bibliography: references.bib
+csl: apa.csl
+nocite: '@*'
 ---
 
 <!--

@@ -1,6 +1,6 @@
 # Experimental Design
 
-The aim of this experiment is to investigate how toxic cyanobacteria affect the multidimensionality of the predator *Chaoborus* via changes in its prey (Figure 1-2). This is realistic in nature compared to the percentage of biomass made out of cyanobacteria (ref) (bloom defined as > 50% of biomass constituted by cyanobacteria, Molot et al., 2014).
+The aim of this experiment is to investigate how toxic cyanobacteria affect the multidimensionality of the predator *Chaoborus* via changes in its prey (Figure 1-2). This is realistic in nature compared to the percentage of biomass made out of cyanobacteria (ref) (bloom defined as > 50% of biomass constituted by cyanobacteria, @molot2014).
 
 <p align="center">
   <img src="figures/Design_1.png" alt="Figure 1: Experimental design" width="700">

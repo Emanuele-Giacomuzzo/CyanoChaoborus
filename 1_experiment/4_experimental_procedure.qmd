@@ -13,26 +13,24 @@ Before starting the experiment, we need to grow the following species:
 
 ### Phytoplankton
 
-There are three bottles. I assume that it takes 10 days for the phytoplankton to grow.
+There are three bottles. I assume that it takes 7 days for the phytoplankton to grow.
 
 ::: {.callout-warning title="To do"}
-- ⭐ Finish writing this plan by looking into your notebook.
+- Finish writing this plan by looking into your notebook.
 :::
 
 ::: {.callout-warning title="To do"}
-- ⭐ @Ali, Kirsten: how do I make sure that my *M. aeruginosa* has toxins?
+- I should decide whether I want to run an experiment looking at the quality and toxins of phytoplankton during the growth phase. 
 :::
 
 ### Daphnia
 
-*Daphnia magna* is fed ad libitum with 2 g C/L/day. 
+Daphnia is raised with ... adults in ... L jars with ... L medium. Daphnia will be grown for ... days to give babies, which will then be fed to Chaoborus. To avoid Daphnia become too old to be fertile enough, Daphnia will be raised from adults from the stock populations every time. To avoid that the largest Daphnias are picked for earlier cohorts, causing a decrease in the offspring count in the later cohorts, we will pick Daphnias of different sizes. *Daphnia magna* is fed ad libitum with 2 g C/L/day. 
 
 ::: {.callout-warning title="To do"}
 - Check the data of Microcystis aeruginosa for Carbon-OD relationship. 
-:::
-
-::: {.callout-warning title="To do"}
-- ⭐ Come up with a plan for how to grow Daphnia.
+- @ Jana: why 2 g C/L/Day?
+- Come up with a plan for how to grow Daphnia.
 :::
 
 ### Chaoborus
@@ -40,8 +38,9 @@ There are three bottles. I assume that it takes 10 days for the phytoplankton to
 Chaoborus will be sourced in the form of third-instar larvae from IT-Ichthyo Trophic, Poland.
 
 ::: {.callout-warning title="To do"}
-- ⭐ Add the size of the larvae.
-- ⭐ Find references that say how to determine it's a third instar.
+- Add the size of the larvae.
+- Find references that say how to determine it's a third instar.
+- Call IT-Ichthyo Trophic to ask what species of Chaoborus it is and how it is raised. 
 :::
 
 ## Assemble experiment
@@ -80,7 +79,16 @@ The number of Chaoborus will be ... per replicate per treatment. This will ensur
 
 *Chaoborus* is fed ad libitum with ... Daphnia babies / day. 
 
-*Chaoborus* are fed *Daphnia* neonates ad libitum. *Daphnia* stock is built up in individual jars ahead of assembly, so the stock has to be sized to the neonate demand implied by the *Chaoborus* population above. Sizing that stock starts from two feeding-and-reproduction assumptions, both held with medium confidence: a fourth-instar *Chaoborus* larva eats about 20 neonates (1.25 mm *D. magna*) per feeding (Büns & Ratte, 1991), and an adult *Daphnia* produces about 20 neonates per 5-day clutch cycle. Those small stock jars, each housing a single *Daphnia*, are in turn fed from large (1000 mL) jars, each holding 15 adult *Daphnia* — a high-confidence figure, though the source for it still needs tracking down (see Open questions below).
+::: {.callout-warning title="To do"}
+- Decide whether you should calculate how much Chaoborus eats according to: 
+  (i) size of Chaoborus and Daphnia
+  (ii) run a different feeding experiment with different Chaoborus sizes
+:::
+
+
+*Chaoborus* are fed *Daphnia* neonates ad libitum. *Daphnia* stock is built up in individual jars ahead of assembly, so the stock has to be sized to the neonate demand implied by the *Chaoborus* population above. Sizing that stock starts from two feeding-and-reproduction assumptions, both held with medium confidence: a fourth-instar *Chaoborus* larva eats about 20 neonates (1.25 mm *D. magna*) per feeding [@buns1991], and an adult *Daphnia* produces about 20 neonates per 5-day clutch cycle. Those small stock jars, each housing a single *Daphnia*, are in turn fed from large (1000 mL) jars, each holding 15 adult *Daphnia* — a high-confidence figure, though the source for it still needs tracking down (see Open questions below).
+
+If Chaoborus eats different amounts of biomass according to the size of Daphnia it could be that it's because it's adapted to feed on a certain range size.
 
 ```{r}
 #| label: daphnia-jars
@@ -110,7 +118,10 @@ Jars_big_Daphnia
 
 ## Collect data
 
-**Important not to use alchool for lipids as it can degrade the sample's lipids!**
+Some rules that apply across collecting data for maximising how well lipids are preserved:
+
+- **Do not to use alchool!** 
+- Take as much water out from the samples before freezing by using a Pasteur pipette.
 
 ::: {.callout-warning title="To do"}
 - Check whether we should store samples together. 
@@ -119,29 +130,43 @@ Jars_big_Daphnia
 ### Phytoplankton
 
 ::: {.callout-warning title="To do"}
-- @Ali, Kirsten: would it be okay if I sample phytoplankton only once throughout the experiment?
-- @Ali, Kirsten: should I use alchool for subsamples to measure cell size? 
+- @ Ali, Kirsten: would it be okay if I sample phytoplankton only once throughout the experiment?
+- @ Ali, Kirsten: should I use alchool for subsamples to measure cell size? 
 :::
 
 ### Daphnia
 
-Daphnia quality will be monitored on day .... by collecting ... number of Daphnia. For each sampling, I will keep a sample in ethanol for quality and one without it for body size measurment. 
+Daphnia quality will be monitored the last day of the experiment by collecting ... number of Daphnia. For each sampling, I will keep a sample in ethanol for quality and one without it for body size measurment. 
 
 ::: {.callout-warning title="To do"}
-- @Ali, Kirsten: would it be okay to measure the quality of Daphnia on the first and last day?
 - Calculate how many Daphnia I should keep for body size. 
 - Add how many total Daphnia are needed for analysing PUFAs, sterols, stoichiometry, and toxins.
 - Decide which container to use to store Daphnia.
 - Decide how to count the number of Daphnia.
 :::
 
+### Chaoborus (larvae)
+
+At the beginning of the experiment, we will collect two sets of larvae:
+- X larvae kept in alchool in a microcentrifuge tube (up to 50 Chaoborus larvae can be stored in 1.5 mL microcentrifuge tubes) to characterise their body size
+- Y larvae kept WITHOUT alchool to characterise their quality
+
+::: {.callout-warning title="To do"}
+- @ Ali, Kirsten: how do I measure both body size and quality? Would it be okay to have two sets of Chaoborus larvae? 
+- Add how many larvae we need to collect. 
+:::
+
+
 ### Chaoborus (emerged)
 
-Chaoborus quality will be monitored thorughout the experiment and individuals will be collected whenever they emerge. 
+Chaoborus will be collected whenever they emerge, by placing them inside a falcon tube with tally marks (卌) indicating how many individuals are inside. We will use falcon tubes, as in the previous pilot study performed with Tobias it was hard to take out enough water, which meant that a single treatment had to split into many different microcentrifuge tubes.  
 
 ::: {.callout-warning title="To do"}
 - Add a plan on how to number the tubes. 
 - Add how many Chaoborus adults are going to fit in one tube. 
+- Toward the end of organising the experiment: think whether you would have enough time to measure the size of Chaoborus before being put inside. 
+- @ Anne: do we have enough 50 ml centrigue tubes? 
+- @ Jana: the previous plan was to put individuals inside tubes for different analyses (e.g., 1 in CN, 2 in P, 3 in sterols, 4 in fatty acids, 5 in toxicity, 6 in CN, 7 in P, etc). However, now that we have big falcon tubes is it okay to leave them all in a single falcon tube? I don't remember the reason why we kept them in different microcentrifuge tubes. 
 :::
 
 ## End experiment
@@ -158,11 +183,10 @@ Chaoborus quality will be monitored thorughout the experiment and individuals wi
 Samples are stored for up to 3 weeks at -20 °C, then dry frozen and put back into -20 °C. 
 
 ::: {.callout-warning title="To do"}
-- @Jana: how should I package the samples for Germany? 
-- @Jana: is it true that lipid samples can be stored only for up to 3 weeks at -20 °C?
-- @Jana: can you show me how to dry freeze? 
+- \@ Jana: how should I package the samples for Germany? 
+- \@ Jana: is it true that lipid samples can be stored only for up to 3 weeks at -20 °C?
+- \@ Jana: can you show me how to dry freeze? 
 :::
-
 
 ## Lab analyses
 
@@ -171,34 +195,36 @@ The following analyses will be performed on *Chaoborus*, *Daphnia*, and phytopla
 **Biomass.**
 
 ::: {.callout-warning title="To do"}
-- @Jana: how could I measure the biomass of our samples?
+- \@ Jana: how could I measure the biomass of our samples?
 :::
 
 **PUFAs & sterols.**
 
-**C & N.** 
+**C & N.** Samples will be sent to Dominik Martin-Creuzburg (BTU, Germany), as results from the machine at the Freshwater Biology Section seem to be unreliable (Jana Isanta-Navarro, personal communication). 
 
 ::: {.callout-warning title="To do"}
 - Check your notes which machines I need for which analysis.
-- @Jana: is it okay to store samples for stoichiometry at -20?
+- \@ Jana: is it okay to store samples for stoichiometry at -20?
 :::
 
-**P.** 
+**P.** This will be done in house with the help of KU lab technician Anne Jensinius Jacobsen. 
 
 ::: {.callout-warning title="To do"}
-- Check whether this is done by Germany.
+- @ Jana: how do we store the sample for P analysis?
+- Ask Anne when she could show me how to do this.
 :::
 
 **Body size.** Photograph individuals.
 
 ::: {.callout-warning title="To do"}
-- @Ali, Kirsten: would it be easy to do this with phytoplankton? 
+- \@ Ali, Kirsten: would it be easy to measure the body size of phytoplankton? 
 - Think about whether this should be done at the time point 0 and at the last time point.
+- I need to think about how to have different samples for body size and for quality analysis. The only thing I can think of is whether we could take photos of the body size when they come out. But this might be a lot of work. 
 :::
 
 **Toxicity.** Microcystin-LR concentration will be measured using an ELISA kit. 
 
-*Microcystis aeruginosa* (strain PCC 7806, grown in N-limited modified MLA medium) contains 0.7–7 mg microcystins g⁻¹ DW depending on growth phase (Long et al., 2001). Moving up the food chain, *Daphnia magna* shows roughly 80-fold biodilution relative to *M. aeruginosa* — about 2 mg g⁻¹ DW in the phytoplankton versus ~0.025 mg g⁻¹ DW in *D. magna* (Thostrup & Christoffersen, 1999). Evidence for *Chaoborus* spp. is more mixed: Laurén-Määttä et al. (1995) found no detectable microcystins in *Chaoborus* fed Microcystis-exposed *Daphnia*, though they used HPLC (a comparatively high detection limit) and did not measure toxins in the *Daphnia* themselves; Sotton et al. (2014), a field study using HPLC/PDA, found roughly 5-fold biodilution from zooplankton (863 ng g⁻¹ FW) to *Chaoborus* (168 ng g⁻¹ FW); and Riehle et al. (2024), using high-resolution LC–MS/MS, detected microcystins in zooplankton (2.5–4.5 µg g⁻¹ DW) but not in *Chaoborus*.
+*Microcystis aeruginosa* (strain PCC 7806, grown in N-limited modified MLA medium) contains 0.7–7 mg microcystins g⁻¹ DW depending on growth phase [@long2001]. Moving up the food chain, *Daphnia magna* shows roughly 80-fold biodilution relative to *M. aeruginosa* — about 2 mg g⁻¹ DW in the phytoplankton versus ~0.025 mg g⁻¹ DW in *D. magna* [@thostrup1999]. Evidence for *Chaoborus* spp. is more mixed: @lauren-maatta1995 found no detectable microcystins in *Chaoborus* fed Microcystis-exposed *Daphnia*, though they used HPLC (a comparatively high detection limit) and did not measure toxins in the *Daphnia* themselves; @sotton2014, a field study using HPLC/PDA, found roughly 5-fold biodilution from zooplankton (863 ng g⁻¹ FW) to *Chaoborus* (168 ng g⁻¹ FW); and @riehle2024, using high-resolution LC–MS/MS, detected microcystins in zooplankton (2.5–4.5 µg g⁻¹ DW) but not in *Chaoborus*.
 
 Detection limits vary across commercial ELISA kits: the Eurofins Microcystin Plate Kit detects down to 0.05 µg L⁻¹, the Abraxis Microcystins-ADDA ELISA Kit and the Beacon Microcystin ELISA Kit both detect down to 0.10 µg L⁻¹, and the Envirologix Microcystins Quantiplate Kit detects down to 0.15 µg L⁻¹.
 
@@ -207,5 +233,13 @@ Detection limits vary across commercial ELISA kits: the Eurofins Microcystin Pla
 - Write why using ELISA.
 - Decide which kit to order.
 - Test kit.
-- Check whether this  
+- Send the growing conditions of our algae to Ali & Irma (light, temperature, oxygen, size of jars, etc.)
+- @ Irma: would you like to characterise the toxins of *Microcystis aeruginosa* in Lund before the experiment?
 :::
+
+## Statistical analyses
+
+### Biomass ingested by Chaoborus 
+
+I will analyse the ingested biomass of Daphnia (ingestion rate) by Chaoborus from body size using literature data. 
+
