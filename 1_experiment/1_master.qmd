@@ -36,27 +36,30 @@ To rebuild, run from this folder:
     mv 1_master.html Rendered_files/Rendered.html
 Edit the chapters themselves, not this file — this file only decides
 the reading order:
-    2_intro.qmd                 — project introduction (includes the repo README)
-    3_experimental_design.qmd   — treatments, Chaoborus setup, end points
-    3_parameters.qmd            — shared biomass-per-analysis assumptions, must be
-                                    included before 4_experimental_procedure.qmd,
-                                    which sums them
-    4_experimental_procedure.qmd — pre-experiment culturing & assembly steps
-    5_calculations.qmd          — organism, jar, and infrastructure quantities
-    8_bibliography.qmd          — references
-    9_protocols.qmd             — auto-generated from protocol/, bench SOPs
+    2_overview.qmd                — project introduction (includes the repo README)
+    3_parameters.qmd               — shared biomass-per-analysis assumptions, must be
+                                       included before 4_calculations.qmd, which uses
+                                       them
+    4_calculations.qmd             — organism, jar, and infrastructure quantities;
+                                       included before 5_experimental_design.qmd and
+                                       6_experimental_procedure.qmd, which quote its
+                                       numbers inline
+    5_experimental_design.qmd      — treatments, Chaoborus setup, end points
+    6_experimental_procedure.qmd   — pre-experiment culturing & assembly steps
+    7_bibliography.qmd             — references
+    8_protocols.qmd                — auto-generated from protocol/, bench SOPs
 -->
 
-{{< include 2_intro.qmd >}}
+{{< include 2_overview.qmd >}}
 
 {{< include 3_parameters.qmd >}}
 
-{{< include 3_experimental_design.qmd >}}
+{{< include 4_calculations.qmd >}}
 
-{{< include 4_experimental_procedure.qmd >}}
+{{< include 5_experimental_design.qmd >}}
 
-{{< include 5_calculations.qmd >}}
+{{< include 6_experimental_procedure.qmd >}}
 
-{{< include 8_bibliography.qmd >}}
+{{< include 7_bibliography.qmd >}}
 
-{{< include 9_protocols.qmd >}}
+{{< include 8_protocols.qmd >}}

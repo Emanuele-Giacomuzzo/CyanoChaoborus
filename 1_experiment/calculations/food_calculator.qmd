@@ -8,7 +8,7 @@ filters:
 
 ## Purpose
 
-*Daphnia magna* culture jars are fed a 50:50 mix (by carbon) of *Tetradesmus obliquus* and *Synechococcus elongatus*, dosed to a target carbon concentration per jar (see [Parameters](../3_parameters.qmd) and [Calculations](../5_calculations.qmd)). Because the carbon content of each medium changes from batch to batch, the volume to add has to be recalculated from a fresh optical density (OD) reading before every feeding, using an OD-to-carbon calibration curve fitted per species. This app takes today's OD readings and the number of *Daphnia* culture jars to feed, and returns how much of each medium to add.
+*Daphnia magna* culture jars for the "Low-quality" treatment (Table 1 in [Experimental Design](../5_experimental_design.qmd)) are fed a 50:50 mix (by carbon) of *Tetradesmus obliquus* and *Synechococcus elongatus*, dosed to a target carbon concentration per jar (see [Parameters](../3_parameters.qmd) and [Calculations](../4_calculations.qmd)). Because the carbon content of each medium changes from batch to batch, the volume to add has to be recalculated from a fresh optical density (OD) reading before every feeding, using an OD-to-carbon calibration curve fitted per species. This app takes today's OD readings and the number of *Daphnia* culture jars to feed, and returns how much of each medium to add.
 
 The app below runs entirely in the browser (via [Shinylive](https://shiny.posit.co/py/docs/shinylive.html)) — no R server needed, so it works straight from the rendered page. After editing the code in this file, re-render it so the embedded app picks up the change:
 
@@ -48,6 +48,9 @@ server <- function(input, output) {
   output$result <- renderTable({
 
     ## Fixed parameters
+    # Shinylive apps run entirely client-side in the browser (webR), with no access
+    # to repository files at runtime, so these mirror the values in 3_parameters.qmd
+    # rather than being read from it. Update both places together if they change.
     culture_volume_mL <- 800    # medium volume per Daphnia jar
     target_C_mg_per_L <- 2      # carbon target per jar, matches Daphnia_fed_C_mg_per_litre_per_day in 3_parameters.qmd
     extra <- 0.25                # buffer added to the total volume to cover pipetting loss
@@ -106,4 +109,5 @@ shinyApp(ui, server)
 
 ::: {.callout-warning title="To do"}
 - Add the source (which OD readings / carbon measurements) behind `slope_tetra`, `intercept_tetra`, `slope_syn`, and `intercept_syn`, and how often they should be re-fitted.
+- Generalize this app to the other 3 diet treatments (Table 1 in [Experimental Design](../5_experimental_design.qmd)) — "Low-quality toxic" (*M. aeruginosa* + *T. obliquus*) and both "High-quality" treatments (*N. limnetica* alone) — plus the *T. obliquus*-only stock cultures. Blocked on fitting OD-to-carbon curves for *M. aeruginosa* and *N. limnetica* first (see the To do in [Experimental Procedure](../6_experimental_procedure.qmd)).
 :::
