@@ -128,20 +128,33 @@ question 🌍
 > Large_jar_liquid_litres <- 0.8
 > Large_jar_with_liquid_kg <- 1.5
 >
+> # 🔥 Autoclaving
+>
+> Autoclave_temperature_C <- 121 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+> Autoclave_solids_minutes <- 25  # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+> Autoclave_solids_minutes <- 25 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+> Autoclave_1L_bottle_minutes <- 45 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+> Autoclave_2L_bottle_minutes <- 60 # I always autoclaved COMBO in 2L bottles for this amount of time and never had a problem with it
+> Autoclave_5L_bottle_minutes <- 85 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+>
 > # 🦟 Chaoborus
 >
 > Chaoborus_third_instar_DW_mg <- 0.79 # Lowest weight in the following paper: Parma, S. (1971). Chaoborus flavicans (Meigen)(Diptera, Chaoboridae): an autecological study.
+> Chaoborus_larvae_per_jar <- 10 # Initial density; below 50 ind./jar (9 cm diameter) this stays within the upper range of natural peak densities (Xie et al., 1998)
 > Chaoborus_jar_liquid_litres <- 0.8
 > Chaoborus_jar_with_liquid_kg <- 1.5
 > Chaoborus_dead_to_alive_ratio_worst_tratment <- 2
 > Chaoborus_Daphnia_neonates_eaten_per_day <- 20 #Based on female fourth instar eating 1.25 mm D. magna babies (Büns & Ratte, 1991)
+> Chaoborus_Daphnia_neonates_eaten_max_recorded <- 25 # Highest single-feeding count observed
 > Chaoborus_cyanotoxin_biodilutin_from_Daphnia <- 5 # Based on a field study where toxins were detected with HPLC/PDA: Sotton, B., Guillard, J., Anneville, O., Maréchal, M., Savichtcheva, O., & Domaizon, I. (2014). Trophic transfer of microcystins through the lake pelagic food web: Evidence for the role of zooplankton as a vector in fish contamination. Science of the Total Environment, 466, 152-163.
 >
-> # 🦐 Daphnia 
+> # 🦐 Daphnia
 >
 > Daphnia_adults_per_jar <- 15
-> Daphnia_fed_C_mg_per_litre_per_day <- 2 
-> Daphnia_neonates_per_mother_per_5_days <- 20 
+> Daphnia_individuals_per_new_cohort_jar <- 10 # Individuals pipetted from stock into each newly created cohort jar (protocol/3_create_Daphnia_jars.md)
+> Daphnia_fed_C_mg_per_litre_per_day <- 2
+> Daphnia_neonates_per_mother_per_5_days <- 20
+> Daphnia_max_age_eaten_days <- 5 # Oldest a Daphnia neonate can be while still small enough for Chaoborus to eat
 > Daphnia_DW_adult_mg <- 0.18 # Average weight of an individual in the following paper: Simčič, T., & Brancelj, A. (1997). Electron transport system (ETS) activity and respiration rate in five Daphnia species at different temperatures. Hydrobiologia, 360(1), 117-125.
 > Daphnia_cyanotoxin_biodilution_from_Microcystis <- 80 # Based on an experiment: Thostrup & Christoffersen, 1999
 >
@@ -149,7 +162,18 @@ question 🌍
 >
 > Phytoplankton_growth_time_days <- 10
 > Phytoplankton_highest_concentration_mg_C_per_litres <- 50 # Based on the fact that M. aeruginosa is the one that grows the worst and that in Thostrup & Christophersen, 1999 grew up to 150, we use 50 to be conservative. Also, Vana told me that her T. obliquus grows at 28-150 mg C / L
-> Phytoplankton_low_quality_food_ratio <- 0.5 # I would go for 50% of both Microcystis and Synechococcus compared to Tetradesmus. Feeding Daphnia magna with 50% of Microcystis can keep cultures dense enough to perform experiment (Macke et al., 2017) but still have a negative effect (Schwarzenberger et al., 2012, 2013). Feeding Daphnia magna with 50% of Synechococcus can also keep cultures alive but still have a negative effect (Demott & Müller-Navarra, 1997). 
+> Phytoplankton_low_quality_food_ratio <- 0.5 # I would go for 50% of both Microcystis and Synechococcus compared to Tetradesmus. Feeding Daphnia magna with 50% of Microcystis can keep cultures dense enough to perform experiment (Macke et al., 2017) but still have a negative effect (Schwarzenberger et al., 2012, 2013). Feeding Daphnia magna with 50% of Synechococcus can also keep cultures alive but still have a negative effect (Demott & Müller-Navarra, 1997).
+>
+> Phytoplankton_species_count <- 4 # M. aeruginosa, S. elongatus, N. limnetica, T. obliquus
+> Phytoplankton_vessels_per_species <- 3 # Replicate stock flasks/bottles kept per species at each vessel size
+> Phytoplankton_stock_flask_volume_mL <- 50
+> Phytoplankton_stock_flask_inoculation_volume_mL <- 30
+> Phytoplankton_stock_bottle_capacity_mL <- 500
+> Phytoplankton_stock_bottle_liquid_mL <- 300
+> Phytoplankton_stock_bottle_inoculation_volume_mL <- 200
+> Phytoplankton_experimental_bottle_volume_mL <- 2000
+> Phytoplankton_inoculation_interval_days <- 7
+> COMBO_batch_volume_litres <- 5 # Standard batch size per the COMBO protocol (protocol/1_create_COMBO.md)
 >
 > # ☠️ Toxins 
 >
@@ -160,7 +184,7 @@ question 🌍
 > Biomass_needed_for_PUFAs_mg <- 1 # Tarn Preet Parmar, personal communication
 > Biomass_needed_for_sterols_mg <- 1 # Tarn Preet Parmar, personal communication
 > Biomass_needed_for_stoichiometry_mg <- 1.5 # Dominik Martin-Creuzburg, personal communication
-> Biomass_needed_for_toxins_mg <- 1 # ...
+> Biomass_needed_for_toxins_mg <- 1
 > ```
 >
 > > [!WARNING]
@@ -175,8 +199,9 @@ question 🌍
 The aim of this experiment is to investigate how toxic cyanobacteria
 affect the multidimensionality of the predator *Chaoborus* via changes
 in its prey (Figure 1-2). This is realistic in nature compared to the
-percentage of biomass made out of cyanobacteria (ref) (bloom defined as
-\> 50% of biomass constituted by cyanobacteria, Molot et al. (2014)).
+percentage of biomass made out of cyanobacteria, where a bloom is
+defined as \> 50% of biomass constituted by cyanobacteria (Molot et al.,
+2014).
 
 <p align="center">
 
@@ -203,12 +228,6 @@ replicated **4** times.
 >
 > ### To do
 >
-> - Finish adding Daphnia and Chaoborus icons.
-
-> [!WARNING]
->
-> ### To do
->
 > - ⭐ Decide whether it should be a block design.
 
 # Experimental Procedure
@@ -226,37 +245,79 @@ Before starting the experiment, we need to grow the following species:
 
 ### Phytoplankton
 
-There are three bottles. I assume that it takes 10 days for the
-phytoplankton to grow.
+``` r
+Phytoplankton_vessels_total <- Phytoplankton_species_count * Phytoplankton_vessels_per_species
 
-> [!WARNING]
->
-> ### To do
->
-> - Finish writing this plan by looking into your notebook.
+COMBO_total_litres <- Phytoplankton_vessels_total *
+  (Phytoplankton_stock_flask_volume_mL + Phytoplankton_stock_bottle_liquid_mL + Phytoplankton_experimental_bottle_volume_mL) / 1000
 
-> [!WARNING]
->
-> ### To do
->
-> - @ Ali, Kirsten: how do I make sure that my *M. aeruginosa* has
->   toxins?
+COMBO_batches <- ceiling(COMBO_total_litres / COMBO_batch_volume_litres)
+```
+
+All downstream feeding of Daphnia (and sampling of phytoplankton)
+depends on having enough phytoplankton biomass, of every one of the 4
+species, including enough *M. aeruginosa* to add toxins to the cultures.
+Experimental cultures can’t be started directly at experimental scale,
+though, so they have to be built up gradually from a small stock. Both
+the culture vessels and the COMBO growth medium also have to be sterile,
+and because autoclaving runs overnight, everything needs to be prepared
+at least a day before culturing starts.
+
+To do that, each species is scaled up through three vessel sizes in
+sequence — a stock flask, a stock bottle, then an experimental bottle —
+inoculating a fixed volume into fresh COMBO medium every 7 days and
+topping the vessel back up to its working volume as it grows. This runs
+as 3 parallel replicate lines per species, so that a single contaminated
+or failed culture doesn’t take out that species’ entire supply.
+
+Scaled to 4 species × 3 replicates (12 lines total), that means
+preparing in advance:
+
+- 12 × 50 mL stock flasks (needs to be replaced every 4 weeks)
+- 12 × 500 mL stock bottles (holding 300 mL of liquid)
+- 12 × 2 L experimental bottles
+- 28.2 L of COMBO medium, made in 5 L batches (6 batches; see the [COMBO
+  protocol](protocol/1_create_COMBO.md))
+
+Each line then runs the same cycle: inoculate 30 mL from the stock flask
+into the stock bottle, and 200 mL from the stock bottle into the
+experimental bottle, refilling with COMBO each time, every 7 days —
+shown below:
+
+``` mermaid
+flowchart TD
+V["Autoclave ≥ 1 day ahead:<br/>12 × 50 mL stock flasks<br/>12 × 500 mL stock bottles<br/>12 × 2 L experimental bottles"]
+M["Prepare COMBO medium:<br/>28.2 L in 6 × 5 L batches"]
+A["Stock flask<br/>50 mL"]
+B["Inoculate 30 mL<br/>(refill with COMBO)"]
+C["Stock bottle<br/>300 mL"]
+D["Inoculate 200 mL<br/>(refill with COMBO)"]
+E["Experimental bottle<br/>2000 mL"]
+
+V --> A
+M --> A
+A -- "every 7 days" --> B --> C
+C -- "every 7 days" --> D --> E
+```
 
 ### Daphnia
 
-*Daphnia magna* is fed ad libitum with 2 g C/L/day.
+Daphnia is raised with … adults in … L jars with … L medium. Daphnia
+will be grown for … days to give babies, which will then be fed to
+Chaoborus. To avoid Daphnia become too old to be fertile enough, Daphnia
+will be raised from adults from the stock populations every time. To
+avoid that the largest Daphnias are picked for earlier cohorts, causing
+a decrease in the offspring count in the later cohorts, we will pick
+Daphnias of different sizes. *Daphnia magna* is fed ad libitum with 2 g
+C/L/day.
 
 > [!WARNING]
 >
 > ### To do
 >
 > - Check the data of Microcystis aeruginosa for Carbon-OD relationship.
-
-> [!WARNING]
->
-> ### To do
->
-> - ⭐ Come up with a plan for how to grow Daphnia.
+> - @ Jana: why 2 g C/L/Day?
+> - Come up with a plan for how to grow Daphnia.
 
 ### Chaoborus
 
@@ -267,8 +328,10 @@ IT-Ichthyo Trophic, Poland.
 >
 > ### To do
 >
-> - ⭐ Add the size of the larvae.
-> - ⭐ Find references that say how to determine it’s a third instar.
+> - Add the size of the larvae.
+> - Find references that say how to determine it’s a third instar.
+> - Call IT-Ichthyo Trophic to ask what species of Chaoborus it is and
+>   how it is raised.
 
 ## Assemble experiment
 
@@ -310,17 +373,33 @@ ensure that there will be enough biomass to be analysed.
 
 *Chaoborus* is fed ad libitum with … Daphnia babies / day.
 
+> [!WARNING]
+>
+> ### To do
+>
+> - Decide whether you should calculate how much Chaoborus eats
+>   according to:
+>   1)  size of Chaoborus and Daphnia
+>   2)  run a different feeding experiment with different Chaoborus
+>       sizes
+
 *Chaoborus* are fed *Daphnia* neonates ad libitum. *Daphnia* stock is
 built up in individual jars ahead of assembly, so the stock has to be
 sized to the neonate demand implied by the *Chaoborus* population above.
 Sizing that stock starts from two feeding-and-reproduction assumptions,
 both held with medium confidence: a fourth-instar *Chaoborus* larva eats
 about 20 neonates (1.25 mm *D. magna*) per feeding (Büns & Ratte, 1991),
-and an adult *Daphnia* produces about 20 neonates per 5-day clutch
-cycle. Those small stock jars, each housing a single *Daphnia*, are in
-turn fed from large (1000 mL) jars, each holding 15 adult *Daphnia* — a
-high-confidence figure, though the source for it still needs tracking
-down (see Open questions below).
+with a single-feeding maximum of 25 neonates recorded, and an adult
+*Daphnia* produces about 20 neonates per 5-day clutch cycle. Only
+neonates up to 5 days old are offered as food, since older *Daphnia*
+grow too large for *Chaoborus* to ingest. Those small stock jars, each
+housing a single *Daphnia*, are in turn fed from large (1000 mL) jars,
+each holding 15 adult *Daphnia* — a high-confidence figure, though the
+source for it still needs tracking down (see Open questions below).
+
+If Chaoborus eats different amounts of biomass according to the size of
+Daphnia it could be that it’s because it’s adapted to feed on a certain
+range size.
 
 ``` r
 # Small jars: 1 Daphnia per jar, used to build up the stock.
@@ -367,6 +446,13 @@ lipids are preserved:
 >
 > ### To do
 >
+> - I should decide whether I want to run an experiment looking at the
+>   quality and toxins of phytoplankton during the growth phase.
+
+> [!WARNING]
+>
+> ### To do
+>
 > - @ Ali, Kirsten: would it be okay if I sample phytoplankton only once
 >   throughout the experiment?
 > - @ Ali, Kirsten: should I use alchool for subsamples to measure cell
@@ -374,16 +460,14 @@ lipids are preserved:
 
 ### Daphnia
 
-Daphnia quality will be monitored on day …. by collecting … number of
-Daphnia. For each sampling, I will keep a sample in ethanol for quality
-and one without it for body size measurment.
+Daphnia quality will be monitored the last day of the experiment by
+collecting … number of Daphnia. For each sampling, I will keep a sample
+in ethanol for quality and one without it for body size measurment.
 
 > [!WARNING]
 >
 > ### To do
 >
-> - @ Ali, Kirsten: would it be okay to measure the quality of Daphnia
->   on the first and last day?
 > - Calculate how many Daphnia I should keep for body size.
 > - Add how many total Daphnia are needed for analysing PUFAs, sterols,
 >   stoichiometry, and toxins.
@@ -425,6 +509,12 @@ tubes.
 >   have enough time to measure the size of Chaoborus before being put
 >   inside.
 > - @ Anne: do we have enough 50 ml centrigue tubes?
+> - @ Jana: the previous plan was to put individuals inside tubes for
+>   different analyses (e.g., 1 in CN, 2 in P, 3 in sterols, 4 in fatty
+>   acids, 5 in toxicity, 6 in CN, 7 in P, etc). However, now that we
+>   have big falcon tubes is it okay to leave them all in a single
+>   falcon tube? I don’t remember the reason why we kept them in
+>   different microcentrifuge tubes.
 
 ## End experiment
 
@@ -432,7 +522,7 @@ tubes.
 >
 > ### To do
 >
-> - Add a plan on when to end the experiment.  
+> - Add a plan on when to end the experiment.\
 
 > [!TIP]
 >
@@ -535,7 +625,17 @@ Kit detects down to 0.15 µg L⁻¹.
 > - Write why using ELISA.
 > - Decide which kit to order.
 > - Test kit.
-> - Check whether this  
+> - Send the growing conditions of our algae to Ali & Irma (light,
+>   temperature, oxygen, size of jars, etc.)
+> - @ Irma: would you like to characterise the toxins of *Microcystis
+>   aeruginosa* in Lund before the experiment?
+
+## Statistical analyses
+
+### Biomass ingested by Chaoborus
+
+I will analyse the ingested biomass of Daphnia (ingestion rate) by
+Chaoborus from body size using literature data.
 
 # Calculations
 
@@ -606,6 +706,10 @@ double-checking which value is correct. Finally, no source is recorded
 for the assumed 15 *Daphnia* per large jar; a rationale or reference
 should be added if one exists.
 
+``` r
+Daphnia_neonates_needed_per_jar_per_day <- Chaoborus_Daphnia_neonates_eaten_max_recorded * Chaoborus_larvae_per_jar
+```
+
 **Initial conditions.** The initial population density of *Chaoborus*
 will be 10, which is above what needed for all the different analyses
 (4.5 mg, see [Box 1: Sample Collection and
@@ -613,9 +717,11 @@ Storage](other/protocols/Quarto_protocols/9_sample_collection_and_storage.md)).
 This larval density, which below 50 individuals per jar (9 cm diameter)
 corresponds to ~8,000 individuals m⁻², which falls within the upper
 range of peak natural *Chaoborus* densities reported from eutrophic,
-fish-free systems (Xie et al., 1998). *Chaoborus* will be fed ad libitum
-by providing them with 10 Daphnia of 1 to 5 days old (see [Box 1: Sample
-Collection and
+fish-free systems (Xie et al., 1998). Feeding has to cover the whole
+jar’s appetite at once, so with a single-feeding maximum of 25 neonates
+per larva and 10 larvae per jar, *Chaoborus* will be fed ad libitum by
+providing them with 250 Daphnia of 1 to 5 days old per jar per day (see
+[Box 1: Sample Collection and
 Storage](other/protocols/Quarto_protocols/9_sample_collection_and_storage.md)).
 
 **Measurements.** At the beginning of the experiment and through the
@@ -640,7 +746,7 @@ inline in another chapter, use Pandoc’s citation syntax,
 e.g. `[@buns1991]` or `Büns and Ratte [-@buns1991]`.
 
 <div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0" line-spacing="2">
+data-entry-spacing="0" data-line-spacing="2">
 
 <div id="ref-buns1991" class="csl-entry">
 
@@ -819,7 +925,10 @@ Chaoboridae) in a fish-free eutrophic pond, Japan*.
 This section is generated automatically from every Markdown file in
 [`protocol/`](protocol/): each time this document is rendered, it picks
 up whatever protocols exist in that folder, in numerical order, without
-needing to be edited by hand.
+needing to be edited by hand. Each protocol file is knitted as a child
+document, so it can reference the shared [Parameters](3_parameters.qmd)
+with inline code (e.g. `10`) instead of hardcoding a number that could
+drift out of sync.
 
 ## Protocol 1 – Create COMBO
 
@@ -1048,7 +1157,7 @@ and *Chaoborus*.
 
 ## Protocol 6 – Sample phytoplankton
 
-**Title:** Phytoplankton sample of day 0
+**Title:** Phytoplankton sample
 
 **Date:**
 
@@ -1069,6 +1178,12 @@ and *Chaoborus*.
 | ☐ | 1 | Pipette and tips | To pipette phytoplankton on filters |
 | ☐ | 1 | Metal block | To wrap the aluminium foil around the filters |
 | ☐ |  | Aluminium cartridges | To wrap the filters so that they can be already analysed |
+
+> [!WARNING]
+>
+> ### Material that needs to be prepared before
+>
+> - Requires precombusting GF/C filters (25mm) at least one day before
 
 **Steps:**
 

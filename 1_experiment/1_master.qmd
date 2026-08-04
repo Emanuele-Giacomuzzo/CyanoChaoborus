@@ -10,6 +10,7 @@ format:
     embed-resources: true
     code-fold: true
     code-summary: "Show calculation code"
+    reference-location: section
   gfm: default
 execute:
   echo: true

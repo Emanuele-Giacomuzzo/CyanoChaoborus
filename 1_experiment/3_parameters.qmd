@@ -21,20 +21,33 @@ Small_jar_with_liquid_kg <- 0.2
 Large_jar_liquid_litres <- 0.8
 Large_jar_with_liquid_kg <- 1.5
 
+# 🔥 Autoclaving
+
+Autoclave_temperature_C <- 121 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+Autoclave_solids_minutes <- 25  # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+Autoclave_solids_minutes <- 25 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+Autoclave_1L_bottle_minutes <- 45 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+Autoclave_2L_bottle_minutes <- 60 # I always autoclaved COMBO in 2L bottles for this amount of time and never had a problem with it
+Autoclave_5L_bottle_minutes <- 85 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+
 # 🦟 Chaoborus
 
 Chaoborus_third_instar_DW_mg <- 0.79 # Lowest weight in the following paper: Parma, S. (1971). Chaoborus flavicans (Meigen)(Diptera, Chaoboridae): an autecological study.
+Chaoborus_larvae_per_jar <- 10 # Initial density; below 50 ind./jar (9 cm diameter) this stays within the upper range of natural peak densities (Xie et al., 1998)
 Chaoborus_jar_liquid_litres <- 0.8
 Chaoborus_jar_with_liquid_kg <- 1.5
 Chaoborus_dead_to_alive_ratio_worst_tratment <- 2
 Chaoborus_Daphnia_neonates_eaten_per_day <- 20 #Based on female fourth instar eating 1.25 mm D. magna babies (Büns & Ratte, 1991)
+Chaoborus_Daphnia_neonates_eaten_max_recorded <- 25 # Highest single-feeding count observed
 Chaoborus_cyanotoxin_biodilutin_from_Daphnia <- 5 # Based on a field study where toxins were detected with HPLC/PDA: Sotton, B., Guillard, J., Anneville, O., Maréchal, M., Savichtcheva, O., & Domaizon, I. (2014). Trophic transfer of microcystins through the lake pelagic food web: Evidence for the role of zooplankton as a vector in fish contamination. Science of the Total Environment, 466, 152-163.
 
-# 🦐 Daphnia 
+# 🦐 Daphnia
 
 Daphnia_adults_per_jar <- 15
-Daphnia_fed_C_mg_per_litre_per_day <- 2 
-Daphnia_neonates_per_mother_per_5_days <- 20 
+Daphnia_individuals_per_new_cohort_jar <- 10 # Individuals pipetted from stock into each newly created cohort jar (protocol/3_create_Daphnia_jars.md)
+Daphnia_fed_C_mg_per_litre_per_day <- 2
+Daphnia_neonates_per_mother_per_5_days <- 20
+Daphnia_max_age_eaten_days <- 5 # Oldest a Daphnia neonate can be while still small enough for Chaoborus to eat
 Daphnia_DW_adult_mg <- 0.18 # Average weight of an individual in the following paper: Simčič, T., & Brancelj, A. (1997). Electron transport system (ETS) activity and respiration rate in five Daphnia species at different temperatures. Hydrobiologia, 360(1), 117-125.
 Daphnia_cyanotoxin_biodilution_from_Microcystis <- 80 # Based on an experiment: Thostrup & Christoffersen, 1999
 
@@ -42,7 +55,18 @@ Daphnia_cyanotoxin_biodilution_from_Microcystis <- 80 # Based on an experiment: 
 
 Phytoplankton_growth_time_days <- 10
 Phytoplankton_highest_concentration_mg_C_per_litres <- 50 # Based on the fact that M. aeruginosa is the one that grows the worst and that in Thostrup & Christophersen, 1999 grew up to 150, we use 50 to be conservative. Also, Vana told me that her T. obliquus grows at 28-150 mg C / L
-Phytoplankton_low_quality_food_ratio <- 0.5 # I would go for 50% of both Microcystis and Synechococcus compared to Tetradesmus. Feeding Daphnia magna with 50% of Microcystis can keep cultures dense enough to perform experiment (Macke et al., 2017) but still have a negative effect (Schwarzenberger et al., 2012, 2013). Feeding Daphnia magna with 50% of Synechococcus can also keep cultures alive but still have a negative effect (Demott & Müller-Navarra, 1997). 
+Phytoplankton_low_quality_food_ratio <- 0.5 # I would go for 50% of both Microcystis and Synechococcus compared to Tetradesmus. Feeding Daphnia magna with 50% of Microcystis can keep cultures dense enough to perform experiment (Macke et al., 2017) but still have a negative effect (Schwarzenberger et al., 2012, 2013). Feeding Daphnia magna with 50% of Synechococcus can also keep cultures alive but still have a negative effect (Demott & Müller-Navarra, 1997).
+
+Phytoplankton_species_count <- 4 # M. aeruginosa, S. elongatus, N. limnetica, T. obliquus
+Phytoplankton_vessels_per_species <- 3 # Replicate stock flasks/bottles kept per species at each vessel size
+Phytoplankton_stock_flask_volume_mL <- 50
+Phytoplankton_stock_flask_inoculation_volume_mL <- 30
+Phytoplankton_stock_bottle_capacity_mL <- 500
+Phytoplankton_stock_bottle_liquid_mL <- 300
+Phytoplankton_stock_bottle_inoculation_volume_mL <- 200
+Phytoplankton_experimental_bottle_volume_mL <- 2000
+Phytoplankton_inoculation_interval_days <- 7
+COMBO_batch_volume_litres <- 5 # Standard batch size per the COMBO protocol (protocol/1_create_COMBO.md)
 
 # ☠️ Toxins 
 
@@ -53,7 +77,7 @@ Microcystins_mg_per_g_DW <- 1 # Based on the following experiment, where toxins 
 Biomass_needed_for_PUFAs_mg <- 1 # Tarn Preet Parmar, personal communication
 Biomass_needed_for_sterols_mg <- 1 # Tarn Preet Parmar, personal communication
 Biomass_needed_for_stoichiometry_mg <- 1.5 # Dominik Martin-Creuzburg, personal communication
-Biomass_needed_for_toxins_mg <- 1 # ...
+Biomass_needed_for_toxins_mg <- 1
 ```
 
 ::: {.callout-warning title="To do"}

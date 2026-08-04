@@ -1,6 +1,6 @@
 # Protocols
 
-This section is generated automatically from every Markdown file in [`protocol/`](protocol/): each time this document is rendered, it picks up whatever protocols exist in that folder, in numerical order, without needing to be edited by hand.
+This section is generated automatically from every Markdown file in [`protocol/`](protocol/): each time this document is rendered, it picks up whatever protocols exist in that folder, in numerical order, without needing to be edited by hand. Each protocol file is knitted as a child document, so it can reference the shared [Parameters](3_parameters.qmd) with inline code (e.g. `` `r Daphnia_individuals_per_new_cohort_jar` ``) instead of hardcoding a number that could drift out of sync.
 
 ```{r}
 #| label: protocols-listing
@@ -20,6 +20,7 @@ for (i in seq_along(protocol_files)) {
   title <- gsub("_", " ", title)
   substr(title, 1, 1) <- toupper(substr(title, 1, 1))
   cat("\n\n## Protocol ", protocol_numbers[i], " \u2013 ", title, " {.unnumbered}\n\n", sep = "")
-  cat(readLines(file.path("protocol", f), warn = FALSE), sep = "\n")
+  protocol_text <- paste(readLines(file.path("protocol", f), warn = FALSE), collapse = "\n")
+  cat(knitr::knit_child(text = protocol_text, quiet = TRUE), sep = "\n")
 }
 ```

@@ -60,6 +60,7 @@ By feeding *Chaoborus* different cyanobacterial diets (toxic vs. non-toxic, nutr
 - `3_analysis/` — analysis scripts/code
 - `4_results/` — outputs, figures, tables
 - `5_other/` — everything else
+- [`CHANGELOG.md`](CHANGELOG.md) — a running, plain-English log of notable changes to this repository
 
 ---
 

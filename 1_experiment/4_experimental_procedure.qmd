@@ -13,15 +13,57 @@ Before starting the experiment, we need to grow the following species:
 
 ### Phytoplankton
 
-There are three bottles. I assume that it takes 7 days for the phytoplankton to grow.
+```{r}
+#| label: phytoplankton-vessels
 
-::: {.callout-warning title="To do"}
-- Finish writing this plan by looking into your notebook.
-:::
+Phytoplankton_vessels_total <- Phytoplankton_species_count * Phytoplankton_vessels_per_species
 
-::: {.callout-warning title="To do"}
-- I should decide whether I want to run an experiment looking at the quality and toxins of phytoplankton during the growth phase. 
-:::
+COMBO_total_litres <- Phytoplankton_vessels_total *
+  (Phytoplankton_stock_flask_volume_mL + Phytoplankton_stock_bottle_liquid_mL + Phytoplankton_experimental_bottle_volume_mL) / 1000
+
+COMBO_batches <- ceiling(COMBO_total_litres / COMBO_batch_volume_litres)
+```
+
+All downstream feeding of Daphnia (and sampling of phytoplankton) depends on having enough phytoplankton biomass, of every one of the `r Phytoplankton_species_count` species, including enough *M. aeruginosa* to add toxins to the cultures. Experimental cultures can't be started directly at experimental scale, though, so they have to be built up gradually from a small stock. Both the culture vessels and the COMBO growth medium also have to be sterile, and because autoclaving runs overnight, everything needs to be prepared at least a day before culturing starts.
+
+To do that, each species is scaled up through three vessel sizes in sequence — a stock flask, a stock bottle, then an experimental bottle — inoculating a fixed volume into fresh COMBO medium every `r Phytoplankton_inoculation_interval_days` days and topping the vessel back up to its working volume as it grows. This runs as `r Phytoplankton_vessels_per_species` parallel replicate lines per species, so that a single contaminated or failed culture doesn't take out that species' entire supply.
+
+Scaled to `r Phytoplankton_species_count` species × `r Phytoplankton_vessels_per_species` replicates (`r Phytoplankton_vessels_total` lines total), that means preparing in advance:
+
+- `r Phytoplankton_vessels_total` × `r Phytoplankton_stock_flask_volume_mL` mL stock flasks (needs to be replaced every 4 weeks)
+- `r Phytoplankton_vessels_total` × `r Phytoplankton_stock_bottle_capacity_mL` mL stock bottles (holding `r Phytoplankton_stock_bottle_liquid_mL` mL of liquid)
+- `r Phytoplankton_vessels_total` × `r round(Phytoplankton_experimental_bottle_volume_mL / 1000, 1)` L experimental bottles
+- `r round(COMBO_total_litres, 1)` L of COMBO medium, made in `r COMBO_batch_volume_litres` L batches (`r COMBO_batches` batches; see the [COMBO protocol](protocol/1_create_COMBO.md))
+
+Each line then runs the same cycle: inoculate `r Phytoplankton_stock_flask_inoculation_volume_mL` mL from the stock flask into the stock bottle, and `r Phytoplankton_stock_bottle_inoculation_volume_mL` mL from the stock bottle into the experimental bottle, refilling with COMBO each time, every `r Phytoplankton_inoculation_interval_days` days — shown below:
+
+````{r}
+#| output: asis
+#| echo: false
+#| label: phytoplankton-flowchart
+
+library(glue)
+
+diagram <- glue('
+```{{mermaid}}
+flowchart TD
+V["Autoclave ≥ 1 day ahead:<br/>{Phytoplankton_vessels_total} × {Phytoplankton_stock_flask_volume_mL} mL stock flasks<br/>{Phytoplankton_vessels_total} × {Phytoplankton_stock_bottle_capacity_mL} mL stock bottles<br/>{Phytoplankton_vessels_total} × {round(Phytoplankton_experimental_bottle_volume_mL / 1000, 1)} L experimental bottles"]
+M["Prepare COMBO medium:<br/>{round(COMBO_total_litres, 1)} L in {COMBO_batches} × {COMBO_batch_volume_litres} L batches"]
+A["Stock flask<br/>{Phytoplankton_stock_flask_volume_mL} mL"]
+B["Inoculate {Phytoplankton_stock_flask_inoculation_volume_mL} mL<br/>(refill with COMBO)"]
+C["Stock bottle<br/>{Phytoplankton_stock_bottle_liquid_mL} mL"]
+D["Inoculate {Phytoplankton_stock_bottle_inoculation_volume_mL} mL<br/>(refill with COMBO)"]
+E["Experimental bottle<br/>{Phytoplankton_experimental_bottle_volume_mL} mL"]
+
+V --> A
+M --> A
+A -- "every {Phytoplankton_inoculation_interval_days} days" --> B --> C
+C -- "every {Phytoplankton_inoculation_interval_days} days" --> D --> E
+```
+')
+
+cat(diagram)
+````
 
 ### Daphnia
 
@@ -86,7 +128,7 @@ The number of Chaoborus will be ... per replicate per treatment. This will ensur
 :::
 
 
-*Chaoborus* are fed *Daphnia* neonates ad libitum. *Daphnia* stock is built up in individual jars ahead of assembly, so the stock has to be sized to the neonate demand implied by the *Chaoborus* population above. Sizing that stock starts from two feeding-and-reproduction assumptions, both held with medium confidence: a fourth-instar *Chaoborus* larva eats about 20 neonates (1.25 mm *D. magna*) per feeding [@buns1991], and an adult *Daphnia* produces about 20 neonates per 5-day clutch cycle. Those small stock jars, each housing a single *Daphnia*, are in turn fed from large (1000 mL) jars, each holding 15 adult *Daphnia* — a high-confidence figure, though the source for it still needs tracking down (see Open questions below).
+*Chaoborus* are fed *Daphnia* neonates ad libitum. *Daphnia* stock is built up in individual jars ahead of assembly, so the stock has to be sized to the neonate demand implied by the *Chaoborus* population above. Sizing that stock starts from two feeding-and-reproduction assumptions, both held with medium confidence: a fourth-instar *Chaoborus* larva eats about 20 neonates (1.25 mm *D. magna*) per feeding [@buns1991], with a single-feeding maximum of `r Chaoborus_Daphnia_neonates_eaten_max_recorded` neonates recorded, and an adult *Daphnia* produces about 20 neonates per 5-day clutch cycle. Only neonates up to `r Daphnia_max_age_eaten_days` days old are offered as food, since older *Daphnia* grow too large for *Chaoborus* to ingest. Those small stock jars, each housing a single *Daphnia*, are in turn fed from large (1000 mL) jars, each holding 15 adult *Daphnia* — a high-confidence figure, though the source for it still needs tracking down (see Open questions below).
 
 If Chaoborus eats different amounts of biomass according to the size of Daphnia it could be that it's because it's adapted to feed on a certain range size.
 
@@ -128,6 +170,10 @@ Some rules that apply across collecting data for maximising how well lipids are 
 :::
 
 ### Phytoplankton
+
+::: {.callout-warning title="To do"}
+- I should decide whether I want to run an experiment looking at the quality and toxins of phytoplankton during the growth phase. 
+:::
 
 ::: {.callout-warning title="To do"}
 - @ Ali, Kirsten: would it be okay if I sample phytoplankton only once throughout the experiment?
