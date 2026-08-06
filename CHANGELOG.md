@@ -2,6 +2,19 @@
 
 All notable changes to this repository are recorded here, newest first, so they're easy to skim without digging through commit history. Format loosely follows [Keep a Changelog](https://keepachangelog.com/), adapted for a project without version numbers — entries are grouped by date instead.
 
+## 2026-08-06
+
+### Added
+
+- Added a note to the phytoplankton harvest-fraction calculation (Calculations and Experimental Procedure chapters) that harvested volume is replaced with fresh COMBO, and flagged that this dilutes each bottle — the existing check only confirms daily demand fits under a bottle's maximum standing carbon, not that the diluted bottle actually regrows back to that concentration before its next harvest. Added a to-do asking for each species' real growth rate to close that gap, most urgent for *Nannochloropsis limnetica* since its bottle is diluted the most.
+- Added a note on which phytoplankton samples will be kept for quality/toxin analysis versus cell size (the latter preserved in Lugol) in the Experimental Procedure chapter.
+- Added detail to the "Body size" analysis section distinguishing the photography and measurement approach for phytoplankton and *Daphnia magna* (noting a correction factor is needed for measuring 2D images of 3D individuals, and for shrinkage caused by Lugol) from the approach for *Chaoborus*.
+- Added a phosphorus biomass placeholder (`Biomass_needed_for_P_mg`) to Parameters, left as a comment rather than an active value since the 0.005 mg figure Claudia recorded doesn't have a known dry-weight basis yet.
+
+### Changed
+
+- Replaced the "would it be easy to measure body size of phytoplankton" open question in Experimental Procedure with a decided approach, and added a follow-up to-do about which software to use for the measurements.
+
 ## 2026-08-04
 
 ### Added

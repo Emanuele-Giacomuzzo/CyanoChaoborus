@@ -218,6 +218,7 @@ question 🌍
 > Biomass_needed_for_sterols_mg <- 1 # Tarn Preet Parmar, personal communication
 > Biomass_needed_for_stoichiometry_mg <- 1.5 # Dominik Martin-Creuzburg, personal communication
 > # Biomass_needed_for_toxins_mg is calculated in 4_calculations.qmd from the microcystin biodilution chain, the ELISA detection limit, and Microcystins_extraction_volume_mL above.
+> # Biomass_needed_for_P_mg <- ... # The lowest Claudia recorded was 0.005 mg of phosphorus (but she doesn’t know for how much dry weight).
 > ```
 
 > [!WARNING]
@@ -341,7 +342,12 @@ question 🌍
 >
 > # Alternating the daily harvest across the Phytoplankton_vessels_per_species experimental bottles means
 > # only one bottle is harvested on any given day, so that bottle alone has to cover that day's demand
-> # while the other Phytoplankton_vessels_per_species - 1 bottles regrow.
+> # while the other Phytoplankton_vessels_per_species - 1 bottles regrow. The harvested volume is replaced
+> # with fresh COMBO on the spot (as in protocol/4_feed_Daphnia.md), which is what dilutes that bottle back
+> # down before it regrows toward Phytoplankton_highest_concentration_mg_C_per_litres ahead of its next
+> # harvest — the fractions below only check that the demand fits under the bottle's max carbon content,
+> # they don't yet confirm the diluted bottle actually regrows that far in the days it has to do so (see
+> # To do below).
 > Phytoplankton_Microcystis_harvest_fraction <- Phytoplankton_Microcystis_mg_C_per_day / Phytoplankton_experimental_bottle_max_mg_C
 > Phytoplankton_Synechococcus_harvest_fraction <- Phytoplankton_Synechococcus_mg_C_per_day / Phytoplankton_experimental_bottle_max_mg_C
 > Phytoplankton_Nannochloropsis_harvest_fraction <- Phytoplankton_Nannochloropsis_mg_C_per_day / Phytoplankton_experimental_bottle_max_mg_C
@@ -373,12 +379,17 @@ question 🌍
 >   experiment’s duration, which isn’t decided yet (see the “End
 >   experiment” To do in [Experimental
 >   Procedure](6_experimental_procedure.qmd)).
-> - `Phytoplankton_Nannochloropsis_harvest_fraction` comes out around
->   80% of one experimental bottle’s maximum standing carbon — tight
->   relative to the other species. Confirm this leaves enough margin
->   once real growth curves are available, rather than just the
->   conservative `Phytoplankton_highest_concentration_mg_C_per_litres`
->   ceiling.
+> - `Phytoplankton_*_harvest_fraction` only checks that a day’s demand
+>   fits under one bottle’s maximum standing carbon — it doesn’t yet
+>   confirm the bottle regrows back up to that concentration in time for
+>   its next harvest, `Phytoplankton_vessels_per_species` days later,
+>   after being diluted with COMBO. That needs each species’ actual
+>   growth rate, which isn’t in Parameters yet
+>   (`Phytoplankton_growth_time_days` is the wrong number to reuse here
+>   — it describes the much bigger scale-up dilution from a small stock
+>   inoculum, not this smaller daily top-up). Most urgent for
+>   `Phytoplankton_Nannochloropsis_harvest_fraction`, which sits around
+>   80% and so dilutes that bottle the most.
 > - The 4th treatment’s toxin dose (how much lysed *M. aeruginosa*
 >   biomass gets added directly to each *Chaoborus* jar) isn’t sized
 >   yet, so it isn’t included in
@@ -578,12 +589,18 @@ C/day, for a combined *T. obliquus* demand of 64.6 mg C/day.
 
 Harvesting alternates daily across the 3 experimental bottles per
 species, so on any given day only one bottle per species is harvested
-while the other 2 regrow. At the conservative 50 mg C/L ceiling used
+while the other 2 regrow; whatever volume is taken out is replaced on
+the spot with fresh COMBO, the same way stock cultures are topped up
+(protocol/4_feed_Daphnia.md). At the conservative 50 mg C/L ceiling used
 throughout (100 mg C in a full 2 L bottle), that single daily bottle
 needs to supply 20% of its standing carbon for *M. aeruginosa*, 20% for
 *S. elongatus*, 80% for *N. limnetica*, and 65% for *T. obliquus* — all
-under 100%, so 3 bottles per species are enough, though *N. limnetica*
-leaves little headroom (see To do below).
+under 100%, so 3 bottles per species are enough to cover the carbon
+demand. What this doesn’t yet check is whether the diluted bottle
+actually regrows back to 50 mg C/L before its next harvest, 3 days later
+— that depends on each species’ growth rate, which isn’t pinned down yet
+(see To do below), and matters most for *N. limnetica*, whose bottle is
+diluted the most.
 
 > [!WARNING]
 >
@@ -598,10 +615,13 @@ leaves little headroom (see To do below).
 >   protocol/3_create_Daphnia_jars.md and
 >   protocol/5_create_Chaoborus_jars.md) — if the interval differs,
 >   `Daphnia_cohorts_in_rotation` needs updating.
-> - `Phytoplankton_Nannochloropsis_harvest_fraction` leaves only about
->   20% headroom on the daily harvested bottle — check this against real
->   growth rates once available, and consider a 4th replicate line for
->   *N. limnetica* if it turns out to be too tight in practice.
+> - Confirm each species can regrow from its post-harvest dilution back
+>   to `Phytoplankton_highest_concentration_mg_C_per_litres` within the
+>   `Phytoplankton_vessels_per_species`-day gap between harvests — needs
+>   an actual growth rate per species, not yet in
+>   [Parameters](3_parameters.qmd). Most urgent for *N. limnetica*,
+>   whose bottle is diluted the most (80% harvested); consider a 4th
+>   replicate line for it if regrowth turns out too slow.
 
 #### Carbon content from optical density
 
@@ -761,6 +781,10 @@ lipids are preserved:
 
 ### Phytoplankton
 
+I will collect two sets of phytoplankton samples: one set will be kept
+to measure the quality and toxins, and the other set will be kept with
+lugol to measure the cell size.
+
 > [!WARNING]
 >
 > ### To do
@@ -897,20 +921,27 @@ Anne Jensinius Jacobsen.
 > - @ Jana: how do we store the sample for P analysis?
 > - Ask Anne when she could show me how to do this.
 
-**Body size.** Photograph individuals.
+**Body size.**
+
+- Phytoplankton & *Daphnia magna*: I will take photos of individuals,
+  which then I will measure using software. I will need to add a
+  correction factor to account for the fact that (i) I will be measuring
+  2D images of 3D individuals and that (ii) Lugol shrinks them.
+- Chaoborus: I will take photos of individuals, which then I will
+  measure using software.
 
 > [!WARNING]
 >
 > ### To do
 >
-> - @ Ali, Kirsten: would it be easy to measure the body size of
->   phytoplankton?
 > - Think about whether this should be done at the time point 0 and at
 >   the last time point.
 > - I need to think about how to have different samples for body size
 >   and for quality analysis. The only thing I can think of is whether
 >   we could take photos of the body size when they come out. But this
 >   might be a lot of work.
+> - Which software should I use to measure the body size of
+>   phytoplankton?
 
 **Toxicity.** Microcystin-LR concentration will be measured using an
 ELISA kit.

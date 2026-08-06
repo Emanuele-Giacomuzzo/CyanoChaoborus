@@ -5633,7 +5633,8 @@ the reading order:
 <span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>Biomass_needed_for_PUFAs_mg <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Tarn Preet Parmar, personal communication</span></span>
 <span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>Biomass_needed_for_sterols_mg <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Tarn Preet Parmar, personal communication</span></span>
 <span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>Biomass_needed_for_stoichiometry_mg <span class="ot">&lt;-</span> <span class="fl">1.5</span> <span class="co"># Dominik Martin-Creuzburg, personal communication</span></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="co"># Biomass_needed_for_toxins_mg is calculated in 4_calculations.qmd from the microcystin biodilution chain, the ELISA detection limit, and Microcystins_extraction_volume_mL above.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="co"># Biomass_needed_for_toxins_mg is calculated in 4_calculations.qmd from the microcystin biodilution chain, the ELISA detection limit, and Microcystins_extraction_volume_mL above.</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="co"># Biomass_needed_for_P_mg &lt;- ... # The lowest Claudia recorded was 0.005 mg of phosphorus (but she doesn’t know for how much dry weight).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -5773,21 +5774,26 @@ the reading order:
 <span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternating the daily harvest across the Phytoplankton_vessels_per_species experimental bottles means</span></span>
 <span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="co"># only one bottle is harvested on any given day, so that bottle alone has to cover that day&#39;s demand</span></span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="co"># while the other Phytoplankton_vessels_per_species - 1 bottles regrow.</span></span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>Phytoplankton_Microcystis_harvest_fraction <span class="ot">&lt;-</span> Phytoplankton_Microcystis_mg_C_per_day <span class="sc">/</span> Phytoplankton_experimental_bottle_max_mg_C</span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>Phytoplankton_Synechococcus_harvest_fraction <span class="ot">&lt;-</span> Phytoplankton_Synechococcus_mg_C_per_day <span class="sc">/</span> Phytoplankton_experimental_bottle_max_mg_C</span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>Phytoplankton_Nannochloropsis_harvest_fraction <span class="ot">&lt;-</span> Phytoplankton_Nannochloropsis_mg_C_per_day <span class="sc">/</span> Phytoplankton_experimental_bottle_max_mg_C</span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>Phytoplankton_Tetradesmus_harvest_fraction <span class="ot">&lt;-</span> Phytoplankton_Tetradesmus_mg_C_per_day <span class="sc">/</span> Phytoplankton_experimental_bottle_max_mg_C</span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="co"># 🪜 Infrastructure: shelves and total jar count</span></span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>Weight_per_shelf_kg <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(</span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>  ((Chaoborus_jar_with_liquid_kg <span class="sc">*</span> Jars_Chaoborus) <span class="sc">+</span></span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>    (Small_jar_with_liquid_kg <span class="sc">*</span> Jars_small_Daphnia) <span class="sc">+</span></span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>    (Large_jar_with_liquid_kg <span class="sc">*</span> Jars_big_Daphnia)) <span class="sc">/</span> Shelves</span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>Jars_total <span class="ot">&lt;-</span> Jars_Chaoborus <span class="sc">+</span> Jars_small_Daphnia <span class="sc">+</span> Jars_big_Daphnia</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="co"># while the other Phytoplankton_vessels_per_species - 1 bottles regrow. The harvested volume is replaced</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="co"># with fresh COMBO on the spot (as in protocol/4_feed_Daphnia.md), which is what dilutes that bottle back</span></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="co"># down before it regrows toward Phytoplankton_highest_concentration_mg_C_per_litres ahead of its next</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="co"># harvest — the fractions below only check that the demand fits under the bottle&#39;s max carbon content,</span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="co"># they don&#39;t yet confirm the diluted bottle actually regrows that far in the days it has to do so (see</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a><span class="co"># To do below).</span></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>Phytoplankton_Microcystis_harvest_fraction <span class="ot">&lt;-</span> Phytoplankton_Microcystis_mg_C_per_day <span class="sc">/</span> Phytoplankton_experimental_bottle_max_mg_C</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>Phytoplankton_Synechococcus_harvest_fraction <span class="ot">&lt;-</span> Phytoplankton_Synechococcus_mg_C_per_day <span class="sc">/</span> Phytoplankton_experimental_bottle_max_mg_C</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>Phytoplankton_Nannochloropsis_harvest_fraction <span class="ot">&lt;-</span> Phytoplankton_Nannochloropsis_mg_C_per_day <span class="sc">/</span> Phytoplankton_experimental_bottle_max_mg_C</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>Phytoplankton_Tetradesmus_harvest_fraction <span class="ot">&lt;-</span> Phytoplankton_Tetradesmus_mg_C_per_day <span class="sc">/</span> Phytoplankton_experimental_bottle_max_mg_C</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a><span class="co"># 🪜 Infrastructure: shelves and total jar count</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>Weight_per_shelf_kg <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>  ((Chaoborus_jar_with_liquid_kg <span class="sc">*</span> Jars_Chaoborus) <span class="sc">+</span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>    (Small_jar_with_liquid_kg <span class="sc">*</span> Jars_small_Daphnia) <span class="sc">+</span></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>    (Large_jar_with_liquid_kg <span class="sc">*</span> Jars_big_Daphnia)) <span class="sc">/</span> Shelves</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>Jars_total <span class="ot">&lt;-</span> Jars_Chaoborus <span class="sc">+</span> Jars_small_Daphnia <span class="sc">+</span> Jars_big_Daphnia</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -5805,7 +5811,7 @@ the reading order:
 <ul>
 <li><code>Biomass_needed_for_toxins_mg</code> (and so <code>Biomass_needed_total_mg</code>) is a theoretical minimum derived from the ELISA detection limit — it doesn’t yet account for practical margins like running replicate wells or extraction losses, so treat it as a lower bound pending the validation test Jing recommended (see <a href="3_parameters.qmd">Parameters</a>).</li>
 <li><code>Phytoplankton_*_mg_C_per_day</code> above is a steady-state daily rate; turning it into a total for the whole experiment needs the experiment’s duration, which isn’t decided yet (see the “End experiment” To do in <a href="6_experimental_procedure.qmd">Experimental Procedure</a>).</li>
-<li><code>Phytoplankton_Nannochloropsis_harvest_fraction</code> comes out around 80% of one experimental bottle’s maximum standing carbon — tight relative to the other species. Confirm this leaves enough margin once real growth curves are available, rather than just the conservative <code>Phytoplankton_highest_concentration_mg_C_per_litres</code> ceiling.</li>
+<li><code>Phytoplankton_*_harvest_fraction</code> only checks that a day’s demand fits under one bottle’s maximum standing carbon — it doesn’t yet confirm the bottle regrows back up to that concentration in time for its next harvest, <code>Phytoplankton_vessels_per_species</code> days later, after being diluted with COMBO. That needs each species’ actual growth rate, which isn’t in Parameters yet (<code>Phytoplankton_growth_time_days</code> is the wrong number to reuse here — it describes the much bigger scale-up dilution from a small stock inoculum, not this smaller daily top-up). Most urgent for <code>Phytoplankton_Nannochloropsis_harvest_fraction</code>, which sits around 80% and so dilutes that bottle the most.</li>
 <li>The 4th treatment’s toxin dose (how much lysed <em>M. aeruginosa</em> biomass gets added directly to each <em>Chaoborus</em> jar) isn’t sized yet, so it isn’t included in <code>Phytoplankton_Microcystis_mg_C_per_day</code> above — that demand is on top of the 1st treatment’s diet-driven <em>M. aeruginosa</em> need.</li>
 </ul>
 </div>
@@ -5976,7 +5982,7 @@ C -- &quot;every 7 days&quot; --&gt; D --&gt; E
 <p>Because a new cohort is started every day and takes 5 days to reach harvest age, 5 cohorts of staggered ages are running side by side at any given time, one reaching harvest age each day. All of them have to already be in place on day one — the experiment can’t wait 5 days for the rotation to ramp up — so it has to start with 100 cohort jars (20 jars/cohort × 5 cohorts), each stocked with 10 adults. That means <strong>1000 adult <em>Daphnia</em></strong> (10 adults/jar × 20 jars/cohort × 5 cohorts) are needed to start the experiment.</p>
 <p>That stock has to be propagated up from Vana’s existing cultures. Starting from her 2 jars, at 15 adults per jar (both placeholders — see To do below), every adult produces 20 neonates per 5-day cycle, enough to found 20 new jars per existing jar each cycle regardless of jar size (jar size cancels out of that ratio). Compounding at that rate, the 1000-adult target is cleared within 2 cycles (10 days) — comfortably inside the 30-day, one-month lead time, with 20 days to spare. <em>Daphnia</em> fecundity is therefore never the bottleneck: propagating every offspring into a new jar for the full 2 cycles would leave 800 jars (12,000 adults) — far more than needed. In practice, only enough jars should be founded in the final cycle to reach the 100 cohort jars (1000 adults) the rotation actually needs at the start of the experiment; the remaining lead time is buffer for losses, delays, or a smaller starting stock than assumed here.</p>
 <p>Each of the 100 active cohort jars is fed daily at 2 mg C/L into its 0.8 L of medium, which comes to 160 mg C/day split across the 4 treatment diets (Table 1 in <a href="5_experimental_design.qmd">Experimental Design</a>). Averaged evenly across treatments, that puts daily demand at 20 mg C of <em>M. aeruginosa</em>, 20 mg C of <em>S. elongatus</em>, and 80 mg C of <em>N. limnetica</em>. The stock jars that found these cohorts (1 large + 144 small, fed 2 mg C/L/day of <em>T. obliquus</em> alone) add another 24.6 mg C/day, for a combined <em>T. obliquus</em> demand of 64.6 mg C/day.</p>
-<p>Harvesting alternates daily across the 3 experimental bottles per species, so on any given day only one bottle per species is harvested while the other 2 regrow. At the conservative 50 mg C/L ceiling used throughout (100 mg C in a full 2 L bottle), that single daily bottle needs to supply 20% of its standing carbon for <em>M. aeruginosa</em>, 20% for <em>S. elongatus</em>, 80% for <em>N. limnetica</em>, and 65% for <em>T. obliquus</em> — all under 100%, so 3 bottles per species are enough, though <em>N. limnetica</em> leaves little headroom (see To do below).</p>
+<p>Harvesting alternates daily across the 3 experimental bottles per species, so on any given day only one bottle per species is harvested while the other 2 regrow; whatever volume is taken out is replaced on the spot with fresh COMBO, the same way stock cultures are topped up (protocol/4_feed_Daphnia.md). At the conservative 50 mg C/L ceiling used throughout (100 mg C in a full 2 L bottle), that single daily bottle needs to supply 20% of its standing carbon for <em>M. aeruginosa</em>, 20% for <em>S. elongatus</em>, 80% for <em>N. limnetica</em>, and 65% for <em>T. obliquus</em> — all under 100%, so 3 bottles per species are enough to cover the carbon demand. What this doesn’t yet check is whether the diluted bottle actually regrows back to 50 mg C/L before its next harvest, 3 days later — that depends on each species’ growth rate, which isn’t pinned down yet (see To do below), and matters most for <em>N. limnetica</em>, whose bottle is diluted the most.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="To do">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -5990,7 +5996,7 @@ C -- &quot;every 7 days&quot; --&gt; D --&gt; E
 <ul>
 <li>Confirm with Vana how many jars (and adults per jar) her stock cultures actually hold, to replace the <code>Vana_Daphnia_starting_jars</code>/<code>Daphnia_adults_per_jar</code> placeholders above.</li>
 <li>Confirm that cohorts are meant to be started daily (assumed above from the “oldest cohort” language in protocol/3_create_Daphnia_jars.md and protocol/5_create_Chaoborus_jars.md) — if the interval differs, <code>Daphnia_cohorts_in_rotation</code> needs updating.</li>
-<li><code>Phytoplankton_Nannochloropsis_harvest_fraction</code> leaves only about 20% headroom on the daily harvested bottle — check this against real growth rates once available, and consider a 4th replicate line for <em>N. limnetica</em> if it turns out to be too tight in practice.</li>
+<li>Confirm each species can regrow from its post-harvest dilution back to <code>Phytoplankton_highest_concentration_mg_C_per_litres</code> within the <code>Phytoplankton_vessels_per_species</code>-day gap between harvests — needs an actual growth rate per species, not yet in <a href="3_parameters.qmd">Parameters</a>. Most urgent for <em>N. limnetica</em>, whose bottle is diluted the most (80% harvested); consider a 4th replicate line for it if regrowth turns out too slow.</li>
 </ul>
 </div>
 </div>
@@ -6174,6 +6180,7 @@ C -- &quot;every 7 days&quot; --&gt; D --&gt; E
 </div>
 <section id="phytoplankton-1" class="level3" data-number="4.4.1">
 <h3 data-number="4.4.1" class="anchored" data-anchor-id="phytoplankton-1"><span class="header-section-number">4.4.1</span> Phytoplankton</h3>
+<p>I will collect two sets of phytoplankton samples: one set will be kept to measure the quality and toxins, and the other set will be kept with lugol to measure the cell size.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="To do">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -6379,7 +6386,11 @@ C -- &quot;every 7 days&quot; --&gt; D --&gt; E
 </ul>
 </div>
 </div>
-<p><strong>Body size.</strong> Photograph individuals.</p>
+<p><strong>Body size.</strong></p>
+<ul>
+<li>Phytoplankton &amp; <em>Daphnia magna</em>: I will take photos of individuals, which then I will measure using software. I will need to add a correction factor to account for the fact that (i) I will be measuring 2D images of 3D individuals and that (ii) Lugol shrinks them.</li>
+<li>Chaoborus: I will take photos of individuals, which then I will measure using software.</li>
+</ul>
 <div class="callout callout-style-default callout-warning callout-titled" title="To do">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -6391,9 +6402,9 @@ C -- &quot;every 7 days&quot; --&gt; D --&gt; E
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>@ Ali, Kirsten: would it be easy to measure the body size of phytoplankton?</li>
 <li>Think about whether this should be done at the time point 0 and at the last time point.</li>
 <li>I need to think about how to have different samples for body size and for quality analysis. The only thing I can think of is whether we could take photos of the body size when they come out. But this might be a lot of work.</li>
+<li>Which software should I use to measure the body size of phytoplankton?</li>
 </ul>
 </div>
 </div>

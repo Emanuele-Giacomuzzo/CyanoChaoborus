@@ -106,6 +106,7 @@ Biomass_needed_for_PUFAs_mg <- 1 # Tarn Preet Parmar, personal communication
 Biomass_needed_for_sterols_mg <- 1 # Tarn Preet Parmar, personal communication
 Biomass_needed_for_stoichiometry_mg <- 1.5 # Dominik Martin-Creuzburg, personal communication
 # Biomass_needed_for_toxins_mg is calculated in 4_calculations.qmd from the microcystin biodilution chain, the ELISA detection limit, and Microcystins_extraction_volume_mL above.
+# Biomass_needed_for_P_mg <- ... # The lowest Claudia recorded was 0.005 mg of phosphorus (but she doesn’t know for how much dry weight).
 ```
 
 :::
