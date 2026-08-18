@@ -6,7 +6,7 @@ All notable changes to this repository are recorded here, newest first, so they'
 
 ### Changed
 
-- Revised `README.md` based on external feedback: toned down the whimsical tone in favor of a more professional register, sharpened the framing around decoupling toxicity from nutritional quality (the project's central scientific idea), softened the "broad relevance" claim about *Chaoborus* as a model organism, reworded the opening line describing this repository as the project's central information source rather than its only one, and relaxed the CHANGELOG-on-every-branch instruction to apply only to changes meaningful to the project. Added a new "Experimental overview" table (organism, design, main contrast, response variables, status) so the actual experiment is legible at a glance without reading the full rendered document.
+- Revised `README.md` based on external feedback: toned down the whimsical tone in favor of a more professional register, sharpened the framing around decoupling toxicity from nutritional quality (the project's central scientific idea), softened the "broad relevance" claim about *Chaoborus* as a model organism, reworded the opening line describing this repository as the project's central information source rather than its only one, and relaxed the CHANGELOG-on-every-branch instruction to apply only to changes meaningful to the project. Added a new "Experimental overview" section, later rewritten from a summary table into five prose paragraphs spelling out the design logic (which treatment contrasts isolate the toxin-route effect from the food-quality effect), the response variables, and current status, so the actual experiment is legible at a glance without reading the full rendered document.
 
 ## 2026-08-17
 

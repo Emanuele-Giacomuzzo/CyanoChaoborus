@@ -87,13 +87,15 @@ To study this, we use *Chaoborus* — commonly known as the **phantom midge** �
 
 ## 🧫 Experimental overview
 
-| Component | Description |
-|---|---|
-| Organism | *Chaoborus* (phantom midge), fed *Daphnia* raised on the treatment diets |
-| Design | 4 diet treatments × 4 replicates, decoupling toxicity from food quality (see [Experimental Design](1_experiment/5_experimental_design.qmd)) |
-| Main contrast | Toxicity vs. nutritional quality, varied independently rather than co-occurring as in nature |
-| Responses | Survival, growth, development, and timing of emergence; body size; biomass; PUFAs, sterols, and C:N:P stoichiometry; microcystin toxicity |
-| Status | Work in progress — the design and most sizing calculations are set, but the experiment hasn't started yet (see [Overview](1_experiment/2_overview.qmd)) |
+To test whether toxicity and nutritional quality independently shape the resource pulse that *Chaoborus* exports from water to land, we use a laboratory food chain rather than manipulating cyanobacteria directly: *Chaoborus* larvae feed on *Daphnia* that have themselves been raised on one of four defined phytoplankton diets (full design in [Experimental Design](1_experiment/5_experimental_design.qmd)). Because *Chaoborus* never contacts cyanobacteria directly, both diet composition and the route by which any toxin reaches the predator become variables under experimental control rather than a confound, as they are in nature.
+
+Two of the four diets are nutritionally low-quality, each combining a cyanobacterium with the high-quality green alga *Tetradesmus obliquus* in a fixed ratio by carbon: one pairs *Tetradesmus* with the toxic *Microcystis aeruginosa*, the other with the non-toxic *Synechococcus elongatus*. Contrasting these two diets isolates the effect of dietary toxin exposure while holding food quality constant, since both are equally poor in nutritional terms and differ only in whether *Microcystis* is present.
+
+The remaining two diets are nutritionally high-quality, consisting entirely of *Nannochloropsis limnetica*, and are identical to one another except that the fourth additionally receives toxin from lysed *M. aeruginosa* dosed directly into the *Chaoborus* jar rather than delivered through the *Daphnia* diet. Because this route bypasses *Daphnia* — and with it any biodilution or biotransformation *Daphnia* would otherwise impose on the toxin — this contrast isolates the effect of toxin exposure itself, independent of food quality. Comparing the two non-toxic diets against one another isolates the food-quality contrast in the absence of any toxin. Each of the four treatments is replicated four times.
+
+For every treatment, we track the quantity, quality, and timing of the resource pulse *Chaoborus* ultimately delivers to terrestrial consumers: survival, growth, and developmental rate through the larval and pupal stages; the timing and biomass of adult emergence; body size; and, at the biochemical level, polyunsaturated fatty acid and sterol content, carbon–nitrogen–phosphorus stoichiometry, and microcystin concentration. Together, these endpoints let us ask not only whether cyanobacterial toxicity and food quality affect *Chaoborus* performance, but whether — and how — they alter the nutritional value of what it exports to land.
+
+The experiment has not yet begun. Diet treatments, replication, and most sizing calculations are fixed, while phytoplankton growth-rate calibration, toxin quantification, and *Chaoborus* sourcing are still being finalized (see [Overview](1_experiment/2_overview.qmd)).
 
 ---
 
