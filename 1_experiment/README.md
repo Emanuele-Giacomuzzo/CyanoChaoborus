@@ -8,17 +8,17 @@ Everything lives flat in this folder with a sequential number prefix, so a plain
 
 ### The book
 
-**[Rendered_files/README.md](Rendered_files/README.md) and [Rendered_files/Rendered.html](Rendered_files/Rendered.html) are the whole introduction, design, calculations, and protocol write-up rendered as a single document** — read either if you just want the current state of the plan (the HTML version has a navigable sidebar).
+**[Rendered_files/Rendered.html](Rendered_files/Rendered.html) is the whole introduction, design, calculations, and protocol write-up rendered as a single document** — download and open it if you want the current state of the plan (it has a navigable sidebar and collapsible code sections).
 
-They're generated from the Quarto master file [1_master.qmd](1_master.qmd), which stitches the chapters below together (via `{{< include >}}`) in reading order. Each chapter is its own small file so edits stay easy to review; only `1_master.qmd` needs to change if you want to reorder chapters.
+It's generated from the Quarto master file `1_master.qmd`, which stitches the chapters below together (via `{{< include >}}`) in reading order. Each chapter is its own small file so edits stay easy to review; only `1_master.qmd` needs to change if you want to reorder chapters. These are source files, not meant to be read directly on GitHub — they contain raw Quarto/R syntax that only renders correctly through the build step below, so always read the rendered HTML instead:
 
-- [2_overview.qmd](2_overview.qmd) — project introduction (includes the repo's top-level [README](../README.md)), plus background and hypotheses
-- [3_parameters.qmd](3_parameters.qmd) — sourced numeric assumptions (biomass, weights, growth times, biodilution factors) shared by the chapters below
-- [4_calculations.qmd](4_calculations.qmd) — organism, jar, and infrastructure quantities, computed (not hand-typed) from `3_parameters.qmd`, and quoted inline throughout the chapters below
-- [5_experimental_design.qmd](5_experimental_design.qmd) — treatments, Chaoborus setup, and end points
-- [6_experimental_procedure.qmd](6_experimental_procedure.qmd) — pre-experiment culturing and assembly steps
-- [7_bibliography.qmd](7_bibliography.qmd)
-- [8_protocols.qmd](8_protocols.qmd) — appendix, auto-generated from every Markdown file in [protocol/](protocol/), included in full at the very end of the book
+- `2_overview.qmd` — project introduction (includes the repo's top-level [README](../README.md)), plus background and hypotheses
+- `3_parameters.qmd` — sourced numeric assumptions (biomass, weights, growth times, biodilution factors) shared by the chapters below
+- `4_calculations.qmd` — organism, jar, and infrastructure quantities, computed (not hand-typed) from `3_parameters.qmd`, and quoted inline throughout the chapters below
+- `5_experimental_design.qmd` — treatments, Chaoborus setup, and end points
+- `6_experimental_procedure.qmd` — pre-experiment culturing and assembly steps
+- `7_bibliography.qmd`
+- `8_protocols.qmd` — appendix, auto-generated from every Markdown file in [protocol/](protocol/), included in full at the very end of the book
 
 **To rebuild the rendered files after editing any chapter**, run from this folder:
 
@@ -37,7 +37,7 @@ LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 quarto render 1_master.qmd
 
 ### Protocols
 
-Stand-alone bench SOPs, one canonical protocol per procedure (superseding the older dated-log versions logged on different days). They're included in full as an appendix at the end of [Rendered_files/README.md](Rendered_files/README.md)/[Rendered_files/Rendered.html](Rendered_files/Rendered.html), but each one is still meant to be opened and read on its own at the bench, not as part of a start-to-finish read of the book.
+Stand-alone bench SOPs, one canonical protocol per procedure (superseding the older dated-log versions logged on different days). They're included in full as an appendix at the end of [Rendered_files/Rendered.html](Rendered_files/Rendered.html), but each one is still meant to be opened and read on its own at the bench, not as part of a start-to-finish read of the book.
 
 - [1_create_COMBO.md](protocol/1_create_COMBO.md) — preparing COMBO growth medium
 - [2_create_Zoo-COMBO.md](protocol/2_create_Zoo-COMBO.md) — preparing Zoo-COMBO medium *(to be written)*

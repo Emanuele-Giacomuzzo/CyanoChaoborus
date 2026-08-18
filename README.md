@@ -12,10 +12,7 @@ Whether you're a new lab member, a curious second-year BSc student, or just cyao
 
 ## 📄 Where to find the results
 
-This project is a **work in progress** — protocols, calculations, and results are still being built out and refined here as we go. The full write-up (background, protocols, calculations, and results) lives in two versions:
-
-- **Quick view, right in your browser:** [`1_experiment/Rendered_files/README.md`](1_experiment/Rendered_files/README.md) — GitHub renders this automatically, so you can read the whole report (text, figures, tables) without downloading anything.
-- **Full interactive version:** [`1_experiment/Rendered_files/Rendered.html`](1_experiment/Rendered_files/Rendered.html) — the polished version, with a table of contents and collapsible code sections. GitHub can't display raw HTML pages in the browser, so open the link, then use the page's "Download raw file" button (⬇ icon) to save it, and open the downloaded file in your own browser.
+This project is a **work in progress** — protocols, calculations, and results are still being built out and refined here as we go. The full write-up (background, protocols, calculations, and results) lives at [`1_experiment/Rendered_files/Rendered.html`](1_experiment/Rendered_files/Rendered.html) — it has a table of contents and collapsible code sections. GitHub can't display raw HTML pages in the browser, so open the link, then use the page's "Download raw file" button (⬇ icon) to save it, and open the downloaded file in your own browser.
 
 If anything in the report is unclear, or you think something's missing, don't sit on it — ask in [Discussions](https://github.com/Emanuele-Giacomuzzo/CyanoChaoborus/discussions) (see below).
 

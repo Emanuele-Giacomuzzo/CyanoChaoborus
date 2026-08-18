@@ -24,7 +24,6 @@ Large_jar_with_liquid_kg <- 1.5
 # 🔥 Autoclaving
 
 Autoclave_temperature_C <- 121 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
-Autoclave_solids_minutes <- 25  # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
 Autoclave_solids_minutes <- 25 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
 Autoclave_1L_bottle_minutes <- 45 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
 Autoclave_2L_bottle_minutes <- 60 # I always autoclaved COMBO in 2L bottles for this amount of time and never had a problem with it
