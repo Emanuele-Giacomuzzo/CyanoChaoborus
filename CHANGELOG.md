@@ -2,6 +2,12 @@
 
 All notable changes to this repository are recorded here, newest first, so they're easy to skim without digging through commit history. Format loosely follows [Keep a Changelog](https://keepachangelog.com/), adapted for a project without version numbers — entries are grouped by date instead.
 
+## 2026-08-18
+
+### Changed
+
+- Revised `README.md` based on external feedback: toned down the whimsical tone in favor of a more professional register, sharpened the framing around decoupling toxicity from nutritional quality (the project's central scientific idea), softened the "broad relevance" claim about *Chaoborus* as a model organism, reworded the opening line describing this repository as the project's central information source rather than its only one, and relaxed the CHANGELOG-on-every-branch instruction to apply only to changes meaningful to the project. Added a new "Experimental overview" table (organism, design, main contrast, response variables, status) so the actual experiment is legible at a glance without reading the full rendered document.
+
 ## 2026-08-17
 
 ### Added

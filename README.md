@@ -2,11 +2,11 @@
 
 > **New here?** Jump straight to [📄 Where to find the results](#-where-to-find-the-results) for the report and how to ask questions — then come back and read the rest whenever you like.
 
-Greetings, and welcome — you made it to the project folder / master file! 🎉
+Welcome — you've reached the project folder / master file.
 
-This is **the** project folder / master file, the one place where you can find all the information about the CyanoChaoborus project: the people behind it, the big questions we're asking, and (as the folders below fill up) the experiments, data, analyses, and results themselves.
+This is the central repository for the CyanoChaoborus project: the people behind it, the research questions we're asking, and — as the folders below fill up — the experiments, data, analyses, and results themselves.
 
-Whether you're a new lab member, a curious second-year BSc student, or just cyaonabcteria-curious, you're in the right place. Grab a coffee ☕ and read on.
+Whether you're a new lab member, a BSc student, or simply curious about cyanobacteria, you're in the right place. Read on for an overview of the project and how it's organised.
 
 ---
 
@@ -32,7 +32,7 @@ This also goes for the project's folder structure, document structure, and gener
 To keep `main` always in a clean, working state, **never push directly to `main`.** Instead:
 
 1. Create a new branch for your change (e.g., `git checkout -b your-name/short-description`).
-2. Add a line to [`CHANGELOG.md`](CHANGELOG.md) describing what you changed and why — every branch that gets pushed needs its change documented there, so anyone can see what happened without having to dig through commits.
+2. If your change is meaningful to the project (not, say, fixing a typo), add a line to [`CHANGELOG.md`](CHANGELOG.md) describing what you changed and why, so anyone can see what happened without having to dig through commits.
 3. Push your changes to that new branch, not `main`.
 4. Open a Pull Request into `main` (a request to merge your branch in), with a short description of the change, so it can be reviewed before it becomes part of the project.
 
@@ -42,7 +42,7 @@ If you're not comfortable with git yet, that's exactly what Discussions are for 
 
 ## 👥 Who's in this?
 
-This project is powered by a small but very dedicated crew:
+This project's team:
 
 | Name | Role | Institution |
 |---|---|---|
@@ -55,7 +55,7 @@ This project is powered by a small but very dedicated crew:
 | Tobias Hoffmann Jensen | BSc student, wrote his BSc thesis on this project | University of Copenhagen, DK |
 | Tina Katherine Varis | BSc student, doing research assistanship within this project | Elon University, USA, exchange @ University of Copenhagen, DK |
 
-Basically, a small international team spanning Denmark, Brazil, and the US, at every career stage from BSc to PI — all digging into the same big question 🌍
+The team spans Denmark, Brazil, and the US, and every career stage from BSc to PI, all working on the same research question.
 
 ---
 
@@ -72,16 +72,28 @@ Now bring in **cyanobacteria** (aka "blue-green algae"). Cyanobacterial blooms a
 1. **Toxins** — many cyanobacteria produce toxins (like microcystins) that can directly harm the animals living in the water.
 2. **Poor food quality** — even when they're not toxic, cyanobacteria tend to be nutritionally poor food (they lack certain essential fatty acids and other nutrients that animals need to grow and reproduce).
 
-The tricky part: these two effects usually happen *at the same time* in nature, so it's really hard to know which one is actually driving the damage. Is it the toxic, or is it the poor quality food effect (or both)? **Teasing these two mechanisms apart is the central goal of this project.**
+The tricky part: these two effects usually happen *at the same time* in nature, so it's really hard to know which one is actually driving the damage. Is it the toxicity, or is it the poor food quality effect (or both)? **Teasing these two mechanisms apart is the central goal of this project: the experimental design separates toxicity and nutritional quality — two properties that normally covary — and varies each independently.**
 
 ## 🧪 Why Chaoborus (the phantom midge)?
 
 To study this, we use *Chaoborus* — commonly known as the **phantom midge** — as our model organism. A few reasons it's a great fit:
 
-- It's a genus that's **widespread around the world**, found in lakes and ponds across many continents, so what we learn has broad relevance.
+- It's a genus that's **widespread around the world**, found in lakes and ponds across many continents — a useful model for testing mechanisms that may help explain variation in aquatic–terrestrial linkages more broadly, even though results from a single species aren't assumed to generalize automatically.
 - It's a well-established model in freshwater ecology, so there's a solid foundation of methods and knowledge to build on, and it's (relatively) easy to keep in the lab. 
 
-By feeding *Chaoborus* different cyanobacterial diets (toxic vs. non-toxic, nutritionally varied) and tracking how they grow, survive, and eventually emerge, we can start to disentangle *toxicity* from *food quality* — and understand what that means for the animals waiting on land for their next meal to fly out of the water.
+*Chaoborus* is not fed cyanobacteria directly — it's fed *Daphnia* that were themselves raised on one of several treatment diets. By tracking how *Chaoborus* grows, survives, and eventually emerges under each diet, we can disentangle *toxicity* from *food quality* — and understand what that means for the animals waiting on land for their next meal to fly out of the water.
+
+---
+
+## 🧫 Experimental overview
+
+| Component | Description |
+|---|---|
+| Organism | *Chaoborus* (phantom midge), fed *Daphnia* raised on the treatment diets |
+| Design | 4 diet treatments × 4 replicates, decoupling toxicity from food quality (see [Experimental Design](1_experiment/5_experimental_design.qmd)) |
+| Main contrast | Toxicity vs. nutritional quality, varied independently rather than co-occurring as in nature |
+| Responses | Survival, growth, development, and timing of emergence; body size; biomass; PUFAs, sterols, and C:N:P stoichiometry; microcystin toxicity |
+| Status | Work in progress — the design and most sizing calculations are set, but the experiment hasn't started yet (see [Overview](1_experiment/2_overview.qmd)) |
 
 ---
 
@@ -96,4 +108,4 @@ By feeding *Chaoborus* different cyanobacterial diets (toxic vs. non-toxic, nutr
 
 ---
 
-Thanks for stopping by — happy reading, and welcome aboard! 🔬🦟
+Thanks for reading, and welcome aboard.
