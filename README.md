@@ -1,10 +1,45 @@
 # Overview of the project
 
+> **New here?** Jump straight to [📄 Where to find the results](#-where-to-find-the-results) for the report and how to ask questions — then come back and read the rest whenever you like.
+
 Greetings, and welcome — you made it to the project folder / master file! 🎉
 
 This is **the** project folder / master file, the one place where you can find all the information about the CyanoChaoborus project: the people behind it, the big questions we're asking, and (as the folders below fill up) the experiments, data, analyses, and results themselves.
 
 Whether you're a new lab member, a curious second-year BSc student, or just cyaonabcteria-curious, you're in the right place. Grab a coffee ☕ and read on.
+
+---
+
+## 📄 Where to find the results
+
+This project is a **work in progress** — protocols, calculations, and results are still being built out and refined here as we go. The full write-up (background, protocols, calculations, and results) lives in two versions:
+
+- **Quick view, right in your browser:** [`1_experiment/Rendered_files/README.md`](1_experiment/Rendered_files/README.md) — GitHub renders this automatically, so you can read the whole report (text, figures, tables) without downloading anything.
+- **Full interactive version:** [`1_experiment/Rendered_files/Rendered.html`](1_experiment/Rendered_files/Rendered.html) — the polished version, with a table of contents and collapsible code sections. GitHub can't display raw HTML pages in the browser, so open the link, then use the page's "Download raw file" button (⬇ icon) to save it, and open the downloaded file in your own browser.
+
+If anything in the report is unclear, or you think something's missing, don't sit on it — ask in [Discussions](https://github.com/Emanuele-Giacomuzzo/CyanoChaoborus/discussions) (see below).
+
+## 💬 Questions, ideas, and things to add → use Discussions
+
+Whenever you don't understand something, or you'd like something added or changed, please ask in the repository's [Discussions](https://github.com/Emanuele-Giacomuzzo/CyanoChaoborus/discussions) tab rather than messaging someone individually — that way the answer gets written down and everyone on the team can see it and learn from it. There's no such thing as a silly question here.
+
+A couple of ground rules to keep Discussions easy to browse:
+
+- **One topic per Discussion.** Keep each Discussion focused on a single question or idea, so it's easy to find and link back to later.
+- **Number tightly related questions.** If you have a few questions that only make sense answered together, group them in a single Discussion, numbered (1, 2, 3, ...), instead of opening a separate Discussion for each one.
+
+This also goes for the project's folder structure, document structure, and general organization: none of it is set in stone. If you see a way to make it clearer or easier to navigate, open a Discussion with your suggestion — it's genuinely welcome.
+
+## 🌿 Making changes → never push to `main`
+
+To keep `main` always in a clean, working state, **never push directly to `main`.** Instead:
+
+1. Create a new branch for your change (e.g., `git checkout -b your-name/short-description`).
+2. Add a line to [`CHANGELOG.md`](CHANGELOG.md) describing what you changed and why — every branch that gets pushed needs its change documented there, so anyone can see what happened without having to dig through commits.
+3. Push your changes to that new branch, not `main`.
+4. Open a Pull Request into `main` (a request to merge your branch in), with a short description of the change, so it can be reviewed before it becomes part of the project.
+
+If you're not comfortable with git yet, that's exactly what Discussions are for — ask, and someone will walk you through it.
 
 ---
 
