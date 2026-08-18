@@ -34,6 +34,21 @@ the reading order:
 
 # Overview of the project
 
+> [!WARNING]
+>
+> ### 🚧 Work in progress
+>
+> This document is a live working draft, not a finished protocol —
+> please read it with that in mind. The research question, the
+> four-treatment diet design, and most sizing calculations (jars,
+> cohorts, biomass) are decided, but the experiment itself hasn’t
+> started yet. Ongoing work includes phytoplankton growth-rate
+> calibration (particularly for *Nannochloropsis limnetica*), toxin
+> quantification method/kit selection, and *Chaoborus* sourcing and
+> sampling logistics. The experiment’s start date and total duration are
+> also still undecided. Sections and numbers below may still change —
+> comments and corrections are very welcome.
+
 ## 🔬 What’s this project about?
 
 In one sentence: **we’re trying to understand how cyanobacteria affect

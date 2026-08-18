@@ -2,6 +2,16 @@
 
 All notable changes to this repository are recorded here, newest first, so they're easy to skim without digging through commit history. Format loosely follows [Keep a Changelog](https://keepachangelog.com/), adapted for a project without version numbers — entries are grouped by date instead.
 
+## 2026-08-17
+
+### Added
+
+- Added a "Work in progress" notice to the top of the Overview chapter, summarizing what's decided (research question, diet treatments, most sizing calculations) versus still open (phytoplankton growth-rate calibration, toxin kit selection, *Chaoborus* sourcing/sampling logistics, experiment start date and duration) — ahead of sharing the rendered document with collaborators.
+
+### Removed
+
+- Removed `1_experiment/1_master.html`, a stray duplicate of `Rendered_files/Rendered.html` that had been uploaded directly through GitHub's web editor instead of produced via the documented render workflow.
+
 ## 2026-08-06
 
 ### Added
