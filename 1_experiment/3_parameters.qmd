@@ -20,19 +20,20 @@ Small_jar_liquid_litres <- 0.08
 Small_jar_with_liquid_kg <- 0.2
 Large_jar_liquid_litres <- 0.8
 Large_jar_with_liquid_kg <- 1.5
+Large_jar_diameter_cm <- 9
 
 # 🔥 Autoclaving
 
 Autoclave_temperature_C <- 121 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
 Autoclave_solids_minutes <- 25 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
-Autoclave_1L_bottle_minutes <- 45 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
-Autoclave_2L_bottle_minutes <- 60 # I always autoclaved COMBO in 2L bottles for this amount of time and never had a problem with it
-Autoclave_5L_bottle_minutes <- 85 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+Autoclave_1L_liquids_minutes <- 45 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+Autoclave_2L_liquids_minutes <- 60 # I always autoclaved COMBO in 2L bottles for this amount of time and never had a problem with it
+Autoclave_5L_liquids_minutes <- 85 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
 
 # 🦟 Chaoborus
 
 Chaoborus_third_instar_DW_mg <- 0.79 # Lowest weight in the following paper: Parma, S. (1971). Chaoborus flavicans (Meigen)(Diptera, Chaoboridae): an autecological study.
-Chaoborus_larvae_per_jar <- 10 # Initial density; below 50 ind./jar (9 cm diameter) this stays within the upper range of natural peak densities (Xie et al., 1998)
+Chaoborus_larvae_per_jar <- 10 # Initial density, within the upper range of natural peak densities (Xie et al., 1998)
 Chaoborus_jar_liquid_litres <- 0.8
 Chaoborus_jar_with_liquid_kg <- 1.5
 Chaoborus_dead_to_alive_ratio_worst_tratment <- 2
@@ -42,7 +43,7 @@ Chaoborus_cyanotoxin_biodilutin_from_Daphnia <- 5 # Based on a field study where
 
 # 🦐 Daphnia
 
-Daphnia_adults_per_jar <- 15
+Daphnia_adults_per_jar <- 15 # Suggested by Jana, as in her experience it's the highest density of Daphnia in the jars that 
 Daphnia_individuals_per_new_cohort_jar <- 10 # Individuals pipetted from stock into each newly created cohort jar (protocol/3_create_Daphnia_jars.md)
 Daphnia_fed_C_mg_per_litre_per_day <- 2 # Applies both to treatment cohort jars (fed the diet mixes above) and to the stock jars that found them (fed *Tetradesmus obliquus* alone, ad libitum, since the stock isn't part of the diet treatments; see 4_calculations.qmd)
 Daphnia_neonates_per_mother_per_5_days <- 20
@@ -110,8 +111,26 @@ Biomass_needed_for_stoichiometry_mg <- 1.5 # Dominik Martin-Creuzburg, personal 
 
 :::
 
-::: {.callout-warning title="To do"}
-- @ Irma: let's analyse `Microcystins_mg_per_g_DW_phytoplankton`.
-- Wait for Anne's answer on how much dry biomass for P analysis → update the amount needed for phosphorus analysis.
-- Wait for kit and protocol for measuring microcystins → check the detection limit and update `Microcystins_detection_limit_ug_per_L` accordingly, as well as `Microcystins_extraction_volume_mL`
-:::
+:::: {.callout-warning title="To do"}
+🦟🦟🦟 **Determine the number of Chaoborus per jar (`Chaoborus_larvae_per_jar`)** 
+
+- **Toxins biomass.** Calculate biomass needed for toxins (`Biomass_needed_for_toxins_mg`)    
+    - **Toxin detectability.** Determine what's the minium amount of detectable toxins (`Microcystins_detection_limit_ug_per_L`). ⏳ Waiting for: having bought ELISA kit. 
+    - **Extraction volume.** Determine what's the extraction volume for the toxins (`Microcystins_extraction_volume_mL`)
+    - **Toxin biodilution.** Calculate how much cyantoxins biodilute from Daphnia to Chaoborus (`Chaoborus_cyanotoxin_biodilutin_from_Daphnia`) 
+- **Phosphorus biomass.** Calculate biomass needed for phosphorus (`Biomass_needed_for_P_mg`)
+    - **Chaoborus phosphorus.** Estimate from the literaturehow much phosphorus is inside Chaoborus.
+    - ... 
+- **Chaoborus death rate.** Calculate Chaoborus estimated death rate (`Chaoborus_dead_to_alive_ratio_worst_tratment`)
+- **Chaoborus weight.** Measure the weight of (`Chaoborus_third_instar_DW_mg`) for different sizes. 
+    1. **Plan.** Make a plan on how to measure the weight of Chaoborus for different sizes
+    2. **Discuss.** Discuss with Jana the plan on how to measure the weight of Chaoborus for different sizes
+
+🍔 **Determine how much Daphnia does a Chaoborus of different sizes eat.**
+
+- **Feeding experiment.** Come up with an experiment to look at the number of Daphnia eaten for different Chaoborus and Daphnia sizes (`Chaoborus_Daphnia_neonates_eaten_per_day` & `Chaoborus_Daphnia_neonates_eaten_max_recorded`)
+
+❓ **Other**
+
+- **Toxins.** Discuss with Irma how to analyse `Microcystins_mg_per_g_DW_phytoplankton`.
+::::

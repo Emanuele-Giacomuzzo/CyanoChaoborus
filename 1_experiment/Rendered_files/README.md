@@ -147,20 +147,20 @@ question 🌍
 > Small_jar_with_liquid_kg <- 0.2
 > Large_jar_liquid_litres <- 0.8
 > Large_jar_with_liquid_kg <- 1.5
+> Large_jar_diameter_cm <- 9
 >
 > # 🔥 Autoclaving
 >
 > Autoclave_temperature_C <- 121 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
-> Autoclave_solids_minutes <- 25  # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
 > Autoclave_solids_minutes <- 25 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
-> Autoclave_1L_bottle_minutes <- 45 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
-> Autoclave_2L_bottle_minutes <- 60 # I always autoclaved COMBO in 2L bottles for this amount of time and never had a problem with it
-> Autoclave_5L_bottle_minutes <- 85 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+> Autoclave_1L_liquids_minutes <- 45 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
+> Autoclave_2L_liquids_minutes <- 60 # I always autoclaved COMBO in 2L bottles for this amount of time and never had a problem with it
+> Autoclave_5L_liquids_minutes <- 85 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
 >
 > # 🦟 Chaoborus
 >
 > Chaoborus_third_instar_DW_mg <- 0.79 # Lowest weight in the following paper: Parma, S. (1971). Chaoborus flavicans (Meigen)(Diptera, Chaoboridae): an autecological study.
-> Chaoborus_larvae_per_jar <- 10 # Initial density; below 50 ind./jar (9 cm diameter) this stays within the upper range of natural peak densities (Xie et al., 1998)
+> Chaoborus_larvae_per_jar <- 10 # Initial density, within the upper range of natural peak densities (Xie et al., 1998)
 > Chaoborus_jar_liquid_litres <- 0.8
 > Chaoborus_jar_with_liquid_kg <- 1.5
 > Chaoborus_dead_to_alive_ratio_worst_tratment <- 2
@@ -240,12 +240,34 @@ question 🌍
 >
 > ### To do
 >
+> - Chaoborus_third_instar_DW_mg: make a plan on how to measure actually
+>   the weight of Chaoborus from our own populations for different sizes
+>   and discuss it with Jana.
+> - Chaoborus_larvae_per_jar: decide at the end based on how much
+>   biomass you need for the experiment.
+> - Chaoborus_dead_to_alive_ratio_worst_tratment: decide how you are
+>   going to compute this.
+> - Chaoborus_Daphnia_neonates_eaten_per_day &
+>   Chaoborus_Daphnia_neonates_eaten_max_recorded: come up with an
+>   experiment to look at the number of Daphnia eaten for different
+>   Chaoborus and Daphnia sizes.
 > - @ Irma: let’s analyse `Microcystins_mg_per_g_DW_phytoplankton`.
 > - Wait for Anne’s answer on how much dry biomass for P analysis →
 >   update the amount needed for phosphorus analysis.
 > - Wait for kit and protocol for measuring microcystins → check the
 >   detection limit and update `Microcystins_detection_limit_ug_per_L`
 >   accordingly, as well as `Microcystins_extraction_volume_mL`
+> - Call Ichthyo trophic once again asking about the species of
+>   Chaoborus.
+>
+> > [!IMPORTANT]
+> >
+> > ### Waiting on
+> >
+> > - After we decided which ELISA kit to buy
+> >   - Chaoborus_cyanotoxin_biodilutin_from_Daphnia: consider how
+> >     within this value it needs to be to be for ELISA kit to detect
+> >     the toxins in Chaoborus.
 
 > [!NOTE]
 >
@@ -880,7 +902,7 @@ tubes.
 >
 > ### To do
 >
-> - Add a plan on when to end the experiment.\
+> - Add a plan on when to end the experiment.  
 
 > [!TIP]
 >
@@ -992,7 +1014,7 @@ inline in another chapter, use Pandoc’s citation syntax,
 e.g. `[@buns1991]` or `Büns and Ratte [-@buns1991]`.
 
 <div id="refs" class="references csl-bib-body hanging-indent"
-data-entry-spacing="0" data-line-spacing="2">
+entry-spacing="0" line-spacing="2">
 
 <div id="ref-buns1991" class="csl-entry">
 
