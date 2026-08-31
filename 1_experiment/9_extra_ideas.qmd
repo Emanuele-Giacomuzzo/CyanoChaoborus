@@ -1,0 +1,19 @@
+Parameters we could estimate better if we had time:
+
+🦟 **Determine the number of Chaoborus per jar (`Chaoborus_larvae_per_jar`)** 
+
+- **DW needed for toxin analysis (`DW_needed_for_toxins_mg`).** 
+    - **Extraction volume.** Determine what's the extraction volume for the toxins (`Microcystins_extraction_volume_mL`)
+    - *⏳ Waiting for: having bought ELISA kit ---*   **Toxin detectability.** Determine what's the minium amount of detectable toxins (`Microcystins_detection_limit_ug_per_L`)
+- **Biomass for phosphorus analysis (`DW_needed_for_P_mg`).** 
+    - **Phosphorus in Chaoborus.** Estimate from the literaturehow much phosphorus is inside Chaoborus.
+    - ... 
+- **Chaoborus death rate.** Calculate Chaoborus estimated death rate (`Chaoborus_dead_to_alive_ratio_worst_treatment`)
+- **Chaoborus weight.** Measure the weight of (`Chaoborus_third_instar_DW_mg`) for different sizes. 
+    1. **Plan.** Make a plan on how to measure the weight of Chaoborus for different sizes
+    2. **Discuss.** Discuss with Jana the plan on how to measure the weight of Chaoborus for different sizes
+
+
+**☠️ Determine at which dissolved toxin density *Chaoborus* gets affected by lysed *Microcystis aeruginosa*.**
+
+**☠️ Toxins.** Discuss with Irma how to analyse `Microcystins_mg_per_g_DW_phytoplankton`.

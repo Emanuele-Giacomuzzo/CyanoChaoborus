@@ -52,10 +52,10 @@ server <- function(input, output) {
     # to repository files at runtime, so these mirror the values in 3_parameters.qmd
     # rather than being read from it. Update both places together if they change.
     culture_volume_mL <- 800    # medium volume per Daphnia jar
-    target_C_mg_per_L <- 2      # carbon target per jar, matches Daphnia_fed_C_mg_per_litre_per_day in 3_parameters.qmd
+    target_C_mg_per_L <- 2      # carbon target per jar, matches Daphnia_algae_C_ad_libitum_mg_per_L_per_day in 3_parameters.qmd
     extra <- 0.25                # buffer added to the total volume to cover pipetting loss
 
-    frac_tetra <- 0.5           # share of carbon from Tetradesmus, matches Phytoplankton_low_quality_food_ratio in 3_parameters.qmd
+    frac_tetra <- 0.5           # share of carbon from Tetradesmus, matches Phyto_low_quality_food_ratio in 3_parameters.qmd
     slope_tetra <- 158.32
     intercept_tetra <- -10.991
 

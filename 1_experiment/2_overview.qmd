@@ -3,7 +3,7 @@
 ::: {.callout-warning}
 ## 🚧 Work in progress
 
-This document is a live working draft, please read it with that in mind. The research question and the four-treatment diet design havve been decided, but still some calculations need to be completed. The experiment itself hasn't started yet. The experiment's start date and total duration are also still undecided. Sections and numbers below may still change — comments and corrections are very welcome!
+This document is a live working draft, please read it with that in mind. The research question and the four-treatment diet design havve been decided, but still some calculations need to be completed. The experiment itself hasn't started yet. The experiment's start date and total duration are also still undecided. Sections and numbers below may still change — comments and corrections are very welcome! Also, as the document gets regularly updated, it's possible that there are mistakes/old snippets of text which are now obsolete. 
 :::
 
 ## 🔬 What's this project about?

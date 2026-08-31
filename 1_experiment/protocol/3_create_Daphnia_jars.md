@@ -17,5 +17,5 @@
 **Steps:**
 
 1.  Create 7 jars with 800 ml of Zoo COMBO, labelled as “EG – Today’s date – Daphnia magna – Mixed diet”.
-2.  Pipette `r Daphnia_individuals_per_new_cohort_jar` individuals from the stock cultures into each newly created jar.
+2.  Pipette `r Daphnia_adults_per_new_cohort_jar` individuals from the stock cultures into each newly created jar.
 3.  Use some of the Daphnia jars depleted of adults to feed the Chaoborus cultures.

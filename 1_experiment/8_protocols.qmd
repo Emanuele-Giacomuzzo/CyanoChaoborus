@@ -1,6 +1,6 @@
 # Protocols
 
-This section is generated automatically from every Markdown file in [`protocol/`](protocol/): each time this document is rendered, it picks up whatever protocols exist in that folder, in numerical order, without needing to be edited by hand. Each protocol file is knitted as a child document, so it can reference the shared [Parameters](3_parameters.qmd) with inline code (e.g. `` `r Daphnia_individuals_per_new_cohort_jar` ``) instead of hardcoding a number that could drift out of sync.
+This section is generated automatically from every Markdown file in [`protocol/`](protocol/): each time this document is rendered, it picks up whatever protocols exist in that folder, in numerical order, without needing to be edited by hand. Each protocol file is knitted as a child document, so it can reference the shared [Parameters](3_parameters.qmd) with inline code (e.g. `` `r Daphnia_adults_per_new_cohort_jar` ``) instead of hardcoding a number that could drift out of sync.
 
 ```{r}
 #| label: protocols-listing

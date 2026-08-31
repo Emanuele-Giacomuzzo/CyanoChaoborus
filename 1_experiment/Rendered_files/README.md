@@ -38,16 +38,14 @@ the reading order:
 >
 > ### 🚧 Work in progress
 >
-> This document is a live working draft, not a finished protocol —
-> please read it with that in mind. The research question, the
-> four-treatment diet design, and most sizing calculations (jars,
-> cohorts, biomass) are decided, but the experiment itself hasn’t
-> started yet. Ongoing work includes phytoplankton growth-rate
-> calibration (particularly for *Nannochloropsis limnetica*), toxin
-> quantification method/kit selection, and *Chaoborus* sourcing and
-> sampling logistics. The experiment’s start date and total duration are
-> also still undecided. Sections and numbers below may still change —
-> comments and corrections are very welcome.
+> This document is a live working draft, please read it with that in
+> mind. The research question and the four-treatment diet design havve
+> been decided, but still some calculations need to be completed. The
+> experiment itself hasn’t started yet. The experiment’s start date and
+> total duration are also still undecided. Sections and numbers below
+> may still change — comments and corrections are very welcome! Also, as
+> the document gets regularly updated, it’s possible that there are
+> mistakes/old snippets of text which are now obsolete.
 
 ## 🔬 What’s this project about?
 
@@ -125,6 +123,12 @@ Basically, a small international team spanning Denmark, Brazil, and the
 US, at every career stage from BSc to PI — all digging into the same big
 question 🌍
 
+> [!WARNING]
+>
+> ### To do
+>
+> - Update the do lists from the old list.
+
 # Parameters & calculations
 
 > [!NOTE]
@@ -163,14 +167,14 @@ question 🌍
 > Chaoborus_larvae_per_jar <- 10 # Initial density, within the upper range of natural peak densities (Xie et al., 1998)
 > Chaoborus_jar_liquid_litres <- 0.8
 > Chaoborus_jar_with_liquid_kg <- 1.5
-> Chaoborus_dead_to_alive_ratio_worst_tratment <- 2
+> Chaoborus_dead_to_alive_ratio_worst_tratment <- 2 
 > Chaoborus_Daphnia_neonates_eaten_per_day <- 20 #Based on female fourth instar eating 1.25 mm D. magna babies (Büns & Ratte, 1991)
 > Chaoborus_Daphnia_neonates_eaten_max_recorded <- 25 # Highest single-feeding count observed
 > Chaoborus_cyanotoxin_biodilutin_from_Daphnia <- 5 # Based on a field study where toxins were detected with HPLC/PDA: Sotton, B., Guillard, J., Anneville, O., Maréchal, M., Savichtcheva, O., & Domaizon, I. (2014). Trophic transfer of microcystins through the lake pelagic food web: Evidence for the role of zooplankton as a vector in fish contamination. Science of the Total Environment, 466, 152-163.
 >
 > # 🦐 Daphnia
 >
-> Daphnia_adults_per_jar <- 15
+> Daphnia_adults_per_jar <- 15 # Suggested by Jana, as in her experience it's the highest density of Daphnia in the jars that 
 > Daphnia_individuals_per_new_cohort_jar <- 10 # Individuals pipetted from stock into each newly created cohort jar (protocol/3_create_Daphnia_jars.md)
 > Daphnia_fed_C_mg_per_litre_per_day <- 2 # Applies both to treatment cohort jars (fed the diet mixes above) and to the stock jars that found them (fed *Tetradesmus obliquus* alone, ad libitum, since the stock isn't part of the diet treatments; see 4_calculations.qmd)
 > Daphnia_neonates_per_mother_per_5_days <- 20
@@ -180,32 +184,48 @@ question 🌍
 > Vana_Daphnia_starting_jars <- 2 # Jars available in Vana's stock cultures to start propagation from; placeholder, confirm actual count with Vana
 > Propagation_lead_time_days <- 30 # One month, the planned lead time for propagating Daphnia before the experiment starts
 >
-> # 🧪 Phytoplankton 
+> # ––– 🧪 Phytoplankton ––– #
 >
-> Phytoplankton_growth_time_days <- 10
-> Phytoplankton_highest_concentration_mg_C_per_litres <- 50 # Based on the fact that M. aeruginosa is the one that grows the worst and that in Thostrup & Christophersen, 1999 grew up to 150, we use 50 to be conservative. Also, Vana told me that her T. obliquus grows at 28-150 mg C / L
-> Phytoplankton_low_quality_food_ratio <- 0.5 # I would go for 50% of both Microcystis and Synechococcus compared to Tetradesmus. Feeding Daphnia magna with 50% of Microcystis can keep cultures dense enough to perform experiment (Macke et al., 2017) but still have a negative effect (Schwarzenberger et al., 2012, 2013). Feeding Daphnia magna with 50% of Synechococcus can also keep cultures alive but still have a negative effect (Demott & Müller-Navarra, 1997).
+> # General
 >
-> Phytoplankton_species_count <- 4 # M. aeruginosa, S. elongatus, N. limnetica, T. obliquus
-> Phytoplankton_vessels_per_species <- 3 # Replicate stock flasks/bottles kept per species at each vessel size; once at experimental scale, these 3 experimental bottles are also what's alternated between for daily Daphnia-feeding harvests (see 4_calculations.qmd)
-> Phytoplankton_stock_flask_volume_mL <- 50
-> Phytoplankton_stock_flask_inoculation_volume_mL <- 30
-> Phytoplankton_stock_bottle_capacity_mL <- 500
-> Phytoplankton_stock_bottle_liquid_mL <- 300
-> Phytoplankton_stock_bottle_inoculation_volume_mL <- 200
-> Phytoplankton_experimental_bottle_volume_mL <- 2000
-> Phytoplankton_inoculation_interval_days <- 7
+> Phyto_species_count <- 4 # M. aeruginosa, S. elongatus, N. limnetica, T. obliquus
+> Phyto_low_quality_food_ratio <- 0.5 # I would go for 50% of both Microcystis and Synechococcus compared to Tetradesmus. Feeding Daphnia magna with 50% of Microcystis can keep cultures dense enough to perform experiment (Macke et al., 2017) but still have a negative effect (Schwarzenberger et al., 2012, 2013). Feeding Daphnia magna with 50% of Synechococcus can also keep cultures alive but still have a negative effect (Demott & Müller-Navarra, 1997).
+> Phyto_vessels_per_species <- 3 # Replicate stock flasks/bottles kept per species at each vessel size; once at experimental scale, these 3 experimental bottles are also what's alternated between for daily Daphnia-feeding harvests (see 4_calculations.qmd)
+>
+> # Stock flasks
+>
+> Phyto_stock_flask_capacity_mL <- 100
+> Phyto_stock_flask_liquid_mL <- 50 
+> Phyto_stock_flask_inoculation_mL <- 30
+>
+> # Stock bottles
+>
+> Phyto_stock_bottle_capacity_mL <- 500
+> Phyto_stock_bottle_liquid_mL <- 300
+> Phyto_stock_bottle_inoculation_mL <- 200
+>
+> # Experimental bottles
+>
+> Phyto_experimental_bottle_mL <- 2000
+> Phyto_inoculation_interval_days <- 7
 > COMBO_batch_volume_litres <- 5 # Standard batch size per the COMBO protocol (protocol/1_create_COMBO.md)
+>
+>
+>
+> Phyto_highest_concentration_mg_C_per_litres <- 50 # Based on the fact that M. aeruginosa is the one that grows the worst and that in Thostrup & Christophersen, 1999 grew up to 150, we use 50 to be conservative. Also, Vana told me that her T. obliquus grows at 28-150 mg C / L
+>
+> Phyto_experimental_bottle_usability_days <- 10 # The number of days the  experimental bottles stay in the exponential phase. 10 comes from Ema and Jana's experience.
+>
 >
 > # 🍽️ Diet treatments (Daphnia raised on each mix before being fed to Chaoborus; Figure 1)
 >
 > Diet_names <- c("Low-quality toxic", "Low-quality", "High-quality", "High-quality (toxin-spiked)")
 >
 > # Fraction of each species by carbon in the Daphnia diet for each treatment above, in the same order
-> Diet_Microcystis_fraction     <- c(Phytoplankton_low_quality_food_ratio, 0, 0, 0)
-> Diet_Synechococcus_fraction   <- c(0, Phytoplankton_low_quality_food_ratio, 0, 0)
+> Diet_Microcystis_fraction     <- c(Phyto_low_quality_food_ratio, 0, 0, 0)
+> Diet_Synechococcus_fraction   <- c(0, Phyto_low_quality_food_ratio, 0, 0)
 > Diet_Nannochloropsis_fraction <- c(0, 0, 1, 1)
-> Diet_Tetradesmus_fraction     <- c(1 - Phytoplankton_low_quality_food_ratio, 1 - Phytoplankton_low_quality_food_ratio, 0, 0)
+> Diet_Tetradesmus_fraction     <- c(1 - Phyto_low_quality_food_ratio, 1 - Phyto_low_quality_food_ratio, 0, 0)
 > # The 4th treatment's toxin exposure comes from lysed M. aeruginosa dosed directly into the Chaoborus
 > # jar (Figure 1), not through the Daphnia diet, so it adds no Microcystis to the fractions above — see
 > # the To do in 4_calculations.qmd about sizing that dose.
@@ -240,109 +260,193 @@ question 🌍
 >
 > ### To do
 >
-> - Chaoborus_third_instar_DW_mg: make a plan on how to measure actually
->   the weight of Chaoborus from our own populations for different sizes
->   and discuss it with Jana.
-> - Chaoborus_larvae_per_jar: decide at the end based on how much
->   biomass you need for the experiment.
-> - Chaoborus_dead_to_alive_ratio_worst_tratment: decide how you are
->   going to compute this.
-> - Chaoborus_Daphnia_neonates_eaten_per_day &
->   Chaoborus_Daphnia_neonates_eaten_max_recorded: come up with an
->   experiment to look at the number of Daphnia eaten for different
->   Chaoborus and Daphnia sizes.
-> - @ Irma: let’s analyse `Microcystins_mg_per_g_DW_phytoplankton`.
-> - Wait for Anne’s answer on how much dry biomass for P analysis →
->   update the amount needed for phosphorus analysis.
-> - Wait for kit and protocol for measuring microcystins → check the
->   detection limit and update `Microcystins_detection_limit_ug_per_L`
->   accordingly, as well as `Microcystins_extraction_volume_mL`
-> - Call Ichthyo trophic once again asking about the species of
->   Chaoborus.
+> 🦟 **Determine the number of Chaoborus per jar
+> (`Chaoborus_larvae_per_jar`)**
 >
-> > [!IMPORTANT]
-> >
-> > ### Waiting on
-> >
-> > - After we decided which ELISA kit to buy
-> >   - Chaoborus_cyanotoxin_biodilutin_from_Daphnia: consider how
-> >     within this value it needs to be to be for ELISA kit to detect
-> >     the toxins in Chaoborus.
+> - **Biomass for toxin analysis (`Biomass_needed_for_toxins_mg`).**
+>   - **Extraction volume.** Determine what’s the extraction volume for
+>     the toxins (`Microcystins_extraction_volume_mL`)
+>   - **Toxin biodilution.** Calculate how much cyantoxins biodilute
+>     from Daphnia to Chaoborus
+>     (`Chaoborus_cyanotoxin_biodilutin_from_Daphnia`)
+>   - *⏳ Waiting for: having bought ELISA kit —* **Toxin
+>     detectability.** Determine what’s the minium amount of detectable
+>     toxins (`Microcystins_detection_limit_ug_per_L`)
+> - **Biomass for phosphorus analysis (`Biomass_needed_for_P_mg`).**
+>   - **Phosphorus in Chaoborus.** Estimate from the literaturehow much
+>     phosphorus is inside Chaoborus.
+>   - …
+> - **Chaoborus death rate.** Calculate Chaoborus estimated death rate
+>   (`Chaoborus_dead_to_alive_ratio_worst_tratment`)
+> - **Chaoborus weight.** Measure the weight of
+>   (`Chaoborus_third_instar_DW_mg`) for different sizes.
+>   1.  **Plan.** Make a plan on how to measure the weight of Chaoborus
+>       for different sizes
+>   2.  **Discuss.** Discuss with Jana the plan on how to measure the
+>       weight of Chaoborus for different sizes
+>
+> ------------------------------------------------------------------------
+>
+> 🍔 **Determine how much Daphnia does a Chaoborus of different sizes
+> eat.**
+>
+> - **Feeding experiment.** Come up with an experiment to look at the
+>   number of Daphnia eaten for different Chaoborus and Daphnia sizes
+>   (`Chaoborus_Daphnia_neonates_eaten_per_day` &
+>   `Chaoborus_Daphnia_neonates_eaten_max_recorded`)
+>
+> ------------------------------------------------------------------------
+>
+> **🧪 Determine the optical density - carbon function of M. aeruginosa
+> and N. limnetica**
+>
+> ------------------------------------------------------------------------
+>
+> **☠️ Determine at which dissolved toxin density *Chaoborus* gets
+> affected by lysed *Microcystis aeruginosa*.**
+>
+> ------------------------------------------------------------------------
+>
+> ❓ **Other**
+>
+> - **Toxins.** Discuss with Irma how to analyse
+>   `Microcystins_mg_per_g_DW_phytoplankton`.
+>
+> - Confirm that cohorts are meant to be started daily (assumed above
+>   from the “oldest cohort” language in
+>   protocol/3_create_Daphnia_jars.md and
+>   protocol/5_create_Chaoborus_jars.md) — if the interval differs,
+>   `Daphnia_cohorts_in_rotation` needs updating.
+>
+> - Fit an OD-to-carbon calibration curve for *Microcystis aeruginosa*.
+>   Carbon measurements already exist
+>   ([2_data/OD/OD_Microcystis_aeruginosa_in_COMBO.csv](../2_data/OD/OD_Microcystis_aeruginosa_in_COMBO.csv)),
+>   but they aren’t yet usable for a curve: the file has no paired OD
+>   reading or filtered volume per sample, and its plate positions
+>   (`A1_N+M`, `D1_N+M`, …) don’t match the dilution layout in the [OD
+>   curve
+>   protocol](protocol/quarto/22_2026_03_27_OD_curve_Microcystis.md)
+>   (`A1`–`C2`), so it’s unclear which dilution level each row belongs
+>   to.
+>
+> - Fit an OD-to-carbon calibration curve for *Nannochloropsis
+>   limnetica* (no data collected yet).
+>
+> - Record the source measurements (OD readings and paired carbon
+>   analyses) behind the *Tetradesmus* and *Synechococcus*
+>   slopes/intercepts above, and decide how often each curve should be
+>   re-fitted.
 
 > [!NOTE]
 >
 > ### Calculations
 >
 > ``` r
-> # 🧪 Phytoplankton: culture vessels and COMBO medium
+> # 🧪 Phytoplankton
 >
-> Phytoplankton_vessels_total <- Phytoplankton_species_count * Phytoplankton_vessels_per_species
+> # Total number of experimental phytoplankton vessels: one set of vessels per species,
+> # multiplied by how many replicate vessels are kept per species.
+> Phyto_vessels_total <- Phyto_species_count * Phyto_vessels_per_species
 >
-> COMBO_total_litres <- Phytoplankton_vessels_total *
->   (Phytoplankton_stock_flask_volume_mL + Phytoplankton_stock_bottle_liquid_mL + Phytoplankton_experimental_bottle_volume_mL) / 1000
+> # Total volume of COMBO growth medium needed to fill every vessel (stock flask + stock
+> # bottle + experimental bottle) for every phytoplankton vessel, converted from mL to litres.
+> COMBO_total_litres <- Phyto_vessels_total *
+>                       (Phyto_stock_flask_liquid_mL + Phyto_stock_bottle_liquid_mL + Phyto_experimental_bottle_mL) /
+>                       1000
 >
+> # Number of separate COMBO batches to prepare, rounded up because COMBO is made in
+> # fixed-size batches (COMBO_batch_volume_litres) rather than one custom-sized batch.
 > COMBO_batches <- ceiling(COMBO_total_litres / COMBO_batch_volume_litres)
 >
-> # 🦐 Daphnia: cohort sizing, to cover Chaoborus' worst-case daily appetite
+> # 🦐 Daphnia
 >
+> # Total Daphnia neonates eaten per day across every Chaoborus jar (all treatments and
+> # replicates combined), assuming each larva eats the highest number of neonates ever recorded.
 > Chaoborus_Daphnia_neonates_needed_per_day <- Chaoborus_larvae_per_jar *
 >   Chaoborus_Daphnia_neonates_eaten_max_recorded * Treatments * Replicates
 >
+> # Number of neonates produced by a single cohort jar over one 5-day reproduction cycle.
 > Daphnia_neonates_per_cohort_jar <- Daphnia_individuals_per_new_cohort_jar *
 >   Daphnia_neonates_per_mother_per_5_days
 >
+> # Number of cohort jars needed to cover the daily neonate demand, rounded up since jars
+> # come in whole units.
 > Daphnia_jars_per_cohort <- ceiling(
 >   Chaoborus_Daphnia_neonates_needed_per_day / Daphnia_neonates_per_cohort_jar
 > )
 >
 > Daphnia_cohorts_in_rotation <- Daphnia_max_age_eaten_days # a new cohort starts daily and is harvested Daphnia_max_age_eaten_days days later (protocol/3_create_Daphnia_jars.md, protocol/5_create_Chaoborus_jars.md), so this many staggered-age cohorts run in parallel at any time
 >
+> # Total cohort jars that must exist at any one time: one full set of Daphnia_jars_per_cohort
+> # for each of the staggered-age cohorts running in parallel.
 > Daphnia_jars_needed_at_start <- Daphnia_jars_per_cohort * Daphnia_cohorts_in_rotation
 >
+> # Total Daphnia adults needed to stock all of those cohort jars at the start of the experiment.
 > Daphnia_adults_needed_at_start <- Daphnia_individuals_per_new_cohort_jar *
 >   Daphnia_jars_per_cohort * Daphnia_cohorts_in_rotation
 >
 > # 🦐 Daphnia: propagating Vana's stock up to that starting target
 >
+> # Start from the jars already available in Vana's stock culture.
 > Daphnia_propagation_jars <- Vana_Daphnia_starting_jars
 > Daphnia_propagation_cycles <- 0
 > Daphnia_propagation_adults <- Daphnia_propagation_jars * Daphnia_adults_per_jar
 >
+> # Simulate the stock growing every 5-day reproduction cycle — each cycle, the current jars
+> # multiply by how many neonates a mother produces in 5 days — repeating until there are
+> # enough adults to meet Daphnia_adults_needed_at_start.
 > while (Daphnia_propagation_adults < Daphnia_adults_needed_at_start) {
 >   Daphnia_propagation_jars <- Daphnia_propagation_jars * Daphnia_neonates_per_mother_per_5_days
 >   Daphnia_propagation_cycles <- Daphnia_propagation_cycles + 1
 >   Daphnia_propagation_adults <- Daphnia_propagation_jars * Daphnia_adults_per_jar
 > }
 >
+> # Total days the propagation will take: number of 5-day cycles needed, converted to days.
 > Daphnia_propagation_days <- Daphnia_propagation_cycles * Daphnia_max_age_eaten_days
+> # Buffer between the planned lead time and the propagation's actual duration (negative
+> # means propagation would finish later than planned, so the lead time isn't enough).
 > Daphnia_propagation_slack_days <- Propagation_lead_time_days - Daphnia_propagation_days
 >
 > # ☠️ Toxins: minimum Chaoborus biomass needed to detect microcystins by ELISA
 >
+> # How much microcystin ends up per gram of Chaoborus dry weight, after the toxin biodilutes
+> # twice along the food chain: phytoplankton -> Daphnia -> Chaoborus.
 > Microcystins_mg_per_g_DW_Chaoborus <- Microcystins_mg_per_g_DW_phytoplankton /
 >   (Microcystins_biodilution_factor_Daphnia * Microcystins_biodilution_factor_Chaoborus)
 >
 > Microcystins_minimum_detectable_mg <- Microcystins_detection_limit_ug_per_L *
 >   (Microcystins_extraction_volume_mL / 1000) / 1000 # µg/L x extraction volume (L) = µg of toxin, then /1000 to mg
 >
+> # Minimum dry-weight biomass of Chaoborus needed so the microcystins it contains reach the
+> # ELISA kit's detection limit.
 > Biomass_needed_for_toxins_mg <- (Microcystins_minimum_detectable_mg / Microcystins_mg_per_g_DW_Chaoborus) * 1000 # g DW -> mg DW
 >
 > # 🦟 Chaoborus: population size
 >
+> # Total dry-weight biomass needed per Chaoborus sample to run every planned analysis
+> # (fatty acids, sterols, stoichiometry, and toxins) on that same sample.
 > Biomass_needed_total_mg <- Biomass_needed_for_PUFAs_mg + Biomass_needed_for_sterols_mg +
 >   Biomass_needed_for_stoichiometry_mg + Biomass_needed_for_toxins_mg
 >
+> # Number of Chaoborus larvae needed for one measurement: the biomass required, converted to
+> # a larva count via a single larva's dry weight, then inflated by the worst-case death rate
+> # so enough larvae still survive to be measured.
 > Chaoborus_one_measurement <- ceiling(
 >   (Biomass_needed_total_mg / Chaoborus_third_instar_DW_mg) *
 >     Chaoborus_dead_to_alive_ratio_worst_tratment
 > )
 >
+> # Total Chaoborus larvae needed across the whole experiment: one measurement's worth for
+> # every treatment-by-replicate combination.
 > Chaoborus_total <- Chaoborus_one_measurement * Treatments * Replicates
 >
+> # Total number of Chaoborus jars: one jar per treatment-by-replicate combination.
 > Jars_Chaoborus <- Treatments * Replicates
 >
 > # 🦟 Chaoborus: Daphnia neonates needed per jar per day
 >
+> # Daphnia neonates a single Chaoborus jar eats per day: larvae per jar times the worst-case
+> # (maximum recorded) appetite per larva.
 > Daphnia_neonates_needed_per_jar_per_day <- Chaoborus_Daphnia_neonates_eaten_max_recorded * Chaoborus_larvae_per_jar
 >
 > # 🦐 Daphnia: jar counts
@@ -368,36 +472,44 @@ question 🌍
 > Daphnia_stock_carbon_mg_per_day <- (Jars_big_Daphnia * Large_jar_liquid_litres + # stock jars are fed Tetradesmus alone (see Parameters)
 >   Jars_small_Daphnia * Small_jar_liquid_litres) * Daphnia_fed_C_mg_per_litre_per_day
 >
-> Phytoplankton_Microcystis_mg_C_per_day <- Daphnia_cohort_carbon_mg_per_day * mean(Diet_Microcystis_fraction)
-> Phytoplankton_Synechococcus_mg_C_per_day <- Daphnia_cohort_carbon_mg_per_day * mean(Diet_Synechococcus_fraction)
-> Phytoplankton_Nannochloropsis_mg_C_per_day <- Daphnia_cohort_carbon_mg_per_day * mean(Diet_Nannochloropsis_fraction)
-> Phytoplankton_Tetradesmus_mg_C_per_day <- Daphnia_cohort_carbon_mg_per_day * mean(Diet_Tetradesmus_fraction) +
+> # Split the cohort jars' total carbon demand across phytoplankton species, in the same
+> # proportions each species contributes to the diet mixes (Diet_*_fraction, averaged across
+> # the four treatments).
+> Phyto_Microcystis_mg_C_per_day <- Daphnia_cohort_carbon_mg_per_day * mean(Diet_Microcystis_fraction)
+> Phyto_Synechococcus_mg_C_per_day <- Daphnia_cohort_carbon_mg_per_day * mean(Diet_Synechococcus_fraction)
+> Phyto_Nannochloropsis_mg_C_per_day <- Daphnia_cohort_carbon_mg_per_day * mean(Diet_Nannochloropsis_fraction)
+> Phyto_Tetradesmus_mg_C_per_day <- Daphnia_cohort_carbon_mg_per_day * mean(Diet_Tetradesmus_fraction) +
 >   Daphnia_stock_carbon_mg_per_day # cohort share (mixed diets) plus the Tetradesmus-only stock
 >
-> Phytoplankton_experimental_bottle_max_mg_C <- (Phytoplankton_experimental_bottle_volume_mL / 1000) *
->   Phytoplankton_highest_concentration_mg_C_per_litres
+> # Highest amount of carbon one experimental bottle can hold at the target concentration.
+> Phyto_experimental_bottle_max_mg_C <- (Phyto_experimental_bottle_mL / 1000) *
+>   Phyto_highest_concentration_mg_C_per_litres
 >
-> # Alternating the daily harvest across the Phytoplankton_vessels_per_species experimental bottles means
+> # Alternating the daily harvest across the Phyto_vessels_per_species experimental bottles means
 > # only one bottle is harvested on any given day, so that bottle alone has to cover that day's demand
-> # while the other Phytoplankton_vessels_per_species - 1 bottles regrow. The harvested volume is replaced
+> # while the other Phyto_vessels_per_species - 1 bottles regrow. The harvested volume is replaced
 > # with fresh COMBO on the spot (as in protocol/4_feed_Daphnia.md), which is what dilutes that bottle back
-> # down before it regrows toward Phytoplankton_highest_concentration_mg_C_per_litres ahead of its next
+> # down before it regrows toward Phyto_highest_concentration_mg_C_per_litres ahead of its next
 > # harvest — the fractions below only check that the demand fits under the bottle's max carbon content,
 > # they don't yet confirm the diluted bottle actually regrows that far in the days it has to do so (see
 > # To do below).
-> Phytoplankton_Microcystis_harvest_fraction <- Phytoplankton_Microcystis_mg_C_per_day / Phytoplankton_experimental_bottle_max_mg_C
-> Phytoplankton_Synechococcus_harvest_fraction <- Phytoplankton_Synechococcus_mg_C_per_day / Phytoplankton_experimental_bottle_max_mg_C
-> Phytoplankton_Nannochloropsis_harvest_fraction <- Phytoplankton_Nannochloropsis_mg_C_per_day / Phytoplankton_experimental_bottle_max_mg_C
-> Phytoplankton_Tetradesmus_harvest_fraction <- Phytoplankton_Tetradesmus_mg_C_per_day / Phytoplankton_experimental_bottle_max_mg_C
+> Phyto_Microcystis_harvest_fraction <- Phyto_Microcystis_mg_C_per_day / Phyto_experimental_bottle_max_mg_C
+> Phyto_Synechococcus_harvest_fraction <- Phyto_Synechococcus_mg_C_per_day / Phyto_experimental_bottle_max_mg_C
+> Phyto_Nannochloropsis_harvest_fraction <- Phyto_Nannochloropsis_mg_C_per_day / Phyto_experimental_bottle_max_mg_C
+> Phyto_Tetradesmus_harvest_fraction <- Phyto_Tetradesmus_mg_C_per_day / Phyto_experimental_bottle_max_mg_C
 >
 > # 🪜 Infrastructure: shelves and total jar count
 >
+> # Heaviest load any one shelf will bear: total weight of all jars (Chaoborus + small Daphnia
+> # + large Daphnia, each jar's weight including its liquid) spread evenly across the shelves,
+> # rounded up to a whole kilogram.
 > Weight_per_shelf_kg <- ceiling(
 >   ((Chaoborus_jar_with_liquid_kg * Jars_Chaoborus) +
 >     (Small_jar_with_liquid_kg * Jars_small_Daphnia) +
 >     (Large_jar_with_liquid_kg * Jars_big_Daphnia)) / Shelves
 > )
 >
+> # Total number of jars of every kind needed for the whole experiment.
 > Jars_total <- Jars_Chaoborus + Jars_small_Daphnia + Jars_big_Daphnia
 > ```
 
@@ -405,53 +517,45 @@ question 🌍
 >
 > ### To do
 >
-> - `Biomass_needed_for_toxins_mg` (and so `Biomass_needed_total_mg`) is
->   a theoretical minimum derived from the ELISA detection limit — it
->   doesn’t yet account for practical margins like running replicate
->   wells or extraction losses, so treat it as a lower bound pending the
->   validation test Jing recommended (see
->   [Parameters](3_parameters.qmd)).
-> - `Phytoplankton_*_mg_C_per_day` above is a steady-state daily rate;
->   turning it into a total for the whole experiment needs the
->   experiment’s duration, which isn’t decided yet (see the “End
->   experiment” To do in [Experimental
->   Procedure](6_experimental_procedure.qmd)).
-> - `Phytoplankton_*_harvest_fraction` only checks that a day’s demand
->   fits under one bottle’s maximum standing carbon — it doesn’t yet
->   confirm the bottle regrows back up to that concentration in time for
->   its next harvest, `Phytoplankton_vessels_per_species` days later,
->   after being diluted with COMBO. That needs each species’ actual
->   growth rate, which isn’t in Parameters yet
->   (`Phytoplankton_growth_time_days` is the wrong number to reuse here
->   — it describes the much bigger scale-up dilution from a small stock
->   inoculum, not this smaller daily top-up). Most urgent for
->   `Phytoplankton_Nannochloropsis_harvest_fraction`, which sits around
->   80% and so dilutes that bottle the most.
-> - The 4th treatment’s toxin dose (how much lysed *M. aeruginosa*
->   biomass gets added directly to each *Chaoborus* jar) isn’t sized
->   yet, so it isn’t included in
->   `Phytoplankton_Microcystis_mg_C_per_day` above — that demand is on
->   top of the 1st treatment’s diet-driven *M. aeruginosa* need.
+> **🌱 Calculate biomass needed for all analyses
+> (`Biomass_needed_total_mg`)**
+>
+> - Calculate `Biomass_needed_for_toxins_mg` & \[→ Needs: Deciding the
+>   ELISA kit\]
+>
+> ------------------------------------------------------------------------
+>
+> **🧪 Calculate how much phytoplankton per day
+> (`Phyto_*_mg_C_per_day`)**
+>
+> - Calculate `Phyto_*_harvest_fraction` \[→ Needs: Calculating how much
+>   different phytoplanktons regrow in the days between harvests.\]
+>
+> ------------------------------------------------------------------------
+>
+> **🦐 Calculate how many *Daphnia magna* are needed at the beginning of
+> the experiment (`...`)**
+>
+> ------------------------------------------------------------------------
+>
+> **🧪 Calculate how much *Microcystis aeruginosa* is needed to get
+> enough toxins (`...`)**
 
 # Experimental Design
 
 The aim of this experiment is to investigate how toxic cyanobacteria
-affect the multidimensionality of the predator *Chaoborus* via changes
-in its prey (Figure 1-2). This is realistic in nature compared to the
-percentage of biomass made out of cyanobacteria, where a bloom is
-defined as \> 50% of biomass constituted by cyanobacteria (Molot et al.,
-2014).
-
-*Chaoborus* is not fed cyanobacteria directly — it is fed *Daphnia* that
-were themselves raised on one of 4 diets (Table 1), so that toxicity and
-food quality can be varied independently instead of always co-occurring
-as they do in nature. Two diets are “low-quality”: each mixes a
-cyanobacterium with the high-quality green alga *Tetradesmus obliquus*
-in a 50:50 ratio by carbon, one with the toxic *Microcystis aeruginosa*
-and one with the non-toxic *Synechococcus elongatus* — diluted rather
-than pure cyanobacteria because *Daphnia* cannot be kept dense enough to
-sustain the experiment on cyanobacteria alone (see
-`Phytoplankton_low_quality_food_ratio` in
+affect the quantity, quality, and timing of the emergence of the
+predator *Chaoborus* via changes in its prey (Figure 1-2) and dissolved
+toxins. *Chaoborus* is not fed cyanobacteria directly — it is fed
+*Daphnia* that were themselves raised on one of 4 diets (Table 1), so
+that toxicity and food quality can be varied independently instead of
+always co-occurring as they do in nature. Two diets are “low-quality”:
+each mixes a cyanobacterium with the high-quality green alga
+*Tetradesmus obliquus* in a 50:50 ratio by carbon, one with the toxic
+*Microcystis aeruginosa* and one with the non-toxic *Synechococcus
+elongatus* — diluted rather than pure cyanobacteria because *Daphnia*
+cannot be kept dense enough to sustain the experiment on cyanobacteria
+alone (see `Phyto_low_quality_food_ratio` in
 [Parameters](3_parameters.qmd)). This isolates the food-quality effect
 (comparing either low-quality diet against the high-quality diets below)
 from the toxin effect (comparing the *Microcystis* diet against the
@@ -464,6 +568,10 @@ route bypasses *Daphnia* entirely, it isolates the effect of toxin
 exposure alone, uncoupled from any food-quality change, and without
 whatever biodilution or biotransformation *Daphnia* would otherwise
 apply to the toxin.
+
+This is realistic in nature compared to the percentage of biomass made
+out of cyanobacteria, where a bloom is defined as \> 50% of biomass
+constituted by cyanobacteria (Molot et al., 2014).
 
 <p align="center">
 
@@ -530,47 +638,34 @@ All downstream feeding of Daphnia (and sampling of phytoplankton)
 depends on having enough phytoplankton biomass, of every one of the 4
 species, including enough *M. aeruginosa* to add toxins to the cultures.
 Experimental cultures can’t be started directly at experimental scale,
-though, so they have to be built up gradually from a small stock. Both
-the culture vessels and the COMBO growth medium also have to be sterile,
-and because autoclaving runs overnight, everything needs to be prepared
-at least a day before culturing starts.
+though, so they have to be built up gradually from a small stock.
 
 To do that, each species is scaled up through three vessel sizes in
-sequence — a stock flask, a stock bottle, then an experimental bottle —
-inoculating a fixed volume into fresh COMBO medium every 7 days and
-topping the vessel back up to its working volume as it grows. This runs
-as 3 parallel replicate lines per species, so that a single contaminated
-or failed culture doesn’t take out that species’ entire supply.
+sequence:
+
+1.  Stock flask (max capacity: 50 ml), with 50 ml of algae incoulated
+    from 30 ml of previous stock flasks
+2.  Stock bottle (max capacity: 500 ml), with 500 ml of algae incoulated
+    from 200 ml of stock flasks
+3.  Experimental bottle (max capacity: 2000 ml), with 2000 ml of algae
+    incoulated from 200 ml of stock bottles.
+
+The experimental bottle is where we will be harvesting the algae to feed
+Daphnia, so it has to be kept at a high enough density to meet that
+demand. Every days the algae are harvested and fed to Daphnia / lysed
+and provided to Chaoborus, while replacing % of the bottles with COMBO
+medium. Each bottle is kept for days before it’s replaced. Also, each
+experimental bottle is grown days before to be able to be used as it
+needs to grow to enough density.
 
 Scaled to 4 species × 3 replicates (12 lines total), that means
 preparing in advance:
 
-- 12 × 50 mL stock flasks (needs to be replaced every 4 weeks)
+- 12 × 50 mL stock flasks
 - 12 × 500 mL stock bottles (holding 300 mL of liquid)
 - 12 × 2 L experimental bottles
 - 28.2 L of COMBO medium, made in 5 L batches (6 batches; see the [COMBO
   protocol](protocol/1_create_COMBO.md))
-
-Each line then runs the same cycle: inoculate 30 mL from the stock flask
-into the stock bottle, and 200 mL from the stock bottle into the
-experimental bottle, refilling with COMBO each time, every 7 days —
-shown below:
-
-``` mermaid
-flowchart TD
-V["Autoclave ≥ 1 day ahead:<br/>12 × 50 mL stock flasks<br/>12 × 500 mL stock bottles<br/>12 × 2 L experimental bottles"]
-M["Prepare COMBO medium:<br/>28.2 L in 6 × 5 L batches"]
-A["Stock flask<br/>50 mL"]
-B["Inoculate 30 mL<br/>(refill with COMBO)"]
-C["Stock bottle<br/>300 mL"]
-D["Inoculate 200 mL<br/>(refill with COMBO)"]
-E["Experimental bottle<br/>2000 mL"]
-
-V --> A
-M --> A
-A -- "every 7 days" --> B --> C
-C -- "every 7 days" --> D --> E
-```
 
 ### Daphnia
 
@@ -643,19 +738,10 @@ diluted the most.
 >
 > ### To do
 >
-> - Confirm with Vana how many jars (and adults per jar) her stock
->   cultures actually hold, to replace the
->   `Vana_Daphnia_starting_jars`/`Daphnia_adults_per_jar` placeholders
->   above.
-> - Confirm that cohorts are meant to be started daily (assumed above
->   from the “oldest cohort” language in
->   protocol/3_create_Daphnia_jars.md and
->   protocol/5_create_Chaoborus_jars.md) — if the interval differs,
->   `Daphnia_cohorts_in_rotation` needs updating.
 > - Confirm each species can regrow from its post-harvest dilution back
->   to `Phytoplankton_highest_concentration_mg_C_per_litres` within the
->   `Phytoplankton_vessels_per_species`-day gap between harvests — needs
->   an actual growth rate per species, not yet in
+>   to `Phyto_highest_concentration_mg_C_per_litres` within the
+>   `Phyto_vessels_per_species`-day gap between harvests — needs an
+>   actual growth rate per species, not yet in
 >   [Parameters](3_parameters.qmd). Most urgent for *N. limnetica*,
 >   whose bottle is diluted the most (80% harvested); consider a 4th
 >   replicate line for it if regrowth turns out too slow.
@@ -687,27 +773,6 @@ These slope/intercept pairs are the same ones used by the [Daphnia food
 calculator](calculations/food_calculator.html) to turn a same-day OD
 reading into the volume of each medium to dose per jar.
 
-> [!WARNING]
->
-> ### To do
->
-> - Fit an OD-to-carbon calibration curve for *Microcystis aeruginosa*.
->   Carbon measurements already exist
->   ([2_data/OD/OD_Microcystis_aeruginosa_in_COMBO.csv](../2_data/OD/OD_Microcystis_aeruginosa_in_COMBO.csv)),
->   but they aren’t yet usable for a curve: the file has no paired OD
->   reading or filtered volume per sample, and its plate positions
->   (`A1_N+M`, `D1_N+M`, …) don’t match the dilution layout in the [OD
->   curve
->   protocol](protocol/quarto/22_2026_03_27_OD_curve_Microcystis.md)
->   (`A1`–`C2`), so it’s unclear which dilution level each row belongs
->   to.
-> - Fit an OD-to-carbon calibration curve for *Nannochloropsis
->   limnetica* (no data collected yet).
-> - Record the source measurements (OD readings and paired carbon
->   analyses) behind the *Tetradesmus* and *Synechococcus*
->   slopes/intercepts above, and decide how often each curve should be
->   re-fitted.
-
 ### Chaoborus
 
 Chaoborus will be sourced in the form of third-instar larvae from
@@ -717,8 +782,8 @@ IT-Ichthyo Trophic, Poland.
 >
 > ### To do
 >
-> - Add the size of the larvae.
-> - Find references that say how to determine it’s a third instar.
+> **ℹ️ Add information**
+>
 > - Call IT-Ichthyo Trophic to ask what species of Chaoborus it is and
 >   how it is raised.
 
@@ -742,48 +807,9 @@ fish-free systems (Xie et al., 1998).
 >
 > ### Protocol 1
 
-Feeding has to cover the whole jar’s appetite at once, so with a
-single-feeding maximum of 25 neonates per larva and 10 larvae per jar,
 *Chaoborus* will be fed ad libitum by providing 250 *Daphnia* of 1 to 5
 days old per jar per day (see [Box 1: Sample Collection and
 Storage](other/protocols/Quarto_protocols/9_sample_collection_and_storage.md)).
-
-> [!WARNING]
->
-> ### To do
->
-> - Decide whether you should calculate how much Chaoborus eats
->   according to:
->   1)  size of Chaoborus and Daphnia
->   2)  run a different feeding experiment with different Chaoborus
->       sizes
-
-*Chaoborus* are fed *Daphnia* neonates ad libitum. *Daphnia* stock is
-built up in individual jars ahead of assembly, so the stock has to be
-sized to the neonate demand implied by the *Chaoborus* population above.
-Sizing that stock starts from two feeding-and-reproduction assumptions,
-both held with medium confidence: a fourth-instar *Chaoborus* larva eats
-about 20 neonates (1.25 mm *D. magna*) per feeding (Büns & Ratte, 1991),
-with a single-feeding maximum of 25 neonates recorded, and an adult
-*Daphnia* produces about 20 neonates per 5-day clutch cycle. Only
-neonates up to 5 days old are offered as food, since older *Daphnia*
-grow too large for *Chaoborus* to ingest. Those small stock jars, each
-housing a single *Daphnia*, are in turn fed from large (1000 mL) jars,
-each holding 15 adult *Daphnia* — a high-confidence figure, though the
-source for it still needs tracking down (see To do below).
-
-If Chaoborus eats different amounts of biomass according to the size of
-Daphnia it could be that it’s because it’s adapted to feed on a certain
-range size.
-
-> [!WARNING]
->
-> ### To do
->
-> - Review this previous section.
-> - Add what’s the size of babies that Chaoborus eats.
-> - Track down the source for the 15-adults-per-large-jar figure used to
->   feed the *Daphnia* stock jars.
 
 ## Collect data
 
@@ -814,7 +840,9 @@ lipids are preserved:
 >
 > ### To do
 >
-> - Check whether we should store samples together.
+> **🫙 Labelling system**
+>
+> - Come up with a system to label the tubes.
 
 ### Phytoplankton
 
@@ -902,7 +930,7 @@ tubes.
 >
 > ### To do
 >
-> - Add a plan on when to end the experiment.  
+> - Add a plan on when to end the experiment.\
 
 > [!TIP]
 >
@@ -987,16 +1015,24 @@ ELISA kit.
 >
 > ### To do
 >
-> - Why looking only at Microcystin-LR.
-> - Write why using ELISA.
-> - Decide which kit to order.
-> - Test kit.
-> - Send the growing conditions of our algae to Ali & Irma (light,
->   temperature, oxygen, size of jars, etc.)
-> - @ Irma: would you like to characterise the toxins of *Microcystis
->   aeruginosa* in Lund before the experiment?
+> **ℹ️ Add information**
+>
+> - Add why we are looking only at Microcystin-LR.
+> - Add why we are using ELISA.
+>
+> **☠️ Decide how to analyse the toxins**
+>
+> 1.  Speak with Irma on how they have been trying to analyse the
+>     toxins.
+> 2.  Decide which kit to order.
 
 ## Statistical analyses
+
+> [!WARNING]
+>
+> ### To do
+>
+> **ℹ️ Add information**
 
 ### Biomass ingested by Chaoborus
 
@@ -1014,7 +1050,7 @@ inline in another chapter, use Pandoc’s citation syntax,
 e.g. `[@buns1991]` or `Büns and Ratte [-@buns1991]`.
 
 <div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0" line-spacing="2">
+data-entry-spacing="0" data-line-spacing="2">
 
 <div id="ref-buns1991" class="csl-entry">
 

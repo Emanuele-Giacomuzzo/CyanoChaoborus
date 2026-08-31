@@ -13,70 +13,44 @@ Before starting the experiment, we need to grow the following species:
 
 ### Phytoplankton
 
-All downstream feeding of Daphnia (and sampling of phytoplankton) depends on having enough phytoplankton biomass, of every one of the `r Phytoplankton_species_count` species, including enough *M. aeruginosa* to add toxins to the cultures. Experimental cultures can't be started directly at experimental scale, though, so they have to be built up gradually from a small stock. Both the culture vessels and the COMBO growth medium also have to be sterile, and because autoclaving runs overnight, everything needs to be prepared at least a day before culturing starts.
+All downstream feeding of Daphnia (and sampling of phytoplankton) depends on having enough phytoplankton biomass, of every one of the `r Phyto_species_count` species, including enough *M. aeruginosa* to add toxins to the cultures. Experimental cultures can't be started directly at experimental scale, though, so they have to be built up gradually from a small stock.
 
-To do that, each species is scaled up through three vessel sizes in sequence — a stock flask, a stock bottle, then an experimental bottle — inoculating a fixed volume into fresh COMBO medium every `r Phytoplankton_inoculation_interval_days` days and topping the vessel back up to its working volume as it grows. This runs as `r Phytoplankton_vessels_per_species` parallel replicate lines per species, so that a single contaminated or failed culture doesn't take out that species' entire supply.
+To do that, each species is scaled up through three vessel sizes in sequence:
 
-Scaled to `r Phytoplankton_species_count` species × `r Phytoplankton_vessels_per_species` replicates (`r Phytoplankton_vessels_total` lines total), that means preparing in advance:
+1. Stock flask (max capacity: `r Phyto_stock_flask_liquid_mL` ml), with `r Phyto_stock_flask_liquid_mL` ml of algae incoulated from `r Phyto_stock_flask_inoculation_mL` ml of previous stock flasks
+2. Stock bottle (max capacity: `r Phyto_stock_bottle_capacity_mL` ml), with `r Phyto_stock_bottle_capacity_mL` ml of algae incoulated from `r Phyto_stock_bottle_inoculation_mL` ml of stock flasks 
+3. Experimental bottle (max capacity: `r Phyto_experimental_bottle_liquid_mL` ml), with `r Phyto_experimental_bottle_liquid_mL` ml of algae incoulated from `r Phyto_stock_bottle_inoculation_mL` ml of stock bottles.
 
-- `r Phytoplankton_vessels_total` × `r Phytoplankton_stock_flask_volume_mL` mL stock flasks (needs to be replaced every 4 weeks)
-- `r Phytoplankton_vessels_total` × `r Phytoplankton_stock_bottle_capacity_mL` mL stock bottles (holding `r Phytoplankton_stock_bottle_liquid_mL` mL of liquid)
-- `r Phytoplankton_vessels_total` × `r round(Phytoplankton_experimental_bottle_volume_mL / 1000, 1)` L experimental bottles
+The experimental bottle is where we will be harvesting the algae to feed Daphnia, so it has to be kept at a high enough density to meet that demand. Every `r NA` days the algae are harvested and fed to Daphnia / lysed and provided to Chaoborus, while replacing `r NA` % of the bottles with COMBO medium. Each bottle is kept for `r NA` days before it's replaced. Also, each experimental bottle is grown `r NA` days before to be able to be used as it needs to grow to enough density.
+
+Scaled to `r Phyto_species_count` species × `r Phyto_vessels_per_species` replicates (`r Phyto_vessels_total` lines total), that means preparing in advance:
+
+- `r Phyto_vessels_total` × `r Phyto_stock_flask_liquid_mL` mL stock flasks
+- `r Phyto_vessels_total` × `r Phyto_stock_bottle_capacity_mL` mL stock bottles (holding `r Phyto_stock_bottle_liquid_mL` mL of liquid)
+- `r Phyto_vessels_total` × `r round(Phyto_experimental_bottle_liquid_mL / 1000, 1)` L experimental bottles
 - `r round(COMBO_total_litres, 1)` L of COMBO medium, made in `r COMBO_batch_volume_litres` L batches (`r COMBO_batches` batches; see the [COMBO protocol](protocol/1_create_COMBO.md))
-
-Each line then runs the same cycle: inoculate `r Phytoplankton_stock_flask_inoculation_volume_mL` mL from the stock flask into the stock bottle, and `r Phytoplankton_stock_bottle_inoculation_volume_mL` mL from the stock bottle into the experimental bottle, refilling with COMBO each time, every `r Phytoplankton_inoculation_interval_days` days — shown below:
-
-````{r}
-#| output: asis
-#| echo: false
-#| label: phytoplankton-flowchart
-
-library(glue)
-
-diagram <- glue('
-```{{mermaid}}
-flowchart TD
-V["Autoclave ≥ 1 day ahead:<br/>{Phytoplankton_vessels_total} × {Phytoplankton_stock_flask_volume_mL} mL stock flasks<br/>{Phytoplankton_vessels_total} × {Phytoplankton_stock_bottle_capacity_mL} mL stock bottles<br/>{Phytoplankton_vessels_total} × {round(Phytoplankton_experimental_bottle_volume_mL / 1000, 1)} L experimental bottles"]
-M["Prepare COMBO medium:<br/>{round(COMBO_total_litres, 1)} L in {COMBO_batches} × {COMBO_batch_volume_litres} L batches"]
-A["Stock flask<br/>{Phytoplankton_stock_flask_volume_mL} mL"]
-B["Inoculate {Phytoplankton_stock_flask_inoculation_volume_mL} mL<br/>(refill with COMBO)"]
-C["Stock bottle<br/>{Phytoplankton_stock_bottle_liquid_mL} mL"]
-D["Inoculate {Phytoplankton_stock_bottle_inoculation_volume_mL} mL<br/>(refill with COMBO)"]
-E["Experimental bottle<br/>{Phytoplankton_experimental_bottle_volume_mL} mL"]
-
-V --> A
-M --> A
-A -- "every {Phytoplankton_inoculation_interval_days} days" --> B --> C
-C -- "every {Phytoplankton_inoculation_interval_days} days" --> D --> E
-```
-')
-
-cat(diagram)
-````
 
 ### Daphnia
 
-Daphnia is raised with `r Daphnia_individuals_per_new_cohort_jar` adults in 1 L jars with `r Large_jar_liquid_litres` L Zoo-COMBO medium. Daphnia will be grown for `r Daphnia_max_age_eaten_days` days to give babies, which will then be fed to Chaoborus. To avoid Daphnia become too old to be fertile enough, Daphnia will be raised from adults from the stock populations every time. To avoid that the largest Daphnias are picked for earlier cohorts, causing a decrease in the offspring count in the later cohorts, we will pick Daphnias of different sizes. *Daphnia magna* is fed ad libitum with 2 mg C/L/day [@lampert1978].
+Daphnia is raised with `r Daphnia_adults_per_new_cohort_jar` adults in 1 L jars with `r Large_jar_liquid_litres` L Zoo-COMBO medium. Daphnia will be grown for `r Daphnia_max_age_eaten_days` days to give babies, which will then be fed to Chaoborus. To avoid Daphnia become too old to be fertile enough, Daphnia will be raised from adults from the stock populations every time. To avoid that the largest Daphnias are picked for earlier cohorts, causing a decrease in the offspring count in the later cohorts, we will pick Daphnias of different sizes. *Daphnia magna* is fed ad libitum with 2 mg C/L/day [@lampert1978].
 
-Each cohort has to be sized to cover *Chaoborus*' worst-case daily appetite. Across `r Treatments` treatments × `r Replicates` replicates, with `r Chaoborus_larvae_per_jar` larvae per jar each capable of a single-feeding maximum of `r Chaoborus_Daphnia_neonates_eaten_max_recorded` neonates, that demand is `r Chaoborus_Daphnia_neonates_needed_per_day` neonates per day. A single cohort jar, started with `r Daphnia_individuals_per_new_cohort_jar` adults each producing `r Daphnia_neonates_per_mother_per_5_days` neonates over the `r Daphnia_max_age_eaten_days`-day cohort cycle, yields about `r Daphnia_neonates_per_cohort_jar` neonates by harvest day — so each daily cohort needs **`r Daphnia_jars_per_cohort` jars** to keep up with *Chaoborus*.
+Each cohort has to be sized to cover *Chaoborus*' worst-case daily appetite. Across `r Treatments` treatments × `r Replicates` replicates, with `r Chaoborus_larvae_per_jar` larvae per jar each capable of a single-feeding maximum of `r Chaoborus_Daphnia_neonates_eaten_max_recorded` neonates, that demand is `r Chaoborus_Daphnia_neonates_needed_per_day` neonates per day. A single cohort jar, started with `r Daphnia_adults_per_new_cohort_jar` adults each producing `r Daphnia_offsprings_per_mother_per_5_days` neonates over the `r Daphnia_max_age_eaten_days`-day cohort cycle, yields about `r Daphnia_neonates_per_cohort_jar` neonates by harvest day — so each daily cohort needs **`r Daphnia_jars_per_cohort` jars** to keep up with *Chaoborus*.
 
-Because a new cohort is started every day and takes `r Daphnia_max_age_eaten_days` days to reach harvest age, `r Daphnia_cohorts_in_rotation` cohorts of staggered ages are running side by side at any given time, one reaching harvest age each day. All of them have to already be in place on day one — the experiment can't wait `r Daphnia_max_age_eaten_days` days for the rotation to ramp up — so it has to start with `r Daphnia_jars_needed_at_start` cohort jars (`r Daphnia_jars_per_cohort` jars/cohort × `r Daphnia_cohorts_in_rotation` cohorts), each stocked with `r Daphnia_individuals_per_new_cohort_jar` adults. That means **`r Daphnia_adults_needed_at_start` adult *Daphnia*** (`r Daphnia_individuals_per_new_cohort_jar` adults/jar × `r Daphnia_jars_per_cohort` jars/cohort × `r Daphnia_cohorts_in_rotation` cohorts) are needed to start the experiment.
+Because a new cohort is started every day and takes `r Daphnia_max_age_eaten_days` days to reach harvest age, `r Daphnia_cohorts_in_rotation` cohorts of staggered ages are running side by side at any given time, one reaching harvest age each day. All of them have to already be in place on day one — the experiment can't wait `r Daphnia_max_age_eaten_days` days for the rotation to ramp up — so it has to start with `r Daphnia_jars_needed_at_start` cohort jars (`r Daphnia_jars_per_cohort` jars/cohort × `r Daphnia_cohorts_in_rotation` cohorts), each stocked with `r Daphnia_adults_per_new_cohort_jar` adults. That means **`r Daphnia_adults_needed_at_start` adult *Daphnia*** (`r Daphnia_adults_per_new_cohort_jar` adults/jar × `r Daphnia_jars_per_cohort` jars/cohort × `r Daphnia_cohorts_in_rotation` cohorts) are needed to start the experiment.
 
-That stock has to be propagated up from Vana's existing cultures. Starting from her `r Vana_Daphnia_starting_jars` jars, at `r Daphnia_adults_per_jar` adults per jar (both placeholders — see To do below), every adult produces `r Daphnia_neonates_per_mother_per_5_days` neonates per `r Daphnia_max_age_eaten_days`-day cycle, enough to found `r Daphnia_neonates_per_mother_per_5_days` new jars per existing jar each cycle regardless of jar size (jar size cancels out of that ratio). Compounding at that rate, the `r Daphnia_adults_needed_at_start`-adult target is cleared within `r Daphnia_propagation_cycles` cycles (`r Daphnia_propagation_days` days) — comfortably inside the `r Propagation_lead_time_days`-day, one-month lead time, with `r Daphnia_propagation_slack_days` days to spare. *Daphnia* fecundity is therefore never the bottleneck: propagating every offspring into a new jar for the full `r Daphnia_propagation_cycles` cycles would leave `r format(Daphnia_propagation_jars, big.mark = ",")` jars (`r format(round(Daphnia_propagation_adults), big.mark = ",")` adults) — far more than needed. In practice, only enough jars should be founded in the final cycle to reach the `r Daphnia_jars_needed_at_start` cohort jars (`r Daphnia_adults_needed_at_start` adults) the rotation actually needs at the start of the experiment; the remaining lead time is buffer for losses, delays, or a smaller starting stock than assumed here.
+That stock has to be propagated up from Vana's existing cultures. Starting from her `r Vana_Daphnia_starting_jars` jars, at `r Daphnia_cohorts_adults_per_jar` adults per jar (both placeholders — see To do below), every adult produces `r Daphnia_offsprings_per_mother_per_5_days` neonates per `r Daphnia_max_age_eaten_days`-day cycle, enough to found `r Daphnia_offsprings_per_mother_per_5_days` new jars per existing jar each cycle regardless of jar size (jar size cancels out of that ratio). Compounding at that rate, the `r Daphnia_adults_needed_at_start`-adult target is cleared within `r Daphnia_propagation_cycles` cycles (`r Daphnia_propagation_days` days) — comfortably inside the `r Propagation_lead_time_days`-day, one-month lead time, with `r Daphnia_propagation_slack_days` days to spare. *Daphnia* fecundity is therefore never the bottleneck: propagating every offspring into a new jar for the full `r Daphnia_propagation_cycles` cycles would leave `r format(Daphnia_propagation_jars, big.mark = ",")` jars (`r format(round(Daphnia_propagation_adults), big.mark = ",")` adults) — far more than needed. In practice, only enough jars should be founded in the final cycle to reach the `r Daphnia_jars_needed_at_start` cohort jars (`r Daphnia_adults_needed_at_start` adults) the rotation actually needs at the start of the experiment; the remaining lead time is buffer for losses, delays, or a smaller starting stock than assumed here.
 
-Each of the `r Daphnia_jars_needed_at_start` active cohort jars is fed daily at `r Daphnia_fed_C_mg_per_litre_per_day` mg C/L into its `r Large_jar_liquid_litres` L of medium, which comes to `r Daphnia_cohort_carbon_mg_per_day` mg C/day split across the `r Treatments` treatment diets (Table 1 in [Experimental Design](5_experimental_design.qmd)). Averaged evenly across treatments, that puts daily demand at `r round(Phytoplankton_Microcystis_mg_C_per_day, 1)` mg C of *M. aeruginosa*, `r round(Phytoplankton_Synechococcus_mg_C_per_day, 1)` mg C of *S. elongatus*, and `r round(Phytoplankton_Nannochloropsis_mg_C_per_day, 1)` mg C of *N. limnetica*. The stock jars that found these cohorts (`r Jars_big_Daphnia` large + `r Jars_small_Daphnia` small, fed `r Daphnia_fed_C_mg_per_litre_per_day` mg C/L/day of *T. obliquus* alone) add another `r round(Daphnia_stock_carbon_mg_per_day, 1)` mg C/day, for a combined *T. obliquus* demand of `r round(Phytoplankton_Tetradesmus_mg_C_per_day, 1)` mg C/day.
+Each of the `r Daphnia_jars_needed_at_start` active cohort jars is fed daily at `r Daphnia_algae_C_ad_libitum_mg_per_L_per_day` mg C/L into its `r Large_jar_liquid_litres` L of medium, which comes to `r Daphnia_cohort_carbon_mg_per_day` mg C/day split across the `r Treatments` treatment diets (Table 1 in [Experimental Design](5_experimental_design.qmd)). Averaged evenly across treatments, that puts daily demand at `r round(Phyto_Microcystis_mg_C_per_day, 1)` mg C of *M. aeruginosa*, `r round(Phyto_Synechococcus_mg_C_per_day, 1)` mg C of *S. elongatus*, and `r round(Phyto_Nannochloropsis_mg_C_per_day, 1)` mg C of *N. limnetica*. The stock jars that found these cohorts (`r Jars_big_Daphnia` large + `r Jars_small_Daphnia` small, fed `r Daphnia_algae_C_ad_libitum_mg_per_L_per_day` mg C/L/day of *T. obliquus* alone) add another `r round(Daphnia_stock_carbon_mg_per_day, 1)` mg C/day, for a combined *T. obliquus* demand of `r round(Phyto_Tetradesmus_mg_C_per_day, 1)` mg C/day.
 
-Harvesting alternates daily across the `r Phytoplankton_vessels_per_species` experimental bottles per species, so on any given day only one bottle per species is harvested while the other `r Phytoplankton_vessels_per_species - 1` regrow; whatever volume is taken out is replaced on the spot with fresh COMBO, the same way stock cultures are topped up (protocol/4_feed_Daphnia.md). At the conservative `r Phytoplankton_highest_concentration_mg_C_per_litres` mg C/L ceiling used throughout (`r round(Phytoplankton_experimental_bottle_max_mg_C)` mg C in a full `r round(Phytoplankton_experimental_bottle_volume_mL / 1000, 1)` L bottle), that single daily bottle needs to supply `r round(Phytoplankton_Microcystis_harvest_fraction * 100)`% of its standing carbon for *M. aeruginosa*, `r round(Phytoplankton_Synechococcus_harvest_fraction * 100)`% for *S. elongatus*, `r round(Phytoplankton_Nannochloropsis_harvest_fraction * 100)`% for *N. limnetica*, and `r round(Phytoplankton_Tetradesmus_harvest_fraction * 100)`% for *T. obliquus* — all under 100%, so `r Phytoplankton_vessels_per_species` bottles per species are enough to cover the carbon demand. What this doesn't yet check is whether the diluted bottle actually regrows back to `r Phytoplankton_highest_concentration_mg_C_per_litres` mg C/L before its next harvest, `r Phytoplankton_vessels_per_species` days later — that depends on each species' growth rate, which isn't pinned down yet (see To do below), and matters most for *N. limnetica*, whose bottle is diluted the most.
+Harvesting alternates daily across the `r Phyto_vessels_per_species` experimental bottles per species, so on any given day only one bottle per species is harvested while the other `r Phyto_vessels_per_species - 1` regrow; whatever volume is taken out is replaced on the spot with fresh COMBO, the same way stock cultures are topped up (protocol/4_feed_Daphnia.md). At the conservative `r Phyto_experimental_bottle_highest_mg_C_per_L` mg C/L ceiling used throughout (`r round(Phyto_experimental_bottle_max_mg_C)` mg C in a full `r round(Phyto_experimental_bottle_liquid_mL / 1000, 1)` L bottle), that single daily bottle needs to supply `r round(Phyto_Microcystis_harvest_fraction * 100)`% of its standing carbon for *M. aeruginosa*, `r round(Phyto_Synechococcus_harvest_fraction * 100)`% for *S. elongatus*, `r round(Phyto_Nannochloropsis_harvest_fraction * 100)`% for *N. limnetica*, and `r round(Phyto_Tetradesmus_harvest_fraction * 100)`% for *T. obliquus* — all under 100%, so `r Phyto_vessels_per_species` bottles per species are enough to cover the carbon demand. What this doesn't yet check is whether the diluted bottle actually regrows back to `r Phyto_experimental_bottle_highest_mg_C_per_L` mg C/L before its next harvest, `r Phyto_vessels_per_species` days later — that depends on each species' growth rate, which isn't pinned down yet (see To do below), and matters most for *N. limnetica*, whose bottle is diluted the most.
 
 ::: {.callout-warning title="To do"}
-- Confirm with Vana how many jars (and adults per jar) her stock cultures actually hold, to replace the `Vana_Daphnia_starting_jars`/`Daphnia_adults_per_jar` placeholders above.
-- Confirm that cohorts are meant to be started daily (assumed above from the "oldest cohort" language in protocol/3_create_Daphnia_jars.md and protocol/5_create_Chaoborus_jars.md) — if the interval differs, `Daphnia_cohorts_in_rotation` needs updating.
-- Confirm each species can regrow from its post-harvest dilution back to `Phytoplankton_highest_concentration_mg_C_per_litres` within the `Phytoplankton_vessels_per_species`-day gap between harvests — needs an actual growth rate per species, not yet in [Parameters](3_parameters.qmd). Most urgent for *N. limnetica*, whose bottle is diluted the most (`r round(Phytoplankton_Nannochloropsis_harvest_fraction * 100)`% harvested); consider a 4th replicate line for it if regrowth turns out too slow.
+- Confirm each species can regrow from its post-harvest dilution back to `Phyto_experimental_bottle_highest_mg_C_per_L` within the `Phyto_vessels_per_species`-day gap between harvests — needs an actual growth rate per species, not yet in [Parameters](3_parameters.qmd). Most urgent for *N. limnetica*, whose bottle is diluted the most (`r round(Phyto_Nannochloropsis_harvest_fraction * 100)`% harvested); consider a 4th replicate line for it if regrowth turns out too slow.
 :::
 
 #### Carbon content from optical density
 
-*Daphnia* is fed a fixed carbon dose (`r Daphnia_fed_C_mg_per_litre_per_day` mg C/L/day), but the volume of phytoplankton medium that delivers that dose isn't fixed — carbon content drifts from batch to batch as a culture grows. Rather than measuring carbon directly before every feeding, which is destructive and slow, each phytoplankton species is instead read on a spectrophotometer at OD<sub>480</sub> (see the [Daphnia feeding protocol](protocol/4_feed_Daphnia.md)), and that reading is converted to carbon through a species-specific linear calibration curve, mg C/L = slope × OD<sub>480</sub> − intercept, fitted by pairing OD readings across a dilution series against carbon measured on filtered, dried subsamples (method: [OD curve protocol](protocol/quarto/22_2026_03_27_OD_curve_Microcystis.md), worked through there for *M. aeruginosa*).
+*Daphnia* is fed a fixed carbon dose (`r Daphnia_algae_C_ad_libitum_mg_per_L_per_day` mg C/L/day), but the volume of phytoplankton medium that delivers that dose isn't fixed — carbon content drifts from batch to batch as a culture grows. Rather than measuring carbon directly before every feeding, which is destructive and slow, each phytoplankton species is instead read on a spectrophotometer at OD<sub>480</sub> (see the [Daphnia feeding protocol](protocol/4_feed_Daphnia.md)), and that reading is converted to carbon through a species-specific linear calibration curve, mg C/L = slope × OD<sub>480</sub> − intercept, fitted by pairing OD readings across a dilution series against carbon measured on filtered, dried subsamples (method: [OD curve protocol](protocol/quarto/22_2026_03_27_OD_curve_Microcystis.md), worked through there for *M. aeruginosa*).
 
 | Species | Slope | Intercept | Calibration status |
 |---|---|---|---|
@@ -87,49 +61,27 @@ Harvesting alternates daily across the `r Phytoplankton_vessels_per_species` exp
 
 These slope/intercept pairs are the same ones used by the [Daphnia food calculator](calculations/food_calculator.html) to turn a same-day OD reading into the volume of each medium to dose per jar.
 
-::: {.callout-warning title="To do"}
-- Fit an OD-to-carbon calibration curve for *Microcystis aeruginosa*. Carbon measurements already exist ([2_data/OD/OD_Microcystis_aeruginosa_in_COMBO.csv](../2_data/OD/OD_Microcystis_aeruginosa_in_COMBO.csv)), but they aren't yet usable for a curve: the file has no paired OD reading or filtered volume per sample, and its plate positions (`A1_N+M`, `D1_N+M`, …) don't match the dilution layout in the [OD curve protocol](protocol/quarto/22_2026_03_27_OD_curve_Microcystis.md) (`A1`–`C2`), so it's unclear which dilution level each row belongs to.
-- Fit an OD-to-carbon calibration curve for *Nannochloropsis limnetica* (no data collected yet).
-- Record the source measurements (OD readings and paired carbon analyses) behind the *Tetradesmus* and *Synechococcus* slopes/intercepts above, and decide how often each curve should be re-fitted.
-:::
-
 ### Chaoborus
 
 Chaoborus will be sourced in the form of third-instar larvae from IT-Ichthyo Trophic, Poland.
 
 ::: {.callout-warning title="To do"}
-- Add the size of the larvae.
-- Find references that say how to determine it's a third instar.
+
+**ℹ️ Add information **
+
 - Call IT-Ichthyo Trophic to ask what species of Chaoborus it is and how it is raised. 
 :::
 
 ## Assemble experiment
 
-The initial population density of *Chaoborus* will be `r Chaoborus_larvae_per_jar` larvae per jar, above the `r Chaoborus_one_measurement` larvae per jar needed to yield enough biomass for all the different analyses (`r round(Biomass_needed_total_mg, 2)` mg per treatment × replicate combination, accounting for a `r Chaoborus_dead_to_alive_ratio_worst_tratment`-fold worst-case dead-to-alive ratio; see [Box 1: Sample Collection and Storage](other/protocols/Quarto_protocols/9_sample_collection_and_storage.md)). Scaled to `r Treatments` treatments × `r Replicates` replicates, that means `r Chaoborus_total` larvae in total across `r Jars_Chaoborus` jars. This density is below 50 individuals per jar (9 cm diameter), corresponding to ~8,000 individuals m⁻² — within the upper range of peak natural *Chaoborus* densities reported from eutrophic, fish-free systems [@xie1998].
+The initial population density of *Chaoborus* will be `r Chaoborus_larvae_per_jar` larvae per jar, above the `r Chaoborus_one_measurement` larvae per jar needed to yield enough biomass for all the different analyses (`r round(Biomass_needed_total_mg, 2)` mg per treatment × replicate combination, accounting for a `r Chaoborus_dead_to_alive_ratio_worst_treatment`-fold worst-case dead-to-alive ratio; see [Box 1: Sample Collection and Storage](other/protocols/Quarto_protocols/9_sample_collection_and_storage.md)). Scaled to `r Treatments` treatments × `r Replicates` replicates, that means `r Chaoborus_total` larvae in total across `r Jars_Chaoborus` jars. This density is below 50 individuals per jar (9 cm diameter), corresponding to ~8,000 individuals m⁻² — within the upper range of peak natural *Chaoborus* densities reported from eutrophic, fish-free systems [@xie1998].
 
 ## Feed Chaoborus
 
 ::: {.callout-tip title="Protocol 1"}
 :::
 
-Feeding has to cover the whole jar's appetite at once, so with a single-feeding maximum of `r Chaoborus_Daphnia_neonates_eaten_max_recorded` neonates per larva and `r Chaoborus_larvae_per_jar` larvae per jar, *Chaoborus* will be fed ad libitum by providing `r Daphnia_neonates_needed_per_jar_per_day` *Daphnia* of 1 to `r Daphnia_max_age_eaten_days` days old per jar per day (see [Box 1: Sample Collection and Storage](other/protocols/Quarto_protocols/9_sample_collection_and_storage.md)).
-
-::: {.callout-warning title="To do"}
-- Decide whether you should calculate how much Chaoborus eats according to:
-  (i) size of Chaoborus and Daphnia
-  (ii) run a different feeding experiment with different Chaoborus sizes
-:::
-
-
-*Chaoborus* are fed *Daphnia* neonates ad libitum. *Daphnia* stock is built up in individual jars ahead of assembly, so the stock has to be sized to the neonate demand implied by the *Chaoborus* population above. Sizing that stock starts from two feeding-and-reproduction assumptions, both held with medium confidence: a fourth-instar *Chaoborus* larva eats about 20 neonates (1.25 mm *D. magna*) per feeding [@buns1991], with a single-feeding maximum of `r Chaoborus_Daphnia_neonates_eaten_max_recorded` neonates recorded, and an adult *Daphnia* produces about 20 neonates per 5-day clutch cycle. Only neonates up to `r Daphnia_max_age_eaten_days` days old are offered as food, since older *Daphnia* grow too large for *Chaoborus* to ingest. Those small stock jars, each housing a single *Daphnia*, are in turn fed from large (1000 mL) jars, each holding 15 adult *Daphnia* — a high-confidence figure, though the source for it still needs tracking down (see To do below).
-
-If Chaoborus eats different amounts of biomass according to the size of Daphnia it could be that it's because it's adapted to feed on a certain range size.
-
-::: {.callout-warning title="To do"}
-- Review this previous section.
-- Add what's the size of babies that Chaoborus eats.
-- Track down the source for the 15-adults-per-large-jar figure used to feed the *Daphnia* stock jars.
-:::
+*Chaoborus* will be fed ad libitum by providing `r Daphnia_neonates_needed_per_jar_per_day` *Daphnia* of 1 to `r Daphnia_max_age_eaten_days` days old per jar per day (see [Box 1: Sample Collection and Storage](other/protocols/Quarto_protocols/9_sample_collection_and_storage.md)).
 
 ## Collect data
 
@@ -145,7 +97,10 @@ Some rules that apply across collecting data for maximising how well lipids are 
 - Take as much water out from the samples before freezing by using a Pasteur pipette.
 
 ::: {.callout-warning title="To do"}
-- Check whether we should store samples together. 
+
+**🫙 Labelling system**
+
+- Come up with a system to label the tubes.
 :::
 
 ### Phytoplankton
@@ -256,17 +211,25 @@ The following analyses will be performed on *Chaoborus*, *Daphnia*, and phytopla
 
 
 ::: {.callout-warning title="To do"}
-- Why looking only at Microcystin-LR. 
-- Write why using ELISA.
-- Decide which kit to order.
-- Test kit.
-- Send the growing conditions of our algae to Ali & Irma (light, temperature, oxygen, size of jars, etc.)
-- @ Irma: would you like to characterise the toxins of *Microcystis aeruginosa* in Lund before the experiment?
+
+**ℹ️ Add information** 
+
+- Add why we are looking only at Microcystin-LR.
+- Add why we are using ELISA.
+
+**☠️ Decide how to analyse the toxins** 
+
+1. Speak with Irma on how they have been trying to analyse the toxins.
+2. Decide which kit to order.
 :::
 
 ## Statistical analyses
 
+::: {.callout-warning title="To do"}
+
+**ℹ️ Add information** 
+:::
+
 ### Biomass ingested by Chaoborus 
 
 I will analyse the ingested biomass of Daphnia (ingestion rate) by Chaoborus from body size using literature data. 
-
