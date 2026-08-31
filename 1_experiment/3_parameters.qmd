@@ -112,10 +112,10 @@ Biomass_needed_for_stoichiometry_mg <- 1.5 # Dominik Martin-Creuzburg, personal 
 :::
 
 :::: {.callout-warning title="To do"}
-🦟🦟🦟 **Determine the number of Chaoborus per jar (`Chaoborus_larvae_per_jar`)** 
+🦟 **Determine the number of Chaoborus per jar (`Chaoborus_larvae_per_jar`)** 
 
 - **Toxins biomass.** Calculate biomass needed for toxins (`Biomass_needed_for_toxins_mg`)    
-    - **Toxin detectability.** Determine what's the minium amount of detectable toxins (`Microcystins_detection_limit_ug_per_L`). ⏳ Waiting for: having bought ELISA kit. 
+    - [⏳ Waiting for: having bought ELISA kit] **Toxin detectability.** Determine what's the minium amount of detectable toxins (`Microcystins_detection_limit_ug_per_L`).  
     - **Extraction volume.** Determine what's the extraction volume for the toxins (`Microcystins_extraction_volume_mL`)
     - **Toxin biodilution.** Calculate how much cyantoxins biodilute from Daphnia to Chaoborus (`Chaoborus_cyanotoxin_biodilutin_from_Daphnia`) 
 - **Phosphorus biomass.** Calculate biomass needed for phosphorus (`Biomass_needed_for_P_mg`)
