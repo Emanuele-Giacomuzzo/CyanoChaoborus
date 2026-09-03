@@ -13,7 +13,7 @@
 
 Weight_per_shelf_kg <- ceiling(
   (
-    (Chaoborus_jar_with_liquid_kg * Jars_Chaoborus) +
+    (Large_jar_with_liquid_kg * Jars_Chaoborus) +
     (Small_jar_with_liquid_kg * Jars_small_Daphnia) +
     (Large_jar_with_liquid_kg * Jars_big_Daphnia)
     ) / Shelves
