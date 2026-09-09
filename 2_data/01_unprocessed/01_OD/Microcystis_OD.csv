@@ -1,0 +1,8 @@
+species,medium,percentage,OD_480_nm
+microcystis_aeruginosa,zoo_combo,0,0
+microcystis_aeruginosa,zoo_combo,10,0.09
+microcystis_aeruginosa,zoo_combo,25,0.228
+microcystis_aeruginosa,zoo_combo,35,0.311
+microcystis_aeruginosa,zoo_combo,50,0.449
+microcystis_aeruginosa,zoo_combo,75,0.653
+microcystis_aeruginosa,zoo_combo,100,0.874

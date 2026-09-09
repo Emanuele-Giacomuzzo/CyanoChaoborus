@@ -235,7 +235,8 @@ question 🌍
 >
 > # COMBO medium
 >
-> COMBO_batch_volume_litres <- 5 # COMBO is prepared in 5 L batches (protocol/1_create_COMBO.md)
+> COMBO_batch_volume_litres <- 20
+> COMBO_days_in_advance <- 1 #Needs one day to be autoclaved
 >
 > # Optical density to carbon calibration curves 
 >
@@ -315,136 +316,198 @@ question 🌍
 > ### Calculations
 >
 > ``` r
-> # ––– 🧪 Phytoplankton ––– #
+> # ––––––––––––––––––––––––––––––––––––––––––
+> # 🧪 Phytoplankton
+> # ––––––––––––––––––––––––––––––––––––––––––
 >
-> # Total number of experimental phytoplankton vessels.
-> # One set of vessels per species, multiplied by how many replicate vessels are kept per species.
+> # VESSELS COUNT
+> # Number of phytoplankton bottles and flasks
 >
-> Phyto_vessels_total <- Phyto_species_count * Phyto_vessels_per_species 
+> Phyto_experimental_bottle_nr <- Phyto_species_count * Phyto_vessels_per_species
+> Phyto_stock_flask_nr <- Phyto_experimental_bottle_nr
+> Phyto_stock_bottle_nr <- Phyto_experimental_bottle_nr
 >
-> # Total volume of COMBO growth medium needed to fill every vessel (stock flask + stock
-> # bottle + experimental bottle) for every phytoplankton vessel, converted from mL to litres.
+> # MEDIUM VOLUME
+> # Total COMBO medium required for stock and experimental bottles.
+> # This does not include the COMBO needed for transferring the phytoplankton stocks!
 >
-> COMBO_total_litres <- Phyto_vessels_total * (Phyto_stock_flask_liquid_mL + Phyto_stock_bottle_liquid_mL + Phyto_experimental_bottle_liquid_mL) / 1000 #  
->
-> # Number of separate COMBO batches to prepare, rounded up because COMBO is made in
-> # fixed-size batches (COMBO_batch_volume_litres) rather than one custom-sized batch.
+> COMBO_total_litres <- (
+>   (Phyto_stock_bottle_nr * Phyto_stock_bottle_liquid_mL) +
+>   (Phyto_experimental_bottle_nr * Phyto_experimental_bottle_liquid_mL)
+>   ) / 1000
 >
 > COMBO_batches <- ceiling(COMBO_total_litres / COMBO_batch_volume_litres)
 >
+> # ––––––––––––––––––––––––––––––––––––––––––
 > # 🦐 Daphnia
+> # ––––––––––––––––––––––––––––––––––––––––––
 >
-> # Total Daphnia neonates eaten per day across every Chaoborus jar (all treatments and
-> # replicates combined), assuming each larva eats the highest number of neonates ever recorded.
-> Chaoborus_Daphnia_neonates_needed_per_day <- Chaoborus_larvae_per_jar *
->   Chaoborus_Daphnia_neonates_eaten_max_recorded * Treatments * Replicates
+> # NUMBER OF COHORTS
+> # Number of staggered-age cohorts running in parallel at any time,
+> # rounded up since cohorts come in whole units.
+> # Needs to be checked.
 >
+> Daphnia_cohorts_in_rotation <- Daphnia_max_age_eaten_days
+>
+> # NUMBER OF NEONATES EATEN PER DAY
+> # Total Daphnia neonates eaten per day across every Chaoborus jar
+>
+> Chaoborus_Daphnia_neonates_needed_per_day <- (
+>   Chaoborus_larvae_per_jar *
+>   Chaoborus_Daphnia_neonates_eaten_max_recorded *
+>   Treatments *
+>   Replicates
+>   )
+>
+> # NUMBER OF NEONATESPRODUCED PER 5 DAYS
 > # Number of neonates produced by a single cohort jar over one 5-day reproduction cycle.
-> Daphnia_neonates_per_cohort_jar <- Daphnia_adults_per_new_cohort_jar *
->   Daphnia_offsprings_per_mother_per_5_days
+> # Needs to be checked.
 >
+> Daphnia_neonates_per_cohort_jar <- (
+>   Daphnia_adults_per_new_cohort_jar *
+>   Daphnia_offsprings_per_mother_per_5_days
+>   )
+>
+> # JARS PER COHORTS
 > # Number of cohort jars needed to cover the daily neonate demand, rounded up since jars
 > # come in whole units.
+>
 > Daphnia_jars_per_cohort <- ceiling(
->   Chaoborus_Daphnia_neonates_needed_per_day / Daphnia_neonates_per_cohort_jar
-> )
+>   Chaoborus_Daphnia_neonates_needed_per_day /
+>   Daphnia_neonates_per_cohort_jar
+>   )
 >
-> Daphnia_cohorts_in_rotation <- Daphnia_max_age_eaten_days # a new cohort starts daily and is harvested Daphnia_max_age_eaten_days days later (protocol/3_create_Daphnia_jars.md, protocol/5_create_Chaoborus_jars.md), so this many staggered-age cohorts run in parallel at any time
+> # TOTAL COHORT JARS
+> # Total cohort jars that must exist at any one time
+> # Needs to be checked.
 >
-> # Total cohort jars that must exist at any one time: one full set of Daphnia_jars_per_cohort
-> # for each of the staggered-age cohorts running in parallel.
-> Daphnia_jars_needed_at_start <- Daphnia_jars_per_cohort * Daphnia_cohorts_in_rotation
+> Daphnia_jars_needed_at_start <- (
+>   Daphnia_jars_per_cohort *
+>   Daphnia_cohorts_in_rotation
+>   )
 >
+> # INITIAL N OF ADULTS
 > # Total Daphnia adults needed to stock all of those cohort jars at the start of the experiment.
-> Daphnia_adults_needed_at_start <- Daphnia_adults_per_new_cohort_jar *
->   Daphnia_jars_per_cohort * Daphnia_cohorts_in_rotation
 >
-> # 🦐 Daphnia: propagating Vana's stock up to that starting target
+> Daphnia_adults_needed_at_start <- (
+>   Daphnia_adults_per_new_cohort_jar *
+>   Daphnia_jars_per_cohort *
+>   Daphnia_cohorts_in_rotation
+>   )
 >
-> # Start from the jars already available in Vana's stock culture.
+> # PROPAGATION
+> # Number of cycles needed to propagate Vana's starting stock up to the adult target above,
+> # and how much slack that leaves inside the one-month lead time.
+>
 > Daphnia_propagation_jars <- Vana_Daphnia_starting_jars
 > Daphnia_propagation_cycles <- 0
 > Daphnia_propagation_adults <- Daphnia_propagation_jars * Daphnia_cohorts_adults_per_jar
 >
-> # Simulate the stock growing every 5-day reproduction cycle — each cycle, the current jars
-> # multiply by how many neonates a mother produces in 5 days — repeating until there are
-> # enough adults to meet Daphnia_adults_needed_at_start.
 > while (Daphnia_propagation_adults < Daphnia_adults_needed_at_start) {
 >   Daphnia_propagation_jars <- Daphnia_propagation_jars * Daphnia_offsprings_per_mother_per_5_days
 >   Daphnia_propagation_cycles <- Daphnia_propagation_cycles + 1
 >   Daphnia_propagation_adults <- Daphnia_propagation_jars * Daphnia_cohorts_adults_per_jar
 > }
 >
-> # Total days the propagation will take: number of 5-day cycles needed, converted to days.
 > Daphnia_propagation_days <- Daphnia_propagation_cycles * Daphnia_max_age_eaten_days
-> # Buffer between the planned lead time and the propagation's actual duration (negative
-> # means propagation would finish later than planned, so the lead time isn't enough).
 > Daphnia_propagation_slack_days <- Propagation_lead_time_days - Daphnia_propagation_days
 >
-> # ☠️ Toxins: minimum Chaoborus biomass needed to detect microcystins by ELISA
+> # ––––––––––––––––––––––––––––––––––––––––––
+> # ☠️ Toxins
+> # ––––––––––––––––––––––––––––––––––––––––––
 >
+> # MINIMUM TOXIN CONCENTRATION DETECTABLE
+>
+> Microcystins_minimum_detectable_mg <- (
+>   Microcystins_detection_limit_ug_per_L *
+>   (Microcystins_extraction_volume_mL / 1000) / 1000)
+>
+> # TOXINS IN CHAOBORUS
 > # How much microcystin ends up per gram of Chaoborus dry weight, after the toxin biodilutes
 > # twice along the food chain: phytoplankton -> Daphnia -> Chaoborus.
-> Microcystins_mg_per_g_DW_Chaoborus <- Microcystins_mg_per_g_DW_phytoplankton /
->   (Microcystins_biodilution_factor_Daphnia * Microcystins_biodilution_factor_Chaoborus)
 >
-> Microcystins_minimum_detectable_mg <- Microcystins_detection_limit_ug_per_L *
->   (Microcystins_extraction_volume_mL / 1000) / 1000 # µg/L x extraction volume (L) = µg of toxin, then /1000 to mg
+> Microcystins_mg_per_g_DW_Chaoborus <- (
+>   Microcystins_mg_per_g_DW_phytoplankton /
+>   (Microcystins_biodilution_factor_Daphnia * Microcystins_biodilution_factor_Chaoborus))
 >
-> # Minimum dry-weight biomass of Chaoborus needed so the microcystins it contains reach the
-> # ELISA kit's detection limit.
-> Biomass_needed_for_toxins_mg <- (Microcystins_minimum_detectable_mg / Microcystins_mg_per_g_DW_Chaoborus) * 1000 # g DW -> mg DW
+> # DETECTABILITY
+> # Biomass of Chaoborus needed to detect Microcystins in Chaoborus using ELISA.
+> # Multiplying by 1000 converts from g to mg
 >
-> # 🦟 Chaoborus: population size
+> Biomass_needed_for_toxins_mg <- (
+>   Microcystins_minimum_detectable_mg /
+>   Microcystins_mg_per_g_DW_Chaoborus) * 1000
 >
+> # ––––––––––––––––––––––––––––––––––––––––––
+> # 🦟 Chaoborus
+> # ––––––––––––––––––––––––––––––––––––––––––
+>
+> # NUMBER OF JARS
+> # Total number of Chaoborus jars: one jar per treatment-by-replicate combination.
+>
+> Jars_Chaoborus <- Treatments * Replicates
+>
+> # BIOMASS
 > # Total dry-weight biomass needed per Chaoborus sample to run every planned analysis
-> # (fatty acids, sterols, stoichiometry, and toxins) on that same sample.
-> Biomass_needed_total_mg <- DW_needed_for_PUFAs_mg + DW_needed_for_sterols_mg +
->   DW_needed_for_N_and_C_mg + Biomass_needed_for_toxins_mg
+> # (fatty acids, sterols, stoichiometry, and toxins).
 >
+> Biomass_needed_total_mg <- (
+>   DW_needed_for_PUFAs_mg +
+>   DW_needed_for_sterols_mg +
+>   DW_needed_for_N_and_C_mg +
+>   Biomass_needed_for_toxins_mg
+>   )
+>
+> # NUMBER OF CHAAOBORUS NEEDED
 > # Number of Chaoborus larvae needed for one measurement: the biomass required, converted to
 > # a larva count via a single larva's dry weight, then inflated by the worst-case death rate
 > # so enough larvae still survive to be measured.
-> Chaoborus_one_measurement <- ceiling(
->   (Biomass_needed_total_mg / Chaoborus_third_instar_DW_mg) *
->     Chaoborus_dead_to_alive_ratio_worst_treatment
-> )
+> # Is this for a single measurement or for all measurements? Needs to be checked.
 >
-> # Total Chaoborus larvae needed across the whole experiment: one measurement's worth for
-> # every treatment-by-replicate combination.
+> Chaoborus_one_measurement <- ceiling(
+>   (Biomass_needed_total_mg /
+>   Chaoborus_third_instar_DW_mg) *
+>   Chaoborus_dead_to_alive_ratio_worst_treatment
+>   )
+>
+> # TOTAL CHAOBORUS NEEDED
+> # Chaoborus larvae needed for one measurement, scaled to every treatment-by-replicate jar.
+>
 > Chaoborus_total <- Chaoborus_one_measurement * Treatments * Replicates
 >
-> # Total number of Chaoborus jars: one jar per treatment-by-replicate combination.
-> Jars_Chaoborus <- Treatments * Replicates
+> # NEONATES NEEDED PER JAR PER DAY
+> # Daphnia neonates a single Chaoborus jar needs per day, at the worst-case single-feeding rate.
 >
-> # 🦟 Chaoborus: Daphnia neonates needed per jar per day
->
-> # Daphnia neonates a single Chaoborus jar eats per day: larvae per jar times the worst-case
-> # (maximum recorded) appetite per larva.
 > Daphnia_neonates_needed_per_jar_per_day <- Chaoborus_Daphnia_neonates_eaten_max_recorded * Chaoborus_larvae_per_jar
 >
-> # 🦐 Daphnia: jar counts
+> # STOCK JAR COUNTS
+> # Small jars (1 Daphnia each) needed to build up the Chaoborus-feeding stock, and the large jars
+> # (housing the adults that produce that stock) needed to keep those small jars supplied.
 >
-> if (!exists("Daphnia_offsprings_per_mother_per_5_days")) Daphnia_offsprings_per_mother_per_5_days <- NA_real_ # not yet defined among Parameters; see To do below
-> if (!exists("Chaoborus_Daphnia_neonates_eaten_per_day")) Chaoborus_Daphnia_neonates_eaten_per_day <- NA_real_ # not yet defined among Parameters; see To do below
->
-> Jars_small_Daphnia <- ceiling( # small jars: 1 Daphnia per jar, used to build up the stock
+> Jars_small_Daphnia <- ceiling(
 >   Chaoborus_total / (Daphnia_offsprings_per_mother_per_5_days / Chaoborus_Daphnia_neonates_eaten_per_day)
-> )
+>   )
 >
-> Daphnia_per_large_jar <- 15
+> Jars_big_Daphnia <- ceiling(
+>   Jars_small_Daphnia / (Daphnia_cohorts_adults_per_jar * Daphnia_offsprings_per_mother_per_5_days)
+>   )
 >
-> Jars_big_Daphnia <- ceiling( # large jars: house the adults producing the neonate stock
->   Jars_small_Daphnia / (Daphnia_per_large_jar * Daphnia_offsprings_per_mother_per_5_days)
-> )
+> # ––––––––––––––––––––––––––––––––––––––––––
+> # NEED TO KEEP REVISING CODE FROM HERE
+> # ––––––––––––––––––––––––––––––––––––––––––
 >
-> # 🧪 Phytoplankton: carbon demand from Daphnia
+> # FOOD NEEDED – How much algae (as carbon) needs to be fed to all the Daphnia cohort jars every day.
+> Daphnia_cohort_carbon_mg_per_day <- (
+>   Daphnia_jars_needed_at_start *
+>   Large_jar_liquid_litres *
+>   Daphnia_algae_C_ad_libitum_mg_per_L_per_day
+>   )
 >
-> Daphnia_cohort_carbon_mg_per_day <- Daphnia_jars_needed_at_start * # every active cohort jar (all 4 treatments combined), fed daily
->   Large_jar_liquid_litres * Daphnia_algae_C_ad_libitum_mg_per_L_per_day
->
-> Daphnia_stock_carbon_mg_per_day <- (Jars_big_Daphnia * Large_jar_liquid_litres + # stock jars are fed Tetradesmus alone (see Parameters)
->   Jars_small_Daphnia * Small_jar_liquid_litres) * Daphnia_algae_C_ad_libitum_mg_per_L_per_day
+> Daphnia_stock_carbon_mg_per_day <- (
+>   (Jars_big_Daphnia *
+>   Large_jar_liquid_litres +
+>   Jars_small_Daphnia *
+>   Small_jar_liquid_litres) * Daphnia_algae_C_ad_libitum_mg_per_L_per_day)
 >
 > # Split the cohort jars' total carbon demand across phytoplankton species, in the same
 > # proportions each species contributes to the diet mixes (Diet_*_fraction, averaged across
@@ -463,28 +526,31 @@ question 🌍
 > # only one bottle is harvested on any given day, so that bottle alone has to cover that day's demand
 > # while the other Phyto_vessels_per_species - 1 bottles regrow. The harvested volume is replaced
 > # with fresh COMBO on the spot (as in protocol/4_feed_Daphnia.md), which is what dilutes that bottle back
-> # down before it regrows toward Phyto_highest_concentration_mg_C_per_litres ahead of its next
+> # down before it regrows toward Phyto_experimental_bottle_highest_mg_C_per_L ahead of its next
 > # harvest — the fractions below only check that the demand fits under the bottle's max carbon content,
 > # they don't yet confirm the diluted bottle actually regrows that far in the days it has to do so (see
 > # To do below).
+>
 > Phyto_Microcystis_harvest_fraction <- Phyto_Microcystis_mg_C_per_day / Phyto_experimental_bottle_max_mg_C
 > Phyto_Synechococcus_harvest_fraction <- Phyto_Synechococcus_mg_C_per_day / Phyto_experimental_bottle_max_mg_C
 > Phyto_Nannochloropsis_harvest_fraction <- Phyto_Nannochloropsis_mg_C_per_day / Phyto_experimental_bottle_max_mg_C
 > Phyto_Tetradesmus_harvest_fraction <- Phyto_Tetradesmus_mg_C_per_day / Phyto_experimental_bottle_max_mg_C
 >
-> # 🪜 Infrastructure: shelves and total jar count
+> # ––––––––––––––––––––––––––––––––––––––––––
+> # 🪜 Infrastructure
+> # ––––––––––––––––––––––––––––––––––––––––––
 >
-> # Heaviest load any one shelf will bear: total weight of all jars (Chaoborus + small Daphnia
-> # + large Daphnia, each jar's weight including its liquid) spread evenly across the shelves,
-> # rounded up to a whole kilogram.
+> # SHELF LOADING
+> # Total shelf load (kg), rounded up to the nearest whole kg.
+> # Assumes all jars are distributed evenly across shelves.
+>
 > Weight_per_shelf_kg <- ceiling(
->   ((Large_jar_with_liquid_kg * Jars_Chaoborus) +
+>   (
+>     (Large_jar_with_liquid_kg * Jars_Chaoborus) +
 >     (Small_jar_with_liquid_kg * Jars_small_Daphnia) +
->     (Large_jar_with_liquid_kg * Jars_big_Daphnia)) / Shelves
+>     (Large_jar_with_liquid_kg * Jars_big_Daphnia)
+>     ) / Shelves
 > )
->
-> # Total number of jars of every kind needed for the whole experiment.
-> Jars_total <- Jars_Chaoborus + Jars_small_Daphnia + Jars_big_Daphnia
 > ```
 
 > [!WARNING]
@@ -514,6 +580,10 @@ question 🌍
 >
 > **🧪 Calculate how much *Microcystis aeruginosa* is needed to get
 > enough toxins (`...`)**
+>
+> ------------------------------------------------------------------------
+>
+> - Check whether Daphnia_neonates_per_cohort_jar is right.
 
 # Experimental Design
 
@@ -638,8 +708,8 @@ preparing in advance:
 - 12 × 50 mL stock flasks
 - 12 × 500 mL stock bottles (holding 300 mL of liquid)
 - 12 × 2 L experimental bottles
-- 28.2 L of COMBO medium, made in 5 L batches (6 batches; see the [COMBO
-  protocol](protocol/1_create_COMBO.md))
+- 27.6 L of COMBO medium, made in 20 L batches (2 batches; see the
+  [COMBO protocol](protocol/1_create_COMBO.md))
 
 ### Daphnia
 

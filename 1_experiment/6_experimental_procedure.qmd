@@ -23,11 +23,11 @@ To do that, each species is scaled up through three vessel sizes in sequence:
 
 The experimental bottle is where we will be harvesting the algae to feed Daphnia, so it has to be kept at a high enough density to meet that demand. Every `r NA` days the algae are harvested and fed to Daphnia / lysed and provided to Chaoborus, while replacing `r NA` % of the bottles with COMBO medium. Each bottle is kept for `r NA` days before it's replaced. Also, each experimental bottle is grown `r NA` days before to be able to be used as it needs to grow to enough density.
 
-Scaled to `r Phyto_species_count` species × `r Phyto_vessels_per_species` replicates (`r Phyto_vessels_total` lines total), that means preparing in advance:
+Scaled to `r Phyto_species_count` species × `r Phyto_vessels_per_species` replicates (`r Phyto_experimental_bottle_nr` lines total), that means preparing in advance:
 
-- `r Phyto_vessels_total` × `r Phyto_stock_flask_liquid_mL` mL stock flasks
-- `r Phyto_vessels_total` × `r Phyto_stock_bottle_capacity_mL` mL stock bottles (holding `r Phyto_stock_bottle_liquid_mL` mL of liquid)
-- `r Phyto_vessels_total` × `r round(Phyto_experimental_bottle_liquid_mL / 1000, 1)` L experimental bottles
+- `r Phyto_experimental_bottle_nr` × `r Phyto_stock_flask_liquid_mL` mL stock flasks
+- `r Phyto_experimental_bottle_nr` × `r Phyto_stock_bottle_capacity_mL` mL stock bottles (holding `r Phyto_stock_bottle_liquid_mL` mL of liquid)
+- `r Phyto_experimental_bottle_nr` × `r round(Phyto_experimental_bottle_liquid_mL / 1000, 1)` L experimental bottles
 - `r round(COMBO_total_litres, 1)` L of COMBO medium, made in `r COMBO_batch_volume_litres` L batches (`r COMBO_batches` batches; see the [COMBO protocol](protocol/1_create_COMBO.md))
 
 ### Daphnia

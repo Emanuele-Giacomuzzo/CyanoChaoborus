@@ -1,0 +1,17 @@
+﻿species,medium,percentage,volume_added_ml,position_drying_plate,position_C_analysis_plate,problem,comment
+microcystis_aeruginosa,zoo_combo,0,10,A1,D1,no,
+microcystis_aeruginosa,zoo_combo,0,10,A2,D2,no,
+microcystis_aeruginosa,zoo_combo,10,20,A3,D3,no,
+microcystis_aeruginosa,zoo_combo,10,20,A4,D4,no,
+microcystis_aeruginosa,zoo_combo,25,16,A5,D5,yes,accidentally_touched
+microcystis_aeruginosa,zoo_combo,25,16,A6,D6,no,
+microcystis_aeruginosa,zoo_combo,35,14,B1,D7,no,
+microcystis_aeruginosa,zoo_combo,35,14,B2,D8,no,
+microcystis_aeruginosa,zoo_combo,50,10,B3,NA,yes,accidentally_touched_and_not_kept_in_C_analysis
+microcystis_aeruginosa,zoo_combo,50,10,B4,D9,no,
+microcystis_aeruginosa,zoo_combo,75,8,B5,D10,no,
+microcystis_aeruginosa,zoo_combo,75,8,B6,D11,no,
+microcystis_aeruginosa,zoo_combo,100,5,C1,D12,yes,accidentally_burnt
+microcystis_aeruginosa,zoo_combo,100,5,C2,E1,no,
+microcystis_aeruginosa,zoo_combo,25,16,C3,E2,no,
+microcystis_aeruginosa,zoo_combo,100,5,C4,E3,no,

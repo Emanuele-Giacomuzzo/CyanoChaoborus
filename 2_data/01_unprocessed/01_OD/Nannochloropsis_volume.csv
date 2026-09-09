@@ -1,0 +1,13 @@
+﻿species,medium,percentage,volume_added_ml,position_drying_plate,position_C_analysis_plate
+nannochloropsis_limnetica,zoo_combo,0,10,A2,A1
+nannochloropsis_limnetica,zoo_combo,0,10,A2,A2
+nannochloropsis_limnetica,zoo_combo,10,20,B1,A3
+nannochloropsis_limnetica,zoo_combo,10,20,B2,A4
+nannochloropsis_limnetica,zoo_combo,25,16,C1,A5
+nannochloropsis_limnetica,zoo_combo,25,16,C2,A6
+nannochloropsis_limnetica,zoo_combo,50,10,D1,A7
+nannochloropsis_limnetica,zoo_combo,50,10,D2,A8
+nannochloropsis_limnetica,zoo_combo,75,8,A5,A9
+nannochloropsis_limnetica,zoo_combo,75,8,A6,A10
+nannochloropsis_limnetica,zoo_combo,100,5,B5,A11
+nannochloropsis_limnetica,zoo_combo,100,5,B6,A12
