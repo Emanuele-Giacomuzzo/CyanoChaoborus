@@ -1,0 +1,10 @@
+Here I import all the packages from my library. 
+
+::: {.callout-note title="📖 Library"}
+```{r}
+#| label: library
+
+library(tidyverse)
+library(here)
+```
+:::

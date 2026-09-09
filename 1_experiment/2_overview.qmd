@@ -48,7 +48,3 @@ This project is powered by a small but very dedicated crew:
 | Tina Katherine Varis | BSc student, doing research assistanship within this project | Elon University, USA, exchange @ University of Copenhagen, DK |
 
 Basically, a small international team spanning Denmark, Brazil, and the US, at every career stage from BSc to PI — all digging into the same big question 🌍
-
-:::: {.callout-warning title="To do"}
-- Update the do lists from the old list. 
-::::

@@ -11,7 +11,6 @@ format:
     code-fold: true
     code-summary: "Show calculation code"
     reference-location: section
-  gfm: default
 execute:
   echo: true
 bibliography: references.bib
@@ -21,18 +20,12 @@ nocite: '@*'
 
 <!--
 This file stitches the chapters below into a single rendered document
-(Rendered_files/README.md and Rendered_files/Rendered.html) so that
-numbers computed in one chapter (e.g. Calculations) can be quoted
-inline everywhere else, instead of being retyped by hand. The output
-is named README.md so GitHub renders it automatically when browsing
-into Rendered_files/. Quarto renders to 1_master.md/1_master.html in
-this folder by default (do NOT set output-file to README.md directly:
-Quarto stages its render at the source-relative filename before any
---output-dir move, which would clobber this folder's own README.md).
-To rebuild, run from this folder:
+(Rendered_files/Rendered.html) so that numbers computed in one chapter
+(e.g. Calculations) can be quoted inline everywhere else, instead of
+being retyped by hand. Quarto renders to 1_master.html in this folder
+by default. To rebuild, run from this folder:
     quarto render 1_master.qmd
     mkdir -p Rendered_files
-    mv 1_master.md Rendered_files/README.md
     mv 1_master.html Rendered_files/Rendered.html
 Edit the chapters themselves, not this file — this file only decides
 the reading order:
@@ -51,6 +44,8 @@ the reading order:
 -->
 
 {{< include 2_overview.qmd >}}
+
+{{< include 03_library.qmd >}}
 
 {{< include 3_parameters.qmd >}}
 
