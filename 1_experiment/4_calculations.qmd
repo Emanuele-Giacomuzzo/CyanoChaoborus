@@ -1,7 +1,7 @@
 ::: {.callout-note title="Calculations – 🧪 OD" collapse="true"}
 ## Purpose
 
-Every day, each treatment's phytoplankton culture has to deliver the same amount of carbon to *Daphnia* and *Chaoborus*, regardless of species — otherwise a diet could simply be supplying more or less food overall, confounding food *quantity* with the food *quality* and toxin-exposure effects the experiment is designed to isolate. Optical density (OD) at 480 nm is a fast, non-destructive proxy for how much algal biomass is in a culture, but how much carbon that biomass represents is species-specific and has to be calibrated separately for each one.
+We need to provide the same amount of carbon to Daphnia otherwise a diet could simply be supplying more or less food overall, confounding food *quantity* with the food *quality*. Optical density (OD) at 480 nm is a fast proxy for how much algal carbon is in a culture, but the relationship between OD and carbon content is species-specific and must be calibrated for each algal species.
 
 This analysis fits that calibration for *Microcystis aeruginosa* and *Nannochloropsis limnetica*: a linear equation converting an OD<sub>480</sub> reading of either species, grown in zoo-COMBO medium, into the corresponding carbon concentration (mg C/L). Once fitted, the equation lets the volume of culture needed for a given carbon dose be read straight off a quick OD measurement.
 
@@ -13,11 +13,11 @@ For each species, a dilution series was prepared in zoo-COMBO medium (COMBO with
 
 ### Carbon content
 
-A matched volume of each dilution was filtered onto a drying plate — one plate per species — dried, and both plates were sent together to Dominik Martin-Creuzburg's lab (Bad Saarow, Germany) for carbon and nitrogen analysis on a shared elemental-analyser plate. That plate also carried filters from an unrelated project, identifiable by a distinct plate label, which are excluded below since they don't belong to this calibration. Filters flagged as compromised — accidentally touched during handling, or burnt during analysis — are excluded as well, since they no longer give a valid carbon reading for their dilution.
+A matched volume of each dilution was filtered onto a drying plate — one plate per species — dried in a 24-well plate, both species packaged together in a 96-well plate and sent together to Dominik Martin-Creuzburg's lab (Bad Saarow, Germany) for carbon and nitrogen analysis. Data came back with filters from an unrelated project (Claudia's), which are excluded. Filters flagged as compromised — accidentally touched during handling, burnt during analysis, or lost — are excluded as well.
 
 ### Calibration
 
-Carbon mass is converted to a concentration (mg C/L) by dividing the measured carbon (mg) by the volume of culture filtered (mL) and scaling to litres. That concentration is then regressed linearly against the matching OD<sub>480</sub> reading, separately for each species:
+Carbon mass is converted to a concentration (mg C/L) by dividing the measured carbon (mg) by the volume of culture filtered (mL). That concentration is then regressed linearly against the matching OD<sub>480</sub> reading, separately for each species:
 
 $$C_{mg/L} = \text{intercept} + \text{slope} \times OD_{480}$$
 
