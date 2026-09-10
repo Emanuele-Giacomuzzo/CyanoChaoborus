@@ -169,10 +169,4 @@ DW_needed_for_toxins_mg <- NA
 
 - **Feeding experiment.** Come up with an experiment to look at the number of Daphnia eaten for different Chaoborus and Daphnia sizes (`Chaoborus_Daphnia_neonates_eaten_per_day` & `Chaoborus_Daphnia_neonates_eaten_max_recorded`)
 
----
-
-**🧪 Determine the optical density - carbon function of M. aeruginosa and N. limnetica**
-
----
-
 ::::

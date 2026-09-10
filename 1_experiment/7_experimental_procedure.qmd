@@ -105,16 +105,10 @@ Some rules that apply across collecting data for maximising how well lipids are 
 
 ### Phytoplankton
 
-I will collect two sets of phytoplankton samples: one set will be kept to measure the quality and toxins, and the other set will be kept with lugol to measure the cell size.
-
-::: {.callout-warning title="To do"}
-- I should decide whether I want to run an experiment looking at the quality and toxins of phytoplankton during the growth phase. 
-:::
-
-::: {.callout-warning title="To do"}
-- @ Ali, Kirsten: would it be okay if I sample phytoplankton only once throughout the experiment?
-- @ Ali, Kirsten: should I use alchool for subsamples to measure cell size? 
-:::
+One a day during the experiment – whenver we have time – we will collect the following phytoplankton samples: 
+- One for quality
+- One for toxicity
+- One for cell size – kept in **lugol** 
 
 ### Daphnia
 
@@ -129,15 +123,13 @@ Daphnia quality will be monitored the last day of the experiment by collecting .
 
 ### Chaoborus (larvae)
 
-At the beginning of the experiment, we will collect two sets of larvae:
-- X larvae kept in alchool in a microcentrifuge tube (up to 50 Chaoborus larvae can be stored in 1.5 mL microcentrifuge tubes) to characterise their body size
-- Y larvae kept WITHOUT alchool to characterise their quality
+One the day we assemble the experiment, we will collect two Chaoborus larvae samples (up to 50 Chaoborus larvae can be stored in 1.5 mL microcentrifuge tubes):
+- Body size sample: X larvae kept in alchool in a microcentrifuge tube 
+- Quality sample: X larvae kept WITHOUT alchool in a microcentrifuge tube 
 
 ::: {.callout-warning title="To do"}
-- @ Ali, Kirsten: how do I measure both body size and quality? Would it be okay to have two sets of Chaoborus larvae? 
 - Add how many larvae we need to collect. 
 :::
-
 
 ### Chaoborus (emerged)
 
@@ -145,7 +137,6 @@ Chaoborus will be collected whenever they emerge, by placing them inside a falco
 
 ::: {.callout-warning title="To do"}
 - Add a plan on how to number the tubes. 
-- Add how many Chaoborus adults are going to fit in one tube. 
 - Toward the end of organising the experiment: think whether you would have enough time to measure the size of Chaoborus before being put inside. 
 - @ Anne: do we have enough 50 ml centrigue tubes? 
 - @ Jana: the previous plan was to put individuals inside tubes for different analyses (e.g., 1 in CN, 2 in P, 3 in sterols, 4 in fatty acids, 5 in toxicity, 6 in CN, 7 in P, etc). However, now that we have big falcon tubes is it okay to leave them all in a single falcon tube? I don't remember the reason why we kept them in different microcentrifuge tubes. 

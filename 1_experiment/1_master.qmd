@@ -45,16 +45,18 @@ the reading order:
 
 {{< include 2_overview.qmd >}}
 
-{{< include 03_library.qmd >}}
+{{< include 3_library.qmd >}}
 
-{{< include 3_parameters.qmd >}}
+{{< include 4_parameters.qmd >}}
 
-{{< include 4_calculations.qmd >}}
+{{< include 5_calculations.qmd >}}
 
-{{< include 5_experimental_design.qmd >}}
+{{< include 6_experimental_design.qmd >}}
 
-{{< include 6_experimental_procedure.qmd >}}
+{{< include 7_experimental_procedure.qmd >}}
 
-{{< include 7_bibliography.qmd >}}
+{{< include 8_bibliography.qmd >}}
 
-{{< include 8_protocols.qmd >}}
+{{< include 9_protocols.qmd >}}
+
+{{< include 10_to_dos.qmd >}}
