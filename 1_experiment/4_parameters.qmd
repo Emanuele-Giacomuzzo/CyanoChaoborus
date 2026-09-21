@@ -113,11 +113,13 @@ COMBO_days_in_advance <- 1 #Needs one day to be autoclaved
 # dilution series read on the spectrophotometer and filtered onto pre-combusted GF/C filters for
 # carbon analysis (method: protocol/quarto/22_2026_03_27_OD_curve_Microcystis.md); used by
 # calculations/food_calculator.qmd to dose Daphnia feeding (see 6_experimental_procedure.qmd)
+# This comes from Varvara Paida's calibration work. 
 
 Tetradesmus_OD_to_C_slope <- 158.32
 Tetradesmus_OD_to_C_intercept <- -10.991
 Synechococcus_OD_to_C_slope <- 89.419
 Synechococcus_OD_to_C_intercept <- -4.463
+extra_food_percentage <- 25 # Extra food to make just in case 
 
 # ––– 🍽️ Diet treatments ––– #
 

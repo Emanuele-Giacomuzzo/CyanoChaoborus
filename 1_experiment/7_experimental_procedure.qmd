@@ -52,6 +52,8 @@ Harvesting alternates daily across the `r Phyto_vessels_per_species` experimenta
 
 *Daphnia* is fed a fixed carbon dose (`r Daphnia_algae_C_ad_libitum_mg_per_L_per_day` mg C/L/day), but the volume of phytoplankton medium that delivers that dose isn't fixed — carbon content drifts from batch to batch as a culture grows. Rather than measuring carbon directly before every feeding, which is destructive and slow, each phytoplankton species is instead read on a spectrophotometer at OD<sub>480</sub> (see the [Daphnia feeding protocol](protocol/4_feed_Daphnia.md)), and that reading is converted to carbon through a species-specific linear calibration curve, mg C/L = slope × OD<sub>480</sub> − intercept, fitted by pairing OD readings across a dilution series against carbon measured on filtered, dried subsamples (method: [OD curve protocol](protocol/quarto/22_2026_03_27_OD_curve_Microcystis.md), worked through there for *M. aeruginosa*).
 
+::: {.table-scroll}
+
 | Species | Slope | Intercept | Calibration status |
 |---|---|---|---|
 | *Tetradesmus obliquus* | `r Tetradesmus_OD_to_C_slope` | `r Tetradesmus_OD_to_C_intercept` | Fitted |
@@ -59,11 +61,16 @@ Harvesting alternates daily across the `r Phyto_vessels_per_species` experimenta
 | *Microcystis aeruginosa* | — | — | Pending |
 | *Nannochloropsis limnetica* | — | — | Pending |
 
+:::
+
 These slope/intercept pairs are the same ones used by the [Daphnia food calculator](calculations/food_calculator.html) to turn a same-day OD reading into the volume of each medium to dose per jar.
 
-### Chaoborus
+### Chaoborus / Ischnura
 
-Chaoborus will be sourced in the form of third-instar larvae from IT-Ichthyo Trophic, Poland.
+- Chaoborus will be sourced in the form of third-instar larvae from IT-Ichthyo Trophic, Poland.
+- Ischnura elegans will be sourced from mesocosms that had been added with freshly hatched Ischnura larvae from the field (Kastrup Fortress, Copenhagen, Denmark). The mesocosms are located in the University of Copenhagen, Denmark. They will be kept on straws.
+
+Both Chaoborus and Ischnura will be left starving for 48-96 hours to acclimate to the new environment, let the weak individuals die, and their guts to clean before starting the experiment.
 
 ::: {.callout-warning title="To do"}
 
@@ -85,142 +92,71 @@ The initial population density of *Chaoborus* will be `r Chaoborus_larvae_per_ja
 
 ## Collect data
 
-At the beginning of the experiment and through the experiment we will be measuring end points telling us about the quantity, quality, and timing of resource flows (see Table 2). We will pull larvae, pupae, and adults together, recording the number of larvae, pupae, and adults, and taking out all the extra *Daphnia* in the jars. We will also need to measure these numbers at the beginning of the experiment. See Table 2 and [Box 1: Sample Collection and Storage](other/protocols/Quarto_protocols/9_sample_collection_and_storage.md).
+At the beginning and throughout the experiment, we will measure endpoints describing the **quantity, quality, and timing of resource flows**, as well as the quality of phytoplankton and zooplankton (@tbl-sampling). 
 
-::: {.callout-warning title="To do"}
-- Decide whether to remove the extra *Daphnia* every day or only every time the *Chaoborus* medium is changed.
-:::
+::: {.table-scroll style="font-size: 0.8em;"}
 
-Some rules that apply across collecting data for maximising how well lipids are preserved:
+| When | Who | What | How | n | Sample | Storage |
+|---:|---|---|---|---:|---|---|
+| **TBD** |  |  |  |  |  |  |
+|  | *Phytoplankton* |  |  |  |  |  |
+|  |  | Size |  | 3/species | TBD mg C | Lugol, ambient |
+|  |  | Sterols |  | 3/species | TBD mg C | -20 °C |
+|  |  | PUFAs |  | 3/species | TBD mg C | -20 °C |
+|  |  | Toxicity |  | 3/species | TBD mg C | -20 °C |
+|  | *Daphnia* |  |  |  |  |  |
+|  |  | Size | Photos | 3/diet | TBD individuals | Ethanol, ambient |
+|  |  | Sterols |  | 3/diet | TBD individuals | -20 °C |
+|  |  | PUFAs |  | 3/diet | TBD individuals | -20 °C |
+|  |  | Toxicity |  | 3/diet | TBD individuals | -20 °C |
+| **Day 0** |  |  |  |  |  |  |
+|  | *Chaoborus larvae* |  |  |  |  |  |
+|  |  | Size | Photos | 3 | TBD individuals | NOT STORED |
+|  |  | Sterols |  | 3 | TBD individuals | -20 °C |
+|  |  | PUFAs |  | 3 | TBD individuals | -20 °C |
+|  |  | Toxicity |  | 3 | TBD individuals | -20 °C |
+|  | *Ischnura larvae* |  |  |  |  |  |
+|  |  | Size | Photos |  | All | NOT STORED |
+|  |  | Sterols |  | 3 |  | -20 °C |
+|  |  | PUFAs |  | 3 |  | -20 °C |
+|  |  | Toxicity |  | 3 |  | -20 °C |
+| **Emergence** |  |  |  |  |  |  |
+|  | *Chaoborus adults* |  |  |  |  |  |
+|  |  | Size | Photos |  | All emerged | NOT STORED |
+|  |  | Sterols |  |  | All emerged | -20 °C |
+|  |  | PUFAs |  |  | All emerged | -20 °C |
+|  |  | Toxicity |  |  | All emerged | -20 °C |
+|  | *Ischnura adults* |  |  |  |  |  |
+|  |  | Size | Photos |  | All emerged | NOT STORED |
+|  |  | Sterols |  |  | All emerged | -20 °C |
+|  |  | PUFAs |  |  | All emerged | -20 °C |
+|  |  | Toxicity |  |  | All emerged | -20 °C |
+| **End** |  |  |  |  |  |  |
+|  | *Chaoborus larvae* |  |  |  |  |  |
+|  |  | Size | Photos |  | All still alive | NOT STORED |
+|  |  | Sterols |  |  | All still alive | -20 °C |
+|  |  | PUFAs |  |  | All still alive | -20 °C |
+|  |  | Toxicity |  |  | All still alive | -20 °C |
+|  | *Ischnura larvae* |  |  |  |  |  |
+|  |  | Size | Photos |  | All still alive | NOT STORED |
+|  |  | Sterols |  |  | All still alive | -20 °C |
+|  |  | PUFAs |  |  | All still alive | -20 °C |
+|  |  | Toxicity |  |  | All still alive | -20 °C |
 
-- **Do not to use alchool!** 
-- Take as much water out from the samples before freezing by using a Pasteur pipette.
+: Sampling scheme for the experiment.[^sample-naming] Some rules that apply across collecting data for maximising how well lipids are preserved: (i) Do not to use alchool! (ii) Take as much water out from the samples before freezing by using a Pasteur pipette. Take photos when sampling the Ischnura means that we take photos of the individuals before we start experimenting on them. Also, for the insects when we say that we take photos of them it means that we do so before we then store them into the different sampling containers. The sterols and PUFAs are said to be stored at -20 °C but they should be freeze-dried afterwards. Up to 50 Chaoborus larvae can be stored in 1.5 mL microcentrifuge tubes. Chaoborus will be collected whenever they emerge, by placing them inside a falcon tube with tally marks (卌) indicating how many individuals are inside. We will use falcon tubes, as in the previous pilot study performed with Tobias it was hard to take out enough water, which meant that a single treatment had to split into many different microcentrifuge tubes. When calculating the body size of phytoplankton and zooplankton, I will need to add a correction factor to account for the fact that (i) I will be measuring 2D images of 3D individuals and that (ii) Lugol shrinks them. In the toxicity analyses we are looking only at Microcystin-LR as it's the most abundant cyanotoxin in *M. aerguinosa*. {#tbl-sampling}
 
-::: {.callout-warning title="To do"}
+[^sample-naming]: Each sample is named following the pattern `{group}_{endpoint}[_{stage}][_{diet}]`: `group` identifies the organism and life stage (`Phyto`, `Daphnia`, `Chao_larv`, `Ischnu_larv`, `Chao_adult`, `Ischnu_adult`); `endpoint` is the measured trait (`size`, `sterol`, `PUFA`, `toxin`); `stage` is `init` or `end` for larvae sampled at two time points; and `diet` (`micro`/`nanno`/`syneco`/`tetra`) is appended when samples are split by algal diet.
 
-**🫙 Labelling system**
-
-- Come up with a system to label the tubes.
-:::
-
-### Phytoplankton
-
-One a day during the experiment – whenver we have time – we will collect the following phytoplankton samples: 
-- One for quality
-- One for toxicity
-- One for cell size – kept in **lugol** 
-
-### Daphnia
-
-Daphnia quality will be monitored the last day of the experiment by collecting ... number of Daphnia. For each sampling, I will keep a sample in ethanol for quality and one without it for body size measurment. 
-
-::: {.callout-warning title="To do"}
-- Calculate how many Daphnia I should keep for body size. 
-- Add how many total Daphnia are needed for analysing PUFAs, sterols, stoichiometry, and toxins.
-- Decide which container to use to store Daphnia.
-- Decide how to count the number of Daphnia.
-:::
-
-### Chaoborus (larvae)
-
-One the day we assemble the experiment, we will collect two Chaoborus larvae samples (up to 50 Chaoborus larvae can be stored in 1.5 mL microcentrifuge tubes):
-- Body size sample: X larvae kept in alchool in a microcentrifuge tube 
-- Quality sample: X larvae kept WITHOUT alchool in a microcentrifuge tube 
-
-::: {.callout-warning title="To do"}
-- Add how many larvae we need to collect. 
-:::
-
-### Chaoborus (emerged)
-
-Chaoborus will be collected whenever they emerge, by placing them inside a falcon tube with tally marks (卌) indicating how many individuals are inside. We will use falcon tubes, as in the previous pilot study performed with Tobias it was hard to take out enough water, which meant that a single treatment had to split into many different microcentrifuge tubes.  
-
-::: {.callout-warning title="To do"}
-- Add a plan on how to number the tubes. 
-- Toward the end of organising the experiment: think whether you would have enough time to measure the size of Chaoborus before being put inside. 
-- @ Anne: do we have enough 50 ml centrigue tubes? 
-- @ Jana: the previous plan was to put individuals inside tubes for different analyses (e.g., 1 in CN, 2 in P, 3 in sterols, 4 in fatty acids, 5 in toxicity, 6 in CN, 7 in P, etc). However, now that we have big falcon tubes is it okay to leave them all in a single falcon tube? I don't remember the reason why we kept them in different microcentrifuge tubes. 
-:::
-
-## End experiment
-
-::: {.callout-warning title="To do"}
-- Add a plan on when to end the experiment.  
-:::
-
-::: {.callout-tip title="All checked until here"}
-:::
-
-## Store samples
-
-Samples are stored for up to 3 weeks at -20 °C, then dry frozen and put back into -20 °C. 
-
-::: {.callout-warning title="To do"}
-- \@ Jana: how should I package the samples for Germany? 
-- \@ Jana: is it true that lipid samples can be stored only for up to 3 weeks at -20 °C?
-- \@ Jana: can you show me how to dry freeze? 
 :::
 
 ## Lab analyses
 
-The following analyses will be performed on *Chaoborus*, *Daphnia*, and phytoplankton.
+- PUFAs and sterols will be first freeze-dried and then analysed by gas chromatography-mass spectrometry (GC-MS) and C, N, and P will be analysed by elemental analysis (CN = in the lab of Dominik Martin-Creuzburg, P = in house with the help of Anne Jensinius Jacobsen). The toxicity of the phytoplankton and zooplankton will be analysed by ELISA.
 
-**Biomass.**
+## Other analyses
 
-::: {.callout-warning title="To do"}
-- \@ Jana: how could I measure the biomass of our samples?
-:::
-
-**PUFAs & sterols.**
-
-**C & N.** Samples will be sent to Dominik Martin-Creuzburg (BTU, Germany), as results from the machine at the Freshwater Biology Section seem to be unreliable (Jana Isanta-Navarro, personal communication). 
-
-::: {.callout-warning title="To do"}
-- Check your notes which machines I need for which analysis.
-- \@ Jana: is it okay to store samples for stoichiometry at -20?
-:::
-
-**P.** This will be done in house with the help of KU lab technician Anne Jensinius Jacobsen. 
-
-::: {.callout-warning title="To do"}
-- @ Jana: how do we store the sample for P analysis?
-- Ask Anne when she could show me how to do this.
-:::
-
-**Body size.** 
-
-- Phytoplankton & *Daphnia magna*: I will take photos of individuals, which then I will measure using software. I will need to add a correction factor to account for the fact that (i) I will be measuring 2D images of 3D individuals and that (ii) Lugol shrinks them.
-- Chaoborus: I will take photos of individuals, which then I will measure using software.
-
-::: {.callout-warning title="To do"}
-- Think about whether this should be done at the time point 0 and at the last time point.
-- I need to think about how to have different samples for body size and for quality analysis. The only thing I can think of is whether we could take photos of the body size when they come out. But this might be a lot of work. 
-- Which software should I use to measure the body size of phytoplankton?
-:::
-
-**Toxicity.** Microcystin-LR concentration will be measured using an ELISA kit. 
-
-
-::: {.callout-warning title="To do"}
-
-**ℹ️ Add information** 
-
-- Add why we are looking only at Microcystin-LR.
-- Add why we are using ELISA.
-
-**☠️ Decide how to analyse the toxins** 
-
-1. Speak with Irma on how they have been trying to analyse the toxins.
-2. Decide which kit to order.
-:::
+- The biomass of Chaoborus and damselfiles will be calculated from a correlation between body size and biomass, which will be performed before the experiment.
 
 ## Statistical analyses
 
-::: {.callout-warning title="To do"}
-
-**ℹ️ Add information** 
-:::
-
-### Biomass ingested by Chaoborus 
-
-I will analyse the ingested biomass of Daphnia (ingestion rate) by Chaoborus from body size using literature data. 
+TBD

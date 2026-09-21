@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -68,16 +71,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="food_calculator_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="food_calculator_files/libs/quarto-html/anchor.min.js"></script>
 <link href="food_calculator_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="food_calculator_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="food_calculator_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="food_calculator_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="food_calculator_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="food_calculator_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<meta name="shinylive:serviceworker_dir" content=".">
-<script src="food_calculator_files/libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
-<script src="food_calculator_files/libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
-<link href="food_calculator_files/libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
+<link href="food_calculator_files/libs/bootstrap/bootstrap-917079515d91bccb85b543faf8aa8bb6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<meta name="shinylive:serviceworker_dir" content="..">
+<script src="food_calculator_files/libs/quarto-contrib/shinylive-0.10.12/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="food_calculator_files/libs/quarto-contrib/shinylive-0.10.12/shinylive/run-python-blocks.js" type="module"></script>
+<link href="food_calculator_files/libs/quarto-contrib/shinylive-0.10.12/shinylive/shinylive.css" rel="stylesheet">
 <link href="food_calculator_files/libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -108,112 +140,154 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="purpose" class="level2">
 <h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
-<p><em>Daphnia magna</em> culture jars are fed a 50:50 mix (by carbon) of <em>Tetradesmus obliquus</em> and <em>Synechococcus elongatus</em>, dosed to a target carbon concentration per jar (see <a href="../3_parameters.qmd">Parameters</a> and <a href="../5_calculations.qmd">Calculations</a>). Because the carbon content of each medium changes from batch to batch, the volume to add has to be recalculated from a fresh optical density (OD) reading before every feeding, using an OD-to-carbon calibration curve fitted per species. This app takes today’s OD readings and the number of <em>Daphnia</em> culture jars to feed, and returns how much of each medium to add.</p>
-<p>The app below runs entirely in the browser (via <a href="https://shiny.posit.co/py/docs/shinylive.html">Shinylive</a>) — no R server needed, so it works straight from the rendered page. After editing the code in this file, re-render it so the embedded app picks up the change:</p>
+<p>Calculate how much phytoplankton to mix to obtain the desired carbon ratio between different species.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render calculations/food_calculator.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+$$
+<span class="math display">\[\begin{array}{l}
+M_{P}^{\mathrm{jar}}
+    = D_P \times V_J \\[8pt]
+
+M_{P}^{\mathrm{tot}}
+    = M_{P}^{\mathrm{jar}} \times n_J \\[8pt]
+
+n_J
+    = \text{number of jars} \\[2pt]
+
+V_J
+    = \text{volume of one jar} \\[2pt]
+
+D_P
+    = \text{phytoplankton density} \\[2pt]
+
+M_{P}^{\mathrm{jar}}
+    = \text{phytoplankton mass per jar} \\[2pt]
+
+M_{P}^{\mathrm{tot}}
+    = \text{total phytoplankton mass}
+\end{array}\]</span>
+<p>$$</p>
+<p>M = mass (only C)</p>
+<p>V = volume</p>
+<p>n = number</p>
+<p>D = density</p>
+<p>Input: - Number of Daphnia cultures - Optical density of the Synechococcus sample - Optical density of the Tetradesmus sample - Optical density of the Microcystis sample - Optical density of the Nannochloropsis sample</p>
+<p>Output: - Volume of Microcystis - Volume of Synechococcus - Volume of Nannochloropsis - Volume of Tetradesmus - Volume per Daphnia jar Microcystis + Tetradesmus - Volume per Daphnia jar Synechococcus + Tetradesmus - Volume per Daphnia jar Nannochloropsis - Volume of mix Microcystis + Tetradesmus - Volume of mix Synechococcus + Tetradesmus - Volume of Nannochloropsis</p>
+<p>The app’s parameters (jar volume, target carbon concentration, and each species’ OD-to-carbon calibration) are not typed in below by hand. A standalone Shinylive app like this one runs client-side in the reader’s browser and has no access to this document’s R session or to the repository’s data files, so instead the code block is generated at render time from <code>calculations/food_calculator_parameters.csv</code> — a snapshot written by <a href="../5a_calculations_OD.qmd">5a_calculations_OD.qmd</a> from the live calibration fit. Re-rendering the master document (or just 5a_calculations_OD.qmd) refreshes that snapshot; re-rendering this file then bakes the refreshed numbers into the app below.</p>
 <pre class="shinylive-r" data-engine="r"><code>#| '!! shinylive warning !!': |
 #|   shinylive does not work in self-contained HTML documents.
 #|   Please set `embed-resources: false` in your metadata.
 #| standalone: true
-#| viewerHeight: 480
+#| viewerHeight: 560
 
 library(shiny)
 
 ui &lt;- fluidPage(
-  numericInput(
-    "n_cultures",
-    "Number of Daphnia culture jars",
-    value = 35,
-    min = 1
+  fluidRow(
+    column(
+      6,
+      numericInput(
+        "n_cultures",
+        "Number of Daphnia culture jars",
+        value = 35,
+        min = 1
+      ),
+      numericInput(
+        "od_synechococcus",
+        "OD of Synechococcus elongatus",
+        value = 1,
+        step = 0.01
+      ),
+      numericInput(
+        "od_tetradesmus",
+        "OD of Tetradesmus obliquus",
+        value = 1,
+        step = 0.01
+      ),
+      numericInput(
+        "od_microcystis",
+        "OD of Microcystis aeruginosa",
+        value = 1,
+        step = 0.01
+      ),
+      numericInput(
+        "od_nannochloropsis",
+        "OD of Nannochloropsis limnetica",
+        value = 1,
+        step = 0.01
+      )
+    ),
+    column(
+      6,
+      tableOutput("parameters_echo")
+    )
   ),
-  numericInput(
-    "od_tetra",
-    "Optical density of Tetradesmus obliquus",
-    value = 0.65,
-    step = 0.01
-  ),
-  numericInput(
-    "od_syn",
-    "Optical density of Synechococcus elongatus",
-    value = 0.67,
-    step = 0.01
-  ),
-  tableOutput("result")
+  fluidRow(
+    column(
+      4,
+      h4("Single phytoplankton species (ml)"),
+      tableOutput("outputs_single_echo")
+    ),
+    column(
+      4,
+      h4("Mixed phytoplankton species (ml)"),
+      tableOutput("outputs_mix_echo")
+    ),
+    column(
+      4,
+      h4("Per Daphnia jar (ml)"),
+      tableOutput("outputs_jar_echo")
+    )
+  )
 )
 
 server &lt;- function(input, output) {
-  output$result &lt;- renderTable({
 
-    ## Fixed parameters
-    culture_volume_mL &lt;- 800    # medium volume per Daphnia jar
-    target_C_mg_per_L &lt;- 2      # carbon target per jar, matches Daphnia_fed_C_mg_per_litre_per_day in 3_parameters.qmd
-    extra &lt;- 0.25                # buffer added to the total volume to cover pipetting loss
+  ## Baked in from calculations/food_calculator_parameters.csv at render time
+  ## (see the Purpose section above for why these are not read live).
+    Large_jar_liquid_litres &lt;- 0.8
+    Daphnia_algae_C_ad_libitum_mg_per_L_per_day &lt;- 2
+    extra_food_percentage &lt;- 25
+    Phyto_low_quality_food_ratio &lt;- 0.5
+    Tetradesmus_OD_to_C_slope &lt;- 158.32
+    Tetradesmus_OD_to_C_intercept &lt;- -10.991
+    Synechococcus_OD_to_C_slope &lt;- 89.419
+    Synechococcus_OD_to_C_intercept &lt;- -4.463
+    Microcystis_OD_to_C_slope &lt;- 120.147589554584
+    Microcystis_OD_to_C_intercept &lt;- -0.405178209732212
+    Nannochloropsis_OD_to_C_slope &lt;- 96.7264952720823
+    Nannochloropsis_OD_to_C_intercept &lt;- 0.427886502870943
 
-    frac_tetra &lt;- 0.5           # share of carbon from Tetradesmus, matches Phytoplankton_low_quality_food_ratio in 3_parameters.qmd
-    slope_tetra &lt;- 158.32
-    intercept_tetra &lt;- -10.991
-
-    frac_syn &lt;- 0.5
-    slope_syn &lt;- 89.419
-    intercept_syn &lt;- -4.463
-
-    ## Tetradesmus obliquus
-    tetra_per_jar_mL &lt;-
-      ((culture_volume_mL * target_C_mg_per_L) /
-         ((slope_tetra * input$od_tetra) - intercept_tetra)) *
-      frac_tetra
-
-    tetra_total_mL &lt;- tetra_per_jar_mL * input$n_cultures
-    tetra_total_extra_mL &lt;- tetra_total_mL * (1 + extra)
-
-    ## Synechococcus elongatus
-    syn_per_jar_mL &lt;-
-      ((culture_volume_mL * target_C_mg_per_L) /
-         ((slope_syn * input$od_syn) - intercept_syn)) *
-      frac_syn
-
-    syn_total_mL &lt;- syn_per_jar_mL * input$n_cultures
-    syn_total_extra_mL &lt;- syn_total_mL * (1 + extra)
-
+  output$parameters_echo &lt;- renderTable({
     data.frame(
-      Quantity = c(
-        "Tetradesmus per jar (mL)",
-        "Tetradesmus total (mL)",
-        "Tetradesmus total +25% (mL)",
-        "Synechococcus per jar (mL)",
-        "Synechococcus total (mL)",
-        "Synechococcus total +25% (mL)",
-        "Total mix +25% (mL)"
-      ),
-      Value = round(c(
-        tetra_per_jar_mL,
-        tetra_total_mL,
-        tetra_total_extra_mL,
-        syn_per_jar_mL,
-        syn_total_mL,
-        syn_total_extra_mL,
-        tetra_total_extra_mL + syn_total_extra_mL
-      ), 1)
+      Parameter = c("Large_jar_liquid_litres", "Daphnia_algae_C_ad_libitum_mg_per_L_per_day",  "extra_food_percentage", "Phyto_low_quality_food_ratio", "Tetradesmus_OD_to_C_slope",  "Tetradesmus_OD_to_C_intercept", "Synechococcus_OD_to_C_slope",  "Synechococcus_OD_to_C_intercept", "Microcystis_OD_to_C_slope",  "Microcystis_OD_to_C_intercept", "Nannochloropsis_OD_to_C_slope",  "Nannochloropsis_OD_to_C_intercept"),
+      Value = c(0.8, 2, 25, 0.5, 158.32, -10.991, 89.419, -4.463, 120.147589554584,  -0.405178209732212, 96.7264952720823, 0.427886502870943)
+    )
+  })
+
+  ## Placeholder until the actual mixing calculations are implemented.
+  output$outputs_single_echo &lt;- renderTable({
+    data.frame(
+      Species = c("Microcystis", "Synechococcus", "Nannochloropsis", "Tetradesmus"),
+      Value = 0
+    )
+  })
+
+  output$outputs_mix_echo &lt;- renderTable({
+    data.frame(
+      Mix = c("Microcystis + Tetradesmus", "Synechococcus + Tetradesmus"),
+      Value = 0
+    )
+  })
+
+  output$outputs_jar_echo &lt;- renderTable({
+    data.frame(
+      Mix = c("Microcystis + Tetradesmus", "Synechococcus + Tetradesmus", "Nannochloropsis"),
+      Value = 0
     )
   })
 }
 
 shinyApp(ui, server)</code></pre>
-<div class="callout callout-style-default callout-warning callout-titled" title="To do">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>To do
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Add the source (which OD readings / carbon measurements) behind <code>slope_tetra</code>, <code>intercept_tetra</code>, <code>slope_syn</code>, and <code>intercept_syn</code>, and how often they should be re-fitted.</li>
-</ul>
-</div>
-</div>
 </section>
 
 </main>

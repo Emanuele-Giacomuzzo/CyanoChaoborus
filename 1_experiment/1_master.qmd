@@ -7,6 +7,7 @@ format:
     toc-depth: 3
     number-sections: true
     theme: cosmo
+    css: styles.css
     embed-resources: true
     code-fold: true
     code-summary: "Show calculation code"
@@ -49,7 +50,9 @@ the reading order:
 
 {{< include 4_parameters.qmd >}}
 
-{{< include 5_calculations.qmd >}}
+{{< include 5a_calculations_OD.qmd >}}
+
+{{< include 5b_calculations_others.qmd >}}
 
 {{< include 6_experimental_design.qmd >}}
 

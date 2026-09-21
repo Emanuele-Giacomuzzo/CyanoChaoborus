@@ -1,0 +1,9 @@
+/* Lets wide tables scroll horizontally instead of squeezing their columns. */
+.table-scroll {
+  overflow-x: auto;
+}
+
+.table-scroll table {
+  width: max-content;
+  min-width: 100%;
+}

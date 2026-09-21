@@ -21,14 +21,14 @@ Now bring in **cyanobacteria** (aka "blue-green algae"). Cyanobacterial blooms a
 
 The tricky part: these two effects usually happen *at the same time* in nature, so it's really hard to know which one is actually driving the damage. Is it the toxic, or is it the poor quality food effect (or both)? **Teasing these two mechanisms apart is the central goal of this project.**
 
-## 🧪 Why Chaoborus?
+## 🧪 Why *Chaoborus sp* and *Ischnura elegans*?
 
 To study this, we use *Chaoborus* — commonly known as the **phantom midge** — as our model organism. A few reasons it's a great fit:
 
-- It's a genus that's **widespread around the world**, found in lakes and ponds across many continents, so what we learn has broad relevance.
+- They are **widespread**, found in lakes and ponds, so what we learn has broad relevance.
 - It's a well-established model in freshwater ecology, so there's a solid foundation of methods and knowledge to build on, and it's (relatively) easy to keep in the lab. 
 
-By feeding *Chaoborus* different cyanobacterial diets (toxic vs. non-toxic, nutritionally varied) and tracking how they grow, survive, and eventually emerge, we can start to disentangle *toxicity* from *food quality* — and understand what that means for the animals waiting on land for their next meal to fly out of the water.
+By feeding *Chaoborus sp* and *Ischnura elegans* different cyanobacterial diets (toxic vs. non-toxic, nutritionally varied) and tracking how they grow, survive, and eventually emerge, we can start to disentangle *toxicity* from *food quality* — and understand what that means for the animals waiting on land for their next meal to fly out of the water.
 
 Thanks for stopping by — happy reading, and welcome aboard! 🔬🦟
 

@@ -8,106 +8,192 @@ filters:
 
 ## Purpose
 
-*Daphnia magna* culture jars for the "Low-quality" treatment (Table 1 in [Experimental Design](../5_experimental_design.qmd)) are fed a 50:50 mix (by carbon) of *Tetradesmus obliquus* and *Synechococcus elongatus*, dosed to a target carbon concentration per jar (see [Parameters](../3_parameters.qmd) and [Calculations](../4_calculations.qmd)). Because the carbon content of each medium changes from batch to batch, the volume to add has to be recalculated from a fresh optical density (OD) reading before every feeding, using an OD-to-carbon calibration curve fitted per species. This app takes today's OD readings and the number of *Daphnia* culture jars to feed, and returns how much of each medium to add.
-
-The app below runs entirely in the browser (via [Shinylive](https://shiny.posit.co/py/docs/shinylive.html)) — no R server needed, so it works straight from the rendered page. After editing the code in this file, re-render it so the embedded app picks up the change:
+Calculate how much phytoplankton to mix to obtain the desired carbon ratio between different species.
 
 ```sh
 quarto render calculations/food_calculator.qmd
 ```
 
+$$
+\begin{array}{l}
+M_{P}^{\mathrm{jar}}
+    = D_P \times V_J \\[8pt]
+
+M_{P}^{\mathrm{tot}}
+    = M_{P}^{\mathrm{jar}} \times n_J \\[8pt]
+
+n_J
+    = \text{number of jars} \\[2pt]
+
+V_J
+    = \text{volume of one jar} \\[2pt]
+
+D_P
+    = \text{phytoplankton density} \\[2pt]
+
+M_{P}^{\mathrm{jar}}
+    = \text{phytoplankton mass per jar} \\[2pt]
+
+M_{P}^{\mathrm{tot}}
+    = \text{total phytoplankton mass}
+\end{array}
+$$
+
+M = mass (only C)
+
+V = volume 
+
+n = number
+ 
+D = density 
+
+Input:
+- Number of Daphnia cultures
+- Optical density of the Synechococcus sample
+- Optical density of the Tetradesmus sample
+- Optical density of the Microcystis sample
+- Optical density of the Nannochloropsis sample
+
+Output:
+- Volume of Microcystis
+- Volume of Synechococcus
+- Volume of Nannochloropsis
+- Volume of Tetradesmus
+- Volume per Daphnia jar Microcystis + Tetradesmus
+- Volume per Daphnia jar Synechococcus + Tetradesmus
+- Volume per Daphnia jar Nannochloropsis
+- Volume of mix Microcystis + Tetradesmus
+- Volume of mix Synechococcus + Tetradesmus
+- Volume of Nannochloropsis
+
+The app's parameters (jar volume, target carbon concentration, and each species' OD-to-carbon calibration) are not typed in below by hand. A standalone Shinylive app like this one runs client-side in the reader's browser and has no access to this document's R session or to the repository's data files, so instead the code block is generated at render time from `calculations/food_calculator_parameters.csv` — a snapshot written by [5a_calculations_OD.qmd](../5a_calculations_OD.qmd) from the live calibration fit. Re-rendering the master document (or just 5a_calculations_OD.qmd) refreshes that snapshot; re-rendering this file then bakes the refreshed numbers into the app below.
+
+````{r}
+#| label: load_parameters
+#| include: false
+
+Food_calculator_parameters <- read.csv(
+  here::here("calculations", "food_calculator_parameters.csv")
+)
+````
+
+````{r}
+#| label: emit_app
+#| echo: false
+#| output: asis
+
+param_assignments <- paste(
+  sprintf("    %s <- %s", Food_calculator_parameters$name, Food_calculator_parameters$value),
+  collapse = "\n"
+)
+param_names_r <- paste(deparse(Food_calculator_parameters$name), collapse = " ")
+param_values_r <- paste(deparse(Food_calculator_parameters$value), collapse = " ")
+
+app_code <- sprintf('
 ```{shinylive-r}
 #| standalone: true
-#| viewerHeight: 480
+#| viewerHeight: 560
 
 library(shiny)
 
 ui <- fluidPage(
-  numericInput(
-    "n_cultures",
-    "Number of Daphnia culture jars",
-    value = 35,
-    min = 1
+  fluidRow(
+    column(
+      6,
+      numericInput(
+        "n_cultures",
+        "Number of Daphnia culture jars",
+        value = 35,
+        min = 1
+      ),
+      numericInput(
+        "od_synechococcus",
+        "OD of Synechococcus elongatus",
+        value = 1,
+        step = 0.01
+      ),
+      numericInput(
+        "od_tetradesmus",
+        "OD of Tetradesmus obliquus",
+        value = 1,
+        step = 0.01
+      ),
+      numericInput(
+        "od_microcystis",
+        "OD of Microcystis aeruginosa",
+        value = 1,
+        step = 0.01
+      ),
+      numericInput(
+        "od_nannochloropsis",
+        "OD of Nannochloropsis limnetica",
+        value = 1,
+        step = 0.01
+      )
+    ),
+    column(
+      6,
+      tableOutput("parameters_echo")
+    )
   ),
-  numericInput(
-    "od_tetra",
-    "Optical density of Tetradesmus obliquus",
-    value = 0.65,
-    step = 0.01
-  ),
-  numericInput(
-    "od_syn",
-    "Optical density of Synechococcus elongatus",
-    value = 0.67,
-    step = 0.01
-  ),
-  tableOutput("result")
+  fluidRow(
+    column(
+      4,
+      h4("Single phytoplankton species (ml)"),
+      tableOutput("outputs_single_echo")
+    ),
+    column(
+      4,
+      h4("Mixed phytoplankton species (ml)"),
+      tableOutput("outputs_mix_echo")
+    ),
+    column(
+      4,
+      h4("Per Daphnia jar (ml)"),
+      tableOutput("outputs_jar_echo")
+    )
+  )
 )
 
 server <- function(input, output) {
-  output$result <- renderTable({
 
-    ## Fixed parameters
-    # Shinylive apps run entirely client-side in the browser (webR), with no access
-    # to repository files at runtime, so these mirror the values in 3_parameters.qmd
-    # rather than being read from it. Update both places together if they change.
-    culture_volume_mL <- 800    # medium volume per Daphnia jar
-    target_C_mg_per_L <- 2      # carbon target per jar, matches Daphnia_algae_C_ad_libitum_mg_per_L_per_day in 3_parameters.qmd
-    extra <- 0.25                # buffer added to the total volume to cover pipetting loss
+  ## Baked in from calculations/food_calculator_parameters.csv at render time
+  ## (see the Purpose section above for why these are not read live).
+%s
 
-    frac_tetra <- 0.5           # share of carbon from Tetradesmus, matches Phyto_low_quality_food_ratio in 3_parameters.qmd
-    slope_tetra <- 158.32
-    intercept_tetra <- -10.991
-
-    frac_syn <- 0.5
-    slope_syn <- 89.419
-    intercept_syn <- -4.463
-
-    ## Tetradesmus obliquus
-    tetra_per_jar_mL <-
-      ((culture_volume_mL * target_C_mg_per_L) /
-         ((slope_tetra * input$od_tetra) - intercept_tetra)) *
-      frac_tetra
-
-    tetra_total_mL <- tetra_per_jar_mL * input$n_cultures
-    tetra_total_extra_mL <- tetra_total_mL * (1 + extra)
-
-    ## Synechococcus elongatus
-    syn_per_jar_mL <-
-      ((culture_volume_mL * target_C_mg_per_L) /
-         ((slope_syn * input$od_syn) - intercept_syn)) *
-      frac_syn
-
-    syn_total_mL <- syn_per_jar_mL * input$n_cultures
-    syn_total_extra_mL <- syn_total_mL * (1 + extra)
-
+  output$parameters_echo <- renderTable({
     data.frame(
-      Quantity = c(
-        "Tetradesmus per jar (mL)",
-        "Tetradesmus total (mL)",
-        "Tetradesmus total +25% (mL)",
-        "Synechococcus per jar (mL)",
-        "Synechococcus total (mL)",
-        "Synechococcus total +25% (mL)",
-        "Total mix +25% (mL)"
-      ),
-      Value = round(c(
-        tetra_per_jar_mL,
-        tetra_total_mL,
-        tetra_total_extra_mL,
-        syn_per_jar_mL,
-        syn_total_mL,
-        syn_total_extra_mL,
-        tetra_total_extra_mL + syn_total_extra_mL
-      ), 1)
+      Parameter = %s,
+      Value = %s
+    )
+  })
+
+  ## Placeholder until the actual mixing calculations are implemented.
+  output$outputs_single_echo <- renderTable({
+    data.frame(
+      Species = c("Microcystis", "Synechococcus", "Nannochloropsis", "Tetradesmus"),
+      Value = 0
+    )
+  })
+
+  output$outputs_mix_echo <- renderTable({
+    data.frame(
+      Mix = c("Microcystis + Tetradesmus", "Synechococcus + Tetradesmus"),
+      Value = 0
+    )
+  })
+
+  output$outputs_jar_echo <- renderTable({
+    data.frame(
+      Mix = c("Microcystis + Tetradesmus", "Synechococcus + Tetradesmus", "Nannochloropsis"),
+      Value = 0
     )
   })
 }
 
 shinyApp(ui, server)
 ```
+', param_assignments, param_names_r, param_values_r)
 
-::: {.callout-warning title="To do"}
-- Add the source (which OD readings / carbon measurements) behind `slope_tetra`, `intercept_tetra`, `slope_syn`, and `intercept_syn`, and how often they should be re-fitted.
-- Generalize this app to the other 3 diet treatments (Table 1 in [Experimental Design](../5_experimental_design.qmd)) — "Low-quality toxic" (*M. aeruginosa* + *T. obliquus*) and both "High-quality" treatments (*N. limnetica* alone) — plus the *T. obliquus*-only stock cultures. Blocked on fitting OD-to-carbon curves for *M. aeruginosa* and *N. limnetica* first (see the To do in [Experimental Procedure](../6_experimental_procedure.qmd)).
-:::
+cat(app_code)
+````

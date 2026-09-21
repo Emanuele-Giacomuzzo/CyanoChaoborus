@@ -1,0 +1,13 @@
+"name","value"
+"Large_jar_liquid_litres",0.8
+"Daphnia_algae_C_ad_libitum_mg_per_L_per_day",2
+"extra_food_percentage",25
+"Phyto_low_quality_food_ratio",0.5
+"Tetradesmus_OD_to_C_slope",158.32
+"Tetradesmus_OD_to_C_intercept",-10.991
+"Synechococcus_OD_to_C_slope",89.419
+"Synechococcus_OD_to_C_intercept",-4.463
+"Microcystis_OD_to_C_slope",120.147589554584
+"Microcystis_OD_to_C_intercept",-0.405178209732212
+"Nannochloropsis_OD_to_C_slope",96.7264952720823
+"Nannochloropsis_OD_to_C_intercept",0.427886502870943
