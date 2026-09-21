@@ -138,46 +138,12 @@ window.Quarto = {
 </header>
 
 
-<section id="purpose" class="level2">
-<h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
-<p>Calculate how much phytoplankton to mix to obtain the desired carbon ratio between different species.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render calculations/food_calculator.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-$$
-<span class="math display">\[\begin{array}{l}
-M_{P}^{\mathrm{jar}}
-    = D_P \times V_J \\[8pt]
-
-M_{P}^{\mathrm{tot}}
-    = M_{P}^{\mathrm{jar}} \times n_J \\[8pt]
-
-n_J
-    = \text{number of jars} \\[2pt]
-
-V_J
-    = \text{volume of one jar} \\[2pt]
-
-D_P
-    = \text{phytoplankton density} \\[2pt]
-
-M_{P}^{\mathrm{jar}}
-    = \text{phytoplankton mass per jar} \\[2pt]
-
-M_{P}^{\mathrm{tot}}
-    = \text{total phytoplankton mass}
-\end{array}\]</span>
-<p>$$</p>
-<p>M = mass (only C)</p>
-<p>V = volume</p>
-<p>n = number</p>
-<p>D = density</p>
-<p>Input: - Number of Daphnia cultures - Optical density of the Synechococcus sample - Optical density of the Tetradesmus sample - Optical density of the Microcystis sample - Optical density of the Nannochloropsis sample</p>
-<p>Output: - Volume of Microcystis - Volume of Synechococcus - Volume of Nannochloropsis - Volume of Tetradesmus - Volume per Daphnia jar Microcystis + Tetradesmus - Volume per Daphnia jar Synechococcus + Tetradesmus - Volume per Daphnia jar Nannochloropsis - Volume of mix Microcystis + Tetradesmus - Volume of mix Synechococcus + Tetradesmus - Volume of Nannochloropsis</p>
-<p>The app’s parameters (jar volume, target carbon concentration, and each species’ OD-to-carbon calibration) are not typed in below by hand. A standalone Shinylive app like this one runs client-side in the reader’s browser and has no access to this document’s R session or to the repository’s data files, so instead the code block is generated at render time from <code>calculations/food_calculator_parameters.csv</code> — a snapshot written by <a href="../5a_calculations_OD.qmd">5a_calculations_OD.qmd</a> from the live calibration fit. Re-rendering the master document (or just 5a_calculations_OD.qmd) refreshes that snapshot; re-rendering this file then bakes the refreshed numbers into the app below.</p>
 <pre class="shinylive-r" data-engine="r"><code>#| '!! shinylive warning !!': |
 #|   shinylive does not work in self-contained HTML documents.
 #|   Please set `embed-resources: false` in your metadata.
 #| standalone: true
-#| viewerHeight: 560
+#| viewerHeight: 1100
 
 library(shiny)
 
@@ -193,27 +159,32 @@ ui &lt;- fluidPage(
       ),
       numericInput(
         "od_synechococcus",
-        "OD of Synechococcus elongatus",
-        value = 1,
+        "OD of Synechococcus",
+        value = 0,
         step = 0.01
       ),
       numericInput(
         "od_tetradesmus",
-        "OD of Tetradesmus obliquus",
-        value = 1,
+        "OD of Tetradesmus",
+        value = 0,
         step = 0.01
       ),
       numericInput(
         "od_microcystis",
-        "OD of Microcystis aeruginosa",
-        value = 1,
+        "OD of Microcystis",
+        value = 0,
         step = 0.01
       ),
       numericInput(
         "od_nannochloropsis",
-        "OD of Nannochloropsis limnetica",
-        value = 1,
+        "OD of Nannochloropsis",
+        value = 0,
         step = 0.01
+      ),
+      checkboxInput(
+        "harvest_extra_microcystis",
+        "Harvest extra Microcystis for dissolved-toxin treatments",
+        value = FALSE
       )
     ),
     column(
@@ -224,18 +195,25 @@ ui &lt;- fluidPage(
   fluidRow(
     column(
       4,
-      h4("Single phytoplankton species (ml)"),
+      h4("Algae to harvest (mL)"),
       tableOutput("outputs_single_echo")
     ),
     column(
       4,
-      h4("Mixed phytoplankton species (ml)"),
+      h4("Algae mix to create (mL)"),
       tableOutput("outputs_mix_echo")
     ),
     column(
       4,
-      h4("Per Daphnia jar (ml)"),
+      h4("Algae to feed each Daphnia jar (mL per feeding event)"),
       tableOutput("outputs_jar_echo")
+    )
+  ),
+  fluidRow(
+    column(
+      4,
+      h4("Algae to feed lysed to each Daphnia jar (mL)"),
+      tableOutput("outputs_lysed_echo")
     )
   )
 )
@@ -246,48 +224,215 @@ server &lt;- function(input, output) {
   ## (see the Purpose section above for why these are not read live).
     Large_jar_liquid_litres &lt;- 0.8
     Daphnia_algae_C_ad_libitum_mg_per_L_per_day &lt;- 2
-    extra_food_percentage &lt;- 25
-    Phyto_low_quality_food_ratio &lt;- 0.5
+    N_days_per_feeding_event &lt;- 2
+    extra_food_ratio &lt;- 0.25
+    Diet_Microcystis_fraction &lt;- c(0.5, 0, 0, 0)
+    Diet_Synechococcus_fraction &lt;- c(0, 0.5, 0, 0)
+    Diet_Nannochloropsis_fraction &lt;- c(0, 0, 1, 1)
+    Diet_Tetradesmus_fraction &lt;- c(0.5, 0.5, 0, 0)
     Tetradesmus_OD_to_C_slope &lt;- 158.32
     Tetradesmus_OD_to_C_intercept &lt;- -10.991
     Synechococcus_OD_to_C_slope &lt;- 89.419
     Synechococcus_OD_to_C_intercept &lt;- -4.463
-    Microcystis_OD_to_C_slope &lt;- 120.147589554584
-    Microcystis_OD_to_C_intercept &lt;- -0.405178209732212
-    Nannochloropsis_OD_to_C_slope &lt;- 96.7264952720823
-    Nannochloropsis_OD_to_C_intercept &lt;- 0.427886502870943
+    Microcystis_OD_to_C_slope &lt;- 120.15
+    Microcystis_OD_to_C_intercept &lt;- -0.41
+    Nannochloropsis_OD_to_C_slope &lt;- 96.73
+    Nannochloropsis_OD_to_C_intercept &lt;- 0.43
 
   output$parameters_echo &lt;- renderTable({
     data.frame(
-      Parameter = c("Large_jar_liquid_litres", "Daphnia_algae_C_ad_libitum_mg_per_L_per_day",  "extra_food_percentage", "Phyto_low_quality_food_ratio", "Tetradesmus_OD_to_C_slope",  "Tetradesmus_OD_to_C_intercept", "Synechococcus_OD_to_C_slope",  "Synechococcus_OD_to_C_intercept", "Microcystis_OD_to_C_slope",  "Microcystis_OD_to_C_intercept", "Nannochloropsis_OD_to_C_slope",  "Nannochloropsis_OD_to_C_intercept"),
-      Value = c(0.8, 2, 25, 0.5, 158.32, -10.991, 89.419, -4.463, 120.147589554584,  -0.405178209732212, 96.7264952720823, 0.427886502870943)
+      Parameter = c("Large_jar_liquid_litres", "Daphnia_algae_C_ad_libitum_mg_per_L_per_day",  "N_days_per_feeding_event", "extra_food_ratio", "Diet_Microcystis_fraction",  "Diet_Synechococcus_fraction", "Diet_Nannochloropsis_fraction",  "Diet_Tetradesmus_fraction", "Tetradesmus_OD_to_C_slope", "Tetradesmus_OD_to_C_intercept",  "Synechococcus_OD_to_C_slope", "Synechococcus_OD_to_C_intercept",  "Microcystis_OD_to_C_slope", "Microcystis_OD_to_C_intercept",  "Nannochloropsis_OD_to_C_slope", "Nannochloropsis_OD_to_C_intercept" ),
+      Value = c("0.8", "2", "2", "0.25", "c(0.5, 0, 0, 0)", "c(0, 0.5, 0, 0)",  "c(0, 0, 1, 1)", "c(0.5, 0.5, 0, 0)", "158.32", "-10.991", "89.419",  "-4.463", "120.15", "-0.41", "96.73", "0.43")
     )
   })
 
-  ## Placeholder until the actual mixing calculations are implemented.
-  output$outputs_single_echo &lt;- renderTable({
-    data.frame(
-      Species = c("Microcystis", "Synechococcus", "Nannochloropsis", "Tetradesmus"),
-      Value = 0
+  species_names &lt;- c("Microcystis", "Synechococcus", "Nannochloropsis", "Tetradesmus")
+  mix_names &lt;- c("Microcystis + Tetradesmus", "Synechococcus + Tetradesmus", "Nannochloropsis")
+
+  ## Standard equal-replicate design (4 treatments): the two high-quality
+  ## treatments share the same 100% Nannochloropsis diet, so they are merged
+  ## into one mix here, by dropping the duplicate 4th column. Diet_*_fraction
+  ## in 4_parameters.qmd is the source of truth for diet composition.
+  P_diet &lt;- c(0.25, 0.25, 0.50)
+  P_alga &lt;- rbind(
+    Diet_Microcystis_fraction,
+    Diet_Synechococcus_fraction,
+    Diet_Nannochloropsis_fraction,
+    Diet_Tetradesmus_fraction
+  )[, 1:3]
+  dimnames(P_alga) &lt;- list(species_names, mix_names)
+
+  daphnia_food &lt;- reactive({
+    od_by_species &lt;- c(
+      input$od_microcystis,
+      input$od_synechococcus,
+      input$od_nannochloropsis,
+      input$od_tetradesmus
+    )
+    od_to_c_slope &lt;- c(
+      Microcystis_OD_to_C_slope,
+      Synechococcus_OD_to_C_slope,
+      Nannochloropsis_OD_to_C_slope,
+      Tetradesmus_OD_to_C_slope
+    )
+    od_to_c_intercept &lt;- c(
+      Microcystis_OD_to_C_intercept,
+      Synechococcus_OD_to_C_intercept,
+      Nannochloropsis_OD_to_C_intercept,
+      Tetradesmus_OD_to_C_intercept
+    )
+    D_alga &lt;- od_to_c_slope * od_by_species + od_to_c_intercept
+
+    H_alga &lt;- c(if (input$harvest_extra_microcystis) 2 else 1, 1, 1, 1)
+
+    E_food &lt;- 1 + extra_food_ratio
+    daily_carbon_demand &lt;- input$n_cultures * Large_jar_liquid_litres * Daphnia_algae_C_ad_libitum_mg_per_L_per_day
+    alga_per_carbon &lt;- as.vector(t(P_alga) %*% (1 / D_alga))
+
+    ## Adding algal culture to a jar also adds to its liquid volume, so the
+    ## achieved concentration is (carbon added) / (V_jar + V_feed), not
+    ## (carbon added) / V_jar. Solving that self-consistently for V_feed scales
+    ## every naive (dilution-free) volume up by dilution_correction, per diet.
+    target_conc &lt;- Daphnia_algae_C_ad_libitum_mg_per_L_per_day * N_days_per_feeding_event * E_food
+    dilution_correction &lt;- 1 / (1 - target_conc * alga_per_carbon)
+
+    V_alga &lt;- daily_carbon_demand * N_days_per_feeding_event * E_food * H_alga / D_alga *
+      as.vector(P_alga %*% (P_diet * dilution_correction))
+    V_mix &lt;- daily_carbon_demand * N_days_per_feeding_event * E_food * P_diet * alga_per_carbon * dilution_correction
+
+    ## Per-jar dose is independent of jar count/P_diet,d: every jar on a given
+    ## diet gets the same ration, regardless of how many other jars share that
+    ## diet. It does scale with N_days_per_feeding_event, since that is how much
+    ## food a jar needs to be given at once to last until the next feeding event.
+    V_feed_per_jar &lt;- Large_jar_liquid_litres * Daphnia_algae_C_ad_libitum_mg_per_L_per_day * E_food * alga_per_carbon * N_days_per_feeding_event * dilution_correction
+
+    ## The dissolved-toxin treatment doses lysed Microcystis directly into the
+    ## Chaoborus jar instead of through the Daphnia diet, at the same volume a
+    ## jar on the Microcystis + Tetradesmus diet gets of Microcystis alone.
+    V_feed_lysed &lt;- Large_jar_liquid_litres * target_conc * dilution_correction[1] * (P_alga[1, 1] / D_alga[1])
+
+    list(
+      species_names = species_names,
+      mix_names = mix_names,
+      V_alga = V_alga,
+      V_mix = V_mix,
+      V_feed_per_jar = V_feed_per_jar,
+      V_feed_lysed = V_feed_lysed
     )
   })
+
+  output$outputs_single_echo &lt;- renderTable({
+    food &lt;- daphnia_food()
+    data.frame(Species = food$species_names, Value = ceiling(food$V_alga * 1000))
+  }, digits = 0)
 
   output$outputs_mix_echo &lt;- renderTable({
-    data.frame(
-      Mix = c("Microcystis + Tetradesmus", "Synechococcus + Tetradesmus"),
-      Value = 0
-    )
-  })
+    food &lt;- daphnia_food()
+    data.frame(Mix = food$mix_names, Value = ceiling(food$V_mix * 1000))
+  }, digits = 0)
 
   output$outputs_jar_echo &lt;- renderTable({
-    data.frame(
-      Mix = c("Microcystis + Tetradesmus", "Synechococcus + Tetradesmus", "Nannochloropsis"),
-      Value = 0
-    )
-  })
+    food &lt;- daphnia_food()
+    data.frame(Mix = food$mix_names, Value = ceiling(food$V_feed_per_jar * 1000))
+  }, digits = 0)
+
+  output$outputs_lysed_echo &lt;- renderTable({
+    food &lt;- daphnia_food()
+    data.frame(Species = "Microcystis", Value = ceiling(food$V_feed_lysed * 1000))
+  }, digits = 0)
 }
 
 shinyApp(ui, server)</code></pre>
+<section id="algae-to-harvest-ml" class="level2">
+<h2 class="anchored" data-anchor-id="algae-to-harvest-ml">Algae to harvest (mL)</h2>
+<p><span class="math display">\[
+V_{\mathrm{alga}}
+=
+\frac{
+N_{\mathrm{jars}}
+V_{\mathrm{jar}}
+F_{\mathrm{feed}}
+N_{\mathrm{days}}
+E_{\mathrm{food}}
+H_{\mathrm{alga}}
+}{
+D_{\mathrm{alga}}
+}
+\sum_{d=1}^{N_{\mathrm{diets}}}
+P_{\mathrm{diet},d}
+P_{\mathrm{alga},d}
+K_d
+\]</span></p>
+</section>
+<section id="algae-mix-to-create-ml" class="level2">
+<h2 class="anchored" data-anchor-id="algae-mix-to-create-ml">Algae mix to create (mL)</h2>
+<p><span class="math display">\[
+V_{\mathrm{mix},d}
+=
+N_{\mathrm{jars}}
+V_{\mathrm{jar}}
+F_{\mathrm{feed}}
+N_{\mathrm{days}}
+E_{\mathrm{food}}
+P_{\mathrm{diet},d}
+K_d
+\sum_{a=1}^{N_{\mathrm{algae}}}
+\frac{
+P_{\mathrm{alga},d,a}
+}{
+D_a
+}
+\]</span></p>
+</section>
+<section id="algae-to-feed-each-daphnia-jar-ml-per-feeding-event" class="level2">
+<h2 class="anchored" data-anchor-id="algae-to-feed-each-daphnia-jar-ml-per-feeding-event">Algae to feed each Daphnia jar (mL per feeding event)</h2>
+<p><span class="math display">\[
+V_{\mathrm{feed},d}
+=
+N_{\mathrm{days}}
+V_{\mathrm{jar}}
+F_{\mathrm{feed}}
+E_{\mathrm{food}}
+K_d
+\sum_{a=1}^{N_{\mathrm{algae}}}
+\frac{
+P_{\mathrm{alga},d,a}
+}{
+D_a
+}
+\]</span></p>
+</section>
+<section id="dilution-correction" class="level2">
+<h2 class="anchored" data-anchor-id="dilution-correction">Dilution correction</h2>
+<p>Adding <span class="math inline">\(V_{\mathrm{feed},d}\)</span> of algal culture to a jar also adds to that jar’s own liquid volume, so the carbon concentration actually achieved is <span class="math inline">\(\left(\text{carbon added}\right) / \left(V_{\mathrm{jar}} + V_{\mathrm{feed},d}\right)\)</span>, not <span class="math inline">\(\left(\text{carbon added}\right) / V_{\mathrm{jar}}\)</span>. Solving for <span class="math inline">\(V_{\mathrm{feed},d}\)</span> so that this achieved concentration equals the target, <span class="math inline">\(N_{\mathrm{days}} F_{\mathrm{feed}} E_{\mathrm{food}}\)</span>, gives the correction factor:</p>
+<p><span class="math display">\[
+K_d
+=
+\frac{1}{
+1 - N_{\mathrm{days}} F_{\mathrm{feed}} E_{\mathrm{food}} \displaystyle\sum_{a=1}^{N_{\mathrm{algae}}} \frac{P_{\mathrm{alga},d,a}}{D_a}
+}
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(V_{\mathrm{alga}}\)</span> = total volume of algal culture required for the experiment [L]</li>
+<li><span class="math inline">\(V_{\mathrm{mix},d}\)</span> = total volume of diet <span class="math inline">\(d\)</span> to prepare [L]</li>
+<li><span class="math inline">\(V_{\mathrm{feed},d}\)</span> = volume of diet <span class="math inline">\(d\)</span> added to a single Daphnia jar at each feeding event [L jar<span class="math inline">\(^{-1}\)</span> feeding event<span class="math inline">\(^{-1}\)</span>]</li>
+<li><span class="math inline">\(K_d\)</span> = dilution correction factor for diet <span class="math inline">\(d\)</span> [≥1]</li>
+<li><span class="math inline">\(N_{\mathrm{jars}}\)</span> = total number of Daphnia jars [jars]</li>
+<li><span class="math inline">\(V_{\mathrm{jar}}\)</span> = volume of each Daphnia jar [L jar<span class="math inline">\(^{-1}\)</span>]</li>
+<li><span class="math inline">\(F_{\mathrm{feed}}\)</span> = feeding requirement [mg C L<span class="math inline">\(^{-1}\)</span> day<span class="math inline">\(^{-1}\)</span>]</li>
+<li><span class="math inline">\(N_{\mathrm{days}}\)</span> = number of days the prepared food must last [days]</li>
+<li><span class="math inline">\(E_{\mathrm{food}}\)</span> = extra food multiplier [1–∞]</li>
+<li><span class="math inline">\(H_{\mathrm{alga}}\)</span> = harvest multiplier for the alga [1–∞]</li>
+<li><span class="math inline">\(P_{\mathrm{diet},d}\)</span> = proportion of Daphnia jars receiving diet <span class="math inline">\(d\)</span> [0–1]</li>
+<li><span class="math inline">\(P_{\mathrm{alga},d,a}\)</span> = proportion of dietary carbon supplied by alga <span class="math inline">\(a\)</span> in diet <span class="math inline">\(d\)</span> [0–1]</li>
+<li><span class="math inline">\(D_{\mathrm{alga}}\)</span> = carbon density of the algal culture [mg C L<span class="math inline">\(^{-1}\)</span>]</li>
+<li><span class="math inline">\(D_a\)</span> = carbon density of alga <span class="math inline">\(a\)</span> [mg C L<span class="math inline">\(^{-1}\)</span>]</li>
+<li><span class="math inline">\(N_{\mathrm{diets}}\)</span> = number of diets</li>
+<li><span class="math inline">\(N_{\mathrm{algae}}\)</span> = number of algae included in a diet</li>
+<li><span class="math inline">\(d\)</span> = diet</li>
+<li><span class="math inline">\(a\)</span> = alga</li>
+</ul>
 </section>
 
 </main>

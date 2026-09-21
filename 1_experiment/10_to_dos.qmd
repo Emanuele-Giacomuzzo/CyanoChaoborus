@@ -1,14 +1,28 @@
 # To dos  
 
-Most important things to do in the next days/weeks: 
+**HIGH PRIORITY**
+
+- Check how many damselflies we need per treatment. To do so, calculate biomass needed for all analyses (Biomass_needed_total_mg).
+- Perform the body size - biomass correlation for Chaoborus and damselflies.
+- Perform the feeding experiment with the damselfiles and Chaoborus
+- Calculate how much phytoplankton per day
+- Discuss with Jana
+    - Whether to remove the extra *Daphnia* every day or only every time the *Chaoborus* medium is changed. 
+    - Whether the insects should be fed Monday, Wednesday, and Friday or every other day.
+    - Starvation: 48 hours or 96 hours?
+    - Is it okay if I feed Daphnia jars from 7 days before?
+    - How do freeze and thaw the phytoplankton? Do we just use a huge container that can be used for that? Should we freeze the pellet? And wouldn’t this freezing and thawing mess with the amount of toxins?
+    - Should we not look at the emergence at all of damselflies otherwise it will split too much the biomass? 
+
+**MEDIUM PRIORITY**
 
 - Create shiny for how much to put in for each of the diets
-- Check how many and up to which size Chaoborus eats
-- Calculate how much phytoplankton per day
-- Talk about toxic diet with Irma 
-- Expand the different species 
-- I should decide whether I want to run an experiment looking at the quality and toxins of phytoplankton during the growth phase. 
-- Add a plan on when to end the experiment.
-- Decide whether to remove the extra *Daphnia* every day or only every time the *Chaoborus* medium is changed.
-- Check how many falcon tubes we have. 
-- Think where to place the following phrase: I will analyse the ingested biomass of Daphnia (ingestion rate) by Chaoborus from body size using literature data. 
+- Book the microscope for the experiment.
+- Make stock solutions
+- Add to the protocols the samplign of Daphnia size before and after the feedings.
+- Calculate if the amount of phytoplankton that we will have is enough for the toxin analysis. 
+- Confirm each species can regrow from its post-harvest dilution back to Phyto_experimental_bottle_highest_mg_C_per_L within the Phyto_vessels_per_species-day gap between harvests — needs an actual growth rate per species, not yet in Parameters. Most urgent for N. limnetica, whose bottle is diluted the most (80% harvested); consider a 4th replicate line for it if regrowth turns out too slow.
+
+**LOW PRIORITY**
+
+- Call IT-Ichthyo Trophic to ask what species of Chaoborus it is and how it is raised.

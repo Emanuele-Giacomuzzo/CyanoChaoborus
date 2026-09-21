@@ -147,10 +147,10 @@ These two equations are what let a single OD<sub>480</sub> reading of a treatmen
 ```{r}
 #| label: save_OD_parameters
 
-Nannochloropsis_OD_to_C_slope <- n_limnetica_slope
-Nannochloropsis_OD_to_C_intercept <- n_limnetica_intercept
-Microcystis_OD_to_C_slope <- m_aeruginosa_slope
-Microcystis_OD_to_C_intercept <- m_aeruginosa_intercept
+Nannochloropsis_OD_to_C_slope <- round(n_limnetica_slope, 2)
+Nannochloropsis_OD_to_C_intercept <- round(n_limnetica_intercept, 2)
+Microcystis_OD_to_C_slope <- round(m_aeruginosa_slope, 2)
+Microcystis_OD_to_C_intercept <- round(m_aeruginosa_intercept, 2)
 ```
 
 calculations/food_calculator.qmd embeds a standalone Shinylive app that runs client-side in the reader's browser, with no access to this R session or to the repository's data files at render time. The snapshot below is how it stays in sync with the calibration above without values being copied over by hand: re-rendering this file (or the master document) refreshes the snapshot, and re-rendering food_calculator.qmd then bakes the refreshed numbers into the embedded app.
@@ -158,12 +158,21 @@ calculations/food_calculator.qmd embeds a standalone Shinylive app that runs cli
 ```{r}
 #| label: save_food_calculator_parameters
 
+## Diet_*_fraction (source of truth for diet composition, see 4_parameters.qmd) are
+## vectors, so every value is deparsed to an R literal (e.g. "c(0.5, 0, 0, 0)") and the
+## whole value column is stored as text; food_calculator.qmd splices these literals
+## straight into the app's R source, so a scalar's deparsed text ("0.8") assigns the
+## same way a vector's ("c(0.5, 0, 0, 0)") does.
 Food_calculator_parameters <- data.frame(
   name = c(
     "Large_jar_liquid_litres",
     "Daphnia_algae_C_ad_libitum_mg_per_L_per_day",
-    "extra_food_percentage",
-    "Phyto_low_quality_food_ratio",
+    "N_days_per_feeding_event",
+    "extra_food_ratio",
+    "Diet_Microcystis_fraction",
+    "Diet_Synechococcus_fraction",
+    "Diet_Nannochloropsis_fraction",
+    "Diet_Tetradesmus_fraction",
     "Tetradesmus_OD_to_C_slope",
     "Tetradesmus_OD_to_C_intercept",
     "Synechococcus_OD_to_C_slope",
@@ -174,18 +183,22 @@ Food_calculator_parameters <- data.frame(
     "Nannochloropsis_OD_to_C_intercept"
   ),
   value = c(
-    Large_jar_liquid_litres,
-    Daphnia_algae_C_ad_libitum_mg_per_L_per_day,
-    extra_food_percentage,
-    Phyto_low_quality_food_ratio,
-    Tetradesmus_OD_to_C_slope,
-    Tetradesmus_OD_to_C_intercept,
-    Synechococcus_OD_to_C_slope,
-    Synechococcus_OD_to_C_intercept,
-    Microcystis_OD_to_C_slope,
-    Microcystis_OD_to_C_intercept,
-    Nannochloropsis_OD_to_C_slope,
-    Nannochloropsis_OD_to_C_intercept
+    deparse(Large_jar_liquid_litres),
+    deparse(Daphnia_algae_C_ad_libitum_mg_per_L_per_day),
+    deparse(N_days_per_feeding_event),
+    deparse(extra_food_ratio),
+    deparse(Diet_Microcystis_fraction),
+    deparse(Diet_Synechococcus_fraction),
+    deparse(Diet_Nannochloropsis_fraction),
+    deparse(Diet_Tetradesmus_fraction),
+    deparse(Tetradesmus_OD_to_C_slope),
+    deparse(Tetradesmus_OD_to_C_intercept),
+    deparse(Synechococcus_OD_to_C_slope),
+    deparse(Synechococcus_OD_to_C_intercept),
+    deparse(Microcystis_OD_to_C_slope),
+    deparse(Microcystis_OD_to_C_intercept),
+    deparse(Nannochloropsis_OD_to_C_slope),
+    deparse(Nannochloropsis_OD_to_C_intercept)
   )
 )
 

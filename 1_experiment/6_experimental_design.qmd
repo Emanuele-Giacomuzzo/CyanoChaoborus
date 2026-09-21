@@ -28,7 +28,3 @@ Independently of the treatment diets, the stock *Daphnia* cultures that found ea
 </p>
 
 <p align="center"><strong>Figure 2.</strong> Timeline of the experiment.</p>
-
-::: {.callout-warning title="To do"}
-- ⭐ Decide whether it should be a block design.
-:::

@@ -2626,181 +2626,196 @@ the reading order:
 <summary>Show calculation code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DW = dry weight</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ––– 🌐 General ––– #</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>Treatments <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>Replicates <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ––– 🪜 Infrastructure ––– #</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 🌐 General</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>Treatments <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>Replicates <span class="ot">&lt;-</span> <span class="dv">4</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>Shelves <span class="ot">&lt;-</span> <span class="dv">16</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>Max_weight_per_shelf_kg <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>Small_jar_liquid_litres <span class="ot">&lt;-</span> <span class="fl">0.08</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>Small_jar_with_liquid_kg <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>Large_jar_liquid_litres <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>Large_jar_with_liquid_kg <span class="ot">&lt;-</span> <span class="fl">1.5</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>Large_jar_diameter_cm <span class="ot">&lt;-</span> <span class="dv">9</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ––– 🔥 Autoclaving ––– #</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>Autoclave_temperature_C <span class="ot">&lt;-</span> <span class="dv">121</span> <span class="co"># Vana &amp; Claudia defined this, as it&#39;s written on the autoclave at the Marine Biology Section, but I&#39;m not sure where they got this from</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>Autoclave_solids_minutes <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># Vana &amp; Claudia defined this, as it&#39;s written on the autoclave at the Marine Biology Section, but I&#39;m not sure where they got this from</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>Autoclave_1L_liquids_minutes <span class="ot">&lt;-</span> <span class="dv">45</span> <span class="co"># Vana &amp; Claudia defined this, as it&#39;s written on the autoclave at the Marine Biology Section, but I&#39;m not sure where they got this from</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>Autoclave_2L_liquids_minutes <span class="ot">&lt;-</span> <span class="dv">60</span> <span class="co"># I always autoclaved COMBO in 2L bottles for this amount of time and never had a problem with it</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>Autoclave_5L_liquids_minutes <span class="ot">&lt;-</span> <span class="dv">85</span> <span class="co"># Vana &amp; Claudia defined this, as it&#39;s written on the autoclave at the Marine Biology Section, but I&#39;m not sure where they got this from</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 🪜 Infrastructure</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>Shelves <span class="ot">&lt;-</span> <span class="dv">16</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>Max_weight_per_shelf_kg <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>Small_jar_liquid_litres <span class="ot">&lt;-</span> <span class="fl">0.08</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>Small_jar_with_liquid_kg <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>Large_jar_liquid_litres <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>Large_jar_with_liquid_kg <span class="ot">&lt;-</span> <span class="fl">1.5</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>Large_jar_diameter_cm <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 🔥 Autoclaving</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co"># ––– 🦟 Chaoborus ––– #</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co"># General </span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>Chaoborus_third_instar_DW_mg <span class="ot">&lt;-</span> <span class="fl">0.79</span> <span class="co"># Lowest weight in the following paper: Parma, S. (1971). Chaoborus flavicans (Meigen)(Diptera, Chaoboridae): an autecological study.</span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>Chaoborus_dead_to_alive_ratio_worst_treatment <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Feeding </span></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>Chaoborus_Daphnia_neonates_eaten_per_day <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co">#Based on female fourth instar eating 1.25 mm D. magna babies (Büns &amp; Ratte, 1991)</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>Chaoborus_Daphnia_neonates_eaten_max_recorded <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># Highest single-feeding count observed</span></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>Chaoborus_Daphnia_neonates_eaten_max_mm <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>Chaoborus_Daphnia_neonates_eaten_max_age_days <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Experiment </span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>Autoclave_temperature_C <span class="ot">&lt;-</span> <span class="dv">121</span> <span class="co"># Vana &amp; Claudia defined this, as it&#39;s written on the autoclave at the Marine Biology Section, but I&#39;m not sure where they got this from</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>Autoclave_solids_minutes <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># Vana &amp; Claudia defined this, as it&#39;s written on the autoclave at the Marine Biology Section, but I&#39;m not sure where they got this from</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>Autoclave_1L_liquids_minutes <span class="ot">&lt;-</span> <span class="dv">45</span> <span class="co"># Vana &amp; Claudia defined this, as it&#39;s written on the autoclave at the Marine Biology Section, but I&#39;m not sure where they got this from</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>Autoclave_2L_liquids_minutes <span class="ot">&lt;-</span> <span class="dv">60</span> <span class="co"># I always autoclaved COMBO in 2L bottles for this amount of time and never had a problem with it</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>Autoclave_5L_liquids_minutes <span class="ot">&lt;-</span> <span class="dv">85</span> <span class="co"># Vana &amp; Claudia defined this, as it&#39;s written on the autoclave at the Marine Biology Section, but I&#39;m not sure where they got this from</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co"># 🦟 Chaoborus / Ischnura</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Weight </span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>Chaoborus_third_instar_DW_mg <span class="ot">&lt;-</span> <span class="fl">0.79</span> <span class="co"># Lowest weight in the following paper: Parma, S. (1971). Chaoborus flavicans (Meigen)(Diptera, Chaoboridae): an autecological study.</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>Ischnura_small_adult_DW_mg <span class="ot">&lt;-</span> <span class="cn">NA_real_</span>  <span class="co"># </span><span class="al">TBD</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>Ischnura_large_adult_DW_mg <span class="ot">&lt;-</span> <span class="cn">NA_real_</span>  <span class="co"># </span><span class="al">TBD</span></span>
 <span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>Chaoborus_larvae_per_jar <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Initial density, within the upper range of natural peak densities (Xie et al., 1998)</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Survival </span></span>
 <span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="co"># ––– 🦐 Daphnia ––– #</span></span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="co"># General </span></span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>Daphnia_adult_DW_mg <span class="ot">&lt;-</span> <span class="fl">0.18</span> <span class="co"># Average weight of an individual in the following paper: Simčič, T., &amp; Brancelj, A. (1997). Electron transport system (ETS) activity and respiration rate in five Daphnia species at different temperatures. Hydrobiologia, 360(1), 117-125.</span></span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>Daphnia_offsprings_per_mother_per_5_days <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>Chaoborus_dead_to_alive_ratio_worst_treatment <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>Ischnura_dead_to_alive_ratio_worst_treatment <span class="ot">&lt;-</span> <span class="cn">NA_real_</span>  <span class="co"># </span><span class="al">TBD</span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Feeding</span></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>N_days_per_feeding_event <span class="ot">&lt;-</span> <span class="dv">2</span></span>
 <span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Feeding </span></span>
-<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>Daphnia_algae_C_ad_libitum_mg_per_L_per_day <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># Applies both to treatment cohort jars (fed the diet mixes above) and to the stock jars that found them (fed *Tetradesmus obliquus* alone, ad libitum, since the stock isn&#39;t part of the diet treatments; see 4_calculations.qmd)</span></span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Experiment</span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>Chaoborus_Daphnia_neonates_eaten_per_day <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co">#Based on female fourth instar eating 1.25 mm D. magna babies (Büns &amp; Ratte, 1991)</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>Chaoborus_Daphnia_neonates_eaten_max_recorded <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># Highest single-feeding count observed</span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>Chaoborus_Daphnia_neonates_eaten_max_mm <span class="ot">&lt;-</span> <span class="cn">NA_real_</span>  <span class="co"># </span><span class="al">TBD</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>Chaoborus_Daphnia_neonates_eaten_max_age_days <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># Oldest a Daphnia neonate can be while still small enough for Chaoborus to eat according to the feeding experiment with Tobias. </span></span>
 <span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>Daphnia_cohorts_adults_per_jar <span class="ot">&lt;-</span> <span class="dv">15</span> <span class="co"># Suggested by Jana, as in her experience it&#39;s the highest density of Daphnia in the jars that doesn&#39;t stress them out too much.</span></span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>Daphnia_adults_per_new_cohort_jar <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Individuals pipetted from stock into each newly created cohort jar (protocol/3_create_Daphnia_jars.md)</span></span>
-<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>Daphnia_max_age_eaten_days <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># Oldest a Daphnia neonate can be while still small enough for Chaoborus to eat</span></span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>Daphnia_cohorts_in_rotation <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># Number of cohorts that are rotated through the experimental jars</span></span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>Daphnia_cohorts_restarting <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># Number of cohorts that are rotated through the experimental jars</span></span>
-<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Propagation</span></span>
-<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>Vana_Daphnia_starting_jars <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># Jars available in Vana&#39;s stock cultures to start propagation from; placeholder, confirm actual count with Vana</span></span>
-<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>Propagation_lead_time_days <span class="ot">&lt;-</span> <span class="dv">30</span> <span class="co"># One month, the planned lead time for propagating Daphnia before the experiment starts</span></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>Ischnura_Daphnia_neonates_eaten_per_day <span class="ot">&lt;-</span> <span class="cn">NA_real_</span>  <span class="co"># </span><span class="al">TBD</span></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>Ischnura_Daphnia_neonates_eaten_max_recorded <span class="ot">&lt;-</span> <span class="cn">NA_real_</span>  <span class="co"># </span><span class="al">TBD</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>Ischnura_Daphnia_neonates_eaten_max_mm <span class="ot">&lt;-</span> <span class="cn">NA_real_</span>  <span class="co"># </span><span class="al">TBD</span></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>Ischnura_Daphnia_neonates_eaten_max_age_days <span class="ot">&lt;-</span> <span class="cn">NA_real_</span>  <span class="co"># </span><span class="al">TBD</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Individuals per jar  </span></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>Chaoborus_larvae_per_jar <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Initial density, within the upper range of natural peak densities (Xie et al., 1998)</span></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>Ischnura_larvae_per_jar <span class="ot">&lt;-</span> <span class="cn">NA_real_</span>  <span class="co"># </span><span class="al">TBD</span></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a><span class="co"># ––– 🧪 Phytoplankton ––– #</span></span>
-<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a><span class="co"># General</span></span>
-<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>Phyto_species_count <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="co"># M. aeruginosa, S. elongatus, N. limnetica, T. obliquus</span></span>
-<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>Phyto_low_quality_food_ratio <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co"># Food ratio of Microcystis aeruginosa or Synechococcus elongatus. Feeding Daphnia magna with 50% of Microcystis can keep cultures dense enough to perform experiment (Macke et al., 2017) but still have a negative effect (Schwarzenberger et al., 2012, 2013). Feeding Daphnia magna with 50% of Synechococcus can also keep cultures alive but still have a negative effect (Demott &amp; Müller-Navarra, 1997).</span></span>
-<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>Phyto_vessels_per_species <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># Replicate stock flasks/bottles kept per species at each vessel size; once at experimental scale, these 3 experimental bottles are also what&#39;s alternated between for daily Daphnia-feeding harvests (see 4_calculations.qmd)</span></span>
-<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a><span class="co"># Stock flasks</span></span>
-<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a>Phyto_stock_flask_capacity_mL <span class="ot">&lt;-</span> <span class="dv">100</span> </span>
-<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>Phyto_stock_flask_liquid_mL <span class="ot">&lt;-</span> <span class="dv">50</span> </span>
-<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a>Phyto_stock_flask_inoculation_mL <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>Phyto_stock_flask_inoculation_interval_days <span class="ot">&lt;-</span> <span class="dv">28</span></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a><span class="co"># 🦐 Daphnia</span></span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Weight </span></span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>Daphnia_adult_DW_mg <span class="ot">&lt;-</span> <span class="fl">0.18</span> <span class="co"># Average weight of an individual in the following paper: Simčič, T., &amp; Brancelj, A. (1997). Electron transport system (ETS) activity and respiration rate in five Daphnia species at different temperatures. Hydrobiologia, 360(1), 117-125.</span></span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Reproduction</span></span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>Daphnia_offsprings_per_mother_per_5_days <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Feeding </span></span>
 <span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Stock bottles</span></span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>Daphnia_algae_C_ad_libitum_mg_per_L_per_day <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># This is the amount of carbon that Daphnia magna can consume per day at ad libitum feeding conditions, based on the following paper: Lampert, W. (1978). The experimental analysis of food limitation in Daphnia. I. The search for a control mechanism. Oecologia, 37(1), 1-19.</span></span>
 <span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a>Phyto_stock_bottle_capacity_mL <span class="ot">&lt;-</span> <span class="dv">500</span></span>
-<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>Phyto_stock_bottle_liquid_mL <span class="ot">&lt;-</span> <span class="dv">300</span></span>
-<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>Phyto_stock_bottle_inoculation_mL <span class="ot">&lt;-</span> <span class="dv">200</span></span>
-<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>Phyto_stock_bottle_inoculation_interval_days <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a><span class="co"># Experimental bottles</span></span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Experiment</span></span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>Daphnia_cohorts_adults_per_jar <span class="ot">&lt;-</span> <span class="dv">15</span> <span class="co"># Suggested by Jana, as in her experience it&#39;s the highest density of Daphnia in the jars that doesn&#39;t stress them out too much.</span></span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>Daphnia_adults_per_new_cohort_jar <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Individuals pipetted from stock into each newly created cohort jar (protocol/3_create_Daphnia_jars.md)</span></span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>Daphnia_cohorts_in_rotation <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>Daphnia_jars_per_cohort <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_capacity_mL <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
-<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_liquid_mL <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
-<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_inoculation_mL <span class="ot">&lt;-</span> <span class="dv">200</span></span>
-<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_usability_days <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># The number of days the  experimental bottles stay in the exponential phase. 10 comes from Ema and Jana&#39;s experience.</span></span>
-<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_highest_mg_C_per_L <span class="ot">&lt;-</span> <span class="dv">50</span> <span class="co">#M. aeruginosa is the one that grows the worst and that in Thostrup &amp; Christophersen, 1999 grew up to 150, we use 50 to be conservative. Also, Vana told me that her T. obliquus grows at 28-150 mg C / L</span></span>
-<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_inoculation_interval_days <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a><span class="co"># COMBO medium</span></span>
-<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a>COMBO_batch_volume_litres <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a>COMBO_days_in_advance <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co">#Needs one day to be autoclaved</span></span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a><span class="co"># 🧪 Phytoplankton</span></span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a><span class="co"># General</span></span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a>Phyto_species_count <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="co"># M. aeruginosa, S. elongatus, N. limnetica, T. obliquus</span></span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>Phyto_low_quality_food_ratio <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co"># Food ratio of Microcystis aeruginosa or Synechococcus elongatus. Feeding Daphnia magna with 50% of Microcystis can keep cultures dense enough to perform experiment (Macke et al., 2017) but still have a negative effect (Schwarzenberger et al., 2012, 2013). Feeding Daphnia magna with 50% of Synechococcus can also keep cultures alive but still have a negative effect (Demott &amp; Müller-Navarra, 1997).</span></span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a>Phyto_vessels_per_species <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a><span class="co"># Stock flasks</span></span>
 <span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a><span class="co"># Optical density to carbon calibration curves </span></span>
-<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a><span class="co"># OD-to-carbon calibration curves (mg C/L = slope x OD_480 - intercept), fitted per species from a</span></span>
-<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a><span class="co"># dilution series read on the spectrophotometer and filtered onto pre-combusted GF/C filters for</span></span>
-<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a><span class="co"># carbon analysis (method: protocol/quarto/22_2026_03_27_OD_curve_Microcystis.md); used by</span></span>
-<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a><span class="co"># calculations/food_calculator.qmd to dose Daphnia feeding (see 6_experimental_procedure.qmd)</span></span>
-<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a><span class="co"># This comes from Varvara Paida&#39;s calibration work. </span></span>
-<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>Tetradesmus_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fl">158.32</span></span>
-<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>Tetradesmus_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">10.991</span></span>
-<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>Synechococcus_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fl">89.419</span></span>
-<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>Synechococcus_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">4.463</span></span>
-<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>extra_food_percentage <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># Extra food to make just in case </span></span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a>Phyto_stock_flask_capacity_mL <span class="ot">&lt;-</span> <span class="dv">100</span> </span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a>Phyto_stock_flask_liquid_mL <span class="ot">&lt;-</span> <span class="dv">50</span> </span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a>Phyto_stock_flask_inoculation_mL <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>Phyto_stock_flask_inoculation_interval_days <span class="ot">&lt;-</span> <span class="dv">28</span></span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Stock bottles</span></span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>Phyto_stock_bottle_capacity_mL <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>Phyto_stock_bottle_liquid_mL <span class="ot">&lt;-</span> <span class="dv">300</span></span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>Phyto_stock_bottle_inoculation_mL <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>Phyto_stock_bottle_inoculation_interval_days <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a><span class="co"># Experimental bottles</span></span>
 <span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a><span class="co"># ––– 🍽️ Diet treatments ––– #</span></span>
-<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a><span class="co"># Daphnia raised on each mix before being fed to Chaoborus (Figure 1)</span></span>
-<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>Diet_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Low-quality toxic&quot;</span>, <span class="st">&quot;Low-quality&quot;</span>, <span class="st">&quot;High-quality&quot;</span>, <span class="st">&quot;High-quality (toxin-spiked)&quot;</span>)</span>
-<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a><span class="co"># Fraction of each species by carbon in the Daphnia diet for each treatment above, in the same order.</span></span>
-<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a><span class="co"># The 4th treatment&#39;s toxin exposure comes from lysed M. aeruginosa dosed directly into the Chaoborus</span></span>
-<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a><span class="co"># jar (Figure 1), not through the Daphnia diet, so it adds no Microcystis to the fractions below — see</span></span>
-<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a><span class="co"># the To do in 4_calculations.qmd about sizing that dose.</span></span>
-<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a>Diet_Microcystis_fraction     <span class="ot">&lt;-</span> <span class="fu">c</span>(Phyto_low_quality_food_ratio, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a>Diet_Synechococcus_fraction   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, Phyto_low_quality_food_ratio, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a>Diet_Nannochloropsis_fraction <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a>Diet_Tetradesmus_fraction     <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> Phyto_low_quality_food_ratio, <span class="dv">1</span> <span class="sc">-</span> Phyto_low_quality_food_ratio, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a><span class="co"># ––– ☠️ Toxins ––– #</span></span>
-<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a><span class="co"># Microcystin production</span></span>
-<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a>Microcystins_mg_per_g_DW_phytoplankton <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># In *Microcystis aeruginosa* (strain PCC 7806, grown in N-limited modified MLA medium) depending on growth phase. See Long, B. M., Jones, G. J., &amp; Orr, P. T. (2001). Cellular microcystin content in N-limited Microcystis aeruginosa can be predicted from growth rate. Applied and Environmental Microbiology, 67(1), 278-283. </span></span>
-<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a><span class="co"># Microcystin biodilution</span></span>
-<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a>Microcystins_biodilution_factor_Daphnia <span class="ot">&lt;-</span> <span class="dv">80</span> <span class="co"># *Daphnia magna* shows roughly 80-fold biodilution relative to *M. aeruginosa* — about 2 mg g⁻¹ DW in the phytoplankton versus ~0.025 mg g⁻¹ DW in *D. magna* [@thostrup1999].</span></span>
-<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a>Microcystins_biodilution_factor_Chaoborus <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># Based on a field study where toxins were detected with HPLC/PDA: Sotton, B., Guillard, J., Anneville, O., Maréchal, M., Savichtcheva, O., &amp; Domaizon, I. (2014). Trophic transfer of microcystins through the lake pelagic food web: Evidence for the role of zooplankton as a vector in fish contamination. Science of the Total Environment, 466, 152-163. However, the literature reports also total biodilution. @lauren-maatta1995 found no detectable microcystins in *Chaoborus* fed Microcystis-exposed *Daphnia*, though they used HPLC (a comparatively high detection limit) and did not measure toxins in the *Daphnia* themselves; @sotton2014, a field study using HPLC/PDA, found roughly 5-fold biodilution from zooplankton (863 ng g⁻¹ FW) to *Chaoborus* (168 ng g⁻¹ FW); and @riehle2024, using high-resolution LC–MS/MS, detected microcystins in zooplankton (2.5–4.5 µg g⁻¹ DW) but not in *Chaoborus*.</span></span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_capacity_mL <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_liquid_mL <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_inoculation_mL <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_usability_days <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># The number of days the  experimental bottles stay in the exponential phase. 10 comes from Ema and Jana&#39;s experience.</span></span>
+<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_highest_mg_C_per_L <span class="ot">&lt;-</span> <span class="dv">50</span> <span class="co">#M. aeruginosa is the one that grows the worst and that in Thostrup &amp; Christophersen, 1999 grew up to 150, we use 50 to be conservative. Also, Vana told me that her T. obliquus grows at 28-150 mg C / L</span></span>
+<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_inoculation_interval_days <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a><span class="co"># COMBO medium</span></span>
+<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a>COMBO_batch_volume_litres <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a>COMBO_days_in_advance <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co">#Needs one day to be autoclaved</span></span>
+<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a><span class="co"># Optical density to carbon calibration curves </span></span>
+<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a><span class="co"># OD-to-carbon calibration curves (mg C/L = slope x OD_480 - intercept), fitted per species from a</span></span>
+<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a><span class="co"># dilution series read on the spectrophotometer and filtered onto pre-combusted GF/C filters for</span></span>
+<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a><span class="co"># carbon analysis (method: protocol/quarto/22_2026_03_27_OD_curve_Microcystis.md); used by</span></span>
+<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a><span class="co"># calculations/food_calculator.qmd to dose Daphnia feeding (see 6_experimental_procedure.qmd)</span></span>
+<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a><span class="co"># This comes from Varvara Paida&#39;s calibration work. </span></span>
+<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a>Tetradesmus_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fl">158.32</span></span>
+<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a>Tetradesmus_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">10.991</span></span>
+<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>Synechococcus_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fl">89.419</span></span>
+<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a>Synechococcus_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">4.463</span></span>
+<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a>extra_food_ratio <span class="ot">&lt;-</span> <span class="fl">0.25</span> <span class="co"># Extra food to make just in case </span></span>
 <span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a><span class="co"># Microcystin analysis</span></span>
-<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>Microcystins_detection_limit_ug_per_L <span class="ot">&lt;-</span> <span class="fl">0.05</span> <span class="co"># Eurofins Microcystin Plate Kit detects down to 0.05 µg L⁻¹, the Abraxis Microcystins-ADDA ELISA Kit and the Beacon Microcystin ELISA Kit both detect down to 0.10 µg L⁻¹, and the Envirologix Microcystins Quantiplate Kit detects down to 0.15 µg L⁻¹.</span></span>
-<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a>Microcystins_extraction_volume_mL <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Placeholder — volume each freeze-dried Chaoborus sample will be extracted/reconstituted into before running the ELISA; not yet decided, so confirm against the chosen kit&#39;s protocol and update (see To do below).</span></span>
-<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a><span class="co"># ––– ⚖️ DW needed for analyses ––– #</span></span>
-<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a>DW_needed_for_PUFAs_mg <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Tarn Preet Parmar, personal communication</span></span>
-<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a>DW_needed_for_sterols_mg <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Tarn Preet Parmar, personal communication</span></span>
-<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a>DW_needed_for_N_and_C_mg <span class="ot">&lt;-</span> <span class="fl">1.5</span> <span class="co"># Dominik Martin-Creuzburg, personal communication</span></span>
-<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a>DW_needed_for_P_mg <span class="ot">&lt;-</span> <span class="cn">NA</span> <span class="co"># The lowest Claudia recorded was 0.005 mg of phosphorus (but she doesn’t know for how much dry weight).</span></span>
-<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a>DW_needed_for_toxins_mg <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a><span class="co"># 🍽️ Diet treatments</span></span>
+<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a><span class="co"># Daphnia raised on each mix before being fed to Chaoborus (Figure 1)</span></span>
+<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a>Diet_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Low-quality toxic&quot;</span>, <span class="st">&quot;Low-quality&quot;</span>, <span class="st">&quot;High-quality&quot;</span>, <span class="st">&quot;High-quality (toxin-spiked)&quot;</span>)</span>
+<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a><span class="co"># Fraction of each species by carbon in the Daphnia diet for each treatment above, in the same order.</span></span>
+<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a><span class="co"># The 4th treatment&#39;s toxin exposure comes from lysed M. aeruginosa dosed directly into the Chaoborus</span></span>
+<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a><span class="co"># jar (Figure 1), not through the Daphnia diet, so it adds no Microcystis to the fractions below — see</span></span>
+<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a><span class="co"># the To do in 4_calculations.qmd about sizing that dose.</span></span>
+<span id="cb8-155"><a href="#cb8-155" aria-hidden="true" tabindex="-1"></a>Diet_Microcystis_fraction     <span class="ot">&lt;-</span> <span class="fu">c</span>(Phyto_low_quality_food_ratio, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a>Diet_Synechococcus_fraction   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, Phyto_low_quality_food_ratio, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a>Diet_Nannochloropsis_fraction <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a>Diet_Tetradesmus_fraction     <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> Phyto_low_quality_food_ratio, <span class="dv">1</span> <span class="sc">-</span> Phyto_low_quality_food_ratio, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a><span class="co"># ☠️ Toxins</span></span>
+<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a><span class="co"># Microcystin production</span></span>
+<span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a>Microcystins_mg_per_g_DW_phytoplankton <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># In *Microcystis aeruginosa* (strain PCC 7806, grown in N-limited modified MLA medium) depending on growth phase. See Long, B. M., Jones, G. J., &amp; Orr, P. T. (2001). Cellular microcystin content in N-limited Microcystis aeruginosa can be predicted from growth rate. Applied and Environmental Microbiology, 67(1), 278-283. </span></span>
+<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-168"><a href="#cb8-168" aria-hidden="true" tabindex="-1"></a><span class="co"># Microcystin biodilution</span></span>
+<span id="cb8-169"><a href="#cb8-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a>Microcystins_biodilution_factor_Daphnia <span class="ot">&lt;-</span> <span class="dv">80</span> <span class="co"># *Daphnia magna* shows roughly 80-fold biodilution relative to *M. aeruginosa* — about 2 mg g⁻¹ DW in the phytoplankton versus ~0.025 mg g⁻¹ DW in *D. magna* [@thostrup1999].</span></span>
+<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a>Microcystins_biodilution_factor_Chaoborus <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># Based on a field study where toxins were detected with HPLC/PDA: Sotton, B., Guillard, J., Anneville, O., Maréchal, M., Savichtcheva, O., &amp; Domaizon, I. (2014). Trophic transfer of microcystins through the lake pelagic food web: Evidence for the role of zooplankton as a vector in fish contamination. Science of the Total Environment, 466, 152-163. However, the literature reports also total biodilution. @lauren-maatta1995 found no detectable microcystins in *Chaoborus* fed Microcystis-exposed *Daphnia*, though they used HPLC (a comparatively high detection limit) and did not measure toxins in the *Daphnia* themselves; @sotton2014, a field study using HPLC/PDA, found roughly 5-fold biodilution from zooplankton (863 ng g⁻¹ FW) to *Chaoborus* (168 ng g⁻¹ FW); and @riehle2024, using high-resolution LC–MS/MS, detected microcystins in zooplankton (2.5–4.5 µg g⁻¹ DW) but not in *Chaoborus*.</span></span>
+<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a><span class="co"># Microcystin analysis</span></span>
+<span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-175"><a href="#cb8-175" aria-hidden="true" tabindex="-1"></a>Microcystins_detection_limit_ug_per_L <span class="ot">&lt;-</span> <span class="fl">0.05</span> <span class="co"># Eurofins Microcystin Plate Kit detects down to 0.05 µg L⁻¹, the Abraxis Microcystins-ADDA ELISA Kit and the Beacon Microcystin ELISA Kit both detect down to 0.10 µg L⁻¹, and the Envirologix Microcystins Quantiplate Kit detects down to 0.15 µg L⁻¹.</span></span>
+<span id="cb8-176"><a href="#cb8-176" aria-hidden="true" tabindex="-1"></a>Microcystins_extraction_volume_mL <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Placeholder — volume each freeze-dried Chaoborus sample will be extracted/reconstituted into before running the ELISA; not yet decided, so confirm against the chosen kit&#39;s protocol and update (see To do below).</span></span>
+<span id="cb8-177"><a href="#cb8-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-178"><a href="#cb8-178" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-179"><a href="#cb8-179" aria-hidden="true" tabindex="-1"></a><span class="co"># ⚖️ DW needed for analyses</span></span>
+<span id="cb8-180"><a href="#cb8-180" aria-hidden="true" tabindex="-1"></a><span class="co"># ─────────────────────────────────────────────</span></span>
+<span id="cb8-181"><a href="#cb8-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-182"><a href="#cb8-182" aria-hidden="true" tabindex="-1"></a>DW_needed_for_PUFAs_mg <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Tarn Preet Parmar, personal communication</span></span>
+<span id="cb8-183"><a href="#cb8-183" aria-hidden="true" tabindex="-1"></a>DW_needed_for_sterols_mg <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Tarn Preet Parmar, personal communication</span></span>
+<span id="cb8-184"><a href="#cb8-184" aria-hidden="true" tabindex="-1"></a>DW_needed_for_N_and_C_mg <span class="ot">&lt;-</span> <span class="fl">1.5</span> <span class="co"># Dominik Martin-Creuzburg, personal communication</span></span>
+<span id="cb8-185"><a href="#cb8-185" aria-hidden="true" tabindex="-1"></a>DW_needed_for_P_mg <span class="ot">&lt;-</span> <span class="cn">NA</span> <span class="co"># The lowest Claudia recorded was 0.005 mg of phosphorus (but she doesn’t know for how much dry weight).</span></span>
+<span id="cb8-186"><a href="#cb8-186" aria-hidden="true" tabindex="-1"></a>DW_needed_for_toxins_mg <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled" title="To do">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>To do
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<hr>
-<p>🍔 <strong>Determine how much Daphnia does a Chaoborus of different sizes eat.</strong></p>
-<ul>
-<li><strong>Feeding experiment.</strong> Come up with an experiment to look at the number of Daphnia eaten for different Chaoborus and Daphnia sizes (<code>Chaoborus_Daphnia_neonates_eaten_per_day</code> &amp; <code>Chaoborus_Daphnia_neonates_eaten_max_recorded</code>)</li>
-</ul>
-</div>
-</div>
 <div class="callout callout-style-default callout-note callout-titled" title="Calculations – 🧪 OD">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2809,7 +2824,7 @@ the reading order:
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <section id="purpose" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="purpose"><span class="header-section-number">2.1</span> Purpose</h2>
@@ -2992,52 +3007,65 @@ Caused by warning:
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_OD_to_C_slope <span class="ot">&lt;-</span> n_limnetica_slope</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_OD_to_C_intercept <span class="ot">&lt;-</span> n_limnetica_intercept</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>Microcystis_OD_to_C_slope <span class="ot">&lt;-</span> m_aeruginosa_slope</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>Microcystis_OD_to_C_intercept <span class="ot">&lt;-</span> m_aeruginosa_intercept</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(n_limnetica_slope, <span class="dv">2</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="fu">round</span>(n_limnetica_intercept, <span class="dv">2</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>Microcystis_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(m_aeruginosa_slope, <span class="dv">2</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>Microcystis_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="fu">round</span>(m_aeruginosa_intercept, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>calculations/food_calculator.qmd embeds a standalone Shinylive app that runs client-side in the reader’s browser, with no access to this R session or to the repository’s data files at render time. The snapshot below is how it stays in sync with the calibration above without values being copied over by hand: re-rendering this file (or the master document) refreshes the snapshot, and re-rendering food_calculator.qmd then bakes the refreshed numbers into the embedded app.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Food_calculator_parameters <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Large_jar_liquid_litres&quot;</span>,</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Daphnia_algae_C_ad_libitum_mg_per_L_per_day&quot;</span>,</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;extra_food_percentage&quot;</span>,</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Phyto_low_quality_food_ratio&quot;</span>,</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Tetradesmus_OD_to_C_slope&quot;</span>,</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Tetradesmus_OD_to_C_intercept&quot;</span>,</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Synechococcus_OD_to_C_slope&quot;</span>,</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Synechococcus_OD_to_C_intercept&quot;</span>,</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Microcystis_OD_to_C_slope&quot;</span>,</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Microcystis_OD_to_C_intercept&quot;</span>,</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Nannochloropsis_OD_to_C_slope&quot;</span>,</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Nannochloropsis_OD_to_C_intercept&quot;</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    Large_jar_liquid_litres,</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    Daphnia_algae_C_ad_libitum_mg_per_L_per_day,</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    extra_food_percentage,</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    Phyto_low_quality_food_ratio,</span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    Tetradesmus_OD_to_C_slope,</span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    Tetradesmus_OD_to_C_intercept,</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    Synechococcus_OD_to_C_slope,</span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    Synechococcus_OD_to_C_intercept,</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>    Microcystis_OD_to_C_slope,</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    Microcystis_OD_to_C_intercept,</span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    Nannochloropsis_OD_to_C_slope,</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    Nannochloropsis_OD_to_C_intercept</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(</span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>  Food_calculator_parameters,</span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;calculations&quot;</span>, <span class="st">&quot;food_calculator_parameters.csv&quot;</span>),</span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">FALSE</span></span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Diet_*_fraction (source of truth for diet composition, see 4_parameters.qmd) are</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## vectors, so every value is deparsed to an R literal (e.g. &quot;c(0.5, 0, 0, 0)&quot;) and the</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="do">## whole value column is stored as text; food_calculator.qmd splices these literals</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="do">## straight into the app&#39;s R source, so a scalar&#39;s deparsed text (&quot;0.8&quot;) assigns the</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="do">## same way a vector&#39;s (&quot;c(0.5, 0, 0, 0)&quot;) does.</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>Food_calculator_parameters <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Large_jar_liquid_litres&quot;</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Daphnia_algae_C_ad_libitum_mg_per_L_per_day&quot;</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;N_days_per_feeding_event&quot;</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;extra_food_ratio&quot;</span>,</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diet_Microcystis_fraction&quot;</span>,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diet_Synechococcus_fraction&quot;</span>,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diet_Nannochloropsis_fraction&quot;</span>,</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diet_Tetradesmus_fraction&quot;</span>,</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Tetradesmus_OD_to_C_slope&quot;</span>,</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Tetradesmus_OD_to_C_intercept&quot;</span>,</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Synechococcus_OD_to_C_slope&quot;</span>,</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Synechococcus_OD_to_C_intercept&quot;</span>,</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Microcystis_OD_to_C_slope&quot;</span>,</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Microcystis_OD_to_C_intercept&quot;</span>,</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Nannochloropsis_OD_to_C_slope&quot;</span>,</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Nannochloropsis_OD_to_C_intercept&quot;</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Large_jar_liquid_litres),</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Daphnia_algae_C_ad_libitum_mg_per_L_per_day),</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(N_days_per_feeding_event),</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(extra_food_ratio),</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Diet_Microcystis_fraction),</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Diet_Synechococcus_fraction),</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Diet_Nannochloropsis_fraction),</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Diet_Tetradesmus_fraction),</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Tetradesmus_OD_to_C_slope),</span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Tetradesmus_OD_to_C_intercept),</span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Synechococcus_OD_to_C_slope),</span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Synechococcus_OD_to_C_intercept),</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Microcystis_OD_to_C_slope),</span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Microcystis_OD_to_C_intercept),</span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Nannochloropsis_OD_to_C_slope),</span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Nannochloropsis_OD_to_C_intercept)</span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(</span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>  Food_calculator_parameters,</span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;calculations&quot;</span>, <span class="st">&quot;food_calculator_parameters.csv&quot;</span>),</span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -3045,7 +3073,7 @@ Caused by warning:
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Calculations – 🧪 Phytoplankton">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3054,8 +3082,17 @@ Caused by warning:
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p><span class="math display">\[
+C_{\mathrm{feeding}}^{\mathrm{jar}} = \text{carbon required per jar per day (mg C day}^{-1}\text{)}
+\]</span></p>
+<p><span class="math display">\[
+V^{\mathrm{jar}} = \text{volume of each Daphnia jar (L)}
+\]</span></p>
+<p><span class="math display">\[
+C_{\mathrm{total}} = N_{\mathrm{jars}} \times C_{\mathrm{jar}}
+\]</span></p>
 <p>Every phytoplankton species is grown at three vessel scales — stock flask, stock bottle, and experimental bottle — with the same number of replicate vessels (<code>Phyto_vessels_per_species</code>) kept at each scale, so the vessel count carries straight through from stock flasks up to experimental bottles once multiplied by the number of species. That vessel count, together with how much liquid a stock bottle and an experimental bottle each hold, sets how much COMBO medium has to be prepared in advance to fill every one of them once — not counting the medium used to top them up between transfers, which is handled separately in the <a href="protocol/1_create_COMBO.md">COMBO protocol</a> — and, given how much volume comes out of a single batch, how many batches that requires.</p>
 <div class="cell">
 <details class="code-fold">
@@ -3073,16 +3110,16 @@ Caused by warning:
 </details>
 </div>
 <ul>
-<li><strong>Experimental bottles:</strong> 12</li>
-<li><strong>Stock bottles:</strong> 12</li>
-<li><strong>Stock flasks:</strong> 12</li>
-<li><strong>COMBO medium needed:</strong> 27.6 L (2 batches)</li>
+<li><strong>Experimental bottles:</strong> 8</li>
+<li><strong>Stock bottles:</strong> 8</li>
+<li><strong>Stock flasks:</strong> 8</li>
+<li><strong>COMBO medium needed:</strong> 18.4 L (1 batches)</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Calculations – 🦐 Daphnia">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3091,71 +3128,36 @@ Caused by warning:
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>Chaoborus</em>’ worst-case daily appetite sets how many <em>Daphnia</em> neonates have to be available every day; dividing that demand by how many neonates a single cohort jar produces over one reproductive cycle gives the number of cohort jars needed per cohort, and staggering cohorts across the neonate age window — a neonate stays small enough for <em>Chaoborus</em> to eat for <code>Daphnia_max_age_eaten_days</code> days — sets how many cohorts, and therefore how many jars, have to exist in parallel at any one time. <em>(This cohort-sizing chain still needs to be checked.)</em></p>
-<p>That starting jar count then has to be propagated up from Vana’s existing stock, cycle by cycle, each cycle multiplying the jar count by how many neonates one adult produces, until the target is reached — which also shows how much slack that leaves inside the one-month propagation lead time.</p>
+<p><em>Chaoborus</em>’ worst-case daily appetite sets how many <em>Daphnia</em> neonates have to be available every day. How many jars that takes — <code>Daphnia_jars_per_cohort</code> per cohort, with <code>Daphnia_cohorts_in_rotation</code> cohorts of staggered ages running in parallel — is still a placeholder in <a href="4_parameters.qmd">Parameters</a>, pending the cohort-sizing and <em>Daphnia</em> propagation planning; multiplying the two gives how many cohort jars have to already be in place on day one.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Daphnia_cohorts_in_rotation <span class="ot">&lt;-</span> Daphnia_max_age_eaten_days</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>Chaoborus_Daphnia_neonates_needed_per_day <span class="ot">&lt;-</span> (</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  Chaoborus_larvae_per_jar <span class="sc">*</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  Chaoborus_Daphnia_neonates_eaten_max_recorded <span class="sc">*</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  Treatments <span class="sc">*</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  Replicates</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>Daphnia_neonates_per_cohort_jar <span class="ot">&lt;-</span> (</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  Daphnia_adults_per_new_cohort_jar <span class="sc">*</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  Daphnia_offsprings_per_mother_per_5_days</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>Daphnia_jars_per_cohort <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>  Chaoborus_Daphnia_neonates_needed_per_day <span class="sc">/</span></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>  Daphnia_neonates_per_cohort_jar</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>Daphnia_jars_needed_at_start <span class="ot">&lt;-</span> (</span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  Daphnia_jars_per_cohort <span class="sc">*</span></span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  Daphnia_cohorts_in_rotation</span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>Daphnia_adults_needed_at_start <span class="ot">&lt;-</span> (</span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>  Daphnia_adults_per_new_cohort_jar <span class="sc">*</span></span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>  Daphnia_jars_per_cohort <span class="sc">*</span></span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>  Daphnia_cohorts_in_rotation</span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>Daphnia_propagation_jars <span class="ot">&lt;-</span> Vana_Daphnia_starting_jars</span>
-<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>Daphnia_propagation_cycles <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>Daphnia_propagation_adults <span class="ot">&lt;-</span> Daphnia_propagation_jars <span class="sc">*</span> Daphnia_cohorts_adults_per_jar</span>
-<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (Daphnia_propagation_adults <span class="sc">&lt;</span> Daphnia_adults_needed_at_start) {</span>
-<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>  Daphnia_propagation_jars <span class="ot">&lt;-</span> Daphnia_propagation_jars <span class="sc">*</span> Daphnia_offsprings_per_mother_per_5_days</span>
-<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>  Daphnia_propagation_cycles <span class="ot">&lt;-</span> Daphnia_propagation_cycles <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>  Daphnia_propagation_adults <span class="ot">&lt;-</span> Daphnia_propagation_jars <span class="sc">*</span> Daphnia_cohorts_adults_per_jar</span>
-<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>Daphnia_propagation_days <span class="ot">&lt;-</span> Daphnia_propagation_cycles <span class="sc">*</span> Daphnia_max_age_eaten_days</span>
-<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>Daphnia_propagation_slack_days <span class="ot">&lt;-</span> Propagation_lead_time_days <span class="sc">-</span> Daphnia_propagation_days</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Chaoborus_Daphnia_neonates_needed_per_day <span class="ot">&lt;-</span> (</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  Chaoborus_larvae_per_jar <span class="sc">*</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  Chaoborus_Daphnia_neonates_eaten_max_recorded <span class="sc">*</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  Treatments <span class="sc">*</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  Replicates</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>Daphnia_jars_needed_at_start <span class="ot">&lt;-</span> (</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  Daphnia_jars_per_cohort <span class="sc">*</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  Daphnia_cohorts_in_rotation</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
-<li><strong>Cohorts in rotation:</strong> 5</li>
+<li><strong>Cohorts in rotation:</strong> 3</li>
 <li><strong>Neonates needed per day:</strong> 4000</li>
-<li><strong>Neonates produced per cohort jar:</strong> 200</li>
-<li><strong>Jars per cohort:</strong> 20</li>
-<li><strong>Cohort jars needed at start:</strong> 100</li>
-<li><strong>Adults needed at start:</strong> 1000</li>
-<li><strong>Propagation:</strong> 2 cycles (10 days, 20 days of slack)</li>
+<li><strong>Jars per cohort:</strong> 3</li>
+<li><strong>Cohort jars needed at start:</strong> 9</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Calculations – ☠️ Toxins">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3164,7 +3166,7 @@ Caused by warning:
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Whether the toxin dose given to <em>Chaoborus</em> is even measurable sets a lower bound on how much <em>Chaoborus</em> biomass has to be sampled. The ELISA kit’s detection limit, converted to a mass via the volume each sample gets extracted into, gives the smallest amount of microcystin that can be detected at all; and since that toxin biodilutes twice on its way up the food chain — first from phytoplankton into <em>Daphnia</em>, then from <em>Daphnia</em> into <em>Chaoborus</em> — dividing the detectable mass by how little microcystin actually reaches a gram of <em>Chaoborus</em> dry weight gives the minimum biomass a sample needs to contain enough toxin to detect.</p>
 <div class="cell">
@@ -3192,7 +3194,7 @@ Caused by warning:
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Calculations – 🦟 Chaoborus">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3201,7 +3203,7 @@ Caused by warning:
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>With one jar per treatment-by-replicate combination, the total biomass a single <em>Chaoborus</em> sample needs to cover every planned analysis — fatty acids, sterols, stoichiometry, and toxins — sets, via a single larva’s dry weight, how many larvae one measurement requires; inflating that by the worst-case dead-to-alive ratio makes sure enough larvae still survive to be measured, and scaling up by every treatment-by-replicate jar gives the total larvae needed across the whole experiment. <em>(Whether this is sized for one measurement or for all of them still needs to be checked.)</em> That larvae total, together with how many neonates a single jar can get through at the worst-case single-feeding rate, in turn sets how many small stock jars — and the large adult jars that feed them — are needed to keep <em>Chaoborus</em> supplied.</p>
 <div class="cell">
@@ -3248,7 +3250,7 @@ Caused by warning:
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Calculations – 🧪 Phytoplankton feeding demand">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3257,7 +3259,7 @@ Caused by warning:
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><em>(This section still needs revision.)</em> Once the <em>Daphnia</em> jar counts above are fixed, the total carbon those jars need each day follows directly from how many jars there are and how much carbon each is fed; splitting that demand across phytoplankton species in the same proportions as the diet mixes (averaged across treatments) gives each species’ daily carbon target — plus, for <em>T. obliquus</em>, the extra carbon the untreated stock jars need on top of their share of the cohort diets. Checking that target against how much carbon a single experimental bottle can hold at its target concentration gives the fraction of that bottle harvested on the one day per rotation it supplies — alternating the daily harvest across the <code>Phyto_vessels_per_species</code> experimental bottles means only one bottle is drawn down at a time while the others regrow, with the harvested volume replaced by fresh COMBO on the spot (as in <code>protocol/4_feed_Daphnia.md</code>). These fractions only confirm the demand fits under a bottle’s maximum carbon content; they don’t yet confirm a diluted bottle actually regrows that far before its next harvest (see To do below).</p>
 <div class="cell">
@@ -3291,18 +3293,18 @@ Caused by warning:
 </details>
 </div>
 <ul>
-<li><strong><em>Daphnia</em> cohort carbon demand:</strong> 160 mg C/day</li>
+<li><strong><em>Daphnia</em> cohort carbon demand:</strong> 14.4 mg C/day</li>
 <li><strong><em>Daphnia</em> stock carbon demand:</strong> 24.6 mg C/day</li>
-<li><strong><em>M. aeruginosa</em>:</strong> 20 mg C/day (20% of bottle)</li>
-<li><strong><em>S. elongatus</em>:</strong> 20 mg C/day (20% of bottle)</li>
-<li><strong><em>N. limnetica</em>:</strong> 80 mg C/day (80% of bottle)</li>
-<li><strong><em>T. obliquus</em>:</strong> 64.6 mg C/day (64.6% of bottle)</li>
+<li><strong><em>M. aeruginosa</em>:</strong> 1.8 mg C/day (1.8% of bottle)</li>
+<li><strong><em>S. elongatus</em>:</strong> 1.8 mg C/day (1.8% of bottle)</li>
+<li><strong><em>N. limnetica</em>:</strong> 7.2 mg C/day (7.2% of bottle)</li>
+<li><strong><em>T. obliquus</em>:</strong> 28.2 mg C/day (28.2% of bottle)</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Calculations – 🪜 Infrastructure">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3311,7 +3313,7 @@ Caused by warning:
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Every jar in the experiment — <em>Chaoborus</em> jars, and both the small and large <em>Daphnia</em> stock jars — has a known weight once filled, so totalling those up and spreading the load evenly across the available shelves gives how much each shelf has to carry, rounded up to a whole kilogram.</p>
 <div class="cell">
@@ -3330,35 +3332,6 @@ Caused by warning:
 <li><strong>Weight per shelf:</strong> 4 kg</li>
 </ul>
 </div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled" title="To do">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>To do
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>🌱 Calculate biomass needed for all analyses (<code>Biomass_needed_total_mg</code>)</strong></p>
-<ul>
-<li>Calculate <code>Biomass_needed_for_toxins_mg</code> &amp; [→ Needs: Deciding the ELISA kit]</li>
-</ul>
-<hr>
-<p><strong>🧪 Calculate how much phytoplankton per day (<code>Phyto_*_mg_C_per_day</code>)</strong></p>
-<ul>
-<li>Calculate <code>Phyto_*_harvest_fraction</code> [→ Needs: Calculating how much different phytoplanktons regrow in the days between harvests.]</li>
-</ul>
-<hr>
-<p><strong>🦐 Calculate how many <em>Daphnia magna</em> are needed at the beginning of the experiment (<code>...</code>)</strong></p>
-<hr>
-<p><strong>🧪 Calculate how much <em>Microcystis aeruginosa</em> is needed to get enough toxins (<code>...</code>)</strong></p>
-<hr>
-<ul>
-<li>Check whether Daphnia_neonates_per_cohort_jar is right.</li>
-</ul>
 </div>
 </div>
 </section>
@@ -3436,21 +3409,6 @@ Caused by warning:
 <p align="center">
 <strong>Figure 2.</strong> Timeline of the experiment.
 </p>
-<div class="callout callout-style-default callout-warning callout-titled" title="To do">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>To do
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>⭐ Decide whether it should be a block design.</li>
-</ul>
-</div>
-</div>
 </section>
 <section id="experimental-procedure" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Experimental Procedure</h1>
@@ -3477,37 +3435,21 @@ Caused by warning:
 <li>Experimental bottle (max capacity: 2000 ml), with 2000 ml of algae incoulated from 200 ml of stock bottles.</li>
 </ol>
 <p>The experimental bottle is where we will be harvesting the algae to feed Daphnia, so it has to be kept at a high enough density to meet that demand. Every NA days the algae are harvested and fed to Daphnia / lysed and provided to Chaoborus, while replacing NA % of the bottles with COMBO medium. Each bottle is kept for NA days before it’s replaced. Also, each experimental bottle is grown NA days before to be able to be used as it needs to grow to enough density.</p>
-<p>Scaled to 4 species × 3 replicates (12 lines total), that means preparing in advance:</p>
+<p>Scaled to 4 species × 2 replicates (8 lines total), that means preparing in advance:</p>
 <ul>
-<li>12 × 50 mL stock flasks</li>
-<li>12 × 500 mL stock bottles (holding 300 mL of liquid)</li>
-<li>12 × 2 L experimental bottles</li>
-<li>27.6 L of COMBO medium, made in 20 L batches (2 batches; see the <a href="protocol/1_create_COMBO.md">COMBO protocol</a>)</li>
+<li>8 × 50 mL stock flasks</li>
+<li>8 × 500 mL stock bottles (holding 300 mL of liquid)</li>
+<li>8 × 2 L experimental bottles</li>
+<li>18.4 L of COMBO medium, made in 20 L batches (1 batches; see the <a href="protocol/1_create_COMBO.md">COMBO protocol</a>)</li>
 </ul>
 </section>
 <section id="daphnia" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="daphnia"><span class="header-section-number">4.1.2</span> Daphnia</h3>
-<p>Daphnia is raised with 10 adults in 1 L jars with 0.8 L Zoo-COMBO medium. Daphnia will be grown for 5 days to give babies, which will then be fed to Chaoborus. To avoid Daphnia become too old to be fertile enough, Daphnia will be raised from adults from the stock populations every time. To avoid that the largest Daphnias are picked for earlier cohorts, causing a decrease in the offspring count in the later cohorts, we will pick Daphnias of different sizes. <em>Daphnia magna</em> is fed ad libitum with 2 mg C/L/day <span class="citation" data-cites="lampert1978">(<a href="#ref-lampert1978" role="doc-biblioref">Lampert, 1978</a>)</span>.</p>
-<p>Each cohort has to be sized to cover <em>Chaoborus</em>’ worst-case daily appetite. Across 4 treatments × 4 replicates, with 10 larvae per jar each capable of a single-feeding maximum of 25 neonates, that demand is 4000 neonates per day. A single cohort jar, started with 10 adults each producing 20 neonates over the 5-day cohort cycle, yields about 200 neonates by harvest day — so each daily cohort needs <strong>20 jars</strong> to keep up with <em>Chaoborus</em>.</p>
-<p>Because a new cohort is started every day and takes 5 days to reach harvest age, 5 cohorts of staggered ages are running side by side at any given time, one reaching harvest age each day. All of them have to already be in place on day one — the experiment can’t wait 5 days for the rotation to ramp up — so it has to start with 100 cohort jars (20 jars/cohort × 5 cohorts), each stocked with 10 adults. That means <strong>1000 adult <em>Daphnia</em></strong> (10 adults/jar × 20 jars/cohort × 5 cohorts) are needed to start the experiment.</p>
-<p>That stock has to be propagated up from Vana’s existing cultures. Starting from her 2 jars, at 15 adults per jar (both placeholders — see To do below), every adult produces 20 neonates per 5-day cycle, enough to found 20 new jars per existing jar each cycle regardless of jar size (jar size cancels out of that ratio). Compounding at that rate, the 1000-adult target is cleared within 2 cycles (10 days) — comfortably inside the 30-day, one-month lead time, with 20 days to spare. <em>Daphnia</em> fecundity is therefore never the bottleneck: propagating every offspring into a new jar for the full 2 cycles would leave 800 jars (12,000 adults) — far more than needed. In practice, only enough jars should be founded in the final cycle to reach the 100 cohort jars (1000 adults) the rotation actually needs at the start of the experiment; the remaining lead time is buffer for losses, delays, or a smaller starting stock than assumed here.</p>
-<p>Each of the 100 active cohort jars is fed daily at 2 mg C/L into its 0.8 L of medium, which comes to 160 mg C/day split across the 4 treatment diets (Table 1 in <a href="5_experimental_design.qmd">Experimental Design</a>). Averaged evenly across treatments, that puts daily demand at 20 mg C of <em>M. aeruginosa</em>, 20 mg C of <em>S. elongatus</em>, and 80 mg C of <em>N. limnetica</em>. The stock jars that found these cohorts (1 large + 144 small, fed 2 mg C/L/day of <em>T. obliquus</em> alone) add another 24.6 mg C/day, for a combined <em>T. obliquus</em> demand of 64.6 mg C/day.</p>
-<p>Harvesting alternates daily across the 3 experimental bottles per species, so on any given day only one bottle per species is harvested while the other 2 regrow; whatever volume is taken out is replaced on the spot with fresh COMBO, the same way stock cultures are topped up (protocol/4_feed_Daphnia.md). At the conservative 50 mg C/L ceiling used throughout (100 mg C in a full 2 L bottle), that single daily bottle needs to supply 20% of its standing carbon for <em>M. aeruginosa</em>, 20% for <em>S. elongatus</em>, 80% for <em>N. limnetica</em>, and 65% for <em>T. obliquus</em> — all under 100%, so 3 bottles per species are enough to cover the carbon demand. What this doesn’t yet check is whether the diluted bottle actually regrows back to 50 mg C/L before its next harvest, 3 days later — that depends on each species’ growth rate, which isn’t pinned down yet (see To do below), and matters most for <em>N. limnetica</em>, whose bottle is diluted the most.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="To do">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>To do
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Confirm each species can regrow from its post-harvest dilution back to <code>Phyto_experimental_bottle_highest_mg_C_per_L</code> within the <code>Phyto_vessels_per_species</code>-day gap between harvests — needs an actual growth rate per species, not yet in <a href="3_parameters.qmd">Parameters</a>. Most urgent for <em>N. limnetica</em>, whose bottle is diluted the most (80% harvested); consider a 4th replicate line for it if regrowth turns out too slow.</li>
-</ul>
-</div>
-</div>
+<p>Daphnia is raised in 1 L jars with 0.8 L Zoo-COMBO medium. Daphnia will be grown for 5 days to give babies, which will then be fed to Chaoborus. To avoid Daphnia become too old to be fertile enough, Daphnia will be raised from adults from the stock populations every time. To avoid that the largest Daphnias are picked for earlier cohorts, causing a decrease in the offspring count in the later cohorts, we will pick Daphnias of different sizes. <em>Daphnia magna</em> is fed ad libitum with 2 mg C/L/day <span class="citation" data-cites="lampert1978">(<a href="#ref-lampert1978" role="doc-biblioref">Lampert, 1978</a>)</span>.</p>
+<p>Each cohort has to be sized to cover <em>Chaoborus</em>’ worst-case daily appetite. Across 4 treatments × 4 replicates, with 10 larvae per jar each capable of a single-feeding maximum of 25 neonates, that demand is 4000 neonates per day. Each daily cohort needs <strong>3 jars</strong> (placeholder — see <a href="4_parameters.qmd">Parameters</a>) to keep up with <em>Chaoborus</em>.</p>
+<p>Because a new cohort is started every day and takes 5 days to reach harvest age, 3 cohorts of staggered ages are running side by side at any given time, one reaching harvest age each day. All of them have to already be in place on day one — the experiment can’t wait 5 days for the rotation to ramp up — so it has to start with 9 cohort jars (3 jars/cohort × 3 cohorts).</p>
+<p>Each of the 9 active cohort jars is fed daily at 2 mg C/L into its 0.8 L of medium, which comes to 14.4 mg C/day split across the 4 treatment diets (Table 1 in <a href="5_experimental_design.qmd">Experimental Design</a>). Averaged evenly across treatments, that puts daily demand at 1.8 mg C of <em>M. aeruginosa</em>, 1.8 mg C of <em>S. elongatus</em>, and 7.2 mg C of <em>N. limnetica</em>. The stock jars that found these cohorts (1 large + 144 small, fed 2 mg C/L/day of <em>T. obliquus</em> alone) add another 24.6 mg C/day, for a combined <em>T. obliquus</em> demand of 28.2 mg C/day.</p>
+<p>Harvesting alternates daily across the 2 experimental bottles per species, so on any given day only one bottle per species is harvested while the other 1 regrow; whatever volume is taken out is replaced on the spot with fresh COMBO, the same way stock cultures are topped up (protocol/4_feed_Daphnia.md). At the conservative 50 mg C/L ceiling used throughout (100 mg C in a full 2 L bottle), that single daily bottle needs to supply 2% of its standing carbon for <em>M. aeruginosa</em>, 2% for <em>S. elongatus</em>, 7% for <em>N. limnetica</em>, and 28% for <em>T. obliquus</em> — all under 100%, so 2 bottles per species are enough to cover the carbon demand. What this doesn’t yet check is whether the diluted bottle actually regrows back to 50 mg C/L before its next harvest, 2 days later — that depends on each species’ growth rate, which isn’t pinned down yet (see To do below), and matters most for <em>N. limnetica</em>, whose bottle is diluted the most.</p>
 <section id="carbon-content-from-optical-density" class="level4" data-number="4.1.2.1">
 <h4 data-number="4.1.2.1" class="anchored" data-anchor-id="carbon-content-from-optical-density"><span class="header-section-number">4.1.2.1</span> Carbon content from optical density</h4>
 <p><em>Daphnia</em> is fed a fixed carbon dose (2 mg C/L/day), but the volume of phytoplankton medium that delivers that dose isn’t fixed — carbon content drifts from batch to batch as a culture grows. Rather than measuring carbon directly before every feeding, which is destructive and slow, each phytoplankton species is instead read on a spectrophotometer at OD<sub>480</sub> (see the <a href="protocol/4_feed_Daphnia.md">Daphnia feeding protocol</a>), and that reading is converted to carbon through a species-specific linear calibration curve, mg C/L = slope × OD<sub>480</sub> − intercept, fitted by pairing OD readings across a dilution series against carbon measured on filtered, dried subsamples (method: <a href="protocol/quarto/22_2026_03_27_OD_curve_Microcystis.md">OD curve protocol</a>, worked through there for <em>M. aeruginosa</em>).</p>
@@ -3559,22 +3501,6 @@ Caused by warning:
 <li>Ischnura elegans will be sourced from mesocosms that had been added with freshly hatched Ischnura larvae from the field (Kastrup Fortress, Copenhagen, Denmark). The mesocosms are located in the University of Copenhagen, Denmark. They will be kept on straws.</li>
 </ul>
 <p>Both Chaoborus and Ischnura will be left starving for 48-96 hours to acclimate to the new environment, let the weak individuals die, and their guts to clean before starting the experiment.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="To do">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>To do
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>ℹ️ Add information </strong></p>
-<ul>
-<li>Call IT-Ichthyo Trophic to ask what species of Chaoborus it is and how it is raised.</li>
-</ul>
-</div>
-</div>
 </section>
 </section>
 <section id="assemble-experiment" class="level2" data-number="4.2">
@@ -4112,7 +4038,7 @@ Xie, P., Iwakuma, T., &amp; Fujii, K. (1998). <em>Studies on the biology of <spa
 </section>
 <section id="protocols" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Protocols</h1>
-<p>This section is generated automatically from every Markdown file in <a href="protocol/"><code>protocol/</code></a>: each time this document is rendered, it picks up whatever protocols exist in that folder, in numerical order, without needing to be edited by hand. Each protocol file is knitted as a child document, so it can reference the shared <a href="3_parameters.qmd">Parameters</a> with inline code (e.g. <code>10</code>) instead of hardcoding a number that could drift out of sync.</p>
+<p>This section is generated automatically from every Markdown file in <a href="protocol/"><code>protocol/</code></a>: each time this document is rendered, it picks up whatever protocols exist in that folder, in numerical order, without needing to be edited by hand. Each protocol file is knitted as a child document, so it can reference the shared <a href="4_parameters.qmd">Parameters</a> with inline code (e.g. <code>15</code>) instead of hardcoding a number that could drift out of sync.</p>
 <section id="protocol-1-create-combo" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="protocol-1-create-combo">Protocol 1 – Create COMBO</h2>
 <p><strong>Title:</strong> Phytoplankton COMBO medium for <em>Microcystis aeruginosa</em></p>
@@ -4742,18 +4668,34 @@ Mix
 </section>
 <section id="to-dos" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> To dos</h1>
-<p>Most important things to do in the next days/weeks:</p>
+<p><strong>HIGH PRIORITY</strong></p>
+<ul>
+<li>Check how many damselflies we need per treatment. To do so, calculate biomass needed for all analyses (Biomass_needed_total_mg).</li>
+<li>Perform the body size - biomass correlation for Chaoborus and damselflies.</li>
+<li>Perform the feeding experiment with the damselfiles and Chaoborus</li>
+<li>Calculate how much phytoplankton per day</li>
+<li>Discuss with Jana
+<ul>
+<li>Whether to remove the extra <em>Daphnia</em> every day or only every time the <em>Chaoborus</em> medium is changed.</li>
+<li>Whether the insects should be fed Monday, Wednesday, and Friday or every other day.</li>
+<li>Starvation: 48 hours or 96 hours?</li>
+<li>Is it okay if I feed Daphnia jars from 7 days before?</li>
+<li>How do freeze and thaw the phytoplankton? Do we just use a huge container that can be used for that? Should we freeze the pellet? And wouldn’t this freezing and thawing mess with the amount of toxins?</li>
+<li>Should we not look at the emergence at all of damselflies otherwise it will split too much the biomass?</li>
+</ul></li>
+</ul>
+<p><strong>MEDIUM PRIORITY</strong></p>
 <ul>
 <li>Create shiny for how much to put in for each of the diets</li>
-<li>Check how many and up to which size Chaoborus eats</li>
-<li>Calculate how much phytoplankton per day</li>
-<li>Talk about toxic diet with Irma</li>
-<li>Expand the different species</li>
-<li>I should decide whether I want to run an experiment looking at the quality and toxins of phytoplankton during the growth phase.</li>
-<li>Add a plan on when to end the experiment.</li>
-<li>Decide whether to remove the extra <em>Daphnia</em> every day or only every time the <em>Chaoborus</em> medium is changed.</li>
-<li>Check how many falcon tubes we have.</li>
-<li>Think where to place the following phrase: I will analyse the ingested biomass of Daphnia (ingestion rate) by Chaoborus from body size using literature data.</li>
+<li>Book the microscope for the experiment.</li>
+<li>Make stock solutions</li>
+<li>Add to the protocols the samplign of Daphnia size before and after the feedings.</li>
+<li>Calculate if the amount of phytoplankton that we will have is enough for the toxin analysis.</li>
+<li>Confirm each species can regrow from its post-harvest dilution back to Phyto_experimental_bottle_highest_mg_C_per_L within the Phyto_vessels_per_species-day gap between harvests — needs an actual growth rate per species, not yet in Parameters. Most urgent for N. limnetica, whose bottle is diluted the most (80% harvested); consider a 4th replicate line for it if regrowth turns out too slow.</li>
+</ul>
+<p><strong>LOW PRIORITY</strong></p>
+<ul>
+<li>Call IT-Ichthyo Trophic to ask what species of Chaoborus it is and how it is raised.</li>
 </ul>
 </section>
 

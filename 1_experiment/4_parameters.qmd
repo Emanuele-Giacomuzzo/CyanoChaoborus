@@ -7,12 +7,16 @@
 
 # DW = dry weight
 
-# ––– 🌐 General ––– #
+# ─────────────────────────────────────────────
+# 🌐 General
+# ─────────────────────────────────────────────
 
 Treatments <- 4
 Replicates <- 4
 
-# ––– 🪜 Infrastructure ––– #
+# ─────────────────────────────────────────────
+# 🪜 Infrastructure
+# ─────────────────────────────────────────────
 
 Shelves <- 16
 Max_weight_per_shelf_kg <- 20
@@ -22,7 +26,9 @@ Large_jar_liquid_litres <- 0.8
 Large_jar_with_liquid_kg <- 1.5
 Large_jar_diameter_cm <- 9
 
-# ––– 🔥 Autoclaving ––– #
+# ─────────────────────────────────────────────
+# 🔥 Autoclaving
+# ─────────────────────────────────────────────
 
 Autoclave_temperature_C <- 121 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
 Autoclave_solids_minutes <- 25 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
@@ -30,54 +36,74 @@ Autoclave_1L_liquids_minutes <- 45 # Vana & Claudia defined this, as it's writte
 Autoclave_2L_liquids_minutes <- 60 # I always autoclaved COMBO in 2L bottles for this amount of time and never had a problem with it
 Autoclave_5L_liquids_minutes <- 85 # Vana & Claudia defined this, as it's written on the autoclave at the Marine Biology Section, but I'm not sure where they got this from
 
-# ––– 🦟 Chaoborus ––– #
+# ─────────────────────────────────────────────
+# 🦟 Chaoborus / Ischnura
+# ─────────────────────────────────────────────
 
-# General 
+# Weight 
 
 Chaoborus_third_instar_DW_mg <- 0.79 # Lowest weight in the following paper: Parma, S. (1971). Chaoborus flavicans (Meigen)(Diptera, Chaoboridae): an autecological study.
-Chaoborus_dead_to_alive_ratio_worst_treatment <- 2
+Ischnura_small_adult_DW_mg <- NA_real_  # TBD
+Ischnura_large_adult_DW_mg <- NA_real_  # TBD
 
-# Feeding 
+# Survival 
+
+Chaoborus_dead_to_alive_ratio_worst_treatment <- 2
+Ischnura_dead_to_alive_ratio_worst_treatment <- NA_real_  # TBD
+
+# Feeding
+
+N_days_per_feeding_event <- 2
 
 Chaoborus_Daphnia_neonates_eaten_per_day <- 20 #Based on female fourth instar eating 1.25 mm D. magna babies (Büns & Ratte, 1991)
 Chaoborus_Daphnia_neonates_eaten_max_recorded <- 25 # Highest single-feeding count observed
-Chaoborus_Daphnia_neonates_eaten_max_mm <- NA
-Chaoborus_Daphnia_neonates_eaten_max_age_days <- NA
+Chaoborus_Daphnia_neonates_eaten_max_mm <- NA_real_  # TBD
+Chaoborus_Daphnia_neonates_eaten_max_age_days <- 5 # Oldest a Daphnia neonate can be while still small enough for Chaoborus to eat according to the feeding experiment with Tobias. 
 
-# Experiment 
+Ischnura_Daphnia_neonates_eaten_per_day <- NA_real_  # TBD
+Ischnura_Daphnia_neonates_eaten_max_recorded <- NA_real_  # TBD
+Ischnura_Daphnia_neonates_eaten_max_mm <- NA_real_  # TBD
+Ischnura_Daphnia_neonates_eaten_max_age_days <- NA_real_  # TBD
+
+# Individuals per jar  
 
 Chaoborus_larvae_per_jar <- 10 # Initial density, within the upper range of natural peak densities (Xie et al., 1998)
+Ischnura_larvae_per_jar <- NA_real_  # TBD
 
-# ––– 🦐 Daphnia ––– #
 
-# General 
+
+# ─────────────────────────────────────────────
+# 🦐 Daphnia
+# ─────────────────────────────────────────────
+
+# Weight 
 
 Daphnia_adult_DW_mg <- 0.18 # Average weight of an individual in the following paper: Simčič, T., & Brancelj, A. (1997). Electron transport system (ETS) activity and respiration rate in five Daphnia species at different temperatures. Hydrobiologia, 360(1), 117-125.
+
+# Reproduction
+
 Daphnia_offsprings_per_mother_per_5_days <- 20
 
 # Feeding 
-Daphnia_algae_C_ad_libitum_mg_per_L_per_day <- 2 # Applies both to treatment cohort jars (fed the diet mixes above) and to the stock jars that found them (fed *Tetradesmus obliquus* alone, ad libitum, since the stock isn't part of the diet treatments; see 4_calculations.qmd)
+
+Daphnia_algae_C_ad_libitum_mg_per_L_per_day <- 2 # This is the amount of carbon that Daphnia magna can consume per day at ad libitum feeding conditions, based on the following paper: Lampert, W. (1978). The experimental analysis of food limitation in Daphnia. I. The search for a control mechanism. Oecologia, 37(1), 1-19.
 
 # Experiment
 
 Daphnia_cohorts_adults_per_jar <- 15 # Suggested by Jana, as in her experience it's the highest density of Daphnia in the jars that doesn't stress them out too much.
 Daphnia_adults_per_new_cohort_jar <- 10 # Individuals pipetted from stock into each newly created cohort jar (protocol/3_create_Daphnia_jars.md)
-Daphnia_max_age_eaten_days <- 5 # Oldest a Daphnia neonate can be while still small enough for Chaoborus to eat
-Daphnia_cohorts_in_rotation <- 3 # Number of cohorts that are rotated through the experimental jars
-Daphnia_cohorts_restarting <- 3 # Number of cohorts that are rotated through the experimental jars
+Daphnia_cohorts_in_rotation <- 3
+Daphnia_jars_per_cohort <- 3
 
-# Propagation
-
-Vana_Daphnia_starting_jars <- 2 # Jars available in Vana's stock cultures to start propagation from; placeholder, confirm actual count with Vana
-Propagation_lead_time_days <- 30 # One month, the planned lead time for propagating Daphnia before the experiment starts
-
-# ––– 🧪 Phytoplankton ––– #
+# ─────────────────────────────────────────────
+# 🧪 Phytoplankton
+# ─────────────────────────────────────────────
 
 # General
 
 Phyto_species_count <- 4 # M. aeruginosa, S. elongatus, N. limnetica, T. obliquus
 Phyto_low_quality_food_ratio <- 0.5 # Food ratio of Microcystis aeruginosa or Synechococcus elongatus. Feeding Daphnia magna with 50% of Microcystis can keep cultures dense enough to perform experiment (Macke et al., 2017) but still have a negative effect (Schwarzenberger et al., 2012, 2013). Feeding Daphnia magna with 50% of Synechococcus can also keep cultures alive but still have a negative effect (Demott & Müller-Navarra, 1997).
-Phyto_vessels_per_species <- 3 # Replicate stock flasks/bottles kept per species at each vessel size; once at experimental scale, these 3 experimental bottles are also what's alternated between for daily Daphnia-feeding harvests (see 4_calculations.qmd)
+Phyto_vessels_per_species <- 2
 
 # Stock flasks
 
@@ -119,9 +145,11 @@ Tetradesmus_OD_to_C_slope <- 158.32
 Tetradesmus_OD_to_C_intercept <- -10.991
 Synechococcus_OD_to_C_slope <- 89.419
 Synechococcus_OD_to_C_intercept <- -4.463
-extra_food_percentage <- 25 # Extra food to make just in case 
+extra_food_ratio <- 0.25 # Extra food to make just in case 
 
-# ––– 🍽️ Diet treatments ––– #
+# ─────────────────────────────────────────────
+# 🍽️ Diet treatments
+# ─────────────────────────────────────────────
 
 # Daphnia raised on each mix before being fed to Chaoborus (Figure 1)
 
@@ -136,7 +164,9 @@ Diet_Synechococcus_fraction   <- c(0, Phyto_low_quality_food_ratio, 0, 0)
 Diet_Nannochloropsis_fraction <- c(0, 0, 1, 1)
 Diet_Tetradesmus_fraction     <- c(1 - Phyto_low_quality_food_ratio, 1 - Phyto_low_quality_food_ratio, 0, 0)
 
-# ––– ☠️ Toxins ––– #
+# ─────────────────────────────────────────────
+# ☠️ Toxins
+# ─────────────────────────────────────────────
 
 # Microcystin production
 
@@ -152,7 +182,9 @@ Microcystins_biodilution_factor_Chaoborus <- 5 # Based on a field study where to
 Microcystins_detection_limit_ug_per_L <- 0.05 # Eurofins Microcystin Plate Kit detects down to 0.05 µg L⁻¹, the Abraxis Microcystins-ADDA ELISA Kit and the Beacon Microcystin ELISA Kit both detect down to 0.10 µg L⁻¹, and the Envirologix Microcystins Quantiplate Kit detects down to 0.15 µg L⁻¹.
 Microcystins_extraction_volume_mL <- 1 # Placeholder — volume each freeze-dried Chaoborus sample will be extracted/reconstituted into before running the ELISA; not yet decided, so confirm against the chosen kit's protocol and update (see To do below).
 
-# ––– ⚖️ DW needed for analyses ––– #
+# ─────────────────────────────────────────────
+# ⚖️ DW needed for analyses
+# ─────────────────────────────────────────────
 
 DW_needed_for_PUFAs_mg <- 1 # Tarn Preet Parmar, personal communication
 DW_needed_for_sterols_mg <- 1 # Tarn Preet Parmar, personal communication
@@ -162,13 +194,3 @@ DW_needed_for_toxins_mg <- NA
 ```
 
 :::
-
-:::: {.callout-warning title="To do"}
-
----
-
-🍔 **Determine how much Daphnia does a Chaoborus of different sizes eat.**
-
-- **Feeding experiment.** Come up with an experiment to look at the number of Daphnia eaten for different Chaoborus and Daphnia sizes (`Chaoborus_Daphnia_neonates_eaten_per_day` & `Chaoborus_Daphnia_neonates_eaten_max_recorded`)
-
-::::

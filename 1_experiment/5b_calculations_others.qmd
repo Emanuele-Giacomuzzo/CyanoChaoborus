@@ -1,5 +1,17 @@
 ::: {.callout-note title="Calculations – 🧪 Phytoplankton" collapse="true"}
 
+$$
+C_{\mathrm{feeding}}^{\mathrm{jar}} = \text{carbon required per jar per day (mg C day}^{-1}\text{)}
+$$
+
+$$
+V^{\mathrm{jar}} = \text{volume of each Daphnia jar (L)}
+$$
+
+$$
+C_{\mathrm{total}} = N_{\mathrm{jars}} \times C_{\mathrm{jar}}
+$$
+
 Every phytoplankton species is grown at three vessel scales — stock flask, stock bottle, and experimental bottle — with the same number of replicate vessels (`Phyto_vessels_per_species`) kept at each scale, so the vessel count carries straight through from stock flasks up to experimental bottles once multiplied by the number of species. That vessel count, together with how much liquid a stock bottle and an experimental bottle each hold, sets how much COMBO medium has to be prepared in advance to fill every one of them once — not counting the medium used to top them up between transfers, which is handled separately in the [COMBO protocol](protocol/1_create_COMBO.md) — and, given how much volume comes out of a single batch, how many batches that requires.
 
 ```{r}
@@ -25,14 +37,10 @@ COMBO_batches <- ceiling(COMBO_total_litres / COMBO_batch_volume_litres)
 
 ::: {.callout-note title="Calculations – 🦐 Daphnia" collapse="true"}
 
-*Chaoborus*' worst-case daily appetite sets how many *Daphnia* neonates have to be available every day; dividing that demand by how many neonates a single cohort jar produces over one reproductive cycle gives the number of cohort jars needed per cohort, and staggering cohorts across the neonate age window — a neonate stays small enough for *Chaoborus* to eat for `Daphnia_max_age_eaten_days` days — sets how many cohorts, and therefore how many jars, have to exist in parallel at any one time. *(This cohort-sizing chain still needs to be checked.)*
-
-That starting jar count then has to be propagated up from Vana's existing stock, cycle by cycle, each cycle multiplying the jar count by how many neonates one adult produces, until the target is reached — which also shows how much slack that leaves inside the one-month propagation lead time.
+*Chaoborus*' worst-case daily appetite sets how many *Daphnia* neonates have to be available every day. How many jars that takes — `Daphnia_jars_per_cohort` per cohort, with `Daphnia_cohorts_in_rotation` cohorts of staggered ages running in parallel — is still a placeholder in [Parameters](4_parameters.qmd), pending the cohort-sizing and *Daphnia* propagation planning; multiplying the two gives how many cohort jars have to already be in place on day one.
 
 ```{r}
 #| label: calculations_daphnia
-
-Daphnia_cohorts_in_rotation <- Daphnia_max_age_eaten_days
 
 Chaoborus_Daphnia_neonates_needed_per_day <- (
   Chaoborus_larvae_per_jar *
@@ -41,48 +49,16 @@ Chaoborus_Daphnia_neonates_needed_per_day <- (
   Replicates
   )
 
-Daphnia_neonates_per_cohort_jar <- (
-  Daphnia_adults_per_new_cohort_jar *
-  Daphnia_offsprings_per_mother_per_5_days
-  )
-
-Daphnia_jars_per_cohort <- ceiling(
-  Chaoborus_Daphnia_neonates_needed_per_day /
-  Daphnia_neonates_per_cohort_jar
-  )
-
 Daphnia_jars_needed_at_start <- (
   Daphnia_jars_per_cohort *
   Daphnia_cohorts_in_rotation
   )
-
-Daphnia_adults_needed_at_start <- (
-  Daphnia_adults_per_new_cohort_jar *
-  Daphnia_jars_per_cohort *
-  Daphnia_cohorts_in_rotation
-  )
-
-Daphnia_propagation_jars <- Vana_Daphnia_starting_jars
-Daphnia_propagation_cycles <- 0
-Daphnia_propagation_adults <- Daphnia_propagation_jars * Daphnia_cohorts_adults_per_jar
-
-while (Daphnia_propagation_adults < Daphnia_adults_needed_at_start) {
-  Daphnia_propagation_jars <- Daphnia_propagation_jars * Daphnia_offsprings_per_mother_per_5_days
-  Daphnia_propagation_cycles <- Daphnia_propagation_cycles + 1
-  Daphnia_propagation_adults <- Daphnia_propagation_jars * Daphnia_cohorts_adults_per_jar
-}
-
-Daphnia_propagation_days <- Daphnia_propagation_cycles * Daphnia_max_age_eaten_days
-Daphnia_propagation_slack_days <- Propagation_lead_time_days - Daphnia_propagation_days
 ```
 
 - **Cohorts in rotation:** `r Daphnia_cohorts_in_rotation`
 - **Neonates needed per day:** `r Chaoborus_Daphnia_neonates_needed_per_day`
-- **Neonates produced per cohort jar:** `r Daphnia_neonates_per_cohort_jar`
 - **Jars per cohort:** `r Daphnia_jars_per_cohort`
 - **Cohort jars needed at start:** `r Daphnia_jars_needed_at_start`
-- **Adults needed at start:** `r Daphnia_adults_needed_at_start`
-- **Propagation:** `r Daphnia_propagation_cycles` cycles (`r Daphnia_propagation_days` days, `r Daphnia_propagation_slack_days` days of slack)
 :::
 
 ::: {.callout-note title="Calculations – ☠️ Toxins" collapse="true"}
@@ -213,20 +189,4 @@ Weight_per_shelf_kg <- ceiling(
 ```
 
 - **Weight per shelf:** `r Weight_per_shelf_kg` kg
-:::
-
-::: {.callout-warning title="To do"}
-**🌱 Calculate biomass needed for all analyses (`Biomass_needed_total_mg`)**
-
-- Calculate `Biomass_needed_for_toxins_mg` &  [→ Needs: Deciding the ELISA kit]
-
----
-
-**🧪 Calculate how much phytoplankton per day (`Phyto_*_mg_C_per_day`)**
-
-- Calculate `Phyto_*_harvest_fraction` [→ Needs: Calculating how much different phytoplanktons regrow in the days between harvests.]
-
----
-
-**🦐 Calculate how many *Daphnia magna* are needed at the beginning of the experiment (`...`)**
 :::
