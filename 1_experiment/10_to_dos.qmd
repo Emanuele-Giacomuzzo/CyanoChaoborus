@@ -12,7 +12,8 @@
     - Starvation: 48 hours or 96 hours?
     - Is it okay if I feed Daphnia jars from 7 days before?
     - How do freeze and thaw the phytoplankton? Do we just use a huge container that can be used for that? Should we freeze the pellet? And wouldn’t this freezing and thawing mess with the amount of toxins?
-    - Should we not look at the emergence at all of damselflies otherwise it will split too much the biomass? 
+    - Should we not look at the emergence at all of damselflies otherwise it will split too much the biomass?
+    - Should we consider the extra volume added to the Daphnia jars?
 
 **MEDIUM PRIORITY**
 

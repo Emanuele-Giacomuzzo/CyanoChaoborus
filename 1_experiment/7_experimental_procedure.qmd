@@ -64,7 +64,7 @@ These slope/intercept pairs are the same ones used by the [Daphnia food calculat
 - Chaoborus will be sourced in the form of third-instar larvae from IT-Ichthyo Trophic, Poland.
 - Ischnura elegans will be sourced from mesocosms that had been added with freshly hatched Ischnura larvae from the field (Kastrup Fortress, Copenhagen, Denmark). The mesocosms are located in the University of Copenhagen, Denmark. They will be kept on straws.
 
-Both Chaoborus and Ischnura will be left starving for 48-96 hours to acclimate to the new environment, let the weak individuals die, and their guts to clean before starting the experiment.
+Both Chaoborus and Ischnura will be left starving for 48 hours to acclimate to the new environment, let the weak individuals die, and their guts to clean before starting the experiment.
 
 ## Assemble experiment
 

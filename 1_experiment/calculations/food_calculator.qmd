@@ -14,15 +14,23 @@ quarto render calculations/food_calculator.qmd
 #| label: load_parameters
 #| include: false
 
-Food_calculator_parameters <- read.csv(
-  here::here("calculations", "food_calculator_parameters.csv")
-)
+# ─────────────────────────────────────────────
+# ⚙️ Import parametes
+# ─────────────────────────────────────────────
+
+Food_calculator_parameters <- read.csv(here::here("1_experiment", "calculations", "food_calculator_parameters.csv"))
 ````
 
 ````{r}
 #| label: emit_app
 #| echo: false
 #| output: asis
+
+# ─────────────────────────────────────────────
+# ✨ Shiny app 
+# ─────────────────────────────────────────────
+
+# ------ Prepare parameters to be displayed ------- #
 
 param_assignments <- paste(
   sprintf("    %s <- %s", Food_calculator_parameters$name, Food_calculator_parameters$value),
@@ -37,6 +45,8 @@ app_code <- sprintf('
 #| viewerHeight: 1100
 
 library(shiny)
+
+# ------ Create input boxes ------- #
 
 ui <- fluidPage(
   fluidRow(
@@ -83,6 +93,9 @@ ui <- fluidPage(
       tableOutput("parameters_echo")
     )
   ),
+
+# ------ Create output boxes ------- #
+
   fluidRow(
     column(
       4,
@@ -111,8 +124,8 @@ ui <- fluidPage(
 
 server <- function(input, output) {
 
-  ## Baked in from calculations/food_calculator_parameters.csv at render time
-  ## (see the Purpose section above for why these are not read live).
+# ---------- Display parameters ------- #
+
 %s
 
   output$parameters_echo <- renderTable({
@@ -122,13 +135,11 @@ server <- function(input, output) {
     )
   })
 
+# ---------- Create a table with diets ------- #
+
   species_names <- c("Microcystis", "Synechococcus", "Nannochloropsis", "Tetradesmus")
   mix_names <- c("Microcystis + Tetradesmus", "Synechococcus + Tetradesmus", "Nannochloropsis")
 
-  ## Standard equal-replicate design (4 treatments): the two high-quality
-  ## treatments share the same 100%% Nannochloropsis diet, so they are merged
-  ## into one mix here, by dropping the duplicate 4th column. Diet_*_fraction
-  ## in 4_parameters.qmd is the source of truth for diet composition.
   P_diet <- c(0.25, 0.25, 0.50)
   P_alga <- rbind(
     Diet_Microcystis_fraction,
@@ -137,6 +148,8 @@ server <- function(input, output) {
     Diet_Tetradesmus_fraction
   )[, 1:3]
   dimnames(P_alga) <- list(species_names, mix_names)
+
+# ---------- Calculate from OD-carbon relationship the carbon of experimental bottles ------- #
 
   daphnia_food <- reactive({
     od_by_species <- c(
@@ -159,33 +172,23 @@ server <- function(input, output) {
     )
     D_alga <- od_to_c_slope * od_by_species + od_to_c_intercept
 
-    H_alga <- c(if (input$harvest_extra_microcystis) 2 else 1, 1, 1, 1)
+# ---------- Calculate other parameters ------- #
 
+    H_alga <- c(if (input$harvest_extra_microcystis) 2 else 1, 1, 1, 1)
     E_food <- 1 + extra_food_ratio
+
     daily_carbon_demand <- input$n_cultures * Large_jar_liquid_litres * Daphnia_algae_C_ad_libitum_mg_per_L_per_day
     alga_per_carbon <- as.vector(t(P_alga) %%*%% (1 / D_alga))
 
-    ## Adding algal culture to a jar also adds to its liquid volume, so the
-    ## achieved concentration is (carbon added) / (V_jar + V_feed), not
-    ## (carbon added) / V_jar. Solving that self-consistently for V_feed scales
-    ## every naive (dilution-free) volume up by dilution_correction, per diet.
     target_conc <- Daphnia_algae_C_ad_libitum_mg_per_L_per_day * N_days_per_feeding_event * E_food
-    dilution_correction <- 1 / (1 - target_conc * alga_per_carbon)
 
     V_alga <- daily_carbon_demand * N_days_per_feeding_event * E_food * H_alga / D_alga *
-      as.vector(P_alga %%*%% (P_diet * dilution_correction))
-    V_mix <- daily_carbon_demand * N_days_per_feeding_event * E_food * P_diet * alga_per_carbon * dilution_correction
+      as.vector(P_alga %%*%% (P_diet))
+    V_mix <- daily_carbon_demand * N_days_per_feeding_event * E_food * P_diet * alga_per_carbon
 
-    ## Per-jar dose is independent of jar count/P_diet,d: every jar on a given
-    ## diet gets the same ration, regardless of how many other jars share that
-    ## diet. It does scale with N_days_per_feeding_event, since that is how much
-    ## food a jar needs to be given at once to last until the next feeding event.
-    V_feed_per_jar <- Large_jar_liquid_litres * Daphnia_algae_C_ad_libitum_mg_per_L_per_day * E_food * alga_per_carbon * N_days_per_feeding_event * dilution_correction
+    V_feed_per_jar <- Large_jar_liquid_litres * Daphnia_algae_C_ad_libitum_mg_per_L_per_day * E_food * alga_per_carbon * N_days_per_feeding_event
 
-    ## The dissolved-toxin treatment doses lysed Microcystis directly into the
-    ## Chaoborus jar instead of through the Daphnia diet, at the same volume a
-    ## jar on the Microcystis + Tetradesmus diet gets of Microcystis alone.
-    V_feed_lysed <- Large_jar_liquid_litres * target_conc * dilution_correction[1] * (P_alga[1, 1] / D_alga[1])
+    V_feed_lysed <- Large_jar_liquid_litres * target_conc * (P_alga[1, 1] / D_alga[1])
 
     list(
       species_names = species_names,
@@ -196,6 +199,9 @@ server <- function(input, output) {
       V_feed_lysed = V_feed_lysed
     )
   })
+
+  # ---------- Display the output (in ml) ------- #
+
 
   output$outputs_single_echo <- renderTable({
     food <- daphnia_food()
@@ -243,58 +249,20 @@ D_{\mathrm{alga}}
 \sum_{d=1}^{N_{\mathrm{diets}}}
 P_{\mathrm{diet},d}
 P_{\mathrm{alga},d}
-K_d
 $$
-
-
-## Algae mix to create (mL)
-
-$$
-V_{\mathrm{mix},d}
-=
-N_{\mathrm{jars}}
-V_{\mathrm{jar}}
-F_{\mathrm{feed}}
-N_{\mathrm{days}}
-E_{\mathrm{food}}
-P_{\mathrm{diet},d}
-K_d
-\sum_{a=1}^{N_{\mathrm{algae}}}
-\frac{
-P_{\mathrm{alga},d,a}
-}{
-D_a
-}
-$$
-
 
 ## Algae to feed each Daphnia jar (mL per feeding event)
 
 $$
 V_{\mathrm{feed},d}
 =
-N_{\mathrm{days}}
-V_{\mathrm{jar}}
-F_{\mathrm{feed}}
-E_{\mathrm{food}}
-K_d
-\sum_{a=1}^{N_{\mathrm{algae}}}
 \frac{
-P_{\mathrm{alga},d,a}
+  V_{\mathrm{jar}}
+  F_{\mathrm{feed}}
+  N_{\mathrm{days}}
+  E_{\mathrm{food}}
 }{
-D_a
-}
-$$
-
-## Dilution correction
-
-Adding $V_{\mathrm{feed},d}$ of algal culture to a jar also adds to that jar's own liquid volume, so the carbon concentration actually achieved is $\left(\text{carbon added}\right) / \left(V_{\mathrm{jar}} + V_{\mathrm{feed},d}\right)$, not $\left(\text{carbon added}\right) / V_{\mathrm{jar}}$. Solving for $V_{\mathrm{feed},d}$ so that this achieved concentration equals the target, $N_{\mathrm{days}} F_{\mathrm{feed}} E_{\mathrm{food}}$, gives the correction factor:
-
-$$
-K_d
-=
-\frac{1}{
-1 - N_{\mathrm{days}} F_{\mathrm{feed}} E_{\mathrm{food}} \displaystyle\sum_{a=1}^{N_{\mathrm{algae}}} \frac{P_{\mathrm{alga},d,a}}{D_a}
+  D_a
 }
 $$
 
@@ -303,7 +271,6 @@ where:
 - $V_{\mathrm{alga}}$ = total volume of algal culture required for the experiment [L]
 - $V_{\mathrm{mix},d}$ = total volume of diet $d$ to prepare [L]
 - $V_{\mathrm{feed},d}$ = volume of diet $d$ added to a single Daphnia jar at each feeding event [L jar$^{-1}$ feeding event$^{-1}$]
-- $K_d$ = dilution correction factor for diet $d$ [≥1]
 - $N_{\mathrm{jars}}$ = total number of Daphnia jars [jars]
 - $V_{\mathrm{jar}}$ = volume of each Daphnia jar [L jar$^{-1}$]
 - $F_{\mathrm{feed}}$ = feeding requirement [mg C L$^{-1}$ day$^{-1}$]
