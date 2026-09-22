@@ -18,7 +18,7 @@ quarto render calculations/food_calculator.qmd
 # ⚙️ Import parametes
 # ─────────────────────────────────────────────
 
-Food_calculator_parameters <- read.csv(here::here("1_experiment", "calculations", "food_calculator_parameters.csv"))
+Food_calculator_parameters <- read.csv(here::here("calculations", "food_calculator_parameters.csv"))
 ````
 
 ````{r}
@@ -278,7 +278,7 @@ where:
 - $E_{\mathrm{food}}$ = extra food multiplier [1–∞]
 - $H_{\mathrm{alga}}$ = harvest multiplier for the alga [1–∞]
 - $P_{\mathrm{diet},d}$ = proportion of Daphnia jars receiving diet $d$ [0–1]
-- $P_{\mathrm{alga},d,a}$ = proportion of dietary carbon supplied by alga $a$ in diet $d$ [0–1]
+- $P_{\mathrm{alga},d,alga}$ = proportion of dietary carbon supplied by alga $a$ in diet $d$ [0–1]
 - $D_{\mathrm{alga}}$ = carbon density of the algal culture [mg C L$^{-1}$]
 - $D_a$ = carbon density of alga $a$ [mg C L$^{-1}$]
 - $N_{\mathrm{diets}}$ = number of diets
