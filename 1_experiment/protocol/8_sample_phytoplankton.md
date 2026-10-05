@@ -1,6 +1,8 @@
-**Title:** Phytoplankton sample
+**Title:** Sample phytoplankton
 
 **Date:** 
+
+**Day:** TBA
 
 **Aim:** Sampling the phytoplankton we are providing the Daphnia with.
 

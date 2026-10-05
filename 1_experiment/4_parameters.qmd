@@ -91,7 +91,7 @@ Daphnia_algae_C_ad_libitum_mg_per_L_per_day <- 2 # This is the amount of carbon 
 # Experiment
 
 Daphnia_cohorts_adults_per_jar <- 15 # Suggested by Jana, as in her experience it's the highest density of Daphnia in the jars that doesn't stress them out too much.
-Daphnia_adults_per_new_cohort_jar <- 10 # Individuals pipetted from stock into each newly created cohort jar (protocol/3_create_Daphnia_jars.md)
+Daphnia_adults_per_new_cohort_bucket <- 80 # Individuals pipetted from stock into each newly created cohort bucket (protocol/3_create_Daphnia.md)
 Daphnia_cohorts_in_rotation <- 3
 Daphnia_jars_per_cohort <- 3
 
