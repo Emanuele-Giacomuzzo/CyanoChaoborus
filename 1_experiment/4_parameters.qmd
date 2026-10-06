@@ -20,11 +20,15 @@ Replicates <- 4
 
 Shelves <- 16
 Max_weight_per_shelf_kg <- 20
+
 Small_jar_liquid_litres <- 0.08
 Small_jar_with_liquid_kg <- 0.2
+
 Large_jar_liquid_litres <- 0.8
 Large_jar_with_liquid_kg <- 1.5
 Large_jar_diameter_cm <- 9
+
+bucket_liquid_litres <- 8
 
 # ─────────────────────────────────────────────
 # 🔥 Autoclaving

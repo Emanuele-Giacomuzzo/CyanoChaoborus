@@ -33,7 +33,7 @@
 2.  Bring up the large algae culture. <u>When disconnecting the tube, use the clamp to prevent medium from entering the filter.</u>
 3.  Take out algae into the Becker. For each culture:
     i.  Burn the top of the algal culture and take off its lid.
-    ii.  Harvest onto a Becker:
+    ii.  Harvest onto a Becker (need to do twice for each phytoplankton):
             - Microcystis aeruginosa: 250 ml 
             - Synechococcus elongatus: 800 ml
             - Tetradesmsus obliquus: 1400 ml

@@ -2,7 +2,7 @@
 
 **Date:**
 
-**Aim:** Creating a COMBO medium (Kilham et al. 1998) to be used to grow the alga *Microcystis aeruginosa*, which will be fed to *Daphnia* for the toxic low-quality treatment. We grow *Microcystis aeruginosa* well in advance to reconstruct an optical density (OD) curve which is necessary to know from optical density how much carbon we are feeding to *Daphnia*. The following protocol is to create <u>5 litres</u> of medium.
+**Aim:** Creating a COMBO medium (Kilham et al. 1998) to be used to grow the alga *Microcystis aeruginosa*, which will be fed to *Daphnia* for the toxic low-quality treatment. We grow *Microcystis aeruginosa* well in advance to reconstruct an optical density (OD) curve which is necessary to know from optical density how much carbon we are feeding to *Daphnia*. The following protocol is to create <u>10 litres</u> of medium.
 
 **Material:**
 
@@ -11,7 +11,7 @@
 | ☐ | 5 L | Ultra-pure water (MQ) | Base solvent for the medium |
 | ☐ | 1 | Duran bottle (5 L) | To hold the medium |
 | ☐ | 5 ml | Stock 1 – Calcium chloride dihydrate (CaCl<sub>2</sub> 2H<sub>2</sub>O), 36.76 g/l | Calcium source |
-| ☐ | 5 ml | Stock 2 – [Magnesium sulphate heptahydrate](https://www.sigmaaldrich.com/DK/en/substance/magnesiumsulfateheptahydrate2464710034998) (MgSO<sub>4</sub> 7H<sub>2</sub>O), 36.97 g/l | Magnesium and sulphate source |
+| ☐ | 5 ml | Stock 2 – Magnesium sulphate heptahydrate (MgSO<sub>4</sub> 7H<sub>2</sub>O), 36.97 g/l | Magnesium and sulphate source |
 | ☐ | 5 ml | Stock 3 – Potassium phosphate dibasic (K<sub>2</sub>HPO<sub>4</sub>), 8.71 g/l | Phosphorus source |
 | ☐ | 5 ml | Stock 4 – Sodium nitrate (NaNO<sub>3</sub>), 85.01 g/l | Nitrogen source |
 | ☐ | 5 ml | Stock 5 – Sodium bicarbonate (NaHCO<sub>3</sub>), 12.60 g/l | Carbon source and pH buffering |
@@ -28,19 +28,11 @@
 
 *Day of making the medium*
 
-1.  Prepare a solution of water, stocks, trace elements, and vitamins. Every time you use a chemical, rinse the pipette tips with ultra-pure water.
-    1.  Fill a Duran bottle with 5 litres of ultra-pure water (MQ) (rinse beforehand)
-    2.  Add 5 ml of each stock solution and trace elements (ATE, ANIMATE).
-    3.  Add 2.5 ml of VIM.
-    4.  Add 0.575 g of TES buffer
-2.  Prepare the bottle. Add tubes, lid, and slightly let the metal part unscrew.
-3.  Put material back into place (stock solutions on their shelves and ANIMATE, ATE, and VIM in the fridge) and bring to wash the Beckers used to rinse the pipette tips.
-4.  Autoclave overnight.
-
-*The day after making the medium*
-
-1.  Get the medium out of the autoclave, screwing the metal part tight.
-2.  Label the bottle.
+1.  Prepare a solution of water, stocks, trace elements, and vitamins. Every time you use a chemical, rinse the pipette tips with deminiralised water.
+    1.  Fill a Duran bottle with 10 litres of ultra-pure water (MQ)
+    2.  Add 10 ml of each stock solution and trace elements (ATE, ANIMATE).
+    3.  Add 5 ml of VIM.
+    4.  Add 1.15 g of TES buffer
 
 **References:\**
 

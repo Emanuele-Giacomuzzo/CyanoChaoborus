@@ -10,17 +10,21 @@
 
 | *Prepared* | *Amount* | *Material* | *Purpose* |
 |----|----|----|----|
-| ☐ | 1 | Mix of Tetradesmus + Synechococcus in <u>Zoo-COMBO</u> | To be sampled |
-| ☐ | 1 | Tetradesmus in <u>Zoo-COMBO</u> | To be sampled |
-| ☐ | 1 | Synechococcus in <u>Zoo-COMBO</u> | To be sampled |
+| ☐ | 200 ml | Mix of Microcystis + Tetradesmus in <u>Zoo-COMBO</u> | To be sampled |
+| ☐ | 200 ml | Mix of Synechococcus + Tetradesmus in <u>Zoo-COMBO</u> | To be sampled |
+| ☐ | 200 ml | Nannochloropsis in <u>Zoo-COMBO</u> | To be sampled |
+| ☐ | 200 ml | Microcystis in <u>Zoo-COMBO</u> | To be sampled |
+| ☐ | 200 ml | Synechococcus in <u>Zoo-COMBO</u> | To be sampled |
+| ☐ | 200 ml | Tetradesmus in <u>Zoo-COMBO</u> | To be sampled |
 | ☐ | 1 | Vacuum filtration pump | To pull phytoplankton through the GF/C filter |
-| ☐ |  | Pre-combusted (2h in 550°C) GF/C filters (25mm)  | To capture the phytoplankton |
+| ☐ | 40 | Pre-combusted (2h in 550°C) GF/C filters (25mm)  | To capture the phytoplankton |
 | ☐ | 2 | Forceps | To manipulate the filters |
 | ☐ | 1 | 24-well plate | To store the filters to then be dried |
 | ☐ | 1 | 96-well plate | To store the filters to then be analysed |
 | ☐ | 1 | Pipette and tips | To pipette phytoplankton on filters |
 | ☐ | 1 | Metal block | To wrap the aluminium foil around the filters |
 | ☐ |  | Aluminium cartridges | To wrap the filters so that they can be already analysed |
+| ☐ | 20 | Eppendorf tubes | To store algae samples for cell size analysis |
 
 ::: {.callout-warning title="Material that needs to be prepared before"}
 - Requires precombusting GF/C filters (25mm) at least one day before
@@ -36,36 +40,70 @@
 2.  Add samples to the filters. For each of the samples:
     1.  Pipette culture on the filter (remember to mix well the sample, and make sure that the liquid goes through, otherwise adjust the tap until no liquid is left on top of the filter). <u>Write down how much volume you added to the filter in the below figure.</u>
 
-<img src="media/26_2026_04_15_sample_phyto/image1.png" style="width:4.88889in;height:4.375in" />
+<br>
+
+| **What**      | **Pipetted on filter (ml)** |
+|---------------|--------------------|
+| Microcystis + Tetradesmus |                  |
+| Synechococcus + Tetradesmus |                  |
+| Nannochloropsis |                  |
+| Microcystis |                  |
+| Synechococcus |                  |
+| Tetradesmus |                  |
+
+<br>
 
 3.  Move the filters to a 24-well plate. To do so, turn off the suction, take off the cylinder weights, and move filters to the 24-well plate with <u>clean forceps</u> (cleaned with ethanol and fire)[^1]. Place each sample in the plate position noted in the below table.
 
-<figure>
-<img src="media/26_2026_04_15_sample_phyto/image3.svg" style="width:6.5in;height:4.48611in" />
-<figcaption><p>Mix</p></figcaption>
-</figure>
+<br>
 
-::: {.callout-warning title="To do"}
-- Add the labels directly on the image. 
-:::
+| **What**      | **24 Well plate position** |
+|---------------|--------------------|
+| Microcystis + Tetradesmus | Column 1                 |
+| Synechococcus + Tetradesmus | Column 2                 |
+| Nannochloropsis | Column 3                 |
+| Microcystis | Column 4                 |
+| Synechococcus | Column 5                 |
+| Tetradesmus | Column 6                 |
+
+<br>
 
 4.  Clean. Put back cylinder weights and turn on suction. Then, clean meshes and cylinders by pouring ethanol and demineralised water on them.
 5.  Place 24-well plate with filters inside in an oven at 50 °C overnight to dry.
+
+*Save algae samples for cell size analysis*
+
+1. Pipette 1.98 ml of each alga into its respective Eppendorf tube:
+
+- `phyto_micro_tet_size`
+- `phyto_synec_tet_size`
+- `phyto_nanno_size`
+- `phyto_micro_size`
+- `phyto_synec_size`
+- `phyto_tet_size`
+
+2. Pipette 0.02 ml of 1% Lugol solution into each Eppendorf tube. 
+
 
 *Pack filters (day after)*
 
 For each filter (always using forceps), place an aluminium cartridge on one of the wells of the metal block, unwrapping it. Then, add to it a filter and wrap it into a small sphere, with a shape that is as round as possible. Add then the sphere into a well in the 96-well plate in the position described in the below table.
 
-| **What**      | **Plate position** |
+<br>
+
+| **What**      | **96 Well plate position** |
 |---------------|--------------------|
-| Mix           | A1                 |
-| Mix           | A2                 |
-| Mix           | A3                 |
-| Synechococcus | A4                 |
-| Synechococcus | A5                 |
-| Synechococcus | A6                 |
-| Tetradesmus   | A7                 |
-| Tetradesmus   | A8                 |
-| Tetradesmus   | A9                 |
+| Microcystis + Tetradesmus | A1-A4                 |
+| Synechococcus + Tetradesmus | A5-A8                 |
+| Nannochloropsis | A9-A12                 |
+| Microcystis | B1-B4                 |
+| Synechococcus | B5-B8                 |
+| Tetradesmus | B8-B12                 |
+
+
 
 [^1]: Lightly lift the filter by sliding one forceps arm underneath it. With the help of the other pair of forceps hold in place by lightly pressing on one point of the filter. Lift and push the filter with the pair that was underneath it, to fold in half. Fold in half again with the same technique. Now the filter is folded into a quarter of a circle.
+
+<br>
+
+**Comments:**

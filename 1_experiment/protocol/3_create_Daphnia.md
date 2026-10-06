@@ -14,15 +14,15 @@ which will then be fed to *Ischnura elegans*.
 
 | *Prepared* | *Amount* | *Material* | *Purpose* |
 |----|----|----|----|
-| ☐ |  | Daphnia stock populations | Source of individuals to seed the new jars |
+| ☐ |  | Daphnia stock populations | Source of individuals to seed the buckets |
 | ☐ | 32 L | Zoo-COMBO | Culture medium |
 | ☐ | 1 | Glass pipette and pipette bulb | To transfer Daphnia individuals |
 | ☐ | 1 | Daphnia light table | To see individuals while pipetting |
-| ☐ |  | Colourful tape | To label the jars |
+| ☐ |  | Colourful tape | To label the buckets |
 
 **Steps:**
 
-1.  Create 4 buckets with 8 L of Zoo COMBO, labelled as
+1.  Create 4 \s with 8 L of Zoo COMBO, labelled as
 - “EG – Today’s date – Daphnia magna – Micro & Tetra”.
 - “EG – Today’s date – Daphnia magna – Micro & Tetra”.
 - “EG – Today’s date – Daphnia magna – Nanno.

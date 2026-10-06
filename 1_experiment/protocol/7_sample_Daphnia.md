@@ -8,7 +8,7 @@
 
 - PUFAs
 - Sterols
-- N
+- CN
 - P
 - Toxicity
 
@@ -16,9 +16,10 @@
 
 | *Prepared* | *Amount* | *Material* | *Purpose* |
 |---|---:|---|---|
-| ☐ | 1 | Millimetre paper | Have a sense of scale in the photos |
-| ☐ | 1 | Stereo microscope | Take photos of *Ischnura* |
-| ☐ | 60 | Eppendorf tubes | Store *Daphnia* for analysis |
+| ☐ | 2200 Daphnia/diet | Daphnia populations | To sample |
+| ☐ | 60 | Eppendorf tubes | Store *Daphnia* for quality analysis |
+| ☐ | 12 | Falcon tubes | Store *Daphnia* for body size analysis |
+| ☐ | 1 | Glass pipette | To move Daphnia |
 | ☐ | 1 | Pasteur pipette | Take out liquid from the Eppendorf tubes |
 
 **Steps:**
@@ -30,6 +31,9 @@
 - `Daph_micro_size` (4 replicates)
 - `Daph_synec_size` (4 replicates)
 - `Daph_nanno_size` (4 replicates)
+
+2. Take out as much water as possible from each sample. 
+3. Add 20 ml of 95% ethanol to each tube. 
 
 *Store samples for analyses*
 

@@ -16,6 +16,7 @@
 
 | *Prepared* | *Amount* | *Material* | *Purpose* |
 |----|----|----|----|
+| ☐ | Stock *Ischnura* | 1 | Used  |
 | ☐ | Millimetre paper | 1 | Have a sense os scale in the photos |
 | ☐ | Stereo microscope | 1 | Take photos of *Ischnura* |
 | ☐ | Eppendorf tubes | 20 | Store damselflies for analysis |
