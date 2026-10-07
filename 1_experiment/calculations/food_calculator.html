@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,13 +12,10 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -71,18 +68,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="food_calculator_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="food_calculator_files/libs/quarto-html/anchor.min.js"></script>
 <link href="food_calculator_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="food_calculator_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="food_calculator_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="food_calculator_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="food_calculator_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="food_calculator_files/libs/bootstrap/bootstrap-917079515d91bccb85b543faf8aa8bb6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="food_calculator_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <meta name="shinylive:serviceworker_dir" content="..">
-<script src="food_calculator_files/libs/quarto-contrib/shinylive-0.10.12/shinylive/load-shinylive-sw.js" type="module"></script>
-<script src="food_calculator_files/libs/quarto-contrib/shinylive-0.10.12/shinylive/run-python-blocks.js" type="module"></script>
-<link href="food_calculator_files/libs/quarto-contrib/shinylive-0.10.12/shinylive/shinylive.css" rel="stylesheet">
+<script src="food_calculator_files/libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="food_calculator_files/libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
+<link href="food_calculator_files/libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
 <link href="food_calculator_files/libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -139,35 +136,6 @@ window.Quarto = {
 
 
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render calculations/food_calculator.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># PARAMETERS</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Daphnia feeding</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Daphnia_algae_C_ad_libitum_mg_per_L_per_day <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>N_days_per_feeding_event <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>extra_food_ratio <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Diet composition</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>Diet_Microcystis_fraction <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>Diet_Synechococcus_fraction <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>Diet_Nannochloropsis_fraction <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>Diet_Tetradesmus_fraction <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># OD → carbon conversion</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>Tetradesmus_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fl">158.32</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>Tetradesmus_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">10.991</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>Synechococcus_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fl">89.419</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>Synechococcus_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">4.463</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>Microcystis_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fl">120.15</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>Microcystis_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.41</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fl">96.73</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="fl">0.43</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 <pre class="shinylive-r" data-engine="r"><code>#| '!! shinylive warning !!': |
 #|   shinylive does not work in self-contained HTML documents.
 #|   Please set `embed-resources: false` in your metadata.
@@ -232,11 +200,6 @@ ui &lt;- fluidPage(
         "OD of Tetradesmus",
         value = 1,
         step = 0.01
-      ),
-      checkboxInput(
-        "harvest_extra_microcystis",
-        "Harvest extra Microcystis for dissolved-toxin treatments",
-        value = FALSE
       )
     ),
     column(
@@ -280,10 +243,9 @@ server &lt;- function(input, output) {
 
 # ---------- Display parameters ------- #
 
-    Large_jar_liquid_litres &lt;- 0.8
     Daphnia_algae_C_ad_libitum_mg_per_L_per_day &lt;- 2
-    N_days_per_feeding_event &lt;- 2
-    extra_food_ratio &lt;- 0.25
+    N_Ischnura_diet_4 &lt;- 10
+    V_Ischnura_L &lt;- 0.08
     Diet_Microcystis_fraction &lt;- c(0.5, 0, 0, 0)
     Diet_Synechococcus_fraction &lt;- c(0, 0.5, 0, 0)
     Diet_Nannochloropsis_fraction &lt;- c(0, 0, 1, 1)
@@ -299,8 +261,8 @@ server &lt;- function(input, output) {
 
   output$parameters_echo &lt;- renderTable({
     data.frame(
-      Parameter = c("Large_jar_liquid_litres", "Daphnia_algae_C_ad_libitum_mg_per_L_per_day",  "N_days_per_feeding_event", "extra_food_ratio", "Diet_Microcystis_fraction",  "Diet_Synechococcus_fraction", "Diet_Nannochloropsis_fraction",  "Diet_Tetradesmus_fraction", "Tetradesmus_OD_to_C_slope", "Tetradesmus_OD_to_C_intercept",  "Synechococcus_OD_to_C_slope", "Synechococcus_OD_to_C_intercept",  "Microcystis_OD_to_C_slope", "Microcystis_OD_to_C_intercept",  "Nannochloropsis_OD_to_C_slope", "Nannochloropsis_OD_to_C_intercept" ),
-      Value = c("0.8", "2", "2", "0.25", "c(0.5, 0, 0, 0)", "c(0, 0.5, 0, 0)",  "c(0, 0, 1, 1)", "c(0.5, 0.5, 0, 0)", "158.32", "-10.991", "89.419",  "-4.463", "120.15", "-0.41", "96.73", "0.43")
+      Parameter = c("Daphnia algae C ad libitum [mg C L⁻¹ day⁻¹]", "Number of Ischnura jars, diet 4 [jars]", "Volume per Ischnura jar [L]", "Microcystis fraction", "Synechococcus fraction", "Nannochloropsis fraction", "Tetradesmus fraction", "Tetradesmus OD → C slope", "Tetradesmus OD → C intercept", "Synechococcus OD → C slope", "Synechococcus OD → C intercept", "Microcystis OD → C slope", "Microcystis OD → C intercept", "Nannochloropsis OD → C slope", "Nannochloropsis OD → C intercept"),
+      Value = c("2", "10", "0.08", "0.5, 0, 0, 0", "0, 0.5, 0, 0", "0, 0, 1, 1", "0.5, 0.5, 0, 0", "158.32", "-10.991", "89.419", "-4.463", "120.15", "-0.41", "96.73", "0.43")
     )
   })
 
@@ -363,6 +325,16 @@ daphnia_food &lt;- reactive({
     E_food *
     rowSums(P_alga) / ncol(P_alga) / # This is 1/N diets * proporion of each diet summed
     D_alga
+  
+  # ----- Harvest: Microcystis needed for lysing ----- #
+  
+  V_Micro_lysed_L &lt;-
+    N_Ischnura_diet_4 *
+    V_Ischnura_L *
+    Daphnia_algae_C_ad_libitum_mg_per_L_per_day *
+    P_alga[1,1] *
+    input$N_days_per_feeding_event /
+    D_alga[1]
 
   # ----- Mix: to create Microc + Tetra / Synech + Tetra ----- #
 
@@ -390,8 +362,14 @@ daphnia_food &lt;- reactive({
 
   # ----- Add: lysed to each Ischnura jar ----- #
 
-  V_feed_lysed_L &lt;- 
-  V_feed_per_bucket_L[1] * P_alga[1,1]  
+  # ----- Add: lysed Microcystis to each Ischnura jar ----- #
+
+  V_feed_lysed_L &lt;-
+    V_Ischnura_L *
+    Daphnia_algae_C_ad_libitum_mg_per_L_per_day *
+    P_alga[1,1] *
+    input$N_days_per_feeding_event /
+    D_alga[1]
 
   # ----- Return results so that you can use them afterwards ----- #
 
@@ -521,6 +499,7 @@ V_{\mathrm{lysed}}
 V_{\mathrm{Ischnura}}
 C_{\mathrm{ad\,libitum}}
 P_{\mathrm{Micro},\mathrm{diet}=1}
+N_{\mathrm{days}}
 }{
 D_{\mathrm{Micro}}
 }
@@ -537,7 +516,6 @@ D_{\mathrm{Micro}}
 <li><span class="math inline">\(C_{\mathrm{ad libitum}}\)</span> = feeding requirement [mg C L<span class="math inline">\(^{-1}\)</span> day<span class="math inline">\(^{-1}\)</span>]</li>
 <li><span class="math inline">\(N_{\mathrm{days}}\)</span> = number of days the prepared food must last [days]</li>
 <li><span class="math inline">\(E_{\mathrm{food}}\)</span> = extra food multiplier [1–∞]</li>
-<li><span class="math inline">\(H_{\mathrm{alga}}\)</span> = harvest multiplier for the alga [1–∞]</li>
 <li><span class="math inline">\(P_{\mathrm{diet},d}\)</span> = proportion of Daphnia buckets receiving diet <span class="math inline">\(d\)</span> [0–1]</li>
 <li><span class="math inline">\(P_{\mathrm{alga},d,alga}\)</span> = proportion of dietary carbon supplied by alga <span class="math inline">\(a\)</span> in diet <span class="math inline">\(d\)</span> [0–1]</li>
 <li><span class="math inline">\(D_{\mathrm{alga}}\)</span> = carbon density of the algal culture [mg C L<span class="math inline">\(^{-1}\)</span>]</li>
@@ -547,87 +525,6 @@ D_{\mathrm{Micro}}
 <li><span class="math inline">\(d\)</span> = diet</li>
 <li><span class="math inline">\(a\)</span> = alga</li>
 </ul>
-</section>
-<section id="parameters-used" class="level2">
-<h2 class="anchored" data-anchor-id="parameters-used">Parameters used</h2>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Parameter</th>
-<th style="text-align: left;">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Large_jar_liquid_litres</td>
-<td style="text-align: left;">0.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Daphnia_algae_C_ad_libitum_mg_per_L_per_day</td>
-<td style="text-align: left;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">N_days_per_feeding_event</td>
-<td style="text-align: left;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">extra_food_ratio</td>
-<td style="text-align: left;">0.25</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Diet_Microcystis_fraction</td>
-<td style="text-align: left;">c(0.5, 0, 0, 0)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Diet_Synechococcus_fraction</td>
-<td style="text-align: left;">c(0, 0.5, 0, 0)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Diet_Nannochloropsis_fraction</td>
-<td style="text-align: left;">c(0, 0, 1, 1)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Diet_Tetradesmus_fraction</td>
-<td style="text-align: left;">c(0.5, 0.5, 0, 0)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Tetradesmus_OD_to_C_slope</td>
-<td style="text-align: left;">158.32</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Tetradesmus_OD_to_C_intercept</td>
-<td style="text-align: left;">-10.991</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Synechococcus_OD_to_C_slope</td>
-<td style="text-align: left;">89.419</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Synechococcus_OD_to_C_intercept</td>
-<td style="text-align: left;">-4.463</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Microcystis_OD_to_C_slope</td>
-<td style="text-align: left;">120.15</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Microcystis_OD_to_C_intercept</td>
-<td style="text-align: left;">-0.41</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Nannochloropsis_OD_to_C_slope</td>
-<td style="text-align: left;">96.73</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Nannochloropsis_OD_to_C_intercept</td>
-<td style="text-align: left;">0.43</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </section>
 
 </main>
