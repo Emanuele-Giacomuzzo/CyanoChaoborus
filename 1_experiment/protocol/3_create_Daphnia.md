@@ -1,6 +1,8 @@
 **Title:** Create new Daphnia cohorts
 
-**Date:**
+**Date:** Wednesday 7th October 2026
+
+**Day:** -5
 
 **Aim:** Creating new cohorts of *Daphnia*, which will be raised for five days on 
 
@@ -15,18 +17,19 @@ which will then be fed to *Ischnura elegans*.
 | *Prepared* | *Amount* | *Material* | *Purpose* |
 |----|----|----|----|
 | ☐ |  | Daphnia stock populations | Source of individuals to seed the buckets |
-| ☐ | 32 L | Zoo-COMBO | Culture medium |
+| ☐ | 28 L | Zoo-COMBO | Culture medium |
 | ☐ | 1 | Glass pipette and pipette bulb | To transfer Daphnia individuals |
 | ☐ | 1 | Daphnia light table | To see individuals while pipetting |
 | ☐ |  | Colourful tape | To label the buckets |
 
 **Steps:**
-
-1.  Create 4 \s with 8 L of Zoo COMBO, labelled as
+ 
+1.  Create 4 \s with 7 L of Zoo COMBO, labelled as
 - “EG – Today’s date – Daphnia magna – Micro & Tetra”.
-- “EG – Today’s date – Daphnia magna – Micro & Tetra”.
+- “EG – Today’s date – Daphnia magna – Syneco & Tetra”.
 - “EG – Today’s date – Daphnia magna – Nanno.
 - “EG – Today’s date – Daphnia magna – Nanno”.
-2.  Pipette `r Daphnia_adults_per_new_cohort_bucket` individuals from the stock cultures into each newly created bucket.
+2. Take 280 *Daphnia magna* adults and put them together. <u>Make sure to pick all sizes of adults and not only the largest.</u>
+2.  Pipette 70 *Daphnia magna* adults from the stock cultures into each newly created bucket. 
 
 **Comments:**

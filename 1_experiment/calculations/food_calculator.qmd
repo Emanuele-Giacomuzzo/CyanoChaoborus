@@ -111,26 +111,26 @@ ui <- fluidPage(
       step = 0.00001
       ),
       numericInput(
-        "od_synechococcus",
-        "OD of Synechococcus",
-        value = 1,
-        step = 0.01
-      ),
-      numericInput(
-        "od_tetradesmus",
-        "OD of Tetradesmus",
-        value = 1,
-        step = 0.01
-      ),
-      numericInput(
         "od_microcystis",
         "OD of Microcystis",
         value = 1,
         step = 0.01
       ),
       numericInput(
+        "od_synechococcus",
+        "OD of Synechococcus",
+        value = 1,
+        step = 0.01
+      ),
+      numericInput(
         "od_nannochloropsis",
         "OD of Nannochloropsis",
+        value = 1,
+        step = 0.01
+      ),
+      numericInput(
+        "od_tetradesmus",
+        "OD of Tetradesmus",
         value = 1,
         step = 0.01
       ),
@@ -171,7 +171,7 @@ ui <- fluidPage(
     ),
     column(
       4,
-      h4("Add: to each Ischnura jar (mL)"),
+      h4("Add: lysed to each Ischnura jar (mL)"),
       tableOutput("output_lysed_per_bucket")
     )
   )
@@ -192,16 +192,19 @@ server <- function(input, output) {
 
 # ---------- Create a table with diets ------- #
 
-  species_names <- c("Microcystis", "Synechococcus", "Nannochloropsis", "Tetradesmus")
-  diet_names <- c("Microcystis + Tetradesmus", "Synechococcus + Tetradesmus", "Nannochloropsis", "Nannochlaroopsis")
+# Define the names of the species and diets
 
-  P_alga <- rbind(
-    Diet_Microcystis_fraction,
-    Diet_Synechococcus_fraction,
-    Diet_Nannochloropsis_fraction,
-    Diet_Tetradesmus_fraction
-  )[, 1:4]
-  dimnames(P_alga) <- list(species_names, diet_names)
+species_names <- c("Microcystis", "Synechococcus", "Nannochloropsis", "Tetradesmus")
+diet_names <- c("Microcystis + Tetradesmus", "Synechococcus + Tetradesmus", "Nannochloropsis", "Nannochlaroopsis")
+
+# Define the proportion of each alga in each diet
+
+P_alga <- rbind(Diet_Microcystis_fraction,
+                Diet_Synechococcus_fraction,
+                Diet_Nannochloropsis_fraction,
+                Diet_Tetradesmus_fraction)[, 1:4]
+
+dimnames(P_alga) <- list(species_names, diet_names)
 
 # ---------- Calculate Daphnia food requirements ---------- #
 
@@ -232,19 +235,11 @@ daphnia_food <- reactive({
   
   D_alga <- od_by_species * od_to_c_slope + od_to_c_intercept
 
-  # ----- Define extra food and harvest multipliers ----- #
+  # ----- Define extra food multiplier ----- #
 
   E_food <- 1 + input$extra_food_percentage / 100
 
-  # Harvest multiplier for each alga
-  # Microcystis is harvested twice if extra toxin is required
-  H_alga <- c(
-  1 + input$harvest_extra_microcystis,
-  1,
-  1,
-  1)
-
-  # ----- Calculate: How much Algae needed ----- #
+  # ----- Harvest: algae needed ----- #
 
   V_alga_harvest_L <-
     input$n_buckets *
@@ -252,21 +247,23 @@ daphnia_food <- reactive({
     Daphnia_algae_C_ad_libitum_mg_per_L_per_day *
     input$N_days_per_feeding_event *
     E_food *
-    H_alga *
     rowSums(P_alga) / ncol(P_alga) / # This is 1/N diets * proporion of each diet summed
     D_alga
 
-  # ----- Calculate: How much algae to mix in each diet ----- #
+  # ----- Mix: to create Microc + Tetra / Synech + Tetra ----- #
 
-  # Proportion of each algas harvest assigned to each diet
+  # Derive the proportion of each algas harvest assigned to each diet
+
   P_alga_diet <- P_alga / rowSums(P_alga)
   
-  # Volume of each alga to add to each diet
+  # Derive the volume of each alga to add to each diet
+  
   V_alga_diet_L <- V_alga_harvest_L * P_alga_diet
 
-  # ----- Calculate: How much algae to feed each bucket ----- #
+  # ----- Add: to each Daphnia bucket ----- #
 
   # Carbon density of each prepared diet
+
   D_diet <- colSums(V_alga_diet_L * D_alga) / colSums(V_alga_diet_L)
   
   # Volume of each prepared diet to feed per bucket
@@ -274,11 +271,10 @@ daphnia_food <- reactive({
   V_feed_per_bucket_L <-
   input$bucket_liquid_litres *
   Daphnia_algae_C_ad_libitum_mg_per_L_per_day *
-  input$N_days_per_feeding_event *
-  E_food /
+  input$N_days_per_feeding_event /
   D_diet
 
-  # ----- Calculate: How much lysed Microcystis to feed each bucket ----- #
+  # ----- Add: lysed to each Ischnura jar ----- #
 
   V_feed_lysed_L <- 
   V_feed_per_bucket_L[1] * P_alga[1,1]  
@@ -335,17 +331,7 @@ shinyApp(ui, server)
 cat(app_code)
 ````
 
-## Parameters used
-
-```{r}
-#| label: show_parameters
-#| echo: false
-
-knitr::kable(Food_calculator_parameters, col.names = c("Parameter", "Value"))
-```
-
-
-## Algae needed (mL)
+## Harvest: algae needed for diet
 
 $$
 V_{\mathrm{alga}}
@@ -353,41 +339,94 @@ V_{\mathrm{alga}}
 \frac{
 N_{\mathrm{buckets}}
 V_{\mathrm{bucket}}
-F_{\mathrm{feed}}
+C_{\mathrm{ad libitum}}
 N_{\mathrm{days}}
 E_{\mathrm{food}}
-H_{\mathrm{alga}}
 }{
 D_{\mathrm{alga}}
 }
-\sum_{d=1}^{N_{\mathrm{diets}}}
-P_{\mathrm{diet},d}
-P_{\mathrm{alga},d}
+\sum_{d=1}^{N_{\mathrm{diet}}}
+\frac{P_{\mathrm{alga},diet}}{N_{\mathrm{diet}}}
 $$
 
-## Algae to feed each Daphnia bucket (mL per feeding event)
+## Harvest: algae needed for lysing
 
 $$
-V_{\mathrm{feed},d}
+V_{\mathrm{Micro,lysed}}
 =
 \frac{
-  V_{\mathrm{bucket}}
-  F_{\mathrm{feed}}
-  N_{\mathrm{days}}
-  E_{\mathrm{food}}
+N_{\mathrm{Ischnura, diet=4}}
+V_{\mathrm{Ischnura}}
+C_{\mathrm{ad\,libitum}}
+P_{\mathrm{Micro,diet=1}}
+N_{\mathrm{days}}
 }{
-  D_a
+D_{\mathrm{Micro}}
 }
 $$
 
-where:
+## Mix: to create Microc + Tetra / Synech + Tetra
+
+$$
+V_{\mathrm{alga},diet}
+=
+V_{\mathrm{alga}}
+\frac{
+P_{\mathrm{alga},diet}
+}{
+\displaystyle
+\sum_{diet=1}^{N_{\mathrm{diet}}}
+P_{\mathrm{alga},diet}
+}
+$$
+
+## Add: to each Daphnia bucket
+
+$$
+V_{\mathrm{feed},diet}
+=
+\frac{
+V_{\mathrm{bucket}}
+C_{\mathrm{ad\, libitum}}
+N_{\mathrm{days}}
+}{
+D_{\mathrm{diet}}
+}
+$$
+$$
+D_{\mathrm{diet}}
+=
+\frac{
+\displaystyle\sum_{\mathrm{alga}=1}^{N_{\mathrm{algae}}}
+V_{\mathrm{alga},\mathrm{diet}}D_{\mathrm{alga}}
+}{
+\displaystyle\sum_{\mathrm{alga}=1}^{N_{\mathrm{algae}}}
+V_{\mathrm{alga},\mathrm{diet}}
+}
+$$
+
+## Add: lysed to each Ischnura jar
+
+$$
+V_{\mathrm{lysed}}
+=
+\frac{
+V_{\mathrm{Ischnura}}
+C_{\mathrm{ad\,libitum}}
+P_{\mathrm{Micro},\mathrm{diet}=1}
+}{
+D_{\mathrm{Micro}}
+}
+$$
+
+## Parameter definitions
 
 - $V_{\mathrm{alga}}$ = total volume of algal culture required for the experiment [L]
 - $V_{\mathrm{mix},d}$ = total volume of diet $d$ to prepare [L]
 - $V_{\mathrm{feed},d}$ = volume of diet $d$ added to a single Daphnia bucket at each feeding event [L bucket$^{-1}$ feeding event$^{-1}$]
 - $N_{\mathrm{buckets}}$ = total number of Daphnia buckets [buckets]
 - $V_{\mathrm{bucket}}$ = volume of each Daphnia bucket [L bucket$^{-1}$]
-- $F_{\mathrm{feed}}$ = feeding requirement [mg C L$^{-1}$ day$^{-1}$]
+- $C_{\mathrm{ad libitum}}$ = feeding requirement [mg C L$^{-1}$ day$^{-1}$]
 - $N_{\mathrm{days}}$ = number of days the prepared food must last [days]
 - $E_{\mathrm{food}}$ = extra food multiplier [1–∞]
 - $H_{\mathrm{alga}}$ = harvest multiplier for the alga [1–∞]
@@ -399,3 +438,12 @@ where:
 - $N_{\mathrm{algae}}$ = number of algae included in a diet
 - $d$ = diet
 - $a$ = alga
+
+## Parameters used
+
+```{r}
+#| label: show_parameters
+#| echo: false
+
+knitr::kable(Food_calculator_parameters, col.names = c("Parameter", "Value"))
+```
