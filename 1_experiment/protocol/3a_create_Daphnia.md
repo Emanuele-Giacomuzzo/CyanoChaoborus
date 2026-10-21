@@ -1,8 +1,8 @@
 **Title:** Create new Daphnia cohorts
 
-**Date:** Wednesday 7th October 2026
+**Date:** Friday 9th October 2026
 
-**Day:** -5
+**Day:** -3
 
 **Aim:** Creating new cohorts of *Daphnia*, which will be raised for five days on 
 
@@ -24,12 +24,11 @@ which will then be fed to *Ischnura elegans*.
 
 **Steps:**
  
-1.  Create 4 \s with 7 L of Zoo COMBO, labelled as
+1.  Create 4 buckets with 7 L of Zoo COMBO (10 adult Daphnia/L)
 - “EG – Today’s date – Daphnia magna – Micro & Tetra”.
 - “EG – Today’s date – Daphnia magna – Syneco & Tetra”.
 - “EG – Today’s date – Daphnia magna – Nanno.
 - “EG – Today’s date – Daphnia magna – Nanno”.
-2. Take 280 *Daphnia magna* adults and put them together. <u>Make sure to pick all sizes of adults and not only the largest.</u>
 2.  Pipette 70 *Daphnia magna* adults from the stock cultures into each newly created bucket. 
 
 **Comments:**
