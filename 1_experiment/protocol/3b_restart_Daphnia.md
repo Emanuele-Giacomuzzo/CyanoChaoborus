@@ -1,13 +1,13 @@
 **Title:** Create new Daphnia cohorts
 
-**Date:** Wednesday 21st October 2026
+**Date:** Friday 22nd October 2026
 
-**Day:** 9
+**Day:** 11
 
 **Aim:** Creating new cohorts of *Daphnia*, which will be raised for five days on 
 
-- 50% *Microcystis aeruginosa* + 50% *Tetradesmsu obliqus*
-- 50% *Synechococcus elongatus* + 50% *Tetradesmsu obliqus*
+- 30% *Microcystis aeruginosa* + 70% *Tetradesmsu obliqus*
+- 30% *Synechococcus elongatus* + 70% *Tetradesmsu obliqus*
 - 100% *Nannochalropsis limentica*. 
 
 which will then be fed to *Ischnura elegans*.
