@@ -4,6 +4,7 @@ This directory contains the original photographs collected during the experiment
 
 | Folder | Contents |
 |---|---|
+| `01_OD` | Data to establish the relationship between optical density (OD) and carbon content in Microcystis aeruginosa and Nannochloropsis limnetica in Zoo-COMBO (COMBO without N and P). |
 | `02_size_biomass` | Photographs of damselflies used to establish the body size–biomass relationship. |
 | `03_ad_libitum_experiment` | Photographs documenting (i) damselfly body size, (ii) the body size and number of *Daphnia* before being fed to damselflies, and (iii) the body size and number of *Daphnia* remaining after feeding. |
 | `04_initial_size` | Photographs of damselfly body size taken on day 0, used to quantify initial body size. |
