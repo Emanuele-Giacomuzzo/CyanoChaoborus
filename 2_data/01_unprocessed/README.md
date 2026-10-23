@@ -9,19 +9,4 @@ This directory contains the original photographs collected during the experiment
 | `04_initial_size` | Photographs of damselfly body size taken on day 0, used to quantify initial body size. |
 | `05_quality_baseline` | Photographs of damselflies used to characterise baseline quality, including samples analysed for PUFAs, sterols, C:N, phosphorus (P), and toxins. |
 | `06_molting_same_day` | Photographs taken on the day molting was first observed. As damselflies were checked every two days, the actual molting event may have occurred up to two days before the photograph was taken. |
-| `07_molting_following_days` | Photographs taken two days after molting was observed, following a change in the photography protocol introduced on 22 October 2026. The change was made because some morphological features were not yet fully visible immediately after molting. |
-
-## Notes on molting photographs
-
-Until 22 October 2026, photographs were taken on the day molting was first observed (`06_molting_same_day`). From 22 October 2026 onwards, photographs were taken two days after molting was observed (`07_molting_following_days`) to allow morphological features to become more visible.
-
-As damselflies were checked every two days, the date on which molting was observed does not necessarily correspond to the actual date of molting. For example, a photograph named `D1_2026_10_16` indicates that damselfly D1 was observed to have molted on 16 October 2026 and photographed that day. The actual molting event may have occurred between 14 and 16 October 2026.
-
-# Unprocessed data 
-
-- 02_size_biomass: photos of the body size of the damselflies used for size-biomass function. 
-- 03_ad_libitum_experiment: photos of the (i) body size of the damselflies, (ii) body size and count of Daphnias before being fed to damselflies, and (iii) body size and count of Daphnias after being fed to damselflies. 
-- 04_initial_size: initial body size of damselflies (photos taken on day 0). 
-- 05_quality_baseline: body size of damselflies used for charachterising their baseline quality (in terms of PUFAs, sterols, CN, P, toxins). 
-- 06_molting_same_day: photos taken of damselfly who molted on the same day we noticed they molted. For example, photo labelled as D1_2026_10_16 means that damselfly D1 was found to have molted on the 2026/10/16 and that it was taken a photo of it the same day. As we check every two days, such damselfly could have molted between 2026/10/14 and 2026/10/16.
-- 07_molting_following_days: on the 2026/10/22 we noticed that right after damselflies have molted some of the morphological features are not visibile yet. Therefore, we decided to take photos of them days after have molted. We then decided to the photos from then on of molted individuals two days after the molting has happened.
+| `07_molting_following_days` | Photographs taken at least two days after molting was observed, following a change in the photography protocol introduced on 22 October 2026. The change was made because some morphological features were not yet fully visible immediately after molting. |
