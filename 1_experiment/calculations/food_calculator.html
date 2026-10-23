@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -68,18 +71,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="food_calculator_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="food_calculator_files/libs/quarto-html/anchor.min.js"></script>
 <link href="food_calculator_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="food_calculator_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="food_calculator_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="food_calculator_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="food_calculator_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="food_calculator_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="food_calculator_files/libs/bootstrap/bootstrap-917079515d91bccb85b543faf8aa8bb6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <meta name="shinylive:serviceworker_dir" content="..">
-<script src="food_calculator_files/libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
-<script src="food_calculator_files/libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
-<link href="food_calculator_files/libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
+<script src="food_calculator_files/libs/quarto-contrib/shinylive-0.10.12/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="food_calculator_files/libs/quarto-contrib/shinylive-0.10.12/shinylive/run-python-blocks.js" type="module"></script>
+<link href="food_calculator_files/libs/quarto-contrib/shinylive-0.10.12/shinylive/shinylive.css" rel="stylesheet">
 <link href="food_calculator_files/libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -243,11 +246,9 @@ server &lt;- function(input, output) {
 
 # ---------- Display parameters ------- #
 
-    Daphnia_algae_C_ad_libitum_mg_per_L_per_day &lt;- 2
-    N_Ischnura_diet_4 &lt;- 10
-    V_Ischnura_L &lt;- 0.08
-    Diet_Microcystis_fraction &lt;- c(0.5, 0, 0, 0)
-    Diet_Synechococcus_fraction &lt;- c(0, 0.5, 0, 0)
+    Daphnia_algae_C_ad_libitum_mg_per_L_per_day &lt;- 1
+    Diet_Microcystis_fraction &lt;- c(0.3, 0, 0, 0)
+    Diet_Synechococcus_fraction &lt;- c(0, 0.3, 0, 0)
     Diet_Nannochloropsis_fraction &lt;- c(0, 0, 1, 1)
     Diet_Tetradesmus_fraction &lt;- c(0.7, 0.7, 0, 0)
     Tetradesmus_OD_to_C_slope &lt;- 158.32
@@ -261,8 +262,8 @@ server &lt;- function(input, output) {
 
   output$parameters_echo &lt;- renderTable({
     data.frame(
-      Parameter = c("Daphnia algae C ad libitum [mg C L⁻¹ day⁻¹]", "Number of Ischnura jars, diet 4 [jars]", "Volume per Ischnura jar [L]", "Microcystis fraction", "Synechococcus fraction", "Nannochloropsis fraction", "Tetradesmus fraction", "Tetradesmus OD → C slope", "Tetradesmus OD → C intercept", "Synechococcus OD → C slope", "Synechococcus OD → C intercept", "Microcystis OD → C slope", "Microcystis OD → C intercept", "Nannochloropsis OD → C slope", "Nannochloropsis OD → C intercept"),
-      Value = c("2", "10", "0.08", "0.5, 0, 0, 0", "0, 0.5, 0, 0", "0, 0, 1, 1", "0.7, 0.7, 0, 0", "158.32", "-10.991", "89.419", "-4.463", "120.15", "-0.41", "96.73", "0.43")
+      Parameter = c("Daphnia_algae_C_ad_libitum_mg_per_L_per_day", "Diet_Microcystis_fraction",  "Diet_Synechococcus_fraction", "Diet_Nannochloropsis_fraction",  "Diet_Tetradesmus_fraction", "Tetradesmus_OD_to_C_slope", "Tetradesmus_OD_to_C_intercept",  "Synechococcus_OD_to_C_slope", "Synechococcus_OD_to_C_intercept",  "Microcystis_OD_to_C_slope", "Microcystis_OD_to_C_intercept",  "Nannochloropsis_OD_to_C_slope", "Nannochloropsis_OD_to_C_intercept" ),
+      Value = c("1", "c(0.3, 0, 0, 0)", "c(0, 0.3, 0, 0)", "c(0, 0, 1, 1)",  "c(0.7, 0.7, 0, 0)", "158.32", "-10.991", "89.419", "-4.463",  "120.15", "-0.41", "96.73", "0.43")
     )
   })
 
@@ -325,16 +326,6 @@ daphnia_food &lt;- reactive({
     E_food *
     rowSums(P_alga) / ncol(P_alga) / # This is 1/N diets * proporion of each diet summed
     D_alga
-  
-  # ----- Harvest: Microcystis needed for lysing ----- #
-  
-  V_Micro_lysed_L &lt;-
-    N_Ischnura_diet_4 *
-    V_Ischnura_L *
-    Daphnia_algae_C_ad_libitum_mg_per_L_per_day *
-    P_alga[1,1] *
-    input$N_days_per_feeding_event /
-    D_alga[1]
 
   # ----- Mix: to create Microc + Tetra / Synech + Tetra ----- #
 
@@ -360,16 +351,6 @@ daphnia_food &lt;- reactive({
   input$N_days_per_feeding_event /
   D_diet
 
-  # ----- Add: lysed to each Ischnura jar ----- #
-
-  # ----- Add: lysed Microcystis to each Ischnura jar ----- #
-
-  V_feed_lysed_L &lt;-
-    V_Ischnura_L *
-    Daphnia_algae_C_ad_libitum_mg_per_L_per_day *
-    P_alga[1,1] *
-    input$N_days_per_feeding_event /
-    D_alga[1]
   # ----- Return results so that you can use them afterwards ----- #
 
   list(
@@ -476,17 +457,6 @@ V_{\mathrm{alga},\mathrm{diet}}
 <h2 class="anchored" data-anchor-id="add-dissolved-toxins-to-each-damselfly-jar">Add: dissolved toxins to each damselfly jar</h2>
 <p><span class="math display">\[
 V_{\text{toxin}} = \frac{C_{\text{dams}} \cdot V_{\text{dams}}}{C_{\text{toxin}} - C_{\text{dams}}}
-
-V_{\mathrm{lysed}}
-=
-\frac{
-V_{\mathrm{Ischnura}}
-C_{\mathrm{ad\,libitum}}
-P_{\mathrm{Micro},\mathrm{diet}=1}
-N_{\mathrm{days}}
-}{
-D_{\mathrm{Micro}}
-}
 \]</span></p>
 </section>
 <section id="parameter-definitions" class="level2">
@@ -500,8 +470,6 @@ D_{\mathrm{Micro}}
 <li><span class="math inline">\(C_{\mathrm{ad\,libitum}}\)</span> = Daphnia feeding requirement [mg C L<span class="math inline">\(^{-1}\)</span> day<span class="math inline">\(^{-1}\)</span>]</li>
 <li><span class="math inline">\(N_{\mathrm{days}}\)</span> = number of days between feeding events [days]</li>
 <li><span class="math inline">\(E_{\mathrm{food}}\)</span> = extra food multiplier [1–∞]</li>
-<li><span class="math inline">\(P_{\mathrm{diet},d}\)</span> = proportion of Daphnia buckets receiving diet <span class="math inline">\(d\)</span> [0–1]</li>
-<li><span class="math inline">\(P_{\mathrm{alga},d,alga}\)</span> = proportion of dietary carbon supplied by alga <span class="math inline">\(a\)</span> in diet <span class="math inline">\(d\)</span> [0–1]</li>
 <li><span class="math inline">\(P_{\mathrm{alga},diet}\)</span> = proportion of the diet’s carbon supplied by the alga [0–1]</li>
 <li><span class="math inline">\(D_{\mathrm{alga}}\)</span> = carbon density of the algal culture [mg C L<span class="math inline">\(^{-1}\)</span>]</li>
 <li><span class="math inline">\(D_{\mathrm{diet}}\)</span> = carbon density of the diet mix [mg C L<span class="math inline">\(^{-1}\)</span>]</li>
@@ -525,23 +493,15 @@ D_{\mathrm{Micro}}
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Daphnia_algae_C_ad_libitum_mg_per_L_per_day</td>
-<td style="text-align: left;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">N_Ischnura_diet_4</td>
-<td style="text-align: left;">10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">V_Ischnura_L</td>
-<td style="text-align: left;">0.08</td>
+<td style="text-align: left;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Diet_Microcystis_fraction</td>
-<td style="text-align: left;">c(0.5, 0, 0, 0)</td>
+<td style="text-align: left;">c(0.3, 0, 0, 0)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Diet_Synechococcus_fraction</td>
-<td style="text-align: left;">c(0, 0.5, 0, 0)</td>
+<td style="text-align: left;">c(0, 0.3, 0, 0)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Diet_Nannochloropsis_fraction</td>

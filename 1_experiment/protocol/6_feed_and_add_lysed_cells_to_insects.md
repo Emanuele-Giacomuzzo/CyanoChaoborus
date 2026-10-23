@@ -1,6 +1,6 @@
 **Title:** Feed *Ischnura elegans* and provide with dissolved Microcystis
 
-**Date:** Tuesday 20th October 2026
+**Date:** Thursday 22nd October 2026
 
 **Day:** 8
 
@@ -40,7 +40,7 @@
 
 *Feed Ischnura with Daphnia*
 
-1. For each diet, filter Daphnia from the oldest cohort (now babies 0-5 days old) and keep babies in petri dishes. 
+1. For each diet, filter Daphnia from the oldest cohort (now babies 0-5 days old) on  petri dishes. 
 2. Count how many babies the Microcystis diet produced (least productive diet), which will determine the number of babies which will be provided to each damselfliy (write below).
 3. Pipette babies you want to feed onto falcon tubes. 
 4. Determine how many Daphnia moms are left in each bucket (write below). The lowest amount will determine how many moms will be added/replaced tomorrow (also write below).
@@ -64,8 +64,6 @@ which died:
 
 which molted:
 
-<br>
-
 <u>Daphnia adults</u>
 
 | Bucket / diet | Still alive | Take off tomorrow | Add from stock tomorrow |
@@ -74,8 +72,6 @@ which molted:
 | *Synechococcus* | | | |
 | *Nannochloropsis* 1 | | | |
 | *Nannochloropsis* 2 | | | |
-
-<br>
 
 <u>Daphnia babies</u>
 

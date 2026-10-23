@@ -13,51 +13,20 @@ quarto render calculations/food_calculator.qmd
 ````{r}
 #| echo: false
 
-# ─────────────────────────────────────────────
-# ⚙️ Import parametes
-# ─────────────────────────────────────────────
-
-here::i_am("1_experiment/calculations/food_calculator.qmd")
-
-# Without a UTF-8 locale, labels such as "L⁻¹" are emitted into the app as "<U+207B>"
-invisible(Sys.setlocale("LC_CTYPE", "en_US.UTF-8"))
 # ============================================================
 # PARAMETERS
 # ============================================================
 
-# ─────────────────────────────────────────────
 # Daphnia feeding
-# ─────────────────────────────────────────────
-# Daphnia feeding
-# ─────────────────────────────────────────────
+Daphnia_algae_C_ad_libitum_mg_per_L_per_day <- 1
 
-Daphnia_algae_C_ad_libitum_mg_per_L_per_day <- 2
-
-Daphnia_algae_C_ad_libitum_mg_per_L_per_day <- 2
-
-# ─────────────────────────────────────────────
-# Ischnura experiment
-# ─────────────────────────────────────────────
-
-N_Ischnura_diet_4 <- 10
-V_Ischnura_L <- 0.08
-
-# ─────────────────────────────────────────────
 # Diet composition
-# ─────────────────────────────────────────────
-# Diet composition
-# ─────────────────────────────────────────────
-
-Diet_Microcystis_fraction <- c(0.5, 0, 0, 0)
-Diet_Synechococcus_fraction <- c(0, 0.5, 0, 0)
+Diet_Microcystis_fraction <- c(0.3, 0, 0, 0)
+Diet_Synechococcus_fraction <- c(0, 0.3, 0, 0)
 Diet_Nannochloropsis_fraction <- c(0, 0, 1, 1)
 Diet_Tetradesmus_fraction <- c(0.7, 0.7, 0, 0)
 
-
-# ─────────────────────────────────────────────
 # OD → carbon conversion
-# ─────────────────────────────────────────────
-
 Tetradesmus_OD_to_C_slope <- 158.32
 Tetradesmus_OD_to_C_intercept <- -10.991
 
@@ -69,38 +38,8 @@ Microcystis_OD_to_C_intercept <- -0.41
 
 Nannochloropsis_OD_to_C_slope <- 96.73
 Nannochloropsis_OD_to_C_intercept <- 0.43
+````
 
-
-# ============================================================
-# PARAMETER TABLE
-# ============================================================
-
-Food_calculator_parameter_labels <- c(
-  Daphnia_algae_C_ad_libitum_mg_per_L_per_day = "Daphnia algae C ad libitum [mg C L⁻¹ day⁻¹]",
-  N_Ischnura_diet_4 = "Number of Ischnura jars, diet 4 [jars]",
-  V_Ischnura_L = "Volume per Ischnura jar [L]",
-  Diet_Microcystis_fraction = "Microcystis fraction",
-  Diet_Synechococcus_fraction = "Synechococcus fraction",
-  Diet_Nannochloropsis_fraction = "Nannochloropsis fraction",
-  Diet_Tetradesmus_fraction = "Tetradesmus fraction",
-  Tetradesmus_OD_to_C_slope = "Tetradesmus OD → C slope",
-  Tetradesmus_OD_to_C_intercept = "Tetradesmus OD → C intercept",
-  Synechococcus_OD_to_C_slope = "Synechococcus OD → C slope",
-  Synechococcus_OD_to_C_intercept = "Synechococcus OD → C intercept",
-  Microcystis_OD_to_C_slope = "Microcystis OD → C slope",
-  Microcystis_OD_to_C_intercept = "Microcystis OD → C intercept",
-  Nannochloropsis_OD_to_C_slope = "Nannochloropsis OD → C slope",
-  Nannochloropsis_OD_to_C_intercept = "Nannochloropsis OD → C intercept"
-)
-
-Food_calculator_parameter_values <- mget(names(Food_calculator_parameter_labels))
-
-Food_calculator_parameters <- data.frame(
-  Parameter = unname(Food_calculator_parameter_labels),
-  Value = vapply(Food_calculator_parameter_values, paste, character(1), collapse = ", "),
-  row.names = NULL
-)
-```
 
 ````{r}
 #| label: emit_app
@@ -112,9 +51,6 @@ Food_calculator_parameters <- data.frame(
 # ─────────────────────────────────────────────
 
 # ------ Prepare parameters to be displayed ------- #
-
-# The shinylive app runs in the browser, separate from this R session,
-# so the parameters must be injected into its source code.
 
 hardcoded_parameter_names <- c(
   "Daphnia_algae_C_ad_libitum_mg_per_L_per_day",
@@ -136,14 +72,13 @@ Food_calculator_parameters <- data.frame(
   name = hardcoded_parameter_names,
   value = vapply(mget(hardcoded_parameter_names), deparse, character(1), USE.NAMES = FALSE)
 )
+
 param_assignments <- paste(
-  sprintf("    %s <- %s",
-          names(Food_calculator_parameter_values),
-          vapply(Food_calculator_parameter_values, deparse1, character(1))),
+  sprintf("    %s <- %s", Food_calculator_parameters$name, Food_calculator_parameters$value),
   collapse = "\n"
 )
-param_names_r <- deparse1(Food_calculator_parameters$Parameter)
-param_values_r <- deparse1(Food_calculator_parameters$Value)
+param_names_r <- paste(deparse(Food_calculator_parameters$name), collapse = " ")
+param_values_r <- paste(deparse(Food_calculator_parameters$value), collapse = " ")
 
 app_code <- sprintf('
 ```{shinylive-r}
@@ -319,16 +254,6 @@ daphnia_food <- reactive({
     E_food *
     rowSums(P_alga) / ncol(P_alga) / # This is 1/N diets * proporion of each diet summed
     D_alga
-  
-  # ----- Harvest: Microcystis needed for lysing ----- #
-  
-  V_Micro_lysed_L <-
-    N_Ischnura_diet_4 *
-    V_Ischnura_L *
-    Daphnia_algae_C_ad_libitum_mg_per_L_per_day *
-    P_alga[1,1] *
-    input$N_days_per_feeding_event /
-    D_alga[1]
 
   # ----- Mix: to create Microc + Tetra / Synech + Tetra ----- #
 
@@ -354,16 +279,6 @@ daphnia_food <- reactive({
   input$N_days_per_feeding_event /
   D_diet
 
-  # ----- Add: lysed to each Ischnura jar ----- #
-
-  # ----- Add: lysed Microcystis to each Ischnura jar ----- #
-
-  V_feed_lysed_L <-
-    V_Ischnura_L *
-    Daphnia_algae_C_ad_libitum_mg_per_L_per_day *
-    P_alga[1,1] *
-    input$N_days_per_feeding_event /
-    D_alga[1]
   # ----- Return results so that you can use them afterwards ----- #
 
   list(
@@ -477,17 +392,6 @@ $$
 
 $$
 V_{\text{toxin}} = \frac{C_{\text{dams}} \cdot V_{\text{dams}}}{C_{\text{toxin}} - C_{\text{dams}}}
-
-V_{\mathrm{lysed}}
-=
-\frac{
-V_{\mathrm{Ischnura}}
-C_{\mathrm{ad\,libitum}}
-P_{\mathrm{Micro},\mathrm{diet}=1}
-N_{\mathrm{days}}
-}{
-D_{\mathrm{Micro}}
-}
 $$
 
 
@@ -501,16 +405,11 @@ $$
 - $C_{\mathrm{ad\,libitum}}$ = Daphnia feeding requirement [mg C L$^{-1}$ day$^{-1}$]
 - $N_{\mathrm{days}}$ = number of days between feeding events [days]
 - $E_{\mathrm{food}}$ = extra food multiplier [1–∞]
-- $P_{\mathrm{diet},d}$ = proportion of Daphnia buckets receiving diet $d$ [0–1]
-- $P_{\mathrm{alga},d,alga}$ = proportion of dietary carbon supplied by alga $a$ in diet $d$ [0–1]
 - $P_{\mathrm{alga},diet}$ = proportion of the diet's carbon supplied by the alga [0–1]
 - $D_{\mathrm{alga}}$ = carbon density of the algal culture [mg C L$^{-1}$]
 - $D_{\mathrm{diet}}$ = carbon density of the diet mix [mg C L$^{-1}$]
-- $D_a$ = carbon density of alga $a$ [mg C L$^{-1}$]
-- $N_{\mathrm{diets}}$ = number of diets
-- $N_{\mathrm{algae}}$ = number of algae included in a diet
-- $d$ = diet
-- $a$ = alga
+- $N_{\mathrm{diet}}$ = number of diets
+- $N_{\mathrm{algae}}$ = number of algae
 - $diet$ = diet index
 - $alga$ = alga index
 
