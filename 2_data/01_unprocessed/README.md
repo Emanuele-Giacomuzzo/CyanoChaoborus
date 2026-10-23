@@ -1,3 +1,22 @@
+# Unprocessed data
+
+This directory contains the original photographs collected during the experiment, organised into folders according to their purpose.
+
+| Folder | Contents |
+|---|---|
+| `02_size_biomass` | Photographs of damselflies used to establish the body size–biomass relationship. |
+| `03_ad_libitum_experiment` | Photographs documenting (i) damselfly body size, (ii) the body size and number of *Daphnia* before being fed to damselflies, and (iii) the body size and number of *Daphnia* remaining after feeding. |
+| `04_initial_size` | Photographs of damselfly body size taken on day 0, used to quantify initial body size. |
+| `05_quality_baseline` | Photographs of damselflies used to characterise baseline quality, including samples analysed for PUFAs, sterols, C:N, phosphorus (P), and toxins. |
+| `06_molting_same_day` | Photographs taken on the day molting was first observed. As damselflies were checked every two days, the actual molting event may have occurred up to two days before the photograph was taken. |
+| `07_molting_following_days` | Photographs taken two days after molting was observed, following a change in the photography protocol introduced on 22 October 2026. The change was made because some morphological features were not yet fully visible immediately after molting. |
+
+## Notes on molting photographs
+
+Until 22 October 2026, photographs were taken on the day molting was first observed (`06_molting_same_day`). From 22 October 2026 onwards, photographs were taken two days after molting was observed (`07_molting_following_days`) to allow morphological features to become more visible.
+
+As damselflies were checked every two days, the date on which molting was observed does not necessarily correspond to the actual date of molting. For example, a photograph named `D1_2026_10_16` indicates that damselfly D1 was observed to have molted on 16 October 2026 and photographed that day. The actual molting event may have occurred between 14 and 16 October 2026.
+
 # Unprocessed data 
 
 - 02_size_biomass: photos of the body size of the damselflies used for size-biomass function. 
