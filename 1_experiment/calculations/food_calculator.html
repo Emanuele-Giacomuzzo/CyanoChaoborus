@@ -203,7 +203,7 @@ ui &lt;- fluidPage(
         "OD of Tetradesmus",
         value = 1,
         step = 0.01
-      )
+      ),
     ),
     column(
       6,
@@ -213,33 +213,42 @@ ui &lt;- fluidPage(
 
 # ------ Create output boxes ------- #
 
-  fluidRow(
-    column(
-      4,
-      h3("Harvest: algae needed (mL)"),
-      tableOutput("output_algae_to_harvest")
-    ),
-    column(
-      4,
-      h4("Mix: to create Microc + Tetrad (mL)"),
-      tableOutput("output_algae_to_mix_micro")
-    ),
-    column(
-      4,
-      h4("Mix: to create Synech + Tetrad (mL)"),
-      tableOutput("output_algae_to_mix_syne")
-    ),
-    column(
-      4,
-      h4("Add: to each Daphnia bucket fed for two days (mL/feeding)"),
-      tableOutput("output_mix_per_bucket_two_days")
-    ),
-    column(
-      4,
-      h4("Add: to each Daphnia bucket fed for one day (mL/feeding)"),
-      tableOutput("output_mix_per_bucket_one_day")
-    )
+  
+fluidRow(
+  column(
+    4,
+    h3("Harvest: algae needed (mL)"),
+    tableOutput("output_algae_to_harvest")
+  ),
+  column(
+    4,
+    h4("Mix: to create Microc + Tetrad (mL)"),
+    tableOutput("output_algae_to_mix_micro")
+  ),
+  column(
+    4,
+    h4("Mix: to create Synech + Tetrad (mL)"),
+    tableOutput("output_algae_to_mix_syne")
   )
+),
+
+fluidRow(
+  column(
+    4,
+    h4("Add: to each Daphnia bucket fed for two days (mL/feeding)"),
+    tableOutput("output_mix_per_bucket_two_days")
+  ),
+  column(
+    4,
+    h4("Add: to each Daphnia bucket fed for one day (mL/feeding)"),
+    tableOutput("output_mix_per_bucket_one_day")
+  ),
+  column(
+    4,
+    h4("Add: Microcystis per damselfly jar (mL)"),
+    tableOutput("output_toxins")
+  )
+)
 )
 
 server &lt;- function(input, output) {
@@ -247,6 +256,7 @@ server &lt;- function(input, output) {
 # ---------- Display parameters ------- #
 
     Daphnia_algae_C_ad_libitum_mg_per_L_per_day &lt;- 1
+    V_damselfly_jar_L &lt;- 0.06
     Diet_Microcystis_fraction &lt;- c(0.3, 0, 0, 0)
     Diet_Synechococcus_fraction &lt;- c(0, 0.3, 0, 0)
     Diet_Nannochloropsis_fraction &lt;- c(0, 0, 1, 1)
@@ -262,8 +272,8 @@ server &lt;- function(input, output) {
 
   output$parameters_echo &lt;- renderTable({
     data.frame(
-      Parameter = c("Daphnia_algae_C_ad_libitum_mg_per_L_per_day", "Diet_Microcystis_fraction",  "Diet_Synechococcus_fraction", "Diet_Nannochloropsis_fraction",  "Diet_Tetradesmus_fraction", "Tetradesmus_OD_to_C_slope", "Tetradesmus_OD_to_C_intercept",  "Synechococcus_OD_to_C_slope", "Synechococcus_OD_to_C_intercept",  "Microcystis_OD_to_C_slope", "Microcystis_OD_to_C_intercept",  "Nannochloropsis_OD_to_C_slope", "Nannochloropsis_OD_to_C_intercept" ),
-      Value = c("1", "c(0.3, 0, 0, 0)", "c(0, 0.3, 0, 0)", "c(0, 0, 1, 1)",  "c(0.7, 0.7, 0, 0)", "158.32", "-10.991", "89.419", "-4.463",  "120.15", "-0.41", "96.73", "0.43")
+      Parameter = c("Daphnia_algae_C_ad_libitum_mg_per_L_per_day", "V_damselfly_jar_L",  "Diet_Microcystis_fraction", "Diet_Synechococcus_fraction", "Diet_Nannochloropsis_fraction",  "Diet_Tetradesmus_fraction", "Tetradesmus_OD_to_C_slope", "Tetradesmus_OD_to_C_intercept",  "Synechococcus_OD_to_C_slope", "Synechococcus_OD_to_C_intercept",  "Microcystis_OD_to_C_slope", "Microcystis_OD_to_C_intercept",  "Nannochloropsis_OD_to_C_slope", "Nannochloropsis_OD_to_C_intercept" ),
+      Value = c("1", "0.06", "c(0.3, 0, 0, 0)", "c(0, 0.3, 0, 0)", "c(0, 0, 1, 1)",  "c(0.7, 0.7, 0, 0)", "158.32", "-10.991", "89.419", "-4.463",  "120.15", "-0.41", "96.73", "0.43")
     )
   })
 
@@ -351,6 +361,24 @@ daphnia_food &lt;- reactive({
   input$N_days_per_feeding_event /
   D_diet
 
+  # ----- Calculate toxin volume for damselfly jars -----
+  
+  # Target Microcystis concentration (mg C/L)
+C_target_microcystis &lt;-
+  Diet_Microcystis_fraction[1] *
+  Daphnia_algae_C_ad_libitum_mg_per_L_per_day
+
+# Microcystis stock concentration (mg C/L)
+C_microcystis_stock &lt;-
+  Microcystis_OD_to_C_slope * input$od_microcystis +
+  Microcystis_OD_to_C_intercept
+
+# Volume to add (L)
+V_toxins_L &lt;-
+  input$N_days_per_feeding_event *
+  (C_target_microcystis * V_damselfly_jar_L) /
+  (C_microcystis_stock - C_target_microcystis)
+
   # ----- Return results so that you can use them afterwards ----- #
 
   list(
@@ -358,7 +386,8 @@ daphnia_food &lt;- reactive({
     diet_names = diet_names,
     V_alga_harvest_L = V_alga_harvest_L,
     V_alga_diet_L = V_alga_diet_L,
-    V_feed_per_bucket_L = V_feed_per_bucket_L
+    V_feed_per_bucket_L = V_feed_per_bucket_L,
+    V_toxins_L = V_toxins_L
   )
 })
 
@@ -393,6 +422,12 @@ daphnia_food &lt;- reactive({
     data.frame(Mix = food$diet_names, 
                Value = food$V_feed_per_bucket_L/2 * 1000)
   }, digits = 2)
+
+  output$output_toxins &lt;- renderTable({
+  food &lt;- daphnia_food()
+  data.frame(Parameter = "Microcystis",
+             Value = food$V_toxins_L * 1000)
+  }, digits = 3)
 }
 
 shinyApp(ui, server)</code></pre>
@@ -456,7 +491,7 @@ V_{\mathrm{alga},\mathrm{diet}}
 <section id="add-dissolved-toxins-to-each-damselfly-jar" class="level2">
 <h2 class="anchored" data-anchor-id="add-dissolved-toxins-to-each-damselfly-jar">Add: dissolved toxins to each damselfly jar</h2>
 <p><span class="math display">\[
-V_{\text{toxin}} = \frac{C_{\text{dams}} \cdot V_{\text{dams}}}{C_{\text{toxin}} - C_{\text{dams}}}
+V_{\text{toxin}} = \frac{C_{\text{dams}} \cdot V_{\text{dams}} \cdot N_{\text{days}}}{C_{\text{toxin}} - C_{\text{dams}}}
 \]</span></p>
 </section>
 <section id="parameter-definitions" class="level2">
@@ -496,50 +531,54 @@ V_{\text{toxin}} = \frac{C_{\text{dams}} \cdot V_{\text{dams}}}{C_{\text{toxin}}
 <td style="text-align: left;">1</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">V_damselfly_jar_L</td>
+<td style="text-align: left;">0.06</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">Diet_Microcystis_fraction</td>
 <td style="text-align: left;">c(0.3, 0, 0, 0)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Diet_Synechococcus_fraction</td>
 <td style="text-align: left;">c(0, 0.3, 0, 0)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Diet_Nannochloropsis_fraction</td>
 <td style="text-align: left;">c(0, 0, 1, 1)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Diet_Tetradesmus_fraction</td>
 <td style="text-align: left;">c(0.7, 0.7, 0, 0)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Tetradesmus_OD_to_C_slope</td>
 <td style="text-align: left;">158.32</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Tetradesmus_OD_to_C_intercept</td>
 <td style="text-align: left;">-10.991</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Synechococcus_OD_to_C_slope</td>
 <td style="text-align: left;">89.419</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Synechococcus_OD_to_C_intercept</td>
 <td style="text-align: left;">-4.463</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Microcystis_OD_to_C_slope</td>
 <td style="text-align: left;">120.15</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Microcystis_OD_to_C_intercept</td>
 <td style="text-align: left;">-0.41</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Nannochloropsis_OD_to_C_slope</td>
 <td style="text-align: left;">96.73</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Nannochloropsis_OD_to_C_intercept</td>
 <td style="text-align: left;">0.43</td>
 </tr>

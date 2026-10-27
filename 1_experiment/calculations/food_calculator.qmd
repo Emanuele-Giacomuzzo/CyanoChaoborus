@@ -20,6 +20,9 @@ quarto render calculations/food_calculator.qmd
 # Daphnia feeding
 Daphnia_algae_C_ad_libitum_mg_per_L_per_day <- 1
 
+# Damselfly jar volume
+V_damselfly_jar_L <- 0.06
+
 # Diet composition
 Diet_Microcystis_fraction <- c(0.3, 0, 0, 0)
 Diet_Synechococcus_fraction <- c(0, 0.3, 0, 0)
@@ -54,6 +57,7 @@ Nannochloropsis_OD_to_C_intercept <- 0.43
 
 hardcoded_parameter_names <- c(
   "Daphnia_algae_C_ad_libitum_mg_per_L_per_day",
+  "V_damselfly_jar_L",
   "Diet_Microcystis_fraction",
   "Diet_Synechococcus_fraction",
   "Diet_Nannochloropsis_fraction",
@@ -143,7 +147,7 @@ ui <- fluidPage(
         "OD of Tetradesmus",
         value = 1,
         step = 0.01
-      )
+      ),
     ),
     column(
       6,
@@ -153,33 +157,42 @@ ui <- fluidPage(
 
 # ------ Create output boxes ------- #
 
-  fluidRow(
-    column(
-      4,
-      h3("Harvest: algae needed (mL)"),
-      tableOutput("output_algae_to_harvest")
-    ),
-    column(
-      4,
-      h4("Mix: to create Microc + Tetrad (mL)"),
-      tableOutput("output_algae_to_mix_micro")
-    ),
-    column(
-      4,
-      h4("Mix: to create Synech + Tetrad (mL)"),
-      tableOutput("output_algae_to_mix_syne")
-    ),
-    column(
-      4,
-      h4("Add: to each Daphnia bucket fed for two days (mL/feeding)"),
-      tableOutput("output_mix_per_bucket_two_days")
-    ),
-    column(
-      4,
-      h4("Add: to each Daphnia bucket fed for one day (mL/feeding)"),
-      tableOutput("output_mix_per_bucket_one_day")
-    )
+  
+fluidRow(
+  column(
+    4,
+    h3("Harvest: algae needed (mL)"),
+    tableOutput("output_algae_to_harvest")
+  ),
+  column(
+    4,
+    h4("Mix: to create Microc + Tetrad (mL)"),
+    tableOutput("output_algae_to_mix_micro")
+  ),
+  column(
+    4,
+    h4("Mix: to create Synech + Tetrad (mL)"),
+    tableOutput("output_algae_to_mix_syne")
   )
+),
+
+fluidRow(
+  column(
+    4,
+    h4("Add: to each Daphnia bucket fed for two days (mL/feeding)"),
+    tableOutput("output_mix_per_bucket_two_days")
+  ),
+  column(
+    4,
+    h4("Add: to each Daphnia bucket fed for one day (mL/feeding)"),
+    tableOutput("output_mix_per_bucket_one_day")
+  ),
+  column(
+    4,
+    h4("Add: Microcystis per damselfly jar (mL)"),
+    tableOutput("output_toxins")
+  )
+)
 )
 
 server <- function(input, output) {
@@ -279,6 +292,24 @@ daphnia_food <- reactive({
   input$N_days_per_feeding_event /
   D_diet
 
+  # ----- Calculate toxin volume for damselfly jars -----
+  
+  # Target Microcystis concentration (mg C/L)
+C_target_microcystis <-
+  Diet_Microcystis_fraction[1] *
+  Daphnia_algae_C_ad_libitum_mg_per_L_per_day
+
+# Microcystis stock concentration (mg C/L)
+C_microcystis_stock <-
+  Microcystis_OD_to_C_slope * input$od_microcystis +
+  Microcystis_OD_to_C_intercept
+
+# Volume to add (L)
+V_toxins_L <-
+  input$N_days_per_feeding_event *
+  (C_target_microcystis * V_damselfly_jar_L) /
+  (C_microcystis_stock - C_target_microcystis)
+
   # ----- Return results so that you can use them afterwards ----- #
 
   list(
@@ -286,7 +317,8 @@ daphnia_food <- reactive({
     diet_names = diet_names,
     V_alga_harvest_L = V_alga_harvest_L,
     V_alga_diet_L = V_alga_diet_L,
-    V_feed_per_bucket_L = V_feed_per_bucket_L
+    V_feed_per_bucket_L = V_feed_per_bucket_L,
+    V_toxins_L = V_toxins_L
   )
 })
 
@@ -321,6 +353,12 @@ daphnia_food <- reactive({
     data.frame(Mix = food$diet_names, 
                Value = food$V_feed_per_bucket_L/2 * 1000)
   }, digits = 2)
+
+  output$output_toxins <- renderTable({
+  food <- daphnia_food()
+  data.frame(Parameter = "Microcystis",
+             Value = food$V_toxins_L * 1000)
+  }, digits = 3)
 }
 
 shinyApp(ui, server)
@@ -391,9 +429,8 @@ $$
 ## Add: dissolved toxins to each damselfly jar
 
 $$
-V_{\text{toxin}} = \frac{C_{\text{dams}} \cdot V_{\text{dams}}}{C_{\text{toxin}} - C_{\text{dams}}}
+V_{\text{toxin}} = \frac{C_{\text{dams}} \cdot V_{\text{dams}} \cdot N_{\text{days}}}{C_{\text{toxin}} - C_{\text{dams}}}
 $$
-
 
 ## Parameter definitions
 

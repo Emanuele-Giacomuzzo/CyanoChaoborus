@@ -1,8 +1,8 @@
 **Title:** Sample phytoplankton
 
-**Date:** 
+**Date:** Tuesday 27th October 2026
 
-**Day:** TBA
+**Day:** 15
 
 **Aim:** Sampling the phytoplankton we are providing the Daphnia with.
 
@@ -31,6 +31,8 @@
 :::
 
 **Steps:**
+
+*Save algae samples for chemical analysis*
 
 1.  Set up material.
     1.  Set up the vacuum filtration pump and connect its tube to the wall gas supply (the tube sucks air in, allowing the liquids to come more easily through the filter).
@@ -73,34 +75,13 @@
 
 *Save algae samples for cell size analysis*
 
-1. Pipette 1.98 ml of each alga into its respective Eppendorf tube:
-
-- `phyto_micro_tet_size`
-- `phyto_synec_tet_size`
-- `phyto_nanno_size`
-- `phyto_micro_size`
-- `phyto_synec_size`
-- `phyto_tet_size`
-
+1. Pipette 1.98 ml of each alga into its respective Eppendorf tube `Phyto_____ (alga) Size 27/10/26`
 2. Pipette 0.02 ml of 1% Lugol solution into each Eppendorf tube. 
 
 
 *Pack filters (day after)*
 
-For each filter (always using forceps), place an aluminium cartridge on one of the wells of the metal block, unwrapping it. Then, add to it a filter and wrap it into a small sphere, with a shape that is as round as possible. Add then the sphere into a well in the 96-well plate in the position described in the below table.
-
-<br>
-
-| **What**      | **96 Well plate position** |
-|---------------|--------------------|
-| Microcystis + Tetradesmus | A1-A4                 |
-| Synechococcus + Tetradesmus | A5-A8                 |
-| Nannochloropsis | A9-A12                 |
-| Microcystis | B1-B4                 |
-| Synechococcus | B5-B8                 |
-| Tetradesmus | B8-B12                 |
-
-
+For each filter (always using forceps), place an aluminium cartridge on one of the wells of the metal block, unwrapping it. Then, add to it a filter and wrap it into a small sphere, with a shape that is as round as possible. Add then the sphere into a new 24-well plate maintining the original disposition.
 
 [^1]: Lightly lift the filter by sliding one forceps arm underneath it. With the help of the other pair of forceps hold in place by lightly pressing on one point of the filter. Lift and push the filter with the pair that was underneath it, to fold in half. Fold in half again with the same technique. Now the filter is folded into a quarter of a circle.
 
