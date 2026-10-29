@@ -437,6 +437,10 @@ $$
 - $V_{\mathrm{alga}}$ = total volume of the algal culture to harvest [L]
 - $V_{\mathrm{alga},diet}$ = volume of the algal culture to add to the mix of the diet [L]
 - $V_{\mathrm{feed},diet}$ = volume of the diet mix added to a single Daphnia bucket at each feeding event [L bucket$^{-1}$ feeding event$^{-1}$]
+- $V_{\text{toxin}}$ = volume of the Microcystis culture added to a single damselfly jar at each feeding event [L jar$^{-1}$ feeding event$^{-1}$]
+- $C_{\text{dams}}$ = target Microcystis carbon concentration in the damselfly jar (Microcystis fraction of the diet × $C_{\mathrm{ad\,libitum}}$) [mg C L$^{-1}$ day$^{-1}$]
+- $V_{\text{dams}}$ = liquid volume of each damselfly jar [L jar$^{-1}$]
+- $C_{\text{toxin}}$ = carbon density of the Microcystis culture [mg C L$^{-1}$]
 - $N_{\mathrm{buckets}}$ = total number of Daphnia buckets [buckets]
 - $V_{\mathrm{bucket}}$ = liquid volume of each Daphnia bucket [L bucket$^{-1}$]
 - $C_{\mathrm{ad\,libitum}}$ = Daphnia feeding requirement [mg C L$^{-1}$ day$^{-1}$]
@@ -449,12 +453,3 @@ $$
 - $N_{\mathrm{algae}}$ = number of algae
 - $diet$ = diet index
 - $alga$ = alga index
-
-## Parameters used
-
-```{r}
-#| label: show_parameters
-#| echo: false
-
-knitr::kable(Food_calculator_parameters, col.names = c("Parameter", "Value"))
-```

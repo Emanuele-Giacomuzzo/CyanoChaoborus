@@ -500,6 +500,10 @@ V_{\text{toxin}} = \frac{C_{\text{dams}} \cdot V_{\text{dams}} \cdot N_{\text{da
 <li><span class="math inline">\(V_{\mathrm{alga}}\)</span> = total volume of the algal culture to harvest [L]</li>
 <li><span class="math inline">\(V_{\mathrm{alga},diet}\)</span> = volume of the algal culture to add to the mix of the diet [L]</li>
 <li><span class="math inline">\(V_{\mathrm{feed},diet}\)</span> = volume of the diet mix added to a single Daphnia bucket at each feeding event [L bucket<span class="math inline">\(^{-1}\)</span> feeding event<span class="math inline">\(^{-1}\)</span>]</li>
+<li><span class="math inline">\(V_{\text{toxin}}\)</span> = volume of the Microcystis culture added to a single damselfly jar at each feeding event [L jar<span class="math inline">\(^{-1}\)</span> feeding event<span class="math inline">\(^{-1}\)</span>]</li>
+<li><span class="math inline">\(C_{\text{dams}}\)</span> = target Microcystis carbon concentration in the damselfly jar (Microcystis fraction of the diet × <span class="math inline">\(C_{\mathrm{ad\,libitum}}\)</span>) [mg C L<span class="math inline">\(^{-1}\)</span> day<span class="math inline">\(^{-1}\)</span>]</li>
+<li><span class="math inline">\(V_{\text{dams}}\)</span> = liquid volume of each damselfly jar [L jar<span class="math inline">\(^{-1}\)</span>]</li>
+<li><span class="math inline">\(C_{\text{toxin}}\)</span> = carbon density of the Microcystis culture [mg C L<span class="math inline">\(^{-1}\)</span>]</li>
 <li><span class="math inline">\(N_{\mathrm{buckets}}\)</span> = total number of Daphnia buckets [buckets]</li>
 <li><span class="math inline">\(V_{\mathrm{bucket}}\)</span> = liquid volume of each Daphnia bucket [L bucket<span class="math inline">\(^{-1}\)</span>]</li>
 <li><span class="math inline">\(C_{\mathrm{ad\,libitum}}\)</span> = Daphnia feeding requirement [mg C L<span class="math inline">\(^{-1}\)</span> day<span class="math inline">\(^{-1}\)</span>]</li>
@@ -513,79 +517,6 @@ V_{\text{toxin}} = \frac{C_{\text{dams}} \cdot V_{\text{dams}} \cdot N_{\text{da
 <li><span class="math inline">\(diet\)</span> = diet index</li>
 <li><span class="math inline">\(alga\)</span> = alga index</li>
 </ul>
-</section>
-<section id="parameters-used" class="level2">
-<h2 class="anchored" data-anchor-id="parameters-used">Parameters used</h2>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Parameter</th>
-<th style="text-align: left;">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Daphnia_algae_C_ad_libitum_mg_per_L_per_day</td>
-<td style="text-align: left;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">V_damselfly_jar_L</td>
-<td style="text-align: left;">0.06</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Diet_Microcystis_fraction</td>
-<td style="text-align: left;">c(0.3, 0, 0, 0)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Diet_Synechococcus_fraction</td>
-<td style="text-align: left;">c(0, 0.3, 0, 0)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Diet_Nannochloropsis_fraction</td>
-<td style="text-align: left;">c(0, 0, 1, 1)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Diet_Tetradesmus_fraction</td>
-<td style="text-align: left;">c(0.7, 0.7, 0, 0)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Tetradesmus_OD_to_C_slope</td>
-<td style="text-align: left;">158.32</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Tetradesmus_OD_to_C_intercept</td>
-<td style="text-align: left;">-10.991</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Synechococcus_OD_to_C_slope</td>
-<td style="text-align: left;">89.419</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Synechococcus_OD_to_C_intercept</td>
-<td style="text-align: left;">-4.463</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Microcystis_OD_to_C_slope</td>
-<td style="text-align: left;">120.15</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Microcystis_OD_to_C_intercept</td>
-<td style="text-align: left;">-0.41</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Nannochloropsis_OD_to_C_slope</td>
-<td style="text-align: left;">96.73</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Nannochloropsis_OD_to_C_intercept</td>
-<td style="text-align: left;">0.43</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </section>
 
 </main>
