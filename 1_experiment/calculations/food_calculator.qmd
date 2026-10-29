@@ -10,6 +10,31 @@ filters:
 quarto render calculations/food_calculator.qmd
 ```
 
+## Purpose
+
+This calculator supports the day-to-day feeding requirements of a laboratory experiment investigating how cyanobacteria affect aquatic insect emergence. It calculates the algal culture volumes needed to prepare diets for *Daphnia magna* and the volumes required to maintain consistent feeding conditions across experimental treatments.
+
+As the experiment progresses, new *Daphnia* cohorts must be established and maintained simultaneously, increasing the number of culture buckets that require feeding. At the same time, algal cultures vary in carbon density depending on the species and their growth conditions. Feeding fixed volumes would therefore risk introducing unintended differences in food quantity between treatments.
+
+## How to use the calculator
+
+Enter the number and volume of *Daphnia* culture buckets, the interval between feeding events, the desired food surplus, and the optical density (OD) of each algal culture. The calculator uses species-specific OD–carbon calibration equations to estimate algal carbon density and automatically updates the required volumes.
+
+The outputs provide the volumes needed to:
+
+- **Harvest:** determine how much of each algal culture to collect to meet the total feeding requirements.
+- **Mix:** calculate the volumes of individual algae needed to prepare the experimental diets, including mixtures of *Microcystis* and *Tetradesmus* and of *Synechococcus* and *Tetradesmus*.
+- **Feed:** determine the volume of each prepared diet to add to an individual *Daphnia* bucket, accounting for the feeding interval.
+- **Dose:** calculate the volume of *Microcystis* culture required to achieve the target carbon concentration in each damselfly jar.
+
+## Reproducibility
+
+The calculator is implemented in R using Shiny and documented in Quarto. Experimental parameters, diet compositions, and OD–carbon calibration coefficients are explicitly defined in the source code, while the calculations are updated automatically when the inputs change.
+
+The workflow reduces repetitive manual calculations, helps maintain consistent food quantities across treatments, and can be adapted as experimental requirements change. The underlying equations and parameter definitions are provided below to make the calculations transparent and inspectable.
+
+## Calculator
+
 ````{r}
 #| echo: false
 

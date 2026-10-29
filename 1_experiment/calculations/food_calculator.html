@@ -139,6 +139,29 @@ window.Quarto = {
 
 
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render calculations/food_calculator.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="purpose" class="level2">
+<h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
+<p>This calculator supports the day-to-day feeding requirements of a laboratory experiment investigating how cyanobacteria affect aquatic insect emergence. It calculates the algal culture volumes needed to prepare diets for <em>Daphnia magna</em> and the volumes required to maintain consistent feeding conditions across experimental treatments.</p>
+<p>As the experiment progresses, new <em>Daphnia</em> cohorts must be established and maintained simultaneously, increasing the number of culture buckets that require feeding. At the same time, algal cultures vary in carbon density depending on the species and their growth conditions. Feeding fixed volumes would therefore risk introducing unintended differences in food quantity between treatments.</p>
+</section>
+<section id="how-to-use-the-calculator" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-the-calculator">How to use the calculator</h2>
+<p>Enter the number and volume of <em>Daphnia</em> culture buckets, the interval between feeding events, the desired food surplus, and the optical density (OD) of each algal culture. The calculator uses species-specific OD–carbon calibration equations to estimate algal carbon density and automatically updates the required volumes.</p>
+<p>The outputs provide the volumes needed to:</p>
+<ul>
+<li><strong>Harvest:</strong> determine how much of each algal culture to collect to meet the total feeding requirements.</li>
+<li><strong>Mix:</strong> calculate the volumes of individual algae needed to prepare the experimental diets, including mixtures of <em>Microcystis</em> and <em>Tetradesmus</em> and of <em>Synechococcus</em> and <em>Tetradesmus</em>.</li>
+<li><strong>Feed:</strong> determine the volume of each prepared diet to add to an individual <em>Daphnia</em> bucket, accounting for the feeding interval.</li>
+<li><strong>Dose:</strong> calculate the volume of <em>Microcystis</em> culture required to achieve the target carbon concentration in each damselfly jar.</li>
+</ul>
+</section>
+<section id="reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility">Reproducibility</h2>
+<p>The calculator is implemented in R using Shiny and documented in Quarto. Experimental parameters, diet compositions, and OD–carbon calibration coefficients are explicitly defined in the source code, while the calculations are updated automatically when the inputs change.</p>
+<p>The workflow reduces repetitive manual calculations, helps maintain consistent food quantities across treatments, and can be adapted as experimental requirements change. The underlying equations and parameter definitions are provided below to make the calculations transparent and inspectable.</p>
+</section>
+<section id="calculator" class="level2">
+<h2 class="anchored" data-anchor-id="calculator">Calculator</h2>
 <pre class="shinylive-r" data-engine="r"><code>#| '!! shinylive warning !!': |
 #|   shinylive does not work in self-contained HTML documents.
 #|   Please set `embed-resources: false` in your metadata.
@@ -431,6 +454,7 @@ V_toxins_L &lt;-
 }
 
 shinyApp(ui, server)</code></pre>
+</section>
 <section id="harvest-algae-needed-for-diet" class="level2">
 <h2 class="anchored" data-anchor-id="harvest-algae-needed-for-diet">Harvest: algae needed for diet</h2>
 <p><span class="math display">\[
