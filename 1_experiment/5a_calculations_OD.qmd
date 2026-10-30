@@ -204,7 +204,7 @@ Food_calculator_parameters <- data.frame(
 
 write.csv(
   Food_calculator_parameters,
-  here::here("1_experiment", "calculations", "food_calculator_parameters.csv"),
+  file.path("calculations", "food_calculator_parameters.csv"),
   row.names = FALSE
 )
 ```

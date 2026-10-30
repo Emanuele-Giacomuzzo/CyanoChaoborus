@@ -2864,8 +2864,8 @@ the reading order:
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ----- Microcystis aeruginosa: OD + volume ------ #</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>Microcystis_volume_added <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(OD_data_dir, <span class="st">&quot;Microcystis_volume.csv&quot;</span>))</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>Microcystis_OD <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(OD_data_dir, <span class="st">&quot;Microcystis_OD.csv&quot;</span>))</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>Microcystis_volume_added <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(OD_data_dir, <span class="st">&quot;Microcystis_volume.csv&quot;</span>), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8-BOM&quot;</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>Microcystis_OD <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(OD_data_dir, <span class="st">&quot;Microcystis_OD.csv&quot;</span>), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8-BOM&quot;</span>)</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>Microcystis_volume_and_OD <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  Microcystis_volume_added,</span>
@@ -2876,9 +2876,9 @@ the reading order:
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ----- Nannochloropsis limnetica: OD + volume ------ #</span></span>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_volume_added <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(OD_data_dir, <span class="st">&quot;Nannochloropsis_volume.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_volume_added <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(OD_data_dir, <span class="st">&quot;Nannochloropsis_volume.csv&quot;</span>), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8-BOM&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">problem =</span> <span class="st">&quot;no&quot;</span>)</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_OD <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(OD_data_dir, <span class="st">&quot;Nannochloropsis_OD.csv&quot;</span>))</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_OD <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(OD_data_dir, <span class="st">&quot;Nannochloropsis_OD.csv&quot;</span>), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8-BOM&quot;</span>)</span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_volume_and_OD <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
 <span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  Nannochloropsis_volume_added,</span>
@@ -2892,43 +2892,35 @@ the reading order:
 <span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="co"># project were run on plate &quot;Claudia&quot; and are dropped here so only this</span></span>
 <span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="co"># calibration&#39;s samples remain.</span></span>
 <span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>Microcystis_Nannochlaropsis_C <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(OD_data_dir, <span class="st">&quot;Microcystis_Nannochlaropsis_C.csv&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>Microcystis_Nannochlaropsis_C <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.path</span>(OD_data_dir, <span class="st">&quot;Microcystis_Nannochlaropsis_C.csv&quot;</span>), <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8-BOM&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(<span class="sc">!</span>plate <span class="sc">==</span> <span class="st">&quot;Claudia&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="at">position_C_analysis_plate =</span> plate, <span class="at">C_mg =</span> C..mg.) <span class="sc">%&gt;%</span></span>
 <span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(</span>
 <span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">position_C_analysis_plate =</span> <span class="fu">str_extract</span>(<span class="fu">str_trim</span>(position_C_analysis_plate), <span class="st">&quot;^[A-Z]</span><span class="sc">\\</span><span class="st">d+&quot;</span>),</span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">C_mg =</span> <span class="fu">as.numeric</span>(C_mg) <span class="co"># non-numeric placeholders (e.g. &quot;sample lost&quot;) become NA</span></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `C_mg = as.numeric(C_mg)`.
-Caused by warning:
-! NAs introduced by coercion</code></pre>
-</div>
-<details class="code-fold">
-<summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ----- Merge tables ------ #</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># problem != &quot;no&quot; rows (a touched or burnt filter) and unmatched/NA carbon</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># readings are dropped, since neither gives a usable calibration point.</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>Volume_and_OD <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(Microcystis_volume_and_OD, Nannochloropsis_volume_and_OD)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>Volume_OD_and_C <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  Volume_and_OD,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  Microcystis_Nannochlaropsis_C,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">by =</span> <span class="st">&quot;position_C_analysis_plate&quot;</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(C_mg), problem <span class="sc">!=</span> <span class="st">&quot;yes&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(species, percentage, volume_added_ml, OD_480_nm, C_mg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">C_mg =</span> <span class="fu">suppressWarnings</span>(<span class="fu">as.numeric</span>(C_mg)) <span class="co"># non-numeric placeholders (e.g. &quot;sample lost&quot;) become NA</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="co"># ----- Merge tables ------ #</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="co"># problem != &quot;no&quot; rows (a touched or burnt filter) and unmatched/NA carbon</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="co"># readings are dropped, since neither gives a usable calibration point.</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>Volume_and_OD <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(Microcystis_volume_and_OD, Nannochloropsis_volume_and_OD)</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>Volume_OD_and_C <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  Volume_and_OD,</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>  Microcystis_Nannochlaropsis_C,</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">by =</span> <span class="st">&quot;position_C_analysis_plate&quot;</span></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(C_mg), problem <span class="sc">!=</span> <span class="st">&quot;yes&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(species, percentage, volume_added_ml, OD_480_nm, C_mg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>species_OD_C <span class="ot">&lt;-</span> Volume_OD_and_C <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">C_mg_per_L =</span> C_mg <span class="sc">/</span> volume_added_ml <span class="sc">*</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(species, OD_480_nm, C_mg_per_L)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>species_OD_C <span class="ot">&lt;-</span> Volume_OD_and_C <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">C_mg_per_L =</span> C_mg <span class="sc">/</span> volume_added_ml <span class="sc">*</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(species, OD_480_nm, C_mg_per_L)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -2940,27 +2932,27 @@ Caused by warning:
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>m_aeruginosa_OD_C <span class="ot">&lt;-</span> species_OD_C <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;microcystis_aeruginosa&quot;</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>m_aeruginosa_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(C_mg_per_L <span class="sc">~</span> OD_480_nm, <span class="at">data =</span> m_aeruginosa_OD_C)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>m_aeruginosa_intercept <span class="ot">&lt;-</span> <span class="fu">coef</span>(m_aeruginosa_lm)[[<span class="st">&quot;(Intercept)&quot;</span>]]</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>m_aeruginosa_slope <span class="ot">&lt;-</span> <span class="fu">coef</span>(m_aeruginosa_lm)[[<span class="st">&quot;OD_480_nm&quot;</span>]]</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>m_aeruginosa_r_squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(m_aeruginosa_lm)<span class="sc">$</span>r.squared</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Microcystis aeruginosa: C_mg_per_L = %.2f + %.2f * OD_480_nm (R2 = %.3f)</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  m_aeruginosa_intercept, m_aeruginosa_slope, m_aeruginosa_r_squared</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>m_aeruginosa_OD_C <span class="ot">&lt;-</span> species_OD_C <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;microcystis_aeruginosa&quot;</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>m_aeruginosa_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(C_mg_per_L <span class="sc">~</span> OD_480_nm, <span class="at">data =</span> m_aeruginosa_OD_C)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>m_aeruginosa_intercept <span class="ot">&lt;-</span> <span class="fu">coef</span>(m_aeruginosa_lm)[[<span class="st">&quot;(Intercept)&quot;</span>]]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>m_aeruginosa_slope <span class="ot">&lt;-</span> <span class="fu">coef</span>(m_aeruginosa_lm)[[<span class="st">&quot;OD_480_nm&quot;</span>]]</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>m_aeruginosa_r_squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(m_aeruginosa_lm)<span class="sc">$</span>r.squared</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Microcystis aeruginosa: C_mg_per_L = %.2f + %.2f * OD_480_nm (R2 = %.3f)</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  m_aeruginosa_intercept, m_aeruginosa_slope, m_aeruginosa_r_squared</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Microcystis aeruginosa: C_mg_per_L = -0.41 + 120.15 * OD_480_nm (R2 = 0.998)</code></pre>
 </div>
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> OD_480_nm, <span class="at">y =</span> C_mg_per_L), <span class="at">data =</span> m_aeruginosa_OD_C) <span class="sc">+</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> OD_480_nm, <span class="at">y =</span> C_mg_per_L), <span class="at">data =</span> m_aeruginosa_OD_C) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -2976,27 +2968,27 @@ Caused by warning:
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>n_limnetica_OD_C <span class="ot">&lt;-</span> species_OD_C <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;nannochloropsis_limnetica&quot;</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>n_limnetica_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(C_mg_per_L <span class="sc">~</span> OD_480_nm, <span class="at">data =</span> n_limnetica_OD_C)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>n_limnetica_intercept <span class="ot">&lt;-</span> <span class="fu">coef</span>(n_limnetica_lm)[[<span class="st">&quot;(Intercept)&quot;</span>]]</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>n_limnetica_slope <span class="ot">&lt;-</span> <span class="fu">coef</span>(n_limnetica_lm)[[<span class="st">&quot;OD_480_nm&quot;</span>]]</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>n_limnetica_r_squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(n_limnetica_lm)<span class="sc">$</span>r.squared</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Nannochloropsis limnetica: C_mg_per_L = %.2f + %.2f * OD_480_nm (R2 = %.3f)</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  n_limnetica_intercept, n_limnetica_slope, n_limnetica_r_squared</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>n_limnetica_OD_C <span class="ot">&lt;-</span> species_OD_C <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;nannochloropsis_limnetica&quot;</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>n_limnetica_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(C_mg_per_L <span class="sc">~</span> OD_480_nm, <span class="at">data =</span> n_limnetica_OD_C)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>n_limnetica_intercept <span class="ot">&lt;-</span> <span class="fu">coef</span>(n_limnetica_lm)[[<span class="st">&quot;(Intercept)&quot;</span>]]</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>n_limnetica_slope <span class="ot">&lt;-</span> <span class="fu">coef</span>(n_limnetica_lm)[[<span class="st">&quot;OD_480_nm&quot;</span>]]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>n_limnetica_r_squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(n_limnetica_lm)<span class="sc">$</span>r.squared</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Nannochloropsis limnetica: C_mg_per_L = %.2f + %.2f * OD_480_nm (R2 = %.3f)</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  n_limnetica_intercept, n_limnetica_slope, n_limnetica_r_squared</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Nannochloropsis limnetica: C_mg_per_L = 0.43 + 96.73 * OD_480_nm (R2 = 0.991)</code></pre>
 </div>
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> OD_480_nm, <span class="at">y =</span> C_mg_per_L), <span class="at">data =</span> n_limnetica_OD_C) <span class="sc">+</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> OD_480_nm, <span class="at">y =</span> C_mg_per_L), <span class="at">data =</span> n_limnetica_OD_C) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -3017,65 +3009,65 @@ Caused by warning:
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(n_limnetica_slope, <span class="dv">2</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="fu">round</span>(n_limnetica_intercept, <span class="dv">2</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>Microcystis_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(m_aeruginosa_slope, <span class="dv">2</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>Microcystis_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="fu">round</span>(m_aeruginosa_intercept, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(n_limnetica_slope, <span class="dv">2</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>Nannochloropsis_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="fu">round</span>(n_limnetica_intercept, <span class="dv">2</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>Microcystis_OD_to_C_slope <span class="ot">&lt;-</span> <span class="fu">round</span>(m_aeruginosa_slope, <span class="dv">2</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>Microcystis_OD_to_C_intercept <span class="ot">&lt;-</span> <span class="fu">round</span>(m_aeruginosa_intercept, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>calculations/food_calculator.qmd embeds a standalone Shinylive app that runs client-side in the reader’s browser, with no access to this R session or to the repository’s data files at render time. The snapshot below is how it stays in sync with the calibration above without values being copied over by hand: re-rendering this file (or the master document) refreshes the snapshot, and re-rendering food_calculator.qmd then bakes the refreshed numbers into the embedded app.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Diet_*_fraction (source of truth for diet composition, see 4_parameters.qmd) are</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## vectors, so every value is deparsed to an R literal (e.g. &quot;c(0.5, 0, 0, 0)&quot;) and the</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="do">## whole value column is stored as text; food_calculator.qmd splices these literals</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="do">## straight into the app&#39;s R source, so a scalar&#39;s deparsed text (&quot;0.8&quot;) assigns the</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="do">## same way a vector&#39;s (&quot;c(0.5, 0, 0, 0)&quot;) does.</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>Food_calculator_parameters <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Large_jar_liquid_litres&quot;</span>,</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Daphnia_algae_C_ad_libitum_mg_per_L_per_day&quot;</span>,</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;N_days_per_feeding_event&quot;</span>,</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;extra_food_ratio&quot;</span>,</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diet_Microcystis_fraction&quot;</span>,</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diet_Synechococcus_fraction&quot;</span>,</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diet_Nannochloropsis_fraction&quot;</span>,</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diet_Tetradesmus_fraction&quot;</span>,</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Tetradesmus_OD_to_C_slope&quot;</span>,</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Tetradesmus_OD_to_C_intercept&quot;</span>,</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Synechococcus_OD_to_C_slope&quot;</span>,</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Synechococcus_OD_to_C_intercept&quot;</span>,</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Microcystis_OD_to_C_slope&quot;</span>,</span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Microcystis_OD_to_C_intercept&quot;</span>,</span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Nannochloropsis_OD_to_C_slope&quot;</span>,</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Nannochloropsis_OD_to_C_intercept&quot;</span></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Large_jar_liquid_litres),</span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Daphnia_algae_C_ad_libitum_mg_per_L_per_day),</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(N_days_per_feeding_event),</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(extra_food_ratio),</span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Diet_Microcystis_fraction),</span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Diet_Synechococcus_fraction),</span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Diet_Nannochloropsis_fraction),</span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Diet_Tetradesmus_fraction),</span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Tetradesmus_OD_to_C_slope),</span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Tetradesmus_OD_to_C_intercept),</span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Synechococcus_OD_to_C_slope),</span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Synechococcus_OD_to_C_intercept),</span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Microcystis_OD_to_C_slope),</span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Microcystis_OD_to_C_intercept),</span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Nannochloropsis_OD_to_C_slope),</span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Nannochloropsis_OD_to_C_intercept)</span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(</span>
-<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>  Food_calculator_parameters,</span>
-<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;calculations&quot;</span>, <span class="st">&quot;food_calculator_parameters.csv&quot;</span>),</span>
-<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">FALSE</span></span>
-<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Diet_*_fraction (source of truth for diet composition, see 4_parameters.qmd) are</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="do">## vectors, so every value is deparsed to an R literal (e.g. &quot;c(0.5, 0, 0, 0)&quot;) and the</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="do">## whole value column is stored as text; food_calculator.qmd splices these literals</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="do">## straight into the app&#39;s R source, so a scalar&#39;s deparsed text (&quot;0.8&quot;) assigns the</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="do">## same way a vector&#39;s (&quot;c(0.5, 0, 0, 0)&quot;) does.</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>Food_calculator_parameters <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Large_jar_liquid_litres&quot;</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Daphnia_algae_C_ad_libitum_mg_per_L_per_day&quot;</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;N_days_per_feeding_event&quot;</span>,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;extra_food_ratio&quot;</span>,</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diet_Microcystis_fraction&quot;</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diet_Synechococcus_fraction&quot;</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diet_Nannochloropsis_fraction&quot;</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diet_Tetradesmus_fraction&quot;</span>,</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Tetradesmus_OD_to_C_slope&quot;</span>,</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Tetradesmus_OD_to_C_intercept&quot;</span>,</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Synechococcus_OD_to_C_slope&quot;</span>,</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Synechococcus_OD_to_C_intercept&quot;</span>,</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Microcystis_OD_to_C_slope&quot;</span>,</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Microcystis_OD_to_C_intercept&quot;</span>,</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Nannochloropsis_OD_to_C_slope&quot;</span>,</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Nannochloropsis_OD_to_C_intercept&quot;</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Large_jar_liquid_litres),</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Daphnia_algae_C_ad_libitum_mg_per_L_per_day),</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(N_days_per_feeding_event),</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(extra_food_ratio),</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Diet_Microcystis_fraction),</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Diet_Synechococcus_fraction),</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Diet_Nannochloropsis_fraction),</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Diet_Tetradesmus_fraction),</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Tetradesmus_OD_to_C_slope),</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Tetradesmus_OD_to_C_intercept),</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Synechococcus_OD_to_C_slope),</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Synechococcus_OD_to_C_intercept),</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Microcystis_OD_to_C_slope),</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Microcystis_OD_to_C_intercept),</span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Nannochloropsis_OD_to_C_slope),</span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">deparse</span>(Nannochloropsis_OD_to_C_intercept)</span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(</span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>  Food_calculator_parameters,</span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(<span class="st">&quot;calculations&quot;</span>, <span class="st">&quot;food_calculator_parameters.csv&quot;</span>),</span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -3107,16 +3099,16 @@ C_{\mathrm{total}} = N_{\mathrm{jars}} \times C_{\mathrm{jar}}
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_nr <span class="ot">&lt;-</span> Phyto_species_count <span class="sc">*</span> Phyto_vessels_per_species</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>Phyto_stock_flask_nr <span class="ot">&lt;-</span> Phyto_experimental_bottle_nr</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>Phyto_stock_bottle_nr <span class="ot">&lt;-</span> Phyto_experimental_bottle_nr</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>COMBO_total_litres <span class="ot">&lt;-</span> (</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  (Phyto_stock_bottle_nr <span class="sc">*</span> Phyto_stock_bottle_liquid_mL) <span class="sc">+</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  (Phyto_experimental_bottle_nr <span class="sc">*</span> Phyto_experimental_bottle_liquid_mL)</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">/</span> <span class="dv">1000</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>COMBO_batches <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(COMBO_total_litres <span class="sc">/</span> COMBO_batch_volume_litres)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_nr <span class="ot">&lt;-</span> Phyto_species_count <span class="sc">*</span> Phyto_vessels_per_species</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Phyto_stock_flask_nr <span class="ot">&lt;-</span> Phyto_experimental_bottle_nr</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>Phyto_stock_bottle_nr <span class="ot">&lt;-</span> Phyto_experimental_bottle_nr</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>COMBO_total_litres <span class="ot">&lt;-</span> (</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  (Phyto_stock_bottle_nr <span class="sc">*</span> Phyto_stock_bottle_liquid_mL) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  (Phyto_experimental_bottle_nr <span class="sc">*</span> Phyto_experimental_bottle_liquid_mL)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>COMBO_batches <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(COMBO_total_litres <span class="sc">/</span> COMBO_batch_volume_litres)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
@@ -3144,17 +3136,17 @@ C_{\mathrm{total}} = N_{\mathrm{jars}} \times C_{\mathrm{jar}}
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Chaoborus_Daphnia_neonates_needed_per_day <span class="ot">&lt;-</span> (</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  Chaoborus_larvae_per_jar <span class="sc">*</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  Chaoborus_Daphnia_neonates_eaten_max_recorded <span class="sc">*</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  Treatments <span class="sc">*</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  Replicates</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>Daphnia_jars_needed_at_start <span class="ot">&lt;-</span> (</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  Daphnia_jars_per_cohort <span class="sc">*</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  Daphnia_cohorts_in_rotation</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Chaoborus_Daphnia_neonates_needed_per_day <span class="ot">&lt;-</span> (</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  Chaoborus_larvae_per_jar <span class="sc">*</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  Chaoborus_Daphnia_neonates_eaten_max_recorded <span class="sc">*</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  Treatments <span class="sc">*</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  Replicates</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>Daphnia_jars_needed_at_start <span class="ot">&lt;-</span> (</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  Daphnia_jars_per_cohort <span class="sc">*</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  Daphnia_cohorts_in_rotation</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
@@ -3182,17 +3174,17 @@ C_{\mathrm{total}} = N_{\mathrm{jars}} \times C_{\mathrm{jar}}
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>Microcystins_minimum_detectable_mg <span class="ot">&lt;-</span> (</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  Microcystins_detection_limit_ug_per_L <span class="sc">*</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  (Microcystins_extraction_volume_mL <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">/</span> <span class="dv">1000</span>)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>Microcystins_mg_per_g_DW_Chaoborus <span class="ot">&lt;-</span> (</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  Microcystins_mg_per_g_DW_phytoplankton <span class="sc">/</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  (Microcystins_biodilution_factor_Daphnia <span class="sc">*</span> Microcystins_biodilution_factor_Chaoborus))</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>Biomass_needed_for_toxins_mg <span class="ot">&lt;-</span> (</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  Microcystins_minimum_detectable_mg <span class="sc">/</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  Microcystins_mg_per_g_DW_Chaoborus) <span class="sc">*</span> <span class="dv">1000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Microcystins_minimum_detectable_mg <span class="ot">&lt;-</span> (</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  Microcystins_detection_limit_ug_per_L <span class="sc">*</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  (Microcystins_extraction_volume_mL <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">/</span> <span class="dv">1000</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>Microcystins_mg_per_g_DW_Chaoborus <span class="ot">&lt;-</span> (</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  Microcystins_mg_per_g_DW_phytoplankton <span class="sc">/</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  (Microcystins_biodilution_factor_Daphnia <span class="sc">*</span> Microcystins_biodilution_factor_Chaoborus))</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>Biomass_needed_for_toxins_mg <span class="ot">&lt;-</span> (</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  Microcystins_minimum_detectable_mg <span class="sc">/</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  Microcystins_mg_per_g_DW_Chaoborus) <span class="sc">*</span> <span class="dv">1000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
@@ -3219,32 +3211,32 @@ C_{\mathrm{total}} = N_{\mathrm{jars}} \times C_{\mathrm{jar}}
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Jars_Chaoborus <span class="ot">&lt;-</span> Treatments <span class="sc">*</span> Replicates</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>Biomass_needed_total_mg <span class="ot">&lt;-</span> (</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  DW_needed_for_PUFAs_mg <span class="sc">+</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  DW_needed_for_sterols_mg <span class="sc">+</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  DW_needed_for_N_and_C_mg <span class="sc">+</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  Biomass_needed_for_toxins_mg</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>Chaoborus_one_measurement <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  (Biomass_needed_total_mg <span class="sc">/</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  Chaoborus_third_instar_DW_mg) <span class="sc">*</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  Chaoborus_dead_to_alive_ratio_worst_treatment</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>Chaoborus_total <span class="ot">&lt;-</span> Chaoborus_one_measurement <span class="sc">*</span> Treatments <span class="sc">*</span> Replicates</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>Daphnia_neonates_needed_per_jar_per_day <span class="ot">&lt;-</span> Chaoborus_Daphnia_neonates_eaten_max_recorded <span class="sc">*</span> Chaoborus_larvae_per_jar</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>Jars_small_Daphnia <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(</span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>  Chaoborus_total <span class="sc">/</span> (Daphnia_offsprings_per_mother_per_5_days <span class="sc">/</span> Chaoborus_Daphnia_neonates_eaten_per_day)</span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>Jars_big_Daphnia <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(</span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>  Jars_small_Daphnia <span class="sc">/</span> (Daphnia_cohorts_adults_per_jar <span class="sc">*</span> Daphnia_offsprings_per_mother_per_5_days)</span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Jars_Chaoborus <span class="ot">&lt;-</span> Treatments <span class="sc">*</span> Replicates</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>Biomass_needed_total_mg <span class="ot">&lt;-</span> (</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  DW_needed_for_PUFAs_mg <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  DW_needed_for_sterols_mg <span class="sc">+</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  DW_needed_for_N_and_C_mg <span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  Biomass_needed_for_toxins_mg</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>Chaoborus_one_measurement <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  (Biomass_needed_total_mg <span class="sc">/</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  Chaoborus_third_instar_DW_mg) <span class="sc">*</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  Chaoborus_dead_to_alive_ratio_worst_treatment</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>Chaoborus_total <span class="ot">&lt;-</span> Chaoborus_one_measurement <span class="sc">*</span> Treatments <span class="sc">*</span> Replicates</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>Daphnia_neonates_needed_per_jar_per_day <span class="ot">&lt;-</span> Chaoborus_Daphnia_neonates_eaten_max_recorded <span class="sc">*</span> Chaoborus_larvae_per_jar</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>Jars_small_Daphnia <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  Chaoborus_total <span class="sc">/</span> (Daphnia_offsprings_per_mother_per_5_days <span class="sc">/</span> Chaoborus_Daphnia_neonates_eaten_per_day)</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>Jars_big_Daphnia <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>  Jars_small_Daphnia <span class="sc">/</span> (Daphnia_cohorts_adults_per_jar <span class="sc">*</span> Daphnia_offsprings_per_mother_per_5_days)</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
@@ -3275,31 +3267,31 @@ C_{\mathrm{total}} = N_{\mathrm{jars}} \times C_{\mathrm{jar}}
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Daphnia_cohort_carbon_mg_per_day <span class="ot">&lt;-</span> (</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  Daphnia_jars_needed_at_start <span class="sc">*</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  Large_jar_liquid_litres <span class="sc">*</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  Daphnia_algae_C_ad_libitum_mg_per_L_per_day</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>Daphnia_stock_carbon_mg_per_day <span class="ot">&lt;-</span> (</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  (Jars_big_Daphnia <span class="sc">*</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  Large_jar_liquid_litres <span class="sc">+</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  Jars_small_Daphnia <span class="sc">*</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  Small_jar_liquid_litres) <span class="sc">*</span> Daphnia_algae_C_ad_libitum_mg_per_L_per_day)</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>Phyto_Microcystis_mg_C_per_day <span class="ot">&lt;-</span> Daphnia_cohort_carbon_mg_per_day <span class="sc">*</span> <span class="fu">mean</span>(Diet_Microcystis_fraction)</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>Phyto_Synechococcus_mg_C_per_day <span class="ot">&lt;-</span> Daphnia_cohort_carbon_mg_per_day <span class="sc">*</span> <span class="fu">mean</span>(Diet_Synechococcus_fraction)</span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>Phyto_Nannochloropsis_mg_C_per_day <span class="ot">&lt;-</span> Daphnia_cohort_carbon_mg_per_day <span class="sc">*</span> <span class="fu">mean</span>(Diet_Nannochloropsis_fraction)</span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>Phyto_Tetradesmus_mg_C_per_day <span class="ot">&lt;-</span> Daphnia_cohort_carbon_mg_per_day <span class="sc">*</span> <span class="fu">mean</span>(Diet_Tetradesmus_fraction) <span class="sc">+</span></span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  Daphnia_stock_carbon_mg_per_day</span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_max_mg_C <span class="ot">&lt;-</span> (Phyto_experimental_bottle_liquid_mL <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">*</span></span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>  Phyto_experimental_bottle_highest_mg_C_per_L</span>
-<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>Phyto_Microcystis_harvest_fraction <span class="ot">&lt;-</span> Phyto_Microcystis_mg_C_per_day <span class="sc">/</span> Phyto_experimental_bottle_max_mg_C</span>
-<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>Phyto_Synechococcus_harvest_fraction <span class="ot">&lt;-</span> Phyto_Synechococcus_mg_C_per_day <span class="sc">/</span> Phyto_experimental_bottle_max_mg_C</span>
-<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>Phyto_Nannochloropsis_harvest_fraction <span class="ot">&lt;-</span> Phyto_Nannochloropsis_mg_C_per_day <span class="sc">/</span> Phyto_experimental_bottle_max_mg_C</span>
-<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>Phyto_Tetradesmus_harvest_fraction <span class="ot">&lt;-</span> Phyto_Tetradesmus_mg_C_per_day <span class="sc">/</span> Phyto_experimental_bottle_max_mg_C</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>Daphnia_cohort_carbon_mg_per_day <span class="ot">&lt;-</span> (</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  Daphnia_jars_needed_at_start <span class="sc">*</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  Large_jar_liquid_litres <span class="sc">*</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  Daphnia_algae_C_ad_libitum_mg_per_L_per_day</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>Daphnia_stock_carbon_mg_per_day <span class="ot">&lt;-</span> (</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  (Jars_big_Daphnia <span class="sc">*</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  Large_jar_liquid_litres <span class="sc">+</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  Jars_small_Daphnia <span class="sc">*</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  Small_jar_liquid_litres) <span class="sc">*</span> Daphnia_algae_C_ad_libitum_mg_per_L_per_day)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>Phyto_Microcystis_mg_C_per_day <span class="ot">&lt;-</span> Daphnia_cohort_carbon_mg_per_day <span class="sc">*</span> <span class="fu">mean</span>(Diet_Microcystis_fraction)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>Phyto_Synechococcus_mg_C_per_day <span class="ot">&lt;-</span> Daphnia_cohort_carbon_mg_per_day <span class="sc">*</span> <span class="fu">mean</span>(Diet_Synechococcus_fraction)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>Phyto_Nannochloropsis_mg_C_per_day <span class="ot">&lt;-</span> Daphnia_cohort_carbon_mg_per_day <span class="sc">*</span> <span class="fu">mean</span>(Diet_Nannochloropsis_fraction)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>Phyto_Tetradesmus_mg_C_per_day <span class="ot">&lt;-</span> Daphnia_cohort_carbon_mg_per_day <span class="sc">*</span> <span class="fu">mean</span>(Diet_Tetradesmus_fraction) <span class="sc">+</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  Daphnia_stock_carbon_mg_per_day</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>Phyto_experimental_bottle_max_mg_C <span class="ot">&lt;-</span> (Phyto_experimental_bottle_liquid_mL <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">*</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  Phyto_experimental_bottle_highest_mg_C_per_L</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>Phyto_Microcystis_harvest_fraction <span class="ot">&lt;-</span> Phyto_Microcystis_mg_C_per_day <span class="sc">/</span> Phyto_experimental_bottle_max_mg_C</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>Phyto_Synechococcus_harvest_fraction <span class="ot">&lt;-</span> Phyto_Synechococcus_mg_C_per_day <span class="sc">/</span> Phyto_experimental_bottle_max_mg_C</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>Phyto_Nannochloropsis_harvest_fraction <span class="ot">&lt;-</span> Phyto_Nannochloropsis_mg_C_per_day <span class="sc">/</span> Phyto_experimental_bottle_max_mg_C</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>Phyto_Tetradesmus_harvest_fraction <span class="ot">&lt;-</span> Phyto_Tetradesmus_mg_C_per_day <span class="sc">/</span> Phyto_experimental_bottle_max_mg_C</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
@@ -3329,13 +3321,13 @@ C_{\mathrm{total}} = N_{\mathrm{jars}} \times C_{\mathrm{jar}}
 <div class="cell">
 <details class="code-fold">
 <summary>Show calculation code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Weight_per_shelf_kg <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  (</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    (Large_jar_with_liquid_kg <span class="sc">*</span> Jars_Chaoborus) <span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    (Small_jar_with_liquid_kg <span class="sc">*</span> Jars_small_Daphnia) <span class="sc">+</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    (Large_jar_with_liquid_kg <span class="sc">*</span> Jars_big_Daphnia)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">/</span> Shelves</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Weight_per_shelf_kg <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  (</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    (Large_jar_with_liquid_kg <span class="sc">*</span> Jars_Chaoborus) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    (Small_jar_with_liquid_kg <span class="sc">*</span> Jars_small_Daphnia) <span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    (Large_jar_with_liquid_kg <span class="sc">*</span> Jars_big_Daphnia)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">/</span> Shelves</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
