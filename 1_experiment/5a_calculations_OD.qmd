@@ -31,8 +31,8 @@ OD_data_dir <- "../2_data/01_unprocessed/01_OD"
 
 # ----- Microcystis aeruginosa: OD + volume ------ #
 
-Microcystis_volume_added <- read.csv(file.path(OD_data_dir, "Microcystis_volume.csv"))
-Microcystis_OD <- read.csv(file.path(OD_data_dir, "Microcystis_OD.csv"))
+Microcystis_volume_added <- read.csv(file.path(OD_data_dir, "Microcystis_volume.csv"), fileEncoding = "UTF-8-BOM")
+Microcystis_OD <- read.csv(file.path(OD_data_dir, "Microcystis_OD.csv"), fileEncoding = "UTF-8-BOM")
 
 Microcystis_volume_and_OD <- left_join(
   Microcystis_volume_added,
@@ -43,9 +43,9 @@ select(-c("comment", "position_drying_plate"))
 
 # ----- Nannochloropsis limnetica: OD + volume ------ #
 
-Nannochloropsis_volume_added <- read.csv(file.path(OD_data_dir, "Nannochloropsis_volume.csv")) %>%
+Nannochloropsis_volume_added <- read.csv(file.path(OD_data_dir, "Nannochloropsis_volume.csv"), fileEncoding = "UTF-8-BOM") %>%
 mutate(problem = "no")
-Nannochloropsis_OD <- read.csv(file.path(OD_data_dir, "Nannochloropsis_OD.csv"))
+Nannochloropsis_OD <- read.csv(file.path(OD_data_dir, "Nannochloropsis_OD.csv"), fileEncoding = "UTF-8-BOM")
 
 Nannochloropsis_volume_and_OD <- left_join(
   Nannochloropsis_volume_added,
@@ -59,12 +59,12 @@ select(-c("position_drying_plate"))
 # project were run on plate "Claudia" and are dropped here so only this
 # calibration's samples remain.
 
-Microcystis_Nannochlaropsis_C <- read.csv(file.path(OD_data_dir, "Microcystis_Nannochlaropsis_C.csv")) %>%
+Microcystis_Nannochlaropsis_C <- read.csv(file.path(OD_data_dir, "Microcystis_Nannochlaropsis_C.csv"), fileEncoding = "UTF-8-BOM") %>%
 filter(!plate == "Claudia") %>%
 select(position_C_analysis_plate = plate, C_mg = C..mg.) %>%
 mutate(
   position_C_analysis_plate = str_extract(str_trim(position_C_analysis_plate), "^[A-Z]\\d+"),
-  C_mg = as.numeric(C_mg) # non-numeric placeholders (e.g. "sample lost") become NA
+  C_mg = suppressWarnings(as.numeric(C_mg)) # non-numeric placeholders (e.g. "sample lost") become NA
 )
 
 # ----- Merge tables ------ #
@@ -204,7 +204,7 @@ Food_calculator_parameters <- data.frame(
 
 write.csv(
   Food_calculator_parameters,
-  here::here("calculations", "food_calculator_parameters.csv"),
+  here::here("1_experiment", "calculations", "food_calculator_parameters.csv"),
   row.names = FALSE
 )
 ```
