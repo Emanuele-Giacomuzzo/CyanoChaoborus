@@ -4,7 +4,7 @@
 
 ## Carbon content from optical density
 
-*Daphnia* is fed a fixed carbon dose (`r Daphnia_algae_C_ad_libitum_mg_per_L_per_day` mg C/L/day), but the volume of phytoplankton medium that delivers that dose isn't fixed — carbon content drifts from batch to batch as a culture grows. Rather than measuring carbon directly before every feeding, which is destructive and slow, each phytoplankton species is instead read on a spectrophotometer at OD<sub>480</sub> (see the Daphnia feeding protocol), and that reading is converted to carbon through a species-specific linear calibration curve, mg C/L = slope × OD<sub>480</sub> + intercept, fitted by pairing OD readings across a dilution series against carbon measured on filtered, dried subsamples (method: [OD curve protocol](protocol/quarto/22_2026_03_27_OD_curve_Microcystis.md), worked through there for *M. aeruginosa*).
+*Daphnia* is fed a fixed carbon dose (`r Daphnia_algae_C_ad_libitum_mg_per_L_per_day` mg C/L/day), but the volume of phytoplankton medium that delivers that dose isn't fixed — carbon content drifts from batch to batch as a culture grows. Rather than measuring carbon directly before every feeding, which is destructive and slow, each phytoplankton species is instead read on a spectrophotometer at OD<sub>480</sub> (see the Daphnia feeding protocol), and that reading is converted to carbon through a species-specific linear calibration curve, mg C/L = slope × OD<sub>480</sub> + intercept, fitted by pairing OD readings across a dilution series against carbon measured on filtered, dried subsamples.
 
 ::: {.table-scroll}
 
