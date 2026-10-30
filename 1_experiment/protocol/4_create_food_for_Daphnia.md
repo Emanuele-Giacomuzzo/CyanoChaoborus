@@ -1,8 +1,8 @@
 **Title:** Create food for the Daphnia
 
-**Date:** Saturday 10th October 2026
+**Date:** 
 
-**Day:** -2
+**Day:** 
 
 **Aim:** Create food to feed Daphnia with different diets so that they would get fed 2 mg C/L/day (2 days: 4 mg C/L) with the following diets (percentage is intended in terms of C, not in terms of volume)
 

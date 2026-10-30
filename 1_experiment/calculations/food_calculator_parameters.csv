@@ -1,6 +1,6 @@
 "name","value"
 "Large_jar_liquid_litres","0.8"
-"Daphnia_algae_C_ad_libitum_mg_per_L_per_day","2"
+"Daphnia_algae_C_ad_libitum_mg_per_L_per_day","1"
 "N_days_per_feeding_event","2"
 "extra_food_ratio","0.25"
 "Diet_Microcystis_fraction","c(0.5, 0, 0, 0)"

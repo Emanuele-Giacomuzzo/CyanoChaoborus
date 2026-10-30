@@ -1,9 +1,15 @@
 # Overview of the project
 
-::: {.callout-warning}
-## 🚧 Work in progress
+::: {.callout-note}
+## 📋 A note for the reader 
 
-This document is a live working draft, please read it with that in mind. The research question and the four-treatment diet design havve been decided, but still some calculations need to be completed. The experiment itself hasn't started yet. The experiment's start date and total duration are also still undecided. Sections and numbers below may still change — comments and corrections are very welcome! Also, as the document gets regularly updated, it's possible that there are mistakes/old snippets of text which are now obsolete. 
+This document is an example of how I plan and document an experiment. A few features are worth pointing out:
+
+- **A single source of truth.** Background, experimental design, calculations, procedures, and bench protocols live in one Quarto document, rendered from version-controlled source files on GitHub.
+- **Numbers computed, not retyped.** Every quantity (organisms, vessels, culture volumes, food doses, biomass needed for each analysis) is calculated in R from a shared set of parameters and quoted inline in the text. When an assumption changes, every number that depends on it updates automatically. The code behind each calculation is folded away but can be expanded with *Show calculation code*.
+- **Protocols ready for the bench.** The procedure links to step-by-step bench protocols, written so that a BSc student can follow them without prior experience.
+- **Built for a team.** The project involves multipleresearchers. Questions are collected in GitHub Discussions so the answers are shared with everyone, changes go through pull requests, and a changelog records what changed and why.
+- **Open about what is unfinished.** Open questions and pending tasks are flagged as "To do" notes right where they arise, so it is always clear which numbers are final and which still depend on missing information.
 :::
 
 ## 🔬 What's this project about?

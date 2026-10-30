@@ -1,8 +1,8 @@
-**Title:** Create new Daphnia cohorts
+**Title:** Create Daphnia cohorts
 
-**Date:** Friday 9th October 2026
+**Date:** 
 
-**Day:** -3
+**Day:**
 
 **Aim:** Creating new cohorts of *Daphnia*, which will be raised for five days on 
 

@@ -90,7 +90,7 @@ Daphnia_offsprings_per_mother_per_5_days <- 20
 
 # Feeding 
 
-Daphnia_algae_C_ad_libitum_mg_per_L_per_day <- 2 # This is the amount of carbon that Daphnia magna can consume per day at ad libitum feeding conditions, based on the following paper: Lampert, W. (1978). The experimental analysis of food limitation in Daphnia. I. The search for a control mechanism. Oecologia, 37(1), 1-19.
+Daphnia_algae_C_ad_libitum_mg_per_L_per_day <- 1 # This is the amount of carbon that Daphnia magna can consume per day at ad libitum feeding conditions, based on the following paper: Lampert, W. (1978). The experimental analysis of food limitation in Daphnia. I. The search for a control mechanism. Oecologia, 37(1), 1-19.
 
 # Experiment
 
@@ -139,7 +139,7 @@ COMBO_days_in_advance <- 1 #Needs one day to be autoclaved
 
 # Optical density to carbon calibration curves 
 
-# OD-to-carbon calibration curves (mg C/L = slope x OD_480 - intercept), fitted per species from a
+# OD-to-carbon calibration curves (mg C/L = slope x OD_480 + intercept), fitted per species from a
 # dilution series read on the spectrophotometer and filtered onto pre-combusted GF/C filters for
 # carbon analysis (method: protocol/quarto/22_2026_03_27_OD_curve_Microcystis.md); used by
 # calculations/food_calculator.qmd to dose Daphnia feeding (see 6_experimental_procedure.qmd)

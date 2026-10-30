@@ -1,6 +1,6 @@
 # The interactive effects of toxicity and poor food quality of Cyanobacteria via indirect effects on Chaoborus
 
-For the background and motivation behind this project, see the [project README](../README.md).
+For the background and motivation behind this project, see the project README.
 
 ## Folder layout
 

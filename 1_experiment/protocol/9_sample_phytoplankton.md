@@ -1,8 +1,8 @@
 **Title:** Sample phytoplankton
 
-**Date:** Tuesday 27th October 2026
+**Date:** 
 
-**Day:** 15
+**Day:** 
 
 **Aim:** Sampling the phytoplankton we are providing the Daphnia with.
 

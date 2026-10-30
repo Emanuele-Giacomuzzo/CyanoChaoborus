@@ -8,14 +8,14 @@ This section is generated automatically from every Markdown file in [`protocol/`
 #| results: asis
 
 protocol_files <- list.files("protocol", pattern = "\\.md$")
-protocol_numbers <- suppressWarnings(as.numeric(sub("^([0-9]+)_.*", "\\1", protocol_files)))
-protocol_order <- order(protocol_numbers, protocol_files)
+protocol_numbers <- sub("^([0-9]+[a-z]?)_.*", "\\1", protocol_files)
+protocol_order <- order(as.numeric(sub("[a-z]$", "", protocol_numbers)), protocol_files)
 protocol_files <- protocol_files[protocol_order]
 protocol_numbers <- protocol_numbers[protocol_order]
 
 for (i in seq_along(protocol_files)) {
   f <- protocol_files[i]
-  title <- sub("^[0-9]+_", "", f)
+  title <- sub("^[0-9]+[a-z]?_", "", f)
   title <- sub("\\.md$", "", title)
   title <- gsub("_", " ", title)
   substr(title, 1, 1) <- toupper(substr(title, 1, 1))

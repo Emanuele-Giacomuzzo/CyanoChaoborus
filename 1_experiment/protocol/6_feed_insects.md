@@ -1,8 +1,8 @@
 **Title:** Feed *Ischnura elegans* and provide with dissolved Microcystis
 
-**Date:** Monday 26th October 2026
+**Date:** 
 
-**Day:** 14
+**Day:** 
 
 **Aim:** Feed *Ischnura elegans* with *Daphnia* raised on different diets. Also, provide with lysed cells of *Microcystis aeruginosa* to the dissolved toxin treatment. 
 

@@ -101,7 +101,7 @@ Once underway, the experiment runs as a daily cycle. Each treatment's phytoplank
 
 *Chaoborus* is sampled at multiple points rather than all at once. A subset of larvae is collected at the start of the experiment to characterize initial body size and quality, and emerging adults are collected continuously as they appear, held briefly, then frozen for later analysis. Because lipids and other biomolecules degrade quickly, samples are frozen without ethanol, with excess water removed beforehand, and stored only for a limited window before being processed — *Chaoborus*, *Daphnia*, and phytoplankton samples are ultimately sent for biomass, PUFA and sterol, stoichiometry, and toxin analyses.
 
-The experiment has not yet begun. Diet treatments, replication, and most sizing calculations are fixed, while phytoplankton growth-rate calibration, toxin quantification, and *Chaoborus* sourcing are still being finalized (see [Overview](1_experiment/2_overview.qmd)).
+The experiment has not yet begun. Diet treatments, replication, and most sizing calculations are fixed, while phytoplankton growth-rate calibration, toxin quantification, and *Chaoborus* sourcing are still being finalized (see Overview).
 
 ---
 
