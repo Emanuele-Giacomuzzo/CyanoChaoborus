@@ -2,7 +2,11 @@
 
 **Date:** Wednesday 28th October 2026
 
+<<<<<<< Updated upstream
 **Day:** 16
+=======
+**Day:**
+>>>>>>> Stashed changes
 
 **Aim:** Sample *Daphnia magna* for their quality. We assume that the dry weight of one *Daphnia magna* of 0–5 days old is about 0.01 mg, and that PUFAs and toxicity analyses requires about 1 mg of dry weight (100 babies).
 

@@ -1,8 +1,14 @@
 **Title:** Create new Daphnia cohorts
 
+<<<<<<< Updated upstream:1_experiment/protocol/3a_create_Daphnia.md
 **Date:** Friday 9th October 2026
 
 **Day:** -3
+=======
+**Date:** 
+
+**Day:**
+>>>>>>> Stashed changes:1_experiment/protocol/3_create_Daphnia.md
 
 **Aim:** Creating new cohorts of *Daphnia*, which will be raised for five days on 
 

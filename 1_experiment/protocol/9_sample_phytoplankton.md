@@ -2,7 +2,11 @@
 
 **Date:** Tuesday 27th October 2026
 
+<<<<<<< Updated upstream:1_experiment/protocol/9_sample_phytoplankton.md
 **Day:** 15
+=======
+**Day:**
+>>>>>>> Stashed changes:1_experiment/protocol/8_sample_phytoplankton.md
 
 **Aim:** Sampling the phytoplankton we are providing the Daphnia with.
 

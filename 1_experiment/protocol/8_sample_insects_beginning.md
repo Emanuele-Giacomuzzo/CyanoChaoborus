@@ -2,7 +2,7 @@
 
 **Date:** Monday 12th October 2026
 
-**Day:** 0
+**Day:**
 
 **Aim:** Sample *Ischnura* for their quality baseline. We assume that the dry weight of one *Ischnura* is about 2 mg, and that each of the following analyses requires about 1 mg of dry weight: 
 

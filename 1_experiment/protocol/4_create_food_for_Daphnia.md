@@ -1,8 +1,14 @@
 **Title:** Create food for the Daphnia
 
+<<<<<<< Updated upstream:1_experiment/protocol/4_create_food_for_Daphnia.md
 **Date:** Saturday 10th October 2026
 
 **Day:** -2
+=======
+**Date:**
+
+**Day:**
+>>>>>>> Stashed changes:1_experiment/protocol/4_feed_Daphnia.md
 
 **Aim:** Create food to feed Daphnia with different diets so that they would get fed 2 mg C/L/day (2 days: 4 mg C/L) with the following diets (percentage is intended in terms of C, not in terms of volume)
 

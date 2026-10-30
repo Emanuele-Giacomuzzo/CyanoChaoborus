@@ -1,10 +1,6 @@
 # Overview of the project
 
-::: {.callout-warning}
-## 🚧 Work in progress
-
-This document is a live working draft, please read it with that in mind. The research question and the four-treatment diet design havve been decided, but still some calculations need to be completed. The experiment itself hasn't started yet. The experiment's start date and total duration are also still undecided. Sections and numbers below may still change — comments and corrections are very welcome! Also, as the document gets regularly updated, it's possible that there are mistakes/old snippets of text which are now obsolete. 
-:::
+This document illustrates how I use R, Quarto and interactive tools to organise research projects and develop reproducible workflows. It integrates scientific rationale, experimental design, quantitative calculations, protocols, data management and references into a single, interconnected environment. Shared parameters and automated calculations help minimise manual data entry and inconsistencies across project components. The document is an example of my approach to research organisation and documentation; some experimental details reflect an earlier stage of project development.
 
 ## 🔬 What's this project about?
 
@@ -23,10 +19,10 @@ The tricky part: these two effects usually happen *at the same time* in nature, 
 
 ## 🧪 Why *Chaoborus sp* and *Ischnura elegans*?
 
-To study this, we use *Chaoborus* — commonly known as the **phantom midge** — as our model organism. A few reasons it's a great fit:
+To study this, we use *Chaoborus* (phantom midge) and *Ischnura elegans* (blue-tailed damselfly) as our model organisms. A few reasons they are a great fit:
 
 - They are **widespread**, found in lakes and ponds, so what we learn has broad relevance.
-- It's a well-established model in freshwater ecology, so there's a solid foundation of methods and knowledge to build on, and it's (relatively) easy to keep in the lab. 
+- They are well-established models in freshwater ecology, so there's a solid foundation of methods and knowledge to build on, and it's (relatively) easy to keep in the lab. 
 
 By feeding *Chaoborus sp* and *Ischnura elegans* different cyanobacterial diets (toxic vs. non-toxic, nutritionally varied) and tracking how they grow, survive, and eventually emerge, we can start to disentangle *toxicity* from *food quality* — and understand what that means for the animals waiting on land for their next meal to fly out of the water.
 
